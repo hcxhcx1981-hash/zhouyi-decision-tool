@@ -618,6 +618,28 @@ button {
   line-height: 1.65;
 }
 
+.site-footer {
+  width: min(100%, 760px);
+  margin: 0 auto;
+  padding: 0 14px calc(24px + env(safe-area-inset-bottom));
+  color: var(--muted);
+  text-align: center;
+  font-size: 0.72rem;
+  line-height: 1.7;
+}
+
+.site-footer strong {
+  color: #cfc6d7;
+}
+
+.site-filings {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 4px 12px;
+  margin-top: 4px;
+}
+
 @media (min-width: 680px) {
   .workbench-shell {
     padding: 36px 24px 72px;

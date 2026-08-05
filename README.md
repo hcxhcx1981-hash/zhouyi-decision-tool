@@ -38,3 +38,17 @@ npm run build
 CloudBase 准备步骤见 `docs/CLOUDBASE_STATIC_DEPLOY.md`。
 
 冻结资料位于 `data/frozen/`，由开发资料包原样复制；应用与本轮改造均不修改这些文件。
+
+## 独立测试环境发布准备
+
+公开品牌、站点 URL、metadata、分享字段与备案字段统一由 `src/config/site.ts` 管理。`.env.example` 仅列出可公开的构建参数；这些 `NEXT_PUBLIC_*` 值会进入静态产物，严禁在其中放置密钥、Token 或账号配置。
+
+在 Git clean 状态下，可用临时 HTTPS 测试地址生成发布包：
+
+```powershell
+.\prepare-test-release.bat https://example-test-domain
+```
+
+脚本依次执行 typecheck、测试、lint、build 与 `release:audit`。`release:audit` 只读检查 `out\` 的必需文件、冻结资料、禁止字符串、明显密钥格式和构建域名，不会修改文件或联网。
+
+发布包只能用于独立 CloudBase 测试环境，不得直接使用或覆盖 `miaoduai.cn`。当前仍是“准备完成、尚未部署”状态；人工发布步骤见 `docs/CLOUDBASE_TEST_RELEASE_CHECKLIST.md`。

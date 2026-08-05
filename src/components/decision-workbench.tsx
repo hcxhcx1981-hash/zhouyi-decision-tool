@@ -28,6 +28,7 @@ const ROLE_LABELS: Record<SelectionRole, string> = {
 
 interface DecisionWorkbenchProps {
   hexagrams: HexagramContent[];
+  productName: string;
   rules: RuntimeDivinationRules;
 }
 
@@ -133,7 +134,7 @@ function SourceSelection({
   );
 }
 
-export function DecisionWorkbench({ hexagrams, rules }: DecisionWorkbenchProps) {
+export function DecisionWorkbench({ hexagrams, productName, rules }: DecisionWorkbenchProps) {
   const [question, setQuestion] = useState("");
   const [values, setValues] = useState<YaoValue[]>([7, 7, 7, 7, 7, 7]);
   const [orderConfirmed, setOrderConfirmed] = useState(false);
@@ -168,7 +169,7 @@ export function DecisionWorkbench({ hexagrams, rules }: DecisionWorkbenchProps) 
       <header className="hero">
         <div>
           <p className="eyebrow">MOBILE H5 · PHASE 1.1</p>
-          <h1>周易问事决策工具</h1>
+          <h1>{productName}</h1>
           <p className="hero-copy">写下所问，依次录入六爻，再核准本卦、之卦与取辞路径。</p>
         </div>
         <div className="protocol-chip">
