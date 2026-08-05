@@ -1,0 +1,255 @@
+{
+  "protocol_id": "ZHOUYI_DIVINATION_PROTOCOL_V0_1",
+  "version": "0.1.0",
+  "cases": [
+    {
+      "id": "T01_M0",
+      "yao_values": [
+        7,
+        8,
+        7,
+        8,
+        7,
+        8
+      ],
+      "expected": {
+        "moving_count": 0,
+        "rule_id": "M0_ORIGINAL_TUANCI",
+        "automatic_decision": true,
+        "primary_hexagram": "original",
+        "text_selector": "tuan_ci_bundle"
+      }
+    },
+    {
+      "id": "T02_M1_FIRST",
+      "yao_values": [
+        9,
+        8,
+        7,
+        8,
+        7,
+        8
+      ],
+      "expected": {
+        "moving_count": 1,
+        "rule_id": "M1_ORIGINAL_MOVING_LINE",
+        "primary_positions": [
+          1
+        ],
+        "primary_hexagram": "original"
+      }
+    },
+    {
+      "id": "T03_M2",
+      "yao_values": [
+        9,
+        6,
+        7,
+        8,
+        7,
+        8
+      ],
+      "expected": {
+        "moving_count": 2,
+        "rule_id": "M2_TWO_ORIGINAL_MOVING_LINES",
+        "primary_positions": [
+          2
+        ],
+        "secondary_positions": [
+          1
+        ],
+        "primary_hexagram": "original"
+      }
+    },
+    {
+      "id": "T04_M3_WITH_FIRST",
+      "yao_values": [
+        9,
+        6,
+        7,
+        8,
+        9,
+        8
+      ],
+      "expected": {
+        "moving_count": 3,
+        "rule_id": "M3_ORIGINAL_AND_CHANGED_TUANCI",
+        "automatic_decision": false,
+        "blocked": true
+      }
+    },
+    {
+      "id": "T05_M3_WITHOUT_FIRST",
+      "yao_values": [
+        7,
+        6,
+        9,
+        8,
+        9,
+        8
+      ],
+      "expected": {
+        "moving_count": 3,
+        "rule_id": "M3_ORIGINAL_AND_CHANGED_TUANCI",
+        "automatic_decision": false,
+        "blocked": true
+      }
+    },
+    {
+      "id": "T06_M4",
+      "yao_values": [
+        9,
+        6,
+        7,
+        8,
+        9,
+        6
+      ],
+      "expected": {
+        "moving_count": 4,
+        "rule_id": "M4_TWO_UNCHANGED_LINES_IN_CHANGED",
+        "primary_positions": [
+          3
+        ],
+        "secondary_positions": [
+          4
+        ],
+        "primary_hexagram": "changed"
+      }
+    },
+    {
+      "id": "T07_M5",
+      "yao_values": [
+        9,
+        6,
+        9,
+        6,
+        9,
+        8
+      ],
+      "expected": {
+        "moving_count": 5,
+        "rule_id": "M5_ONE_UNCHANGED_LINE_IN_CHANGED",
+        "primary_positions": [
+          6
+        ],
+        "primary_hexagram": "changed"
+      }
+    },
+    {
+      "id": "T08_M6_QIAN",
+      "yao_values": [
+        9,
+        9,
+        9,
+        9,
+        9,
+        9
+      ],
+      "expected": {
+        "moving_count": 6,
+        "rule_id": "M6_ALL_MOVING",
+        "special_line": "用九",
+        "primary_hexagram": "original"
+      }
+    },
+    {
+      "id": "T09_M6_KUN",
+      "yao_values": [
+        6,
+        6,
+        6,
+        6,
+        6,
+        6
+      ],
+      "expected": {
+        "moving_count": 6,
+        "rule_id": "M6_ALL_MOVING",
+        "special_line": "用六",
+        "primary_hexagram": "original"
+      }
+    },
+    {
+      "id": "T10_M6_OTHER",
+      "yao_values": [
+        9,
+        6,
+        9,
+        6,
+        9,
+        6
+      ],
+      "expected": {
+        "moving_count": 6,
+        "rule_id": "M6_ALL_MOVING",
+        "special_line": null,
+        "primary_hexagram": "changed",
+        "text_selector": "tuan_ci_bundle"
+      }
+    },
+    {
+      "id": "T11_INVALID_LENGTH",
+      "yao_values": [
+        7,
+        8,
+        7
+      ],
+      "expected_error": "INVALID_LENGTH"
+    },
+    {
+      "id": "T12_INVALID_VALUE",
+      "yao_values": [
+        7,
+        8,
+        5,
+        8,
+        7,
+        8
+      ],
+      "expected_error": "INVALID_VALUE"
+    },
+    {
+      "id": "T13_M4_SELECTION",
+      "yao_values": [
+        7,
+        8,
+        9,
+        6,
+        9,
+        6
+      ],
+      "expected": {
+        "moving_count": 4,
+        "rule_id": "M4_TWO_UNCHANGED_LINES_IN_CHANGED",
+        "primary_positions": [
+          1
+        ],
+        "secondary_positions": [
+          2
+        ]
+      }
+    },
+    {
+      "id": "T14_M2_SELECTION",
+      "yao_values": [
+        7,
+        8,
+        9,
+        8,
+        6,
+        8
+      ],
+      "expected": {
+        "moving_count": 2,
+        "rule_id": "M2_TWO_ORIGINAL_MOVING_LINES",
+        "primary_positions": [
+          5
+        ],
+        "secondary_positions": [
+          3
+        ]
+      }
+    }
+  ]
+}

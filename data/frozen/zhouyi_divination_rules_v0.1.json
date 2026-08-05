@@ -1,0 +1,375 @@
+{
+  "protocol_id": "ZHOUYI_DIVINATION_PROTOCOL_V0_1",
+  "version": "0.1.0",
+  "status": "PROTOCOL_CANDIDATE",
+  "scope": {
+    "purpose": "周易问事的起卦结果结构化与占变取辞裁决",
+    "supported_input": [
+      "manual_yao_values"
+    ],
+    "disabled_input": [
+      {
+        "mode": "digital_random_cast",
+        "reason": "现有资料未提供数字随机起卦与传统揲蓍等价性的直接依据"
+      },
+      {
+        "mode": "coin_cast",
+        "reason": "本轮资料未建立铜钱法规则与来源证据"
+      }
+    ]
+  },
+  "evidence_levels": {
+    "direct_source": "原文直接写明",
+    "derived_rule": "可由原文确定性推导，算法表达属于工程归纳",
+    "product_policy": "为保证产品可运行而制定的显示或交互规则，不冒充古籍原文",
+    "unresolved": "现有资料不足，禁止自动裁决"
+  },
+  "input_contract": {
+    "yao_values": {
+      "type": "array",
+      "length": 6,
+      "allowed_values": [
+        6,
+        7,
+        8,
+        9
+      ],
+      "order": "bottom_to_top",
+      "position_labels": [
+        "初",
+        "二",
+        "三",
+        "四",
+        "五",
+        "上"
+      ]
+    },
+    "question": {
+      "required": true,
+      "minimum_fields": [
+        "question_text"
+      ],
+      "recommended_fields": [
+        "subject",
+        "decision_horizon",
+        "known_options",
+        "known_constraints"
+      ]
+    },
+    "order_confirmation_required": true
+  },
+  "yao_mapping": {
+    "6": {
+      "name": "老阴",
+      "original_polarity": "yin",
+      "changed_polarity": "yang",
+      "moving": true,
+      "evidence_level": "direct_source"
+    },
+    "7": {
+      "name": "少阳",
+      "original_polarity": "yang",
+      "changed_polarity": "yang",
+      "moving": false,
+      "evidence_level": "direct_source"
+    },
+    "8": {
+      "name": "少阴",
+      "original_polarity": "yin",
+      "changed_polarity": "yin",
+      "moving": false,
+      "evidence_level": "direct_source"
+    },
+    "9": {
+      "name": "老阳",
+      "original_polarity": "yang",
+      "changed_polarity": "yin",
+      "moving": true,
+      "evidence_level": "direct_source"
+    }
+  },
+  "derived_algorithms": {
+    "moving_positions": {
+      "rule": "值为6或9的爻为动爻",
+      "evidence_level": "derived_rule"
+    },
+    "original_hexagram_bits": {
+      "rule": "6/8记阴，7/9记阳；六爻自下而上",
+      "encoding": {
+        "yin": 0,
+        "yang": 1
+      },
+      "evidence_level": "derived_rule"
+    },
+    "changed_hexagram_bits": {
+      "rule": "9由阳变阴，6由阴变阳，7/8保持；六爻自下而上",
+      "encoding": {
+        "yin": 0,
+        "yang": 1
+      },
+      "evidence_level": "derived_rule"
+    }
+  },
+  "text_scope_policy": {
+    "source_term": "彖辞",
+    "source_scope_status": "unresolved",
+    "v0_1_display_bundle": [
+      "judgment",
+      "tuan"
+    ],
+    "v0_1_primary_field": null,
+    "policy": "同时展示卦辞与《彖传》，严格分层，不把二者拼接成一段，也不声称古籍已明确二者等同",
+    "evidence_level": "product_policy"
+  },
+  "main_secondary_policy": {
+    "policy": "原文称“为主”时，仅用于优先展示和解释顺序；辅辞仍必须展示，不设置虚构数值权重",
+    "evidence_level": "product_policy"
+  },
+  "selection_rules": [
+    {
+      "moving_count": 0,
+      "rule_id": "M0_ORIGINAL_TUANCI",
+      "source_instruction": "占本卦彖辞，内卦为贞，外卦为悔",
+      "targets": [
+        {
+          "hexagram": "original",
+          "text_selector": "tuan_ci_bundle",
+          "role": "primary"
+        }
+      ],
+      "extra_context": [
+        "inner_trigram_as_zhen",
+        "outer_trigram_as_hui"
+      ],
+      "automatic_decision": true,
+      "evidence_level": "direct_source",
+      "uncertainties": [
+        "贞悔详细释义未解决",
+        "彖辞文本范围未解决"
+      ]
+    },
+    {
+      "moving_count": 1,
+      "rule_id": "M1_ORIGINAL_MOVING_LINE",
+      "source_instruction": "以本卦变爻辞占",
+      "targets": [
+        {
+          "hexagram": "original",
+          "text_selector": "line_text",
+          "positions": "moving_positions",
+          "role": "primary"
+        }
+      ],
+      "automatic_decision": true,
+      "evidence_level": "direct_source",
+      "uncertainties": []
+    },
+    {
+      "moving_count": 2,
+      "rule_id": "M2_TWO_ORIGINAL_MOVING_LINES",
+      "source_instruction": "以本卦二变爻辞占，仍以上爻为主",
+      "targets": [
+        {
+          "hexagram": "original",
+          "text_selector": "line_text",
+          "position": "higher_moving_position",
+          "role": "primary"
+        },
+        {
+          "hexagram": "original",
+          "text_selector": "line_text",
+          "position": "lower_moving_position",
+          "role": "secondary"
+        }
+      ],
+      "automatic_decision": true,
+      "evidence_level": "direct_source",
+      "uncertainties": [
+        "“为主”仅按产品政策解释为优先展示"
+      ]
+    },
+    {
+      "moving_count": 3,
+      "rule_id": "M3_ORIGINAL_AND_CHANGED_TUANCI",
+      "source_instruction": "占本卦及之卦之彖辞，本卦为贞，之卦为悔；前十卦主贞，后十卦主悔",
+      "targets": [
+        {
+          "hexagram": "original",
+          "text_selector": "tuan_ci_bundle",
+          "role": "zhen_unranked"
+        },
+        {
+          "hexagram": "changed",
+          "text_selector": "tuan_ci_bundle",
+          "role": "hui_unranked"
+        }
+      ],
+      "automatic_decision": false,
+      "blocking_reason": "前十卦/后十卦的图版对应关系尚未可靠核准，禁止自动确定主次",
+      "evidence_level": "direct_source",
+      "uncertainties": [
+        "三爻变主贞/主悔分类未解决",
+        "彖辞文本范围未解决"
+      ]
+    },
+    {
+      "moving_count": 4,
+      "rule_id": "M4_TWO_UNCHANGED_LINES_IN_CHANGED",
+      "source_instruction": "以之卦二不变爻占，仍以下爻为主",
+      "targets": [
+        {
+          "hexagram": "changed",
+          "text_selector": "line_text",
+          "position": "lower_nonmoving_position",
+          "role": "primary"
+        },
+        {
+          "hexagram": "changed",
+          "text_selector": "line_text",
+          "position": "higher_nonmoving_position",
+          "role": "secondary"
+        }
+      ],
+      "automatic_decision": true,
+      "evidence_level": "direct_source",
+      "uncertainties": [
+        "“为主”仅按产品政策解释为优先展示"
+      ]
+    },
+    {
+      "moving_count": 5,
+      "rule_id": "M5_ONE_UNCHANGED_LINE_IN_CHANGED",
+      "source_instruction": "以之卦不变爻占",
+      "targets": [
+        {
+          "hexagram": "changed",
+          "text_selector": "line_text",
+          "position": "only_nonmoving_position",
+          "role": "primary"
+        }
+      ],
+      "automatic_decision": true,
+      "evidence_level": "direct_source",
+      "uncertainties": []
+    },
+    {
+      "moving_count": 6,
+      "rule_id": "M6_ALL_MOVING",
+      "source_instruction": "乾坤占二用，余卦占之卦彖辞",
+      "branches": [
+        {
+          "condition": "yao_values_all_9",
+          "target": {
+            "hexagram": "original",
+            "text_selector": "special_line",
+            "line_label": "用九",
+            "role": "primary"
+          }
+        },
+        {
+          "condition": "yao_values_all_6",
+          "target": {
+            "hexagram": "original",
+            "text_selector": "special_line",
+            "line_label": "用六",
+            "role": "primary"
+          }
+        },
+        {
+          "condition": "otherwise",
+          "target": {
+            "hexagram": "changed",
+            "text_selector": "tuan_ci_bundle",
+            "role": "primary"
+          }
+        }
+      ],
+      "automatic_decision": true,
+      "evidence_level": "direct_source",
+      "uncertainties": [
+        "余卦之卦彖辞的文本范围未解决"
+      ]
+    }
+  ],
+  "output_contract": {
+    "required_sections": [
+      "question",
+      "cast_record",
+      "original_hexagram",
+      "changed_hexagram",
+      "moving_positions",
+      "rule_trace",
+      "selected_source_texts",
+      "commentary_layers",
+      "uncertainties",
+      "interpretation",
+      "decision_reflection"
+    ],
+    "interpretation_labels": {
+      "source_text": "原文",
+      "commentary": "注家解释",
+      "model_inference": "模型推断",
+      "product_policy": "产品规则",
+      "unresolved": "信息不足"
+    },
+    "citation_required_for_each_source_text": true
+  },
+  "guardrails": [
+    "不得把不同注家的意见融合成古籍原意",
+    "不得把模型推断写成原文结论",
+    "遇unresolved必须明确显示，不得静默补全",
+    "三爻动在图版主次未核准前不得自动给唯一主断",
+    "不得宣称结果必然发生",
+    "医疗、法律、投资及人身安全事项不得仅依据占断行动",
+    "问题表述含糊时先要求明确对象、事项与时间范围",
+    "同一问题短时间重复起卦应提示结果可能受反复求证影响，不鼓励强迫式重复"
+  ],
+  "known_blockers": [
+    {
+      "id": "B001",
+      "issue": "三爻变前十卦/后十卦的可靠映射",
+      "effect": "三爻动不能自动裁决主贞或主悔",
+      "status": "BLOCKED"
+    },
+    {
+      "id": "B002",
+      "issue": "彖辞在本协议中的精确文本范围",
+      "effect": "V0.1同时展示卦辞与《彖传》，不自动合并",
+      "status": "OPEN"
+    },
+    {
+      "id": "B003",
+      "issue": "64卦完整结构化资料尚未完成",
+      "effect": "当前协议可验证取辞逻辑，但正式内容库仅有乾坤屯样板",
+      "status": "BLOCKED"
+    }
+  ],
+  "source_references": [
+    {
+      "source": "《周易本义·易学启蒙·考变占第四》",
+      "location": "OEBPS/text00011.html:124-134",
+      "supports": [
+        "6/7/8/9变化凡例",
+        "0至6动爻取辞规则",
+        "卦变图说明"
+      ]
+    },
+    {
+      "source": "《周易本义·筮仪》",
+      "location": "OEBPS/text00006.html:120-166",
+      "supports": [
+        "揲蓍实操",
+        "十八变成卦"
+      ]
+    },
+    {
+      "source": "《周易本义·易学启蒙·明蓍策第三》",
+      "location": "OEBPS/text00011.html:82-121",
+      "supports": [
+        "四营三变原理",
+        "老阳少阴少阳老阴",
+        "七八九六"
+      ]
+    }
+  ]
+}
