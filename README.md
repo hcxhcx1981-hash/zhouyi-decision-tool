@@ -13,7 +13,7 @@
 
 ## 本地启动
 
-双击 `start-dev.bat`（`start-local.bat` 是兼容别名），或在 PowerShell 中运行：
+双击 `start-dev.bat` 启动开发模式（端口 3036；`start-local.bat` 是兼容别名），或在 PowerShell 中运行：
 
 ```powershell
 npm run dev:3036
@@ -32,6 +32,8 @@ npm run build
 ```
 
 `npm run build` 成功后，CloudBase 可用的纯静态产物位于 `out\`。本轮只准备产物和说明，不执行任何线上部署。
+
+双击 `preview-out.bat` 可预览已有静态产物（端口 3037）。
 
 CloudBase 准备步骤见 `docs/CLOUDBASE_STATIC_DEPLOY.md`。
 
