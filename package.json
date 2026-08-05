@@ -9,6 +9,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
+    "typecheck": "tsc --noEmit",
     "test": "node --test --experimental-strip-types tests/*.test.mjs",
     "validate:rules": "python data/frozen/validate_zhouyi_rules_v01.py"
   },

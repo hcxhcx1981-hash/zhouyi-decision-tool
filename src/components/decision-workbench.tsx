@@ -2,10 +2,10 @@
 
 import { FormEvent, useState } from "react";
 import {
-  ALLOWED_YAO_VALUES,
   calculateDivination,
   type DivinationResult,
   type Polarity,
+  type RuntimeDivinationRules,
   type SelectionRole,
   type SelectionTarget,
   type YaoValue,
@@ -28,7 +28,7 @@ const ROLE_LABELS: Record<SelectionRole, string> = {
 
 interface DecisionWorkbenchProps {
   hexagrams: HexagramContent[];
-  protocolVersion: string;
+  rules: RuntimeDivinationRules;
 }
 
 function HexagramLines({ bits }: { bits: Polarity[] }) {
@@ -133,7 +133,7 @@ function SourceSelection({
   );
 }
 
-export function DecisionWorkbench({ hexagrams, protocolVersion }: DecisionWorkbenchProps) {
+export function DecisionWorkbench({ hexagrams, rules }: DecisionWorkbenchProps) {
   const [question, setQuestion] = useState("");
   const [values, setValues] = useState<YaoValue[]>([7, 7, 7, 7, 7, 7]);
   const [orderConfirmed, setOrderConfirmed] = useState(false);
@@ -157,7 +157,7 @@ export function DecisionWorkbench({ hexagrams, protocolVersion }: DecisionWorkbe
     }
 
     setFormError("");
-    setResult(calculateDivination(values));
+    setResult(calculateDivination(values, rules));
   }
 
   const original = result ? getHexagram(hexagrams, result.originalKey) : undefined;
@@ -173,7 +173,7 @@ export function DecisionWorkbench({ hexagrams, protocolVersion }: DecisionWorkbe
         </div>
         <div className="protocol-chip">
           <span className="status-dot" />
-          冻结规则 {protocolVersion} 已加载
+          冻结规则 V{rules.version.replace(/\.0$/, "")} 已加载
         </div>
       </header>
 
@@ -208,7 +208,7 @@ export function DecisionWorkbench({ hexagrams, protocolVersion }: DecisionWorkbe
                   {POSITION_LABELS[index]}爻
                 </legend>
                 <div className="value-options">
-                  {ALLOWED_YAO_VALUES.map((option) => (
+                  {rules.allowedValues.map((option) => (
                     <button
                       type="button"
                       className={value === option ? "selected" : ""}

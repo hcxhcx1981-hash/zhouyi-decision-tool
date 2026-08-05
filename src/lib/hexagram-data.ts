@@ -1,5 +1,9 @@
 import fs from "node:fs";
 import path from "node:path";
+import {
+  parseRuntimeDivinationRules,
+  type RuntimeDivinationRules,
+} from "@/lib/divination";
 
 export interface CanonicalText {
   canonical_text: string;
@@ -74,13 +78,12 @@ export function loadFrozenHexagrams(): HexagramContent[] {
   }));
 }
 
-export function loadProtocolVersion(): string {
+export function loadRuntimeDivinationRules(): RuntimeDivinationRules {
   const filePath = path.join(
     process.cwd(),
     "data",
     "frozen",
     "zhouyi_divination_rules_v0.1.json",
   );
-  const rules = JSON.parse(fs.readFileSync(filePath, "utf8")) as { version: string };
-  return `V${rules.version.replace(/\.0$/, "")}`;
+  return parseRuntimeDivinationRules(JSON.parse(fs.readFileSync(filePath, "utf8")));
 }
