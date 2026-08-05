@@ -167,9 +167,9 @@ export function DecisionWorkbench({ hexagrams, rules }: DecisionWorkbenchProps) 
     <main className="workbench-shell">
       <header className="hero">
         <div>
-          <p className="eyebrow">LOCAL DECISION WORKBENCH · PHASE 1</p>
+          <p className="eyebrow">MOBILE H5 · PHASE 1.1</p>
           <h1>周易问事决策工具</h1>
-          <p className="hero-copy">只做确定性排卦与取辞路由。无 AI、无联网占断、无数据库。</p>
+          <p className="hero-copy">写下所问，依次录入六爻，再核准本卦、之卦与取辞路径。</p>
         </div>
         <div className="protocol-chip">
           <span className="status-dot" />
@@ -182,8 +182,8 @@ export function DecisionWorkbench({ hexagrams, rules }: DecisionWorkbenchProps) 
           <div className="panel-title">
             <span>01</span>
             <div>
-              <h2>起卦记录</h2>
-              <p>人工输入六爻，顺序固定为自下而上。</p>
+              <h2>明确所问</h2>
+              <p>尽量写清对象、事项与时间范围。</p>
             </div>
           </div>
 
@@ -199,6 +199,14 @@ export function DecisionWorkbench({ hexagrams, rules }: DecisionWorkbenchProps) 
               rows={4}
             />
           </label>
+
+          <div className="subsection-heading">
+            <span>02</span>
+            <div>
+              <h2>录入六爻</h2>
+              <p>从初爻到上爻，自下而上输入 6 / 7 / 8 / 9。</p>
+            </div>
+          </div>
 
           <div className="yao-inputs">
             {values.map((value, index) => (
@@ -236,25 +244,10 @@ export function DecisionWorkbench({ hexagrams, rules }: DecisionWorkbenchProps) 
           </label>
 
           {formError && <p className="form-error" role="alert">{formError}</p>}
-          <button className="calculate-button" type="submit">计算本卦、之卦与取辞路径</button>
+          <div className="action-dock">
+            <button className="calculate-button" type="submit">开始核准</button>
+          </div>
         </form>
-
-        <aside className="scope-panel panel">
-          <div className="panel-title compact">
-            <span>范围</span>
-            <div><h2>V0.1 边界</h2></div>
-          </div>
-          <dl>
-            <div><dt>输入</dt><dd>仅 6 / 7 / 8 / 9</dd></div>
-            <div><dt>内容库</dt><dd>乾、坤、屯</dd></div>
-            <div><dt>三爻动</dt><dd>主次硬阻断</dd></div>
-            <div><dt>彖辞</dt><dd>卦辞 / 彖传分栏</dd></div>
-          </dl>
-          <div className="safety-note">
-            <strong>决策安全</strong>
-            <p>医疗、法律、投资与人身安全事项，不得仅依据占断行动；结果不构成必然预言。</p>
-          </div>
-        </aside>
       </section>
 
       {result && (
@@ -301,7 +294,7 @@ export function DecisionWorkbench({ hexagrams, rules }: DecisionWorkbenchProps) 
           )}
 
           <div className="section-heading">
-            <span>02</span><div><h2>选中原文</h2><p>卦辞与《彖传》保持独立，不合并冒充“彖辞”。</p></div>
+            <span>05</span><div><h2>原文与解释分层</h2><p>卦辞与《彖传》保持独立，不合并冒充“彖辞”。</p></div>
           </div>
           <div className="source-grid">
             {result.targets.map((target, index) => (
@@ -332,6 +325,23 @@ export function DecisionWorkbench({ hexagrams, rules }: DecisionWorkbenchProps) 
           </div>
         </section>
       )}
+
+      <aside className="scope-panel panel">
+        <div className="panel-title compact">
+          <span>边界</span>
+          <div><h2>资料范围与免责声明</h2></div>
+        </div>
+        <dl>
+          <div><dt>输入</dt><dd>仅 6 / 7 / 8 / 9</dd></div>
+          <div><dt>内容库</dt><dd>乾、坤、屯</dd></div>
+          <div><dt>三爻动</dt><dd>主次硬阻断</dd></div>
+          <div><dt>彖辞</dt><dd>卦辞 / 彖传分栏</dd></div>
+        </dl>
+        <div className="safety-note">
+          <strong>决策安全</strong>
+          <p>医疗、法律、投资与人身安全事项，不得仅依据占断行动；结果不构成必然预言。</p>
+        </div>
+      </aside>
     </main>
   );
 }
