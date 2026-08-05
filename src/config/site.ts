@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import { existsSync } from "node:fs";
 import { resolve } from "node:path";
 
-const PRODUCT_NAME = "周易问事决策工具";
-const SHORT_NAME = "周易问事工具";
-const DESCRIPTION = "基于周易原文与占变规则的手机问事决策工具";
+const PRODUCT_NAME = "周易决策工具";
+const SHORT_NAME = "周易决策";
+const DESCRIPTION = "双模块移动工具；六爻模块基于周易原文与占变规则，八字规则尚待冻结";
 
 export interface SiteConfig {
   productName: string;
@@ -93,7 +93,7 @@ export function createSiteConfig(
     title: PRODUCT_NAME,
     description: DESCRIPTION,
     siteUrl: normalizeSiteUrl(environment.NEXT_PUBLIC_SITE_URL),
-    shareTitle: `${PRODUCT_NAME}｜依原文核准占变路径`,
+    shareTitle: `${PRODUCT_NAME}｜八字资料与六爻问事`,
     shareDescription: DESCRIPTION,
     shareImagePath: normalizeShareImagePath(environment.NEXT_PUBLIC_SHARE_IMAGE_PATH),
     footerBrand: SHORT_NAME,
