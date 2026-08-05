@@ -1,12 +1,13 @@
 {
   "suite_id": "BAZI_CALENDAR_TEST_CASES_CANDIDATE_V0_1",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "status": "RESEARCH_CANDIDATE",
   "pillars_order": ["year", "month", "day", "hour"],
   "fixtures_are_anonymous": true,
   "cases": [
     {
       "case_id": "BZ-C001-WINTER-MORNING",
+      "case_scope": "PRODUCT_INPUT",
       "description": "普通冬季上午，中国大陆",
       "input": {"calendar_type": "GREGORIAN", "local_date": "2024-01-15", "local_time": "08:30", "time_known": true, "location_name": "中国大陆匿名城市", "iana_timezone": "Asia/Shanghai"},
       "expected_status": "PROPOSED_EXPECTATION",
@@ -17,6 +18,7 @@
     },
     {
       "case_id": "BZ-C002-SPRING-AFTERNOON",
+      "case_scope": "PRODUCT_INPUT",
       "description": "普通春季下午，中国大陆",
       "input": {"calendar_type": "GREGORIAN", "local_date": "2024-03-20", "local_time": "14:30", "time_known": true, "location_name": "中国大陆匿名城市", "iana_timezone": "Asia/Shanghai"},
       "expected_status": "PROPOSED_EXPECTATION",
@@ -27,6 +29,7 @@
     },
     {
       "case_id": "BZ-C003-SUMMER-EVENING",
+      "case_scope": "PRODUCT_INPUT",
       "description": "普通夏季傍晚，中国大陆",
       "input": {"calendar_type": "GREGORIAN", "local_date": "2024-06-21", "local_time": "18:30", "time_known": true, "location_name": "中国大陆匿名城市", "iana_timezone": "Asia/Shanghai"},
       "expected_status": "PROPOSED_EXPECTATION",
@@ -37,6 +40,7 @@
     },
     {
       "case_id": "BZ-C004-AUTUMN-EARLY",
+      "case_scope": "PRODUCT_INPUT",
       "description": "普通秋季清晨，中国大陆",
       "input": {"calendar_type": "GREGORIAN", "local_date": "2024-09-22", "local_time": "06:30", "time_known": true, "location_name": "中国大陆匿名城市", "iana_timezone": "Asia/Shanghai"},
       "expected_status": "PROPOSED_EXPECTATION",
@@ -47,6 +51,7 @@
     },
     {
       "case_id": "BZ-C005-WINTER-NIGHT",
+      "case_scope": "PRODUCT_INPUT",
       "description": "普通冬季晚间，中国大陆",
       "input": {"calendar_type": "GREGORIAN", "local_date": "2024-12-20", "local_time": "20:30", "time_known": true, "location_name": "中国大陆匿名城市", "iana_timezone": "Asia/Shanghai"},
       "expected_status": "PROPOSED_EXPECTATION",
@@ -57,6 +62,7 @@
     },
     {
       "case_id": "BZ-C006-LEAP-DAY-2000",
+      "case_scope": "PRODUCT_INPUT",
       "description": "世纪闰年2月29日",
       "input": {"calendar_type": "GREGORIAN", "local_date": "2000-02-29", "local_time": "10:30", "time_known": true, "location_name": "中国大陆匿名城市", "iana_timezone": "Asia/Shanghai"},
       "expected_status": "PROPOSED_EXPECTATION",
@@ -67,6 +73,7 @@
     },
     {
       "case_id": "BZ-C007-EARLY-RANGE",
+      "case_scope": "PRODUCT_INPUT",
       "description": "支持范围内较早年份普通时刻",
       "input": {"calendar_type": "GREGORIAN", "local_date": "1992-01-01", "local_time": "12:30", "time_known": true, "location_name": "中国大陆匿名城市", "iana_timezone": "Asia/Shanghai"},
       "expected_status": "PROPOSED_EXPECTATION",
@@ -77,6 +84,7 @@
     },
     {
       "case_id": "BZ-C008-YEAR-END",
+      "case_scope": "PRODUCT_INPUT",
       "description": "公历年末不触发四柱年换年",
       "input": {"calendar_type": "GREGORIAN", "local_date": "2024-12-31", "local_time": "22:30", "time_known": true, "location_name": "中国大陆匿名城市", "iana_timezone": "Asia/Shanghai"},
       "expected_status": "PROPOSED_EXPECTATION",
@@ -87,17 +95,21 @@
     },
     {
       "case_id": "BZ-C009-UNKNOWN-HOUR",
+      "case_scope": "PRODUCT_INPUT",
       "description": "出生时辰未知",
       "input": {"calendar_type": "GREGORIAN", "local_date": "2024-03-20", "local_time": null, "time_known": false, "location_name": "中国大陆匿名城市", "iana_timezone": "Asia/Shanghai"},
       "expected_status": "PROPOSED_EXPECTATION",
       "expected_pillars": {"year": "甲辰", "month": "丁卯", "day": "癸未", "hour": null},
+      "expected_completeness": "THREE_PILLARS_ONLY",
       "source_ids": ["SRC-PMO-GB33661-EXPLANATION", "SRC-YTL-SEXAGENARY", "SRC-SANMING-TONGHUI-TIME"],
       "conflict_sensitive": false,
       "notes": "只能显示三柱，禁止填充午时。"
     },
     {
       "case_id": "BZ-C010-XIAOHAN-BEFORE",
+      "case_scope": "PRODUCT_INPUT",
       "description": "小寒节令前1分钟",
+      "expected_warnings": ["BOUNDARY_SENSITIVE"],
       "input": {"calendar_type": "GREGORIAN", "local_date": "2024-01-06", "local_time": "04:48", "time_known": true, "location_name": "中国大陆匿名城市", "iana_timezone": "Asia/Shanghai"},
       "expected_status": "PROPOSED_EXPECTATION",
       "expected_pillars": {"year": "癸卯", "month": "甲子", "day": "己巳", "hour": "丙寅"},
@@ -107,7 +119,9 @@
     },
     {
       "case_id": "BZ-C011-XIAOHAN-AFTER",
+      "case_scope": "PRODUCT_INPUT",
       "description": "小寒节令后1分钟",
+      "expected_warnings": ["BOUNDARY_SENSITIVE"],
       "input": {"calendar_type": "GREGORIAN", "local_date": "2024-01-06", "local_time": "04:50", "time_known": true, "location_name": "中国大陆匿名城市", "iana_timezone": "Asia/Shanghai"},
       "expected_status": "PROPOSED_EXPECTATION",
       "expected_pillars": {"year": "癸卯", "month": "乙丑", "day": "己巳", "hour": "丙寅"},
@@ -117,7 +131,9 @@
     },
     {
       "case_id": "BZ-C012-LICHUN-BEFORE",
+      "case_scope": "PRODUCT_INPUT",
       "description": "立春前1分钟",
+      "expected_warnings": ["BOUNDARY_SENSITIVE"],
       "input": {"calendar_type": "GREGORIAN", "local_date": "2024-02-04", "local_time": "16:26", "time_known": true, "location_name": "中国大陆匿名城市", "iana_timezone": "Asia/Shanghai"},
       "expected_status": "PROPOSED_EXPECTATION",
       "expected_pillars": {"year": "癸卯", "month": "乙丑", "day": "戊戌", "hour": "庚申"},
@@ -127,7 +143,9 @@
     },
     {
       "case_id": "BZ-C013-LICHUN-AFTER",
+      "case_scope": "PRODUCT_INPUT",
       "description": "立春后1分钟",
+      "expected_warnings": ["BOUNDARY_SENSITIVE"],
       "input": {"calendar_type": "GREGORIAN", "local_date": "2024-02-04", "local_time": "16:28", "time_known": true, "location_name": "中国大陆匿名城市", "iana_timezone": "Asia/Shanghai"},
       "expected_status": "PROPOSED_EXPECTATION",
       "expected_pillars": {"year": "甲辰", "month": "丙寅", "day": "戊戌", "hour": "庚申"},
@@ -137,7 +155,9 @@
     },
     {
       "case_id": "BZ-C014-JINGZHE-BEFORE",
+      "case_scope": "PRODUCT_INPUT",
       "description": "惊蛰前1分钟",
+      "expected_warnings": ["BOUNDARY_SENSITIVE"],
       "input": {"calendar_type": "GREGORIAN", "local_date": "2024-03-05", "local_time": "10:22", "time_known": true, "location_name": "中国大陆匿名城市", "iana_timezone": "Asia/Shanghai"},
       "expected_status": "PROPOSED_EXPECTATION",
       "expected_pillars": {"year": "甲辰", "month": "丙寅", "day": "戊辰", "hour": "丁巳"},
@@ -147,7 +167,9 @@
     },
     {
       "case_id": "BZ-C015-JINGZHE-AFTER",
+      "case_scope": "PRODUCT_INPUT",
       "description": "惊蛰后1分钟",
+      "expected_warnings": ["BOUNDARY_SENSITIVE"],
       "input": {"calendar_type": "GREGORIAN", "local_date": "2024-03-05", "local_time": "10:24", "time_known": true, "location_name": "中国大陆匿名城市", "iana_timezone": "Asia/Shanghai"},
       "expected_status": "PROPOSED_EXPECTATION",
       "expected_pillars": {"year": "甲辰", "month": "丁卯", "day": "戊辰", "hour": "丁巳"},
@@ -157,7 +179,9 @@
     },
     {
       "case_id": "BZ-C016-QINGMING-BEFORE",
+      "case_scope": "PRODUCT_INPUT",
       "description": "清明前1分钟",
+      "expected_warnings": ["BOUNDARY_SENSITIVE"],
       "input": {"calendar_type": "GREGORIAN", "local_date": "2024-04-04", "local_time": "15:01", "time_known": true, "location_name": "中国大陆匿名城市", "iana_timezone": "Asia/Shanghai"},
       "expected_status": "PROPOSED_EXPECTATION",
       "expected_pillars": {"year": "甲辰", "month": "丁卯", "day": "戊戌", "hour": "庚申"},
@@ -167,7 +191,9 @@
     },
     {
       "case_id": "BZ-C017-QINGMING-AFTER",
+      "case_scope": "PRODUCT_INPUT",
       "description": "清明后1分钟",
+      "expected_warnings": ["BOUNDARY_SENSITIVE"],
       "input": {"calendar_type": "GREGORIAN", "local_date": "2024-04-04", "local_time": "15:03", "time_known": true, "location_name": "中国大陆匿名城市", "iana_timezone": "Asia/Shanghai"},
       "expected_status": "PROPOSED_EXPECTATION",
       "expected_pillars": {"year": "甲辰", "month": "戊辰", "day": "戊戌", "hour": "庚申"},
@@ -177,7 +203,9 @@
     },
     {
       "case_id": "BZ-C018-LIXIA-BEFORE",
+      "case_scope": "PRODUCT_INPUT",
       "description": "立夏前1分钟",
+      "expected_warnings": ["BOUNDARY_SENSITIVE"],
       "input": {"calendar_type": "GREGORIAN", "local_date": "2024-05-05", "local_time": "08:09", "time_known": true, "location_name": "中国大陆匿名城市", "iana_timezone": "Asia/Shanghai"},
       "expected_status": "PROPOSED_EXPECTATION",
       "expected_pillars": {"year": "甲辰", "month": "戊辰", "day": "己巳", "hour": "戊辰"},
@@ -187,7 +215,9 @@
     },
     {
       "case_id": "BZ-C019-LIXIA-AFTER",
+      "case_scope": "PRODUCT_INPUT",
       "description": "立夏后1分钟",
+      "expected_warnings": ["BOUNDARY_SENSITIVE"],
       "input": {"calendar_type": "GREGORIAN", "local_date": "2024-05-05", "local_time": "08:11", "time_known": true, "location_name": "中国大陆匿名城市", "iana_timezone": "Asia/Shanghai"},
       "expected_status": "PROPOSED_EXPECTATION",
       "expected_pillars": {"year": "甲辰", "month": "己巳", "day": "己巳", "hour": "戊辰"},
@@ -197,7 +227,9 @@
     },
     {
       "case_id": "BZ-C020-MANGZHONG-BEFORE",
+      "case_scope": "PRODUCT_INPUT",
       "description": "芒种前1分钟",
+      "expected_warnings": ["BOUNDARY_SENSITIVE"],
       "input": {"calendar_type": "GREGORIAN", "local_date": "2024-06-05", "local_time": "12:09", "time_known": true, "location_name": "中国大陆匿名城市", "iana_timezone": "Asia/Shanghai"},
       "expected_status": "PROPOSED_EXPECTATION",
       "expected_pillars": {"year": "甲辰", "month": "己巳", "day": "庚子", "hour": "壬午"},
@@ -207,7 +239,9 @@
     },
     {
       "case_id": "BZ-C021-MANGZHONG-AFTER",
+      "case_scope": "PRODUCT_INPUT",
       "description": "芒种后1分钟",
+      "expected_warnings": ["BOUNDARY_SENSITIVE"],
       "input": {"calendar_type": "GREGORIAN", "local_date": "2024-06-05", "local_time": "12:11", "time_known": true, "location_name": "中国大陆匿名城市", "iana_timezone": "Asia/Shanghai"},
       "expected_status": "PROPOSED_EXPECTATION",
       "expected_pillars": {"year": "甲辰", "month": "庚午", "day": "庚子", "hour": "壬午"},
@@ -217,7 +251,9 @@
     },
     {
       "case_id": "BZ-C022-XIAOSHU-BEFORE",
+      "case_scope": "PRODUCT_INPUT",
       "description": "小暑前1分钟",
+      "expected_warnings": ["BOUNDARY_SENSITIVE"],
       "input": {"calendar_type": "GREGORIAN", "local_date": "2024-07-06", "local_time": "22:19", "time_known": true, "location_name": "中国大陆匿名城市", "iana_timezone": "Asia/Shanghai"},
       "expected_status": "PROPOSED_EXPECTATION",
       "expected_pillars": {"year": "甲辰", "month": "庚午", "day": "辛未", "hour": "己亥"},
@@ -227,7 +263,9 @@
     },
     {
       "case_id": "BZ-C023-XIAOSHU-AFTER",
+      "case_scope": "PRODUCT_INPUT",
       "description": "小暑后1分钟",
+      "expected_warnings": ["BOUNDARY_SENSITIVE"],
       "input": {"calendar_type": "GREGORIAN", "local_date": "2024-07-06", "local_time": "22:21", "time_known": true, "location_name": "中国大陆匿名城市", "iana_timezone": "Asia/Shanghai"},
       "expected_status": "PROPOSED_EXPECTATION",
       "expected_pillars": {"year": "甲辰", "month": "辛未", "day": "辛未", "hour": "己亥"},
@@ -237,7 +275,9 @@
     },
     {
       "case_id": "BZ-C024-LIQIU-BEFORE",
+      "case_scope": "PRODUCT_INPUT",
       "description": "立秋前1分钟",
+      "expected_warnings": ["BOUNDARY_SENSITIVE"],
       "input": {"calendar_type": "GREGORIAN", "local_date": "2024-08-07", "local_time": "08:08", "time_known": true, "location_name": "中国大陆匿名城市", "iana_timezone": "Asia/Shanghai"},
       "expected_status": "PROPOSED_EXPECTATION",
       "expected_pillars": {"year": "甲辰", "month": "辛未", "day": "癸卯", "hour": "丙辰"},
@@ -247,7 +287,9 @@
     },
     {
       "case_id": "BZ-C025-LIQIU-AFTER",
+      "case_scope": "PRODUCT_INPUT",
       "description": "立秋后1分钟",
+      "expected_warnings": ["BOUNDARY_SENSITIVE"],
       "input": {"calendar_type": "GREGORIAN", "local_date": "2024-08-07", "local_time": "08:10", "time_known": true, "location_name": "中国大陆匿名城市", "iana_timezone": "Asia/Shanghai"},
       "expected_status": "PROPOSED_EXPECTATION",
       "expected_pillars": {"year": "甲辰", "month": "壬申", "day": "癸卯", "hour": "丙辰"},
@@ -257,7 +299,9 @@
     },
     {
       "case_id": "BZ-C026-BAILU-BEFORE",
+      "case_scope": "PRODUCT_INPUT",
       "description": "白露前1分钟",
+      "expected_warnings": ["BOUNDARY_SENSITIVE"],
       "input": {"calendar_type": "GREGORIAN", "local_date": "2024-09-07", "local_time": "11:10", "time_known": true, "location_name": "中国大陆匿名城市", "iana_timezone": "Asia/Shanghai"},
       "expected_status": "PROPOSED_EXPECTATION",
       "expected_pillars": {"year": "甲辰", "month": "壬申", "day": "甲戌", "hour": "庚午"},
@@ -267,7 +311,9 @@
     },
     {
       "case_id": "BZ-C027-BAILU-AFTER",
+      "case_scope": "PRODUCT_INPUT",
       "description": "白露后1分钟",
+      "expected_warnings": ["BOUNDARY_SENSITIVE"],
       "input": {"calendar_type": "GREGORIAN", "local_date": "2024-09-07", "local_time": "11:12", "time_known": true, "location_name": "中国大陆匿名城市", "iana_timezone": "Asia/Shanghai"},
       "expected_status": "PROPOSED_EXPECTATION",
       "expected_pillars": {"year": "甲辰", "month": "癸酉", "day": "甲戌", "hour": "庚午"},
@@ -277,7 +323,9 @@
     },
     {
       "case_id": "BZ-C028-HANLU-BEFORE",
+      "case_scope": "PRODUCT_INPUT",
       "description": "寒露前1分钟",
+      "expected_warnings": ["BOUNDARY_SENSITIVE"],
       "input": {"calendar_type": "GREGORIAN", "local_date": "2024-10-08", "local_time": "02:59", "time_known": true, "location_name": "中国大陆匿名城市", "iana_timezone": "Asia/Shanghai"},
       "expected_status": "PROPOSED_EXPECTATION",
       "expected_pillars": {"year": "甲辰", "month": "癸酉", "day": "乙巳", "hour": "丁丑"},
@@ -287,7 +335,9 @@
     },
     {
       "case_id": "BZ-C029-HANLU-AFTER",
+      "case_scope": "PRODUCT_INPUT",
       "description": "寒露后1分钟",
+      "expected_warnings": ["BOUNDARY_SENSITIVE"],
       "input": {"calendar_type": "GREGORIAN", "local_date": "2024-10-08", "local_time": "03:01", "time_known": true, "location_name": "中国大陆匿名城市", "iana_timezone": "Asia/Shanghai"},
       "expected_status": "PROPOSED_EXPECTATION",
       "expected_pillars": {"year": "甲辰", "month": "甲戌", "day": "乙巳", "hour": "戊寅"},
@@ -297,7 +347,9 @@
     },
     {
       "case_id": "BZ-C030-LIDONG-BEFORE",
+      "case_scope": "PRODUCT_INPUT",
       "description": "立冬前1分钟",
+      "expected_warnings": ["BOUNDARY_SENSITIVE"],
       "input": {"calendar_type": "GREGORIAN", "local_date": "2024-11-07", "local_time": "06:19", "time_known": true, "location_name": "中国大陆匿名城市", "iana_timezone": "Asia/Shanghai"},
       "expected_status": "PROPOSED_EXPECTATION",
       "expected_pillars": {"year": "甲辰", "month": "甲戌", "day": "乙亥", "hour": "己卯"},
@@ -307,7 +359,9 @@
     },
     {
       "case_id": "BZ-C031-LIDONG-AFTER",
+      "case_scope": "PRODUCT_INPUT",
       "description": "立冬后1分钟",
+      "expected_warnings": ["BOUNDARY_SENSITIVE"],
       "input": {"calendar_type": "GREGORIAN", "local_date": "2024-11-07", "local_time": "06:21", "time_known": true, "location_name": "中国大陆匿名城市", "iana_timezone": "Asia/Shanghai"},
       "expected_status": "PROPOSED_EXPECTATION",
       "expected_pillars": {"year": "甲辰", "month": "乙亥", "day": "乙亥", "hour": "己卯"},
@@ -317,46 +371,53 @@
     },
     {
       "case_id": "BZ-C032-DAXUE-BEFORE",
-      "description": "大雪前1分钟，落入未决日界窗口",
+      "case_scope": "PRODUCT_INPUT",
+      "description": "大雪前1分钟，晚子时按00:00日界计算",
+      "expected_warnings": ["BOUNDARY_SENSITIVE"],
       "input": {"calendar_type": "GREGORIAN", "local_date": "2024-12-06", "local_time": "23:16", "time_known": true, "location_name": "中国大陆匿名城市", "iana_timezone": "Asia/Shanghai"},
-      "expected_status": "BLOCKED",
-      "expected_blocking_code": "DAY_BOUNDARY_UNRESOLVED",
+      "expected_status": "PROPOSED_EXPECTATION",
+      "expected_pillars": {"year": "甲辰", "month": "乙亥", "day": "甲辰", "hour": "甲子"},
       "source_ids": ["SRC-PMO-ALMANAC-2024", "SRC-PMO-GB33661-EXPLANATION", "SRC-SANMING-TONGHUI-TIME"],
       "conflict_sensitive": true,
-      "notes": "不得为了测试月界而绕过日界冲突。"
+      "notes": "当前民用日期日干推甲子时，应附BOUNDARY_SENSITIVE。"
     },
     {
       "case_id": "BZ-C033-DAXUE-AFTER",
-      "description": "大雪后1分钟，落入未决日界窗口",
+      "case_scope": "PRODUCT_INPUT",
+      "description": "大雪后1分钟，晚子时按00:00日界计算",
+      "expected_warnings": ["BOUNDARY_SENSITIVE"],
       "input": {"calendar_type": "GREGORIAN", "local_date": "2024-12-06", "local_time": "23:18", "time_known": true, "location_name": "中国大陆匿名城市", "iana_timezone": "Asia/Shanghai"},
-      "expected_status": "BLOCKED",
-      "expected_blocking_code": "DAY_BOUNDARY_UNRESOLVED",
+      "expected_status": "PROPOSED_EXPECTATION",
+      "expected_pillars": {"year": "甲辰", "month": "丙子", "day": "甲辰", "hour": "甲子"},
       "source_ids": ["SRC-PMO-ALMANAC-2024", "SRC-PMO-GB33661-EXPLANATION", "SRC-SANMING-TONGHUI-TIME"],
       "conflict_sensitive": true,
-      "notes": "终审日界后再补断言月柱由乙亥切为丙子。"
+      "notes": "当前民用日期日干推甲子时，应附BOUNDARY_SENSITIVE。"
     },
     {
       "case_id": "BZ-C034-ZI-2300",
-      "description": "23:00子初日界冲突",
-      "input": {"calendar_type": "GREGORIAN", "local_date": "2024-05-20", "local_time": "23:00", "time_known": true, "location_name": "中国大陆匿名城市", "iana_timezone": "Asia/Shanghai"},
-      "expected_status": "BLOCKED",
-      "expected_blocking_code": "DAY_BOUNDARY_UNRESOLVED",
+      "case_scope": "PRODUCT_INPUT",
+      "description": "23:30晚子时与当前民用日期日干耦合",
+      "input": {"calendar_type": "GREGORIAN", "local_date": "2024-05-20", "local_time": "23:30", "time_known": true, "location_name": "中国大陆匿名城市", "iana_timezone": "Asia/Shanghai"},
+      "expected_status": "PROPOSED_EXPECTATION",
+      "expected_pillars": {"year": "甲辰", "month": "己巳", "day": "甲申", "hour": "甲子"},
       "source_ids": ["SRC-PMO-GB33661-EXPLANATION", "SRC-SANMING-TONGHUI-TIME", "SRC-YTL-SEXAGENARY"],
       "conflict_sensitive": true,
-      "notes": "不得预选23:00或00:00换日。"
+      "notes": "晚子时日柱仍为5月20日甲申，时干由同一甲日推得。"
     },
     {
       "case_id": "BZ-C035-ZI-0059",
-      "description": "00:59子时仍受日界冲突影响",
-      "input": {"calendar_type": "GREGORIAN", "local_date": "2024-05-21", "local_time": "00:59", "time_known": true, "location_name": "中国大陆匿名城市", "iana_timezone": "Asia/Shanghai"},
-      "expected_status": "BLOCKED",
-      "expected_blocking_code": "DAY_BOUNDARY_UNRESOLVED",
+      "case_scope": "PRODUCT_INPUT",
+      "description": "00:30早子时与新民用日期日干耦合",
+      "input": {"calendar_type": "GREGORIAN", "local_date": "2024-05-21", "local_time": "00:30", "time_known": true, "location_name": "中国大陆匿名城市", "iana_timezone": "Asia/Shanghai"},
+      "expected_status": "PROPOSED_EXPECTATION",
+      "expected_pillars": {"year": "甲辰", "month": "己巳", "day": "乙酉", "hour": "丙子"},
       "source_ids": ["SRC-PMO-GB33661-EXPLANATION", "SRC-SANMING-TONGHUI-TIME", "SRC-YTL-SEXAGENARY"],
       "conflict_sensitive": true,
-      "notes": "日柱和时干必须采用同一日界策略。"
+      "notes": "早子时日柱为5月21日乙酉，时干由同一乙日推得。"
     },
     {
       "case_id": "BZ-C036-MONTH-END",
+      "case_scope": "PRODUCT_INPUT",
       "description": "公历月末不切换月柱",
       "input": {"calendar_type": "GREGORIAN", "local_date": "2024-05-31", "local_time": "14:30", "time_known": true, "location_name": "中国大陆匿名城市", "iana_timezone": "Asia/Shanghai"},
       "expected_status": "PROPOSED_EXPECTATION",
@@ -367,6 +428,7 @@
     },
     {
       "case_id": "BZ-C037-NEW-YEAR-DAY",
+      "case_scope": "PRODUCT_INPUT",
       "description": "公历元旦后仍是上一四柱年",
       "input": {"calendar_type": "GREGORIAN", "local_date": "2025-01-01", "local_time": "10:30", "time_known": true, "location_name": "中国大陆匿名城市", "iana_timezone": "Asia/Shanghai"},
       "expected_status": "PROPOSED_EXPECTATION",
@@ -377,6 +439,7 @@
     },
     {
       "case_id": "BZ-C038-LEAP-DAY-2024",
+      "case_scope": "PRODUCT_INPUT",
       "description": "普通闰年2月29日",
       "input": {"calendar_type": "GREGORIAN", "local_date": "2024-02-29", "local_time": "10:30", "time_known": true, "location_name": "中国大陆匿名城市", "iana_timezone": "Asia/Shanghai"},
       "expected_status": "PROPOSED_EXPECTATION",
@@ -387,6 +450,7 @@
     },
     {
       "case_id": "BZ-C039-LUNAR-LEAP-MONTH",
+      "case_scope": "PRODUCT_INPUT",
       "description": "农历闰月输入在V0.1阻断",
       "input": {"calendar_type": "LUNAR", "lunar_year": 2023, "lunar_month": 2, "leap_month": true, "lunar_day": 3, "local_time": "10:30", "time_known": true, "location_name": "中国大陆匿名城市", "iana_timezone": "Asia/Shanghai"},
       "expected_status": "BLOCKED",
@@ -397,6 +461,7 @@
     },
     {
       "case_id": "BZ-C040-OVERSEAS-CROSS-UTC-DATE",
+      "case_scope": "PRODUCT_INPUT",
       "description": "海外当地日期与UTC日期不同",
       "input": {"calendar_type": "GREGORIAN", "local_date": "2024-01-01", "local_time": "20:30", "time_known": true, "location_name": "美国西海岸匿名城市", "iana_timezone": "America/Los_Angeles"},
       "expected_status": "PROPOSED_EXPECTATION",
@@ -407,6 +472,7 @@
     },
     {
       "case_id": "BZ-C041-DST-GAP",
+      "case_scope": "PRODUCT_INPUT",
       "description": "海外夏令时跳跃中的不存在时间",
       "input": {"calendar_type": "GREGORIAN", "local_date": "2024-03-10", "local_time": "02:30", "time_known": true, "location_name": "美国东部匿名城市", "iana_timezone": "America/New_York"},
       "expected_status": "BLOCKED",
@@ -417,6 +483,7 @@
     },
     {
       "case_id": "BZ-C042-DST-FOLD",
+      "case_scope": "PRODUCT_INPUT",
       "description": "海外夏令时回拨中的重复时间",
       "input": {"calendar_type": "GREGORIAN", "local_date": "2024-11-03", "local_time": "01:30", "time_known": true, "location_name": "美国东部匿名城市", "iana_timezone": "America/New_York", "fold_choice": null},
       "expected_status": "BLOCKED",
@@ -427,6 +494,7 @@
     },
     {
       "case_id": "BZ-C043-INVALID-DATE",
+      "case_scope": "PRODUCT_INPUT",
       "description": "非法公历日期",
       "input": {"calendar_type": "GREGORIAN", "local_date": "2023-02-29", "local_time": "10:30", "time_known": true, "location_name": "中国大陆匿名城市", "iana_timezone": "Asia/Shanghai"},
       "expected_status": "BLOCKED",
@@ -437,6 +505,7 @@
     },
     {
       "case_id": "BZ-C044-MISSING-LOCATION",
+      "case_scope": "PRODUCT_INPUT",
       "description": "缺少出生地点",
       "input": {"calendar_type": "GREGORIAN", "local_date": "2024-05-20", "local_time": "10:30", "time_known": true, "location_name": null, "iana_timezone": "Asia/Shanghai"},
       "expected_status": "BLOCKED",
@@ -447,6 +516,7 @@
     },
     {
       "case_id": "BZ-C045-MISSING-TIMEZONE",
+      "case_scope": "PRODUCT_INPUT",
       "description": "海外出生缺少时区",
       "input": {"calendar_type": "GREGORIAN", "local_date": "2024-05-20", "local_time": "10:30", "time_known": true, "location_name": "海外匿名城市", "iana_timezone": null},
       "expected_status": "BLOCKED",
@@ -457,6 +527,7 @@
     },
     {
       "case_id": "BZ-C046-HISTORICAL-OUT-OF-RANGE",
+      "case_scope": "PRODUCT_INPUT",
       "description": "V0.1范围外历史日期",
       "input": {"calendar_type": "GREGORIAN", "local_date": "1949-10-01", "local_time": "10:30", "time_known": true, "location_name": "中国大陆匿名城市", "iana_timezone": "Asia/Shanghai"},
       "expected_status": "BLOCKED",
@@ -464,6 +535,197 @@
       "source_ids": ["SRC-IANA-TZ-THEORY", "SRC-USNO-JULIAN-DATE", "SRC-PMO-GB33661-EXPLANATION"],
       "conflict_sensitive": true,
       "notes": "该日期仅用作日干支锚点，不代表产品允许输入。"
+    },
+    {
+      "case_id": "BZ-C047-ALGORITHM-LOWER-BOUND",
+      "description": "1970-01-01算法验证范围下限",
+      "case_scope": "ALGORITHM_VALIDATION",
+      "input": {"calendar_type": "GREGORIAN", "local_date": "1970-01-01", "local_time": "12:30", "time_known": true, "location_name": "算法验证", "iana_timezone": "Asia/Shanghai"},
+      "expected_status": "PROPOSED_EXPECTATION",
+      "expected_assertions": {"civil_date_valid": true, "day_pillar": "辛巳"},
+      "source_ids": ["SRC-USNO-JULIAN-DATE", "SRC-USNO-JD-FORMULA", "SRC-PMO-GB33661-EXPLANATION"],
+      "conflict_sensitive": false,
+      "notes": "只验证算法下限与连续日，不代表生产节气数据已覆盖。"
+    },
+    {
+      "case_id": "BZ-C048-PRODUCT-BELOW-LOWER-BOUND",
+      "description": "1969-12-31早于产品输入下限",
+      "case_scope": "PRODUCT_INPUT",
+      "input": {"calendar_type": "GREGORIAN", "local_date": "1969-12-31", "local_time": "12:30", "time_known": true, "location_name": "中国大陆匿名城市", "iana_timezone": "Asia/Shanghai"},
+      "expected_status": "BLOCKED",
+      "expected_blocking_code": "DATE_OUT_OF_SUPPORTED_RANGE",
+      "source_ids": ["SRC-IANA-TZ-THEORY", "SRC-USNO-JD-FORMULA"],
+      "conflict_sensitive": false,
+      "notes": "产品输入下限与算法范围分别判断。"
+    },
+    {
+      "case_id": "BZ-C049-CURRENT-LOCAL-DATE",
+      "description": "所选时区的当前民用日期允许提交",
+      "case_scope": "PRODUCT_INPUT",
+      "input": {"calendar_type": "GREGORIAN", "local_date": "$CURRENT_LOCAL_DATE", "local_time": "12:30", "time_known": true, "location_name": "中国大陆匿名城市", "iana_timezone": "Asia/Shanghai"},
+      "expected_status": "PROPOSED_EXPECTATION",
+      "expected_assertions": {"birth_date_allowed": true},
+      "source_ids": ["SRC-IANA-TZ-THEORY", "SRC-USNO-JD-FORMULA"],
+      "conflict_sensitive": false,
+      "notes": "运行时动态解析，不使用固定构建日期。"
+    },
+    {
+      "case_id": "BZ-C050-FUTURE-LOCAL-DATE",
+      "description": "所选时区当前民用日期次日禁止作为出生日期",
+      "case_scope": "PRODUCT_INPUT",
+      "input": {"calendar_type": "GREGORIAN", "local_date": "$CURRENT_LOCAL_DATE_PLUS_1_DAY", "local_time": "12:30", "time_known": true, "location_name": "中国大陆匿名城市", "iana_timezone": "Asia/Shanghai"},
+      "expected_status": "BLOCKED",
+      "expected_blocking_code": "FUTURE_BIRTH_DATE_NOT_ALLOWED",
+      "source_ids": ["SRC-IANA-TZ-THEORY", "SRC-USNO-JD-FORMULA"],
+      "conflict_sensitive": false,
+      "notes": "今天按用户选择时区动态求值。"
+    },
+    {
+      "case_id": "BZ-C051-ALGORITHM-2099-END",
+      "description": "2099-12-31算法范围案例",
+      "case_scope": "ALGORITHM_VALIDATION",
+      "input": {"calendar_type": "GREGORIAN", "local_date": "2099-12-31", "local_time": "12:30", "time_known": true, "location_name": "算法验证", "iana_timezone": "Asia/Shanghai"},
+      "expected_status": "PROPOSED_EXPECTATION",
+      "expected_assertions": {"civil_date_valid": true, "day_pillar": "壬寅"},
+      "source_ids": ["SRC-USNO-JULIAN-DATE", "SRC-USNO-JD-FORMULA"],
+      "conflict_sensitive": false,
+      "notes": "算法验证可晚于当前产品出生输入上限。"
+    },
+    {
+      "case_id": "BZ-C052-ALGORITHM-2100-START",
+      "description": "2100-01-01算法范围案例",
+      "case_scope": "ALGORITHM_VALIDATION",
+      "input": {"calendar_type": "GREGORIAN", "local_date": "2100-01-01", "local_time": "12:30", "time_known": true, "location_name": "算法验证", "iana_timezone": "Asia/Shanghai"},
+      "expected_status": "PROPOSED_EXPECTATION",
+      "expected_assertions": {"civil_date_valid": true, "day_pillar": "癸卯"},
+      "source_ids": ["SRC-USNO-JULIAN-DATE", "SRC-USNO-JD-FORMULA"],
+      "conflict_sensitive": false,
+      "notes": "不要求或暗示2100生产节气数据已冻结。"
+    },
+    {
+      "case_id": "BZ-C053-2100-FEB-28",
+      "description": "2100-02-28世纪非闰年边界前日",
+      "case_scope": "ALGORITHM_VALIDATION",
+      "input": {"calendar_type": "GREGORIAN", "local_date": "2100-02-28", "local_time": "12:30", "time_known": true, "location_name": "算法验证", "iana_timezone": "Asia/Shanghai"},
+      "expected_status": "PROPOSED_EXPECTATION",
+      "expected_assertions": {"civil_date_valid": true, "day_pillar": "辛丑", "gregorian_leap_year": false},
+      "source_ids": ["SRC-HKO-LEAP-YEAR", "SRC-USNO-JD-FORMULA"],
+      "conflict_sensitive": false,
+      "notes": "2100不能被400整除。"
+    },
+    {
+      "case_id": "BZ-C054-2100-MAR-01",
+      "description": "2100-03-01紧接2月28日",
+      "case_scope": "ALGORITHM_VALIDATION",
+      "input": {"calendar_type": "GREGORIAN", "local_date": "2100-03-01", "local_time": "12:30", "time_known": true, "location_name": "算法验证", "iana_timezone": "Asia/Shanghai"},
+      "expected_status": "PROPOSED_EXPECTATION",
+      "expected_assertions": {"civil_date_valid": true, "day_pillar": "壬寅", "gregorian_leap_year": false, "days_since_previous_case": 1},
+      "source_ids": ["SRC-HKO-LEAP-YEAR", "SRC-USNO-JD-FORMULA"],
+      "conflict_sensitive": false,
+      "notes": "确认不存在2100-02-29。"
+    },
+    {
+      "case_id": "BZ-C055-CHINA-HISTORICAL-DST",
+      "description": "中国大陆历史夏令时普通有效时刻",
+      "case_scope": "ALGORITHM_VALIDATION",
+      "input": {"calendar_type": "GREGORIAN", "local_date": "1988-07-01", "local_time": "12:30", "time_known": true, "location_name": "中国大陆匿名城市", "location_id": "CN-MAINLAND", "iana_timezone": "Asia/Shanghai"},
+      "expected_status": "PROPOSED_EXPECTATION",
+      "expected_pillars": {"year": "戊辰", "month": "戊午", "day": "丁巳", "hour": "丙午"},
+      "expected_assertions": {"utc_offset": "+09:00"},
+      "source_ids": ["SRC-IANA-TZ-LINK", "SRC-IANA-TZ-THEORY", "SRC-USNO-JD-FORMULA", "SRC-YTL-SEXAGENARY"],
+      "conflict_sensitive": false,
+      "notes": "必须由版本化tzdb解析历史UTC+09:00，不使用当前固定偏移。"
+    },
+    {
+      "case_id": "BZ-C056-CHINA-DST-GAP",
+      "description": "中国大陆1988夏令时切换缺口",
+      "case_scope": "ALGORITHM_VALIDATION",
+      "input": {"calendar_type": "GREGORIAN", "local_date": "1988-04-17", "local_time": "02:30", "time_known": true, "location_name": "中国大陆匿名城市", "location_id": "CN-MAINLAND", "iana_timezone": "Asia/Shanghai"},
+      "expected_status": "BLOCKED",
+      "expected_blocking_code": "NONEXISTENT_LOCAL_TIME",
+      "source_ids": ["SRC-IANA-TZ-LINK", "SRC-IANA-TZ-THEORY"],
+      "conflict_sensitive": true,
+      "notes": "不得自动平移到03:30。"
+    },
+    {
+      "case_id": "BZ-C057-UNKNOWN-LICHUN-DAY",
+      "description": "未知时辰且当地民用日期内有立春",
+      "case_scope": "PRODUCT_INPUT",
+      "input": {"calendar_type": "GREGORIAN", "local_date": "2024-02-04", "local_time": null, "time_known": false, "location_name": "中国大陆匿名城市", "iana_timezone": "Asia/Shanghai"},
+      "expected_status": "BLOCKED",
+      "expected_blocking_code": "SOLAR_TERM_TIME_REQUIRED",
+      "source_ids": ["SRC-HKO-SOLAR-TERM-DATA", "SRC-HKO-GANZHI-YEAR", "SRC-YTL-SEXAGENARY"],
+      "conflict_sensitive": true,
+      "notes": "年柱和月柱均可能变化，不默认选择。"
+    },
+    {
+      "case_id": "BZ-C058-UNKNOWN-ORDINARY-DAY",
+      "description": "未知时辰普通日期可输出三柱",
+      "case_scope": "PRODUCT_INPUT",
+      "input": {"calendar_type": "GREGORIAN", "local_date": "2024-01-15", "local_time": null, "time_known": false, "location_name": "中国大陆匿名城市", "iana_timezone": "Asia/Shanghai"},
+      "expected_status": "PROPOSED_EXPECTATION",
+      "expected_pillars": {"year": "癸卯", "month": "乙丑", "day": "戊寅", "hour": null},
+      "expected_completeness": "THREE_PILLARS_ONLY",
+      "source_ids": ["SRC-HKO-SOLAR-TERM-DATA", "SRC-YTL-SEXAGENARY"],
+      "conflict_sensitive": false,
+      "notes": "不得填充默认时辰。"
+    },
+    {
+      "case_id": "BZ-C059-UNKNOWN-JINGZHE-DAY",
+      "description": "未知时辰且当地民用日期内有惊蛰",
+      "case_scope": "PRODUCT_INPUT",
+      "input": {"calendar_type": "GREGORIAN", "local_date": "2024-03-05", "local_time": null, "time_known": false, "location_name": "中国大陆匿名城市", "iana_timezone": "Asia/Shanghai"},
+      "expected_status": "BLOCKED",
+      "expected_blocking_code": "SOLAR_TERM_TIME_REQUIRED",
+      "source_ids": ["SRC-HKO-SOLAR-TERM-DATA", "SRC-YTL-SEXAGENARY"],
+      "conflict_sensitive": true,
+      "notes": "月柱可能变化，不默认选择。"
+    },
+    {
+      "case_id": "BZ-C060-UNKNOWN-MAJOR-TERM-DAY",
+      "description": "未知时辰中气日但不切换四柱月柱",
+      "case_scope": "PRODUCT_INPUT",
+      "input": {"calendar_type": "GREGORIAN", "local_date": "2024-03-20", "local_time": null, "time_known": false, "location_name": "中国大陆匿名城市", "iana_timezone": "Asia/Shanghai"},
+      "expected_status": "PROPOSED_EXPECTATION",
+      "expected_pillars": {"year": "甲辰", "month": "丁卯", "day": "癸未", "hour": null},
+      "expected_completeness": "THREE_PILLARS_ONLY",
+      "source_ids": ["SRC-HKO-SOLAR-TERM-DATA", "SRC-PMO-ALMANAC-2024", "SRC-YTL-SEXAGENARY"],
+      "conflict_sensitive": false,
+      "notes": "春分是中气，不触发月柱切换。"
+    },
+    {
+      "case_id": "BZ-C061-UNKNOWN-OVERSEAS-CROSS-DATE",
+      "description": "节令换算到海外当地民用日期为前一日",
+      "case_scope": "ALGORITHM_VALIDATION",
+      "input": {"calendar_type": "GREGORIAN", "local_date": "2024-02-04", "local_time": null, "time_known": false, "location_name": "海外匿名城市", "location_id": "US-HNL", "iana_timezone": "Pacific/Honolulu"},
+      "expected_status": "PROPOSED_EXPECTATION",
+      "expected_pillars": {"year": "甲辰", "month": "丙寅", "day": "戊戌", "hour": null},
+      "expected_completeness": "THREE_PILLARS_ONLY",
+      "source_ids": ["SRC-HKO-SOLAR-TERM-DATA", "SRC-IANA-TZ-THEORY", "SRC-YTL-SEXAGENARY"],
+      "conflict_sensitive": true,
+      "notes": "2024立春换算为檀香山当地2月3日22:27，故2月4日未知时辰不阻断。"
+    },
+    {
+      "case_id": "BZ-C062-SAME-MINUTE-AMBIGUOUS",
+      "description": "出生时间与立春节令同一分钟且无秒数",
+      "case_scope": "PRODUCT_INPUT",
+      "input": {"calendar_type": "GREGORIAN", "local_date": "2024-02-04", "local_time": "16:27", "time_known": true, "location_name": "中国大陆匿名城市", "iana_timezone": "Asia/Shanghai"},
+      "expected_status": "BLOCKED",
+      "expected_blocking_code": "SOLAR_TERM_SAME_MINUTE_AMBIGUOUS",
+      "source_ids": ["SRC-HKO-SOLAR-TERM-DATA", "SRC-PMO-ALMANAC-2024"],
+      "conflict_sensitive": true,
+      "notes": "不得凭四舍五入选择前后柱。"
+    },
+    {
+      "case_id": "BZ-C063-LOCATION-TIMEZONE-MISMATCH",
+      "description": "地点登记ID与IANA时区静态映射不一致",
+      "case_scope": "PRODUCT_INPUT",
+      "input": {"calendar_type": "GREGORIAN", "local_date": "2024-05-20", "local_time": "10:30", "time_known": true, "location_name": "自由文本不参与校验", "location_id": "CN-MAINLAND", "iana_timezone": "America/New_York"},
+      "expected_status": "BLOCKED",
+      "expected_blocking_code": "LOCATION_TIMEZONE_MISMATCH",
+      "source_ids": ["SRC-IANA-TZ-LINK", "SRC-IANA-TZ-THEORY"],
+      "conflict_sensitive": false,
+      "notes": "只由静态登记表不一致触发，不根据自由文本猜测。"
     }
   ]
 }

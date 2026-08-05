@@ -13,9 +13,12 @@ RULES_PATH = RESEARCH / "bazi_calendar_rules_candidate_v0.1.json"
 CASES_PATH = RESEARCH / "bazi_calendar_test_cases_candidate_v0.1.json"
 SOURCES_PATH = RESEARCH / "bazi_source_registry_v0.1.json"
 REPORT_PATH = RESEARCH / "BAZI_CALENDAR_AND_FOUR_PILLARS_RESEARCH_V0.1.md"
+FIXTURE_PATH = RESEARCH / "solar_term_test_fixture_v0.1.json"
+RECOMPUTE_PATH = RESEARCH / "recompute_bazi_expectations_v01.py"
 
 REQUIRED_RULE_FIELDS = {
     "rule_id",
+    "rule_class",
     "statement",
     "status",
     "source_ids",
@@ -35,6 +38,16 @@ EXPECTED_CASE_STATUSES = {
     "BLOCKED",
     "REQUIRES_MANUAL_VERIFICATION",
 }
+ALLOWED_RULE_CLASSES = {
+    "ASTRONOMICAL_FACT",
+    "CIVIL_TIME_FACT",
+    "TRADITIONAL_CALENDAR_RULE",
+    "PRODUCT_TRADITION_POLICY",
+    "PRODUCT_SAFETY_POLICY",
+    "IMPLEMENTATION_REQUIREMENT",
+}
+ALLOWED_CASE_SCOPES = {"PRODUCT_INPUT", "ALGORITHM_VALIDATION"}
+ALLOWED_WARNINGS = {"BOUNDARY_SENSITIVE"}
 
 
 def load_json(path: Path) -> dict[str, Any]:
@@ -93,8 +106,10 @@ def main() -> None:
     rules = load_json(RULES_PATH)
     cases = load_json(CASES_PATH)
     registry = load_json(SOURCES_PATH)
+    fixture = load_json(FIXTURE_PATH)
 
     assert REPORT_PATH.is_file(), "研究报告缺失"
+    assert RECOMPUTE_PATH.is_file(), "独立复算脚本缺失"
     assert rules["status"] == "RESEARCH_CANDIDATE"
     assert cases["status"] == "RESEARCH_CANDIDATE"
     assert cases["fixtures_are_anonymous"] is True
@@ -113,6 +128,7 @@ def main() -> None:
         missing = REQUIRED_RULE_FIELDS - rule.keys()
         assert not missing, f"{rule['rule_id']}缺少字段: {sorted(missing)}"
         assert rule["status"] in ALLOWED_RULE_STATUSES
+        assert rule["rule_class"] in ALLOWED_RULE_CLASSES, f"{rule['rule_id']}的rule_class非法"
         assert rule["source_ids"], f"{rule['rule_id']}没有来源"
         unknown = set(rule["source_ids"]) - set(source_ids)
         assert not unknown, f"{rule['rule_id']}引用未知来源: {sorted(unknown)}"
@@ -126,29 +142,45 @@ def main() -> None:
         assert conflict["recommended_status"] in ALLOWED_CONFLICT_STATUSES
         assert conflict["recommended_status"] != "ACTIVE"
 
-    referenced_ids = collect_source_references(rules) | collect_source_references(cases)
+    referenced_ids = collect_source_references(rules) | collect_source_references(cases) | collect_source_references(fixture)
     unknown_references = referenced_ids - set(source_ids)
     assert not unknown_references, f"存在未知来源引用: {sorted(unknown_references)}"
 
     test_cases = cases["cases"]
-    assert len(test_cases) >= 30, "测试案例少于30"
+    assert len(test_cases) >= 60, "测试案例少于60"
     case_ids = [case["case_id"] for case in test_cases]
     assert len(case_ids) == len(set(case_ids)), "案例ID重复"
     for case in test_cases:
         assert case["expected_status"] in EXPECTED_CASE_STATUSES
+        assert case.get("case_scope") in ALLOWED_CASE_SCOPES, f"{case['case_id']}缺少合法case_scope"
         assert case["source_ids"], f"{case['case_id']}没有来源"
         has_pillars = "expected_pillars" in case
         has_block = "expected_blocking_code" in case
-        assert has_pillars ^ has_block, f"{case['case_id']}必须且只能有一种期望"
+        has_assertions = "expected_assertions" in case
+        assert has_block ^ (has_pillars or has_assertions), f"{case['case_id']}阻断期望与非阻断期望必须二选一"
         if has_pillars:
             assert set(case["expected_pillars"]) == {"year", "month", "day", "hour"}
         if case["expected_status"] == "REQUIRES_MANUAL_VERIFICATION":
             assert case["expected_blocking_code"] == "REQUIRES_MANUAL_VERIFICATION"
+        warnings = case.get("expected_warnings", [])
+        assert isinstance(warnings, list)
+        assert set(warnings) <= ALLOWED_WARNINGS, f"{case['case_id']}含非法警告"
+        assert not (has_block and warnings), f"{case['case_id']}阻断案例不得同时带警告"
+        if case.get("expected_completeness") == "THREE_PILLARS_ONLY":
+            assert has_pillars and case["expected_pillars"]["hour"] is None
 
     boundary_cases = [case for case in test_cases if case["conflict_sensitive"]]
     assert boundary_cases, "没有冲突敏感案例"
     assert all(case["conflict_sensitive"] is True for case in boundary_cases)
-    assert any(case["expected_blocking_code"] == "DAY_BOUNDARY_UNRESOLVED" for case in test_cases if "expected_blocking_code" in case)
+    assert not any(case.get("expected_blocking_code") == "DAY_BOUNDARY_UNRESOLVED" for case in test_cases)
+    assert sum("BOUNDARY_SENSITIVE" in case.get("expected_warnings", []) for case in test_cases) >= 1
+    assert fixture["production_runtime_dataset"] is False
+    assert fixture["status"] == "TEST_EVIDENCE_ONLY"
+    assert fixture["records"], "节气测试fixture为空"
+    for record in fixture["records"]:
+        assert {"year", "solar_term", "instant", "timezone", "source_ids", "source_precision", "manually_verified"} <= record.keys()
+        assert record["source_ids"], "节气fixture缺少来源"
+        assert record["manually_verified"] is True
 
     serialized_rules = json.dumps(rules, ensure_ascii=False)
     forbidden_result_keys = [
@@ -161,6 +193,7 @@ def main() -> None:
     ]
     assert not any(key in serialized_rules for key in forbidden_result_keys), "发现命理解读字段"
     assert "ACTIVE" not in {rule["status"] for rule in candidate_rules}
+    assert "SOLAR_TERM_RUNTIME_DATASET_NOT_FROZEN" in serialized_rules
 
     assert_git_scope()
 
@@ -171,6 +204,8 @@ def main() -> None:
         f"sources L1={level_counts['L1']} L2={level_counts['L2']} L3={level_counts['L3']}; "
         f"rules={len(candidate_rules)} proposed={status_counts['PROPOSED_FREEZE']} "
         f"unresolved={status_counts['UNRESOLVED']}; conflicts={len(conflicts)}; "
+        f"classes={len(set(rule['rule_class'] for rule in candidate_rules))}; "
+        f"warnings={sum('BOUNDARY_SENSITIVE' in case.get('expected_warnings', []) for case in test_cases)}; "
         f"cases={len(test_cases)}."
     )
 

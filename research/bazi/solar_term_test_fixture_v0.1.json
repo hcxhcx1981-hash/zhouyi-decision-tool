@@ -1,0 +1,27 @@
+{
+  "fixture_id": "BAZI_SOLAR_TERM_TEST_FIXTURE_V0_1",
+  "version": "0.1.0",
+  "status": "TEST_EVIDENCE_ONLY",
+  "production_runtime_dataset": false,
+  "timezone_note": "instant使用UTC；来源页面显示香港时间UTC+08:00。",
+  "records": [
+    {"year": 2024, "solar_term": "小寒", "instant": "2024-01-05T20:49:00Z", "timezone": "Asia/Hong_Kong", "source_ids": ["SRC-HKO-SOLAR-TERM-DATA", "SRC-PMO-ALMANAC-2024"], "source_precision": "minute", "manually_verified": true},
+    {"year": 2024, "solar_term": "立春", "instant": "2024-02-04T08:27:00Z", "timezone": "Asia/Hong_Kong", "source_ids": ["SRC-HKO-SOLAR-TERM-DATA", "SRC-PMO-ALMANAC-2024"], "source_precision": "minute", "manually_verified": true},
+    {"year": 2024, "solar_term": "惊蛰", "instant": "2024-03-05T02:23:00Z", "timezone": "Asia/Hong_Kong", "source_ids": ["SRC-HKO-SOLAR-TERM-DATA", "SRC-PMO-ALMANAC-2024"], "source_precision": "minute", "manually_verified": true},
+    {"year": 2024, "solar_term": "春分", "instant": "2024-03-20T03:06:00Z", "timezone": "Asia/Hong_Kong", "source_ids": ["SRC-HKO-SOLAR-TERM-DATA", "SRC-PMO-ALMANAC-2024"], "source_precision": "minute", "manually_verified": true},
+    {"year": 2024, "solar_term": "清明", "instant": "2024-04-04T07:02:00Z", "timezone": "Asia/Hong_Kong", "source_ids": ["SRC-HKO-SOLAR-TERM-DATA", "SRC-PMO-ALMANAC-2024"], "source_precision": "minute", "manually_verified": true},
+    {"year": 2024, "solar_term": "立夏", "instant": "2024-05-05T00:10:00Z", "timezone": "Asia/Hong_Kong", "source_ids": ["SRC-HKO-SOLAR-TERM-DATA", "SRC-PMO-ALMANAC-2024"], "source_precision": "minute", "manually_verified": true},
+    {"year": 2024, "solar_term": "芒种", "instant": "2024-06-05T04:10:00Z", "timezone": "Asia/Hong_Kong", "source_ids": ["SRC-HKO-SOLAR-TERM-DATA", "SRC-PMO-ALMANAC-2024"], "source_precision": "minute", "manually_verified": true},
+    {"year": 2024, "solar_term": "小暑", "instant": "2024-07-06T14:20:00Z", "timezone": "Asia/Hong_Kong", "source_ids": ["SRC-HKO-SOLAR-TERM-DATA", "SRC-PMO-ALMANAC-2024"], "source_precision": "minute", "manually_verified": true},
+    {"year": 2024, "solar_term": "立秋", "instant": "2024-08-07T00:09:00Z", "timezone": "Asia/Hong_Kong", "source_ids": ["SRC-HKO-SOLAR-TERM-DATA", "SRC-PMO-ALMANAC-2024"], "source_precision": "minute", "manually_verified": true},
+    {"year": 2024, "solar_term": "白露", "instant": "2024-09-07T03:11:00Z", "timezone": "Asia/Hong_Kong", "source_ids": ["SRC-HKO-SOLAR-TERM-DATA", "SRC-PMO-ALMANAC-2024"], "source_precision": "minute", "manually_verified": true},
+    {"year": 2024, "solar_term": "寒露", "instant": "2024-10-07T19:00:00Z", "timezone": "Asia/Hong_Kong", "source_ids": ["SRC-HKO-SOLAR-TERM-DATA", "SRC-PMO-ALMANAC-2024"], "source_precision": "minute", "manually_verified": true},
+    {"year": 2024, "solar_term": "立冬", "instant": "2024-11-06T22:20:00Z", "timezone": "Asia/Hong_Kong", "source_ids": ["SRC-HKO-SOLAR-TERM-DATA", "SRC-PMO-ALMANAC-2024"], "source_precision": "minute", "manually_verified": true},
+    {"year": 2024, "solar_term": "大雪", "instant": "2024-12-06T15:17:00Z", "timezone": "Asia/Hong_Kong", "source_ids": ["SRC-HKO-SOLAR-TERM-DATA", "SRC-PMO-ALMANAC-2024"], "source_precision": "minute", "manually_verified": true}
+  ],
+  "limitations": [
+    "仅覆盖当前回归案例所需的2024节令与一个中气。",
+    "分钟精度记录不能解决出生时间与节令落在同一分钟时的先后顺序。",
+    "不得作为1970至2100生产节气数据集。"
+  ]
+}

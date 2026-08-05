@@ -89,6 +89,34 @@
       "limitations": ["不说明四柱是否必须采用真太阳时"]
     },
     {
+      "source_id": "SRC-HKO-SOLAR-TERM-DATA",
+      "title": "Date and Time of the 24 Solar Terms",
+      "author_or_institution": "Hong Kong Observatory",
+      "edition_or_version": "official astronomical data interface, page revision 2024-08-28",
+      "publication_date": null,
+      "source_type": "official_observatory_dataset",
+      "evidence_level": "L1",
+      "url_or_location": "https://www.hko.gov.hk/en/gts/astronomy/Solar_Term.htm",
+      "access_date": "2026-08-05",
+      "relevant_sections": ["2024年二十四节气日期与香港时间", "数据来源说明", "时间为UTC+08:00"],
+      "supports": ["2024年测试fixture的分钟级节气时刻", "节令临界警告与同分钟歧义测试"],
+      "limitations": ["本轮fixture仅收录回归案例实际需要的2024节令", "测试fixture不是生产节气数据集", "正式运行覆盖范围、版本、精度与许可证仍须单独冻结"]
+    },
+    {
+      "source_id": "SRC-HKO-LEAP-YEAR",
+      "title": "Leap Year",
+      "author_or_institution": "Hong Kong Observatory",
+      "edition_or_version": "official astronomy and time reference",
+      "publication_date": null,
+      "source_type": "official_observatory_guidance",
+      "evidence_level": "L1",
+      "url_or_location": "https://www.hko.gov.hk/en/gts/time/basicterms-leapyear.htm",
+      "access_date": "2026-08-05",
+      "relevant_sections": ["Gregorian calendar leap-year rule", "century-year exception"],
+      "supports": ["2100能被100整除但不能被400整除，因此不是闰年"],
+      "limitations": ["只支持公历日期合法性，不提供四柱或节气边界"]
+    },
+    {
       "source_id": "SRC-IANA-TZ-LINK",
       "title": "Time zone and daylight saving time data",
       "author_or_institution": "Internet Assigned Numbers Authority",
