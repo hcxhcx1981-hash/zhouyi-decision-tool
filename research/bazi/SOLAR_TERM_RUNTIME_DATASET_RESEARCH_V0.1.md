@@ -186,7 +186,7 @@ HKO 未保存可复算明细，**不保留任何 HKO 量化差分结论**（曾�
 
 ## 15. 完整性与哈希规则
 
-见 `solar_term_runtime_dataset_spec_candidate_v0.1.json` `integrity_policy`（规则含）：覆盖 1969-2101、每年 24 条、term_id 每年唯一、UTC 严格递增、黄经 15° 循环、十二节齐全、立春唯一、无重复时刻、无非法 ISO、dataset_id/version/generator 版本存在、许可证 CLEAR、SHA-256 存在、来源登记完整、外部差分完整、fixture 与生产数据分离。**间隔规则已拆分（Phase 2.1.2.1）**：相邻 24 节气候选粗范围 13-17 天（PROVISIONAL）；相邻十二个节（is_month_boundary_jie=true）候选粗范围 29-32 天（PROVISIONAL）；两者最终阈值均须在完整数据集生成后按全范围最小/最大值重新冻结。不得只校验 JSON 语法。
+见 `solar_term_runtime_dataset_spec_candidate_v0.1.json` `integrity_policy`（规则含）：覆盖 1969-2101、每年 24 条、term_id 每年唯一、UTC 严格递增、黄经 15° 循环、十二节齐全、立春唯一、无重复时刻、无非法 ISO、dataset_id/version/generator 版本存在、许可证 CLEAR、SHA-256 存在、来源登记完整、外部差分完整、fixture 与生产数据分离。**间隔规则已拆分（Phase 2.1.2.1）**：相邻 24 节气候选粗范围 13-17 天（PROVISIONAL）；相邻两个节对应太阳视黄经约相差30°，时间间隔约为一个太阳月，通常约29—32天（PROVISIONAL），与朔望月及月相周期不是同一概念；两者最终阈值均须在完整数据集生成后按全范围最小/最大值重新冻结。不得只校验 JSON 语法。
 
 ## 16. 更新和版本策略
 

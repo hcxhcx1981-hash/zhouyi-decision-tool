@@ -15,7 +15,7 @@ validate_solar_term_dataset_research_v01.py — Phase 2.1.2.1 强化版
   9. 相邻节气间隔规则已拆分（24 节气 13-17 / 十二节 29-32，均 PROVISIONAL）
   10. SOLAR-TERM-RUNTIME-DATASET-001 状态为 REQUIRES_MORE_EVIDENCE
   11. 不存在 _tmp_* 文件
-  12. 本轮修改范围检查（仅限 7 个允许文件）
+  12. 本轮修改范围检查（仅限 Phase 2.1.2B 允许的 8 个文件）
 
 用法：python research/bazi/validate_solar_term_dataset_research_v01.py
 全部通过输出 PASS；任一失败输出 FAIL 并退出码 1。
@@ -94,7 +94,8 @@ for r in recs:
     actual = int((gen_dt - auth_dt).total_seconds())
     abs_actual = abs(actual)
     gen_rounded = round_to_minute(gen_dt)
-    delta = (gen_rounded.hour * 60 + gen_rounded.minute) - (auth_dt.hour * 60 + auth_dt.minute)
+    # 必须在完整 UTC datetime 时间轴比较，不能只减一天内的时分标签。
+    delta = int((gen_rounded - auth_dt).total_seconds() // 60)
     recomputed.append((r['year'], r['term_id'], actual, abs_actual, delta))
 
 # 逐条核对记录内字段与重算一致
@@ -108,6 +109,58 @@ for r, (y, t, actual, abs_actual, delta) in zip(recs, recomputed):
         field_mismatch.append((y, t, 'delta', r['minute_label_delta'], delta))
 check("456 条字段与脚本重算一致", not field_mismatch, f"不一致: {field_mismatch[:3]}" if field_mismatch else "")
 
+# comparison_status 与 pass 必须逐条读取并验证，禁止把全部记录硬编码为通过。
+allowed_comparison_statuses = {
+    'MINUTE_LABEL_MATCH',
+    'MINUTE_LABEL_OFFSET',
+    'OVER_60_FROM_PRINTED_MINUTE',
+}
+investigations = {
+    (item.get('year'), item.get('term_id')): item
+    for item in matrix.get('summary', {}).get('over_60_cases', [])
+}
+status_errors = []
+pass_errors = []
+unexplained_records = []
+cross_day_records = []
+for r, (y, t, actual, abs_actual, delta) in zip(recs, recomputed):
+    status = r.get('comparison_status')
+    if abs_actual > 60:
+        expected_status = 'OVER_60_FROM_PRINTED_MINUTE'
+    elif delta == 0:
+        expected_status = 'MINUTE_LABEL_MATCH'
+    else:
+        expected_status = 'MINUTE_LABEL_OFFSET'
+    if status not in allowed_comparison_statuses or status != expected_status:
+        status_errors.append((y, t, status, expected_status))
+
+    investigation = investigations.get((y, t), {})
+    explained = '已解释' in investigation.get('conclusion', '')
+    if abs_actual > 60 and not explained:
+        unexplained_records.append((y, t, abs_actual))
+
+    gen_dt = parse_utc(r['generated_instant_utc'])
+    auth_dt = parse_utc(r['authoritative_instant_utc'])
+    cross_day = gen_dt.date() != auth_dt.date()
+    if cross_day:
+        cross_day_records.append((y, t, gen_dt.date().isoformat(), auth_dt.date().isoformat()))
+
+    record_pass = r.get('pass')
+    should_pass = (
+        status == expected_status
+        and not cross_day
+        and not (abs_actual > 60 and not explained)
+    )
+    if not isinstance(record_pass, bool) or record_pass != should_pass:
+        pass_errors.append((y, t, record_pass, should_pass))
+
+check("comparison_status 枚举与逐条重算一致", not status_errors,
+      f"不一致: {status_errors[:3]}" if status_errors else "")
+check("pass 字段由逐条结果真实校验", not pass_errors,
+      f"不一致: {pass_errors[:3]}" if pass_errors else "")
+check("超 60 秒记录均有单独调查结论", not unexplained_records,
+      f"未解释: {unexplained_records[:3]}" if unexplained_records else f"已解释={sum(1 for x in recomputed if x[3] > 60)}")
+
 # 汇总重算
 total = len(recomputed)
 max_abs = max(x[3] for x in recomputed)
@@ -117,17 +170,39 @@ over_120 = sum(1 for x in recomputed if x[3] > 120)
 label_match = sum(1 for x in recomputed if x[4] == 0)
 label_off = sum(1 for x in recomputed if x[4] != 0 and x[3] <= 60)
 over_60_case_count = over_60
-# 顺序检查（按生成 UTC 排序严格递增）
-order_errors = 0
-prev_dt = None
-for r in sorted(recs, key=lambda x: x['generated_instant_utc']):
-    dt = parse_utc(r['generated_instant_utc'])
-    if prev_dt is not None and dt <= prev_dt:
-        order_errors += 1
-    prev_dt = dt
-pass_count = total
-fail_count = 0
-unexplained = 0
+# 顺序必须按协议的 (year, term order) 检查，不能先按时间排序后自证有序。
+term_order = {item['term_id']: item['order'] for item in spec['term_registry']}
+unknown_term_ids = sorted({r['term_id'] for r in recs} - set(term_order))
+ordered_recs = sorted(recs, key=lambda x: (x['year'], term_order.get(x['term_id'], 999)))
+generated_order_errors = 0
+authoritative_order_errors = 0
+for field, counter_name in (
+    ('generated_instant_utc', 'generated'),
+    ('authoritative_instant_utc', 'authoritative'),
+):
+    previous = None
+    for r in ordered_recs:
+        current = parse_utc(r[field])
+        if previous is not None and current <= previous:
+            if counter_name == 'generated':
+                generated_order_errors += 1
+            else:
+                authoritative_order_errors += 1
+        previous = current
+order_errors = len(cross_day_records) + generated_order_errors + authoritative_order_errors + len(unknown_term_ids)
+check("无跨日、未知term_id或顺序错误", order_errors == 0,
+      f"cross_day={len(cross_day_records)} generated_order={generated_order_errors} authoritative_order={authoritative_order_errors} unknown={unknown_term_ids}")
+
+pass_count = sum(1 for r in recs if r.get('pass') is True)
+fail_count = sum(1 for r in recs if r.get('pass') is False)
+unexplained = len(unexplained_records)
+invalid_pass_values = sum(1 for r in recs if not isinstance(r.get('pass'), bool))
+check("pass/fail 数量从记录推导且覆盖全部记录",
+      pass_count + fail_count == total and invalid_pass_values == 0,
+      f"pass={pass_count} fail={fail_count} invalid={invalid_pass_values}")
+unexplained_over_120 = [item for item in unexplained_records if item[2] > 120]
+check("不存在未解释的超 120 秒记录", not unexplained_over_120,
+      f"未解释: {unexplained_over_120[:3]}" if unexplained_over_120 else "")
 
 # 与 JSON summary 逐字段比较
 s = matrix['summary']
@@ -213,13 +288,14 @@ check("不存在 _tmp_* / *.tmp 文件", not tmp_files, f"发现: {tmp_files}" i
 
 # ============ 12. 本轮修改范围 ============
 allowed = {
-    'SOLAR_TERM_RUNTIME_DATASET_RESEARCH_V0.1.md',
-    'solar_term_runtime_dataset_spec_candidate_v0.1.json',
-    'solar_term_source_registry_v0.1.json',
-    'solar_term_validation_matrix_v0.1.json',
-    'validate_solar_term_dataset_research_v01.py',
-    'bazi_calendar_rules_candidate_v0.1.json',
-    'bazi_source_registry_v0.1.json',
+    'research/bazi/SOLAR_TERM_RUNTIME_DATASET_RESEARCH_V0.1.md',
+    'research/bazi/solar_term_runtime_dataset_spec_candidate_v0.1.json',
+    'research/bazi/validate_solar_term_dataset_research_v01.py',
+    'research/bazi/generate_solar_term_runtime_candidate_v01.py',
+    'research/bazi/validate_solar_term_runtime_candidate_v01.py',
+    'research/bazi/solar_terms_1969_2101.candidate.json',
+    'research/bazi/solar_terms_1969_2101.candidate.json.sha256',
+    'research/bazi/SOLAR_TERM_RUNTIME_CANDIDATE_GENERATION_REPORT_V0.1.md',
 }
 # 通过 git status 检查未提交变更是否都在允许清单内
 import subprocess
@@ -228,12 +304,12 @@ try:
                          capture_output=True, text=True, timeout=10).stdout
     modified = []
     for line in out.splitlines():
-        parts = line.strip().split(' ', 1)
-        if len(parts) == 2 and parts[1].startswith('research/bazi/'):
-            fn = parts[1].replace('research/bazi/', '')
-            modified.append(fn)
-    out_of_scope = [fn for fn in modified if fn not in allowed]
-    check("本轮修改范围仅限 7 个允许文件", not out_of_scope,
+        path = line[3:].replace('\\', '/')
+        if ' -> ' in path:
+            path = path.split(' -> ', 1)[1]
+        modified.append(path)
+    out_of_scope = [path for path in modified if path not in allowed]
+    check("本轮修改范围仅限 Phase 2.1.2B 允许的 8 个文件", not out_of_scope,
           f"越界: {out_of_scope}" if out_of_scope else f"修改 {len(modified)} 个文件")
 except Exception as e:
     check("本轮修改范围检查", False, str(e))
