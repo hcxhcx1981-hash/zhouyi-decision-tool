@@ -864,5 +864,15 @@
     "SRC-GUJIN-TUSHU-FIVE-TIGER",
     "SRC-HKO-SOLAR-TERM-DATA",
     "SRC-HKO-LEAP-YEAR"
-  ]
+  ],
+  "final_freeze_reference": {
+    "frozen_rules_path": "data/frozen/bazi/bazi_calendar_rules_v0.1.0.json",
+    "frozen_test_cases_path": "data/frozen/bazi/bazi_calendar_test_cases_v0.1.0.json",
+    "frozen_solar_terms_path": "data/frozen/bazi/solar_terms_1969_2101_v0.1.0.json",
+    "frozen_version": "0.1.0",
+    "source_research_commit": "a0e6c91",
+    "frozen_at_utc": "2026-08-06T09:35:54Z",
+    "promotion_script": "research/bazi/promote_bazi_calendar_freeze_v01.py",
+    "decision_document": "docs/BAZI_CALENDAR_RULES_FREEZE_DECISION_V0.1.0.md"
+  }
 }

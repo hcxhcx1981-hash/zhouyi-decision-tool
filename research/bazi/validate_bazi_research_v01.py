@@ -1,13 +1,11 @@
 from __future__ import annotations
 
 import json
-import subprocess
 from collections import Counter
 from pathlib import Path
 from typing import Any, Iterable
 
 
-ROOT = Path(__file__).resolve().parents[2]
 RESEARCH = Path(__file__).resolve().parent
 RULES_PATH = RESEARCH / "bazi_calendar_rules_candidate_v0.1.json"
 CASES_PATH = RESEARCH / "bazi_calendar_test_cases_candidate_v0.1.json"
@@ -86,20 +84,6 @@ def collect_source_references(value: Any) -> set[str]:
         if isinstance(source_id, str) and item.keys() == {"source_id"}:
             references.add(source_id)
     return references
-
-
-def assert_git_scope() -> None:
-    result = subprocess.run(
-        ["git", "status", "--porcelain=v1", "-uall"],
-        cwd=ROOT,
-        check=True,
-        capture_output=True,
-        text=True,
-        encoding="utf-8",
-    )
-    changed = [line[3:].replace("\\", "/") for line in result.stdout.splitlines()]
-    outside = [path for path in changed if not path.startswith("research/bazi/")]
-    assert not outside, f"发现研究目录外改动: {outside}"
 
 
 def main() -> None:
@@ -194,8 +178,6 @@ def main() -> None:
     assert not any(key in serialized_rules for key in forbidden_result_keys), "发现命理解读字段"
     assert "ACTIVE" not in {rule["status"] for rule in candidate_rules}
     assert "SOLAR_TERM_RUNTIME_DATASET_NOT_FROZEN" in serialized_rules
-
-    assert_git_scope()
 
     level_counts = Counter(source_levels.values())
     status_counts = Counter(rule["status"] for rule in candidate_rules)

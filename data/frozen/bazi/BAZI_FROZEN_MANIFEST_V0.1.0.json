@@ -1,0 +1,97 @@
+{
+  "manifest_id": "BAZI_FROZEN_MANIFEST_V0_1_0",
+  "version": "0.1.0",
+  "status": "FROZEN_RELEASE_MANIFEST",
+  "frozen_from_commit": "a0e6c91",
+  "source_research_commit": "a0e6c91",
+  "generated_at_utc": "2026-08-06T09:35:54Z",
+  "files": [
+    {
+      "relative_path": "data/frozen/bazi/bazi_calendar_rules_v0.1.0.json",
+      "file_role": "FROZEN_CALENDAR_RULES",
+      "sha256": "24dad075ad478f2017e7519b2a9c375c2dcf0cb4cd5432c6b4291b8d40e8e3fa",
+      "byte_size": 31595,
+      "rule_count": 24,
+      "source_candidate_path": "research/bazi/bazi_calendar_rules_candidate_v0.1.json",
+      "source_candidate_sha256": "2f20a48e189c69ab322a458f0b6b6db49cbdacf40adabdfea833ddfca3143d39",
+      "semantic_identity_check": "23 PROPOSED_FREEZE→FROZEN；1 OUT_OF_SCOPE保留；仅解除数据未冻结阻断"
+    },
+    {
+      "relative_path": "data/frozen/bazi/bazi_calendar_test_cases_v0.1.0.json",
+      "file_role": "FROZEN_REGRESSION_SUITE",
+      "sha256": "b04e2adfbc48affb3890e04ea7e3728711ed1220af005740e8e32ed41e21f0ad",
+      "byte_size": 50830,
+      "case_count": 63,
+      "source_candidate_path": "research/bazi/bazi_calendar_test_cases_candidate_v0.1.json",
+      "source_candidate_sha256": "95d7f1c008ca73eba20587e83fd81fc06a56211b6c7b03793bab5b2adaed86bb",
+      "semantic_identity_check": "63/63案例对象完全一致"
+    },
+    {
+      "relative_path": "data/frozen/bazi/solar_terms_1969_2101_v0.1.0.json",
+      "file_role": "FROZEN_SOLAR_TERM_RUNTIME_DATA",
+      "sha256": "0e22ce7738ee0aedfb15056a3888959907a2e0b88b06ed2b54bce838fc5d5ea2",
+      "byte_size": 1768636,
+      "record_count": 3192,
+      "source_candidate_path": "research/bazi/solar_terms_1969_2101.candidate.json",
+      "source_candidate_sha256": "21f71221a6390d2ce6091a3668f28b2736478dbcee62c695f11573ecbd95f5f7",
+      "semantic_identity_check": "3192/3192记录语义一致，仅顶层正式元数据变化"
+    },
+    {
+      "relative_path": "research/bazi/THIRD_PARTY_NOTICES_SOLAR_TERM.md",
+      "file_role": "THIRD_PARTY_LICENSE_NOTICE",
+      "sha256": "22a10d770fd8a5e4d80de16788b03c3b1adb5d08d59c44bd20cf066d1af8af34",
+      "byte_size": 2007,
+      "record_count": 1,
+      "source_candidate_path": "research/bazi/THIRD_PARTY_NOTICES_SOLAR_TERM.md",
+      "source_candidate_sha256": "22a10d770fd8a5e4d80de16788b03c3b1adb5d08d59c44bd20cf066d1af8af34",
+      "semantic_identity_check": "SOURCE_FILE_REFERENCED_BY_SHA256"
+    },
+    {
+      "relative_path": "research/bazi/requirements-solar-term-generator.lock.txt",
+      "file_role": "GENERATOR_DEPENDENCY_LOCK",
+      "sha256": "d49fb01777225d1abb1c06189100a2f005f6017b3b6c4dfac36b0797ca1a8873",
+      "byte_size": 104,
+      "record_count": 1,
+      "source_candidate_path": "research/bazi/requirements-solar-term-generator.lock.txt",
+      "source_candidate_sha256": "d49fb01777225d1abb1c06189100a2f005f6017b3b6c4dfac36b0797ca1a8873",
+      "semantic_identity_check": "SOURCE_FILE_REFERENCED_BY_SHA256"
+    }
+  ],
+  "dependency_lock": {
+    "relative_path": "research/bazi/requirements-solar-term-generator.lock.txt",
+    "package": "astronomy-engine",
+    "version": "2.1.19",
+    "wheel_sha256": "232ba7dd2bbf42225c48be6721b676e8c6c079dbd4588d2781dfa68adcb6f67f",
+    "lock_file_sha256": "d49fb01777225d1abb1c06189100a2f005f6017b3b6c4dfac36b0797ca1a8873"
+  },
+  "source_chain": {
+    "generator": "Astronomy Engine 2.1.19",
+    "official_minute_crosscheck": "NAOJ 2009—2027，共456条",
+    "research_auxiliary_source": "HKO（仅研究辅助核验）",
+    "candidate_dataset_sha256": "21f71221a6390d2ce6091a3668f28b2736478dbcee62c695f11573ecbd95f5f7"
+  },
+  "known_limitations": [
+    "1969—2008及2028—2101无官方分钟级逐点核验。",
+    "秒级只表示保存分辨率，不声称官方秒级准确度。",
+    "V0.1不支持农历输入。",
+    "V0.1不支持真太阳时。",
+    "00:00日界属于产品选定流派口径，不宣称为所有流派唯一答案。",
+    "节气同分钟歧义需要阻断。",
+    "未知时辰遇节令切换日需要阻断。"
+  ],
+  "runtime_contract": {
+    "read_only_static_json": true,
+    "network_required": false,
+    "astronomy_algorithm_at_runtime": false,
+    "application_integration_completed": false,
+    "page_not_implemented_remains": true
+  },
+  "audit_summary": {
+    "solar_term_records": 3192,
+    "candidate_to_frozen_instant_match": "3192/3192",
+    "official_matrix_match": "456/456",
+    "regression_case_semantic_match": "63/63",
+    "rules_semantic_promotion_count": 23,
+    "unauthorized_semantic_changes": 0
+  }
+}
