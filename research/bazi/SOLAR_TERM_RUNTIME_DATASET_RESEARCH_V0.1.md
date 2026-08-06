@@ -13,7 +13,7 @@
 
 ## 2. 当前阻断背景
 
-`SOLAR-TERM-RUNTIME-DATASET-001` 规则状态为 UNRESOLVED。测试 fixture（`solar_term_test_fixture_v0.1.json`）只为回归案例提供少量节气时刻，不能用于完整生产范围。本轮需要裁决唯一数据方案并更新该规则状态。
+`SOLAR-TERM-RUNTIME-DATASET-001` 已形成完整候选数据与可复现证据链，当前状态为 `PROPOSED_FREEZE`，等待 ChatGPT 最终裁决。测试 fixture（`solar_term_test_fixture_v0.1.json`）仍只为回归案例提供少量节气时刻，不能替代完整候选数据。
 
 ## 3. fixture、生成器、核验源与运行数据的区别
 
@@ -101,7 +101,7 @@
 
 - **存储标准：UTC**，格式 `YYYY-MM-DDTHH:mm:ssZ`。禁止只保存北京时间/当地时间/公历日期。
 - **运行时比较**：出生时刻（IANA 时区 → UTC）与节气 UTC 时刻在同一 UTC 时间轴比较；节气瞬间及之后进入新年柱/新月柱。
-- **精度**：生成器秒级（source_precision=second）；权威核验源分钟级（NAOJ/HKO）。
+- **时间戳分辨率**：`timestamp_resolution=second`，亚秒按 `TRUNCATE_SUBSECOND_TOWARD_EARLIER_WHOLE_SECOND` 舍去；这只说明保存到整秒，不声称具有官方秒级准确度。权威逐条核验源分辨率为分钟级（NAOJ）。
 - **NAOJ 分钟显示舍入规则**：官方仅定义"节气为太阳黄经到达特定度数的瞬间"（用語解説），**未发布分钟显示的舍入规则文字说明**；数据模式无法唯一确定四舍五入/截断（两种假设均有反例）→ `authoritative_rounding_policy = UNKNOWN`。与"官方打印分钟点"的偏移**不等于**真实天文误差；分钟级来源不能支持精确秒级误差结论，仅用于分钟标签一致性（四舍五入口径）与粗差检查；不得把 0/60 秒标签差写成真实绝对秒差。
 - **同分钟歧义**：用户出生时刻与节气同一分钟时触发 `SOLAR_TERM_SAME_MINUTE_AMBIGUOUS`。
 - **不虚构秒数**：核验源分钟级数据不得虚构秒；生成器秒级时刻可保存，但差分按统一口径比较。
@@ -159,16 +159,16 @@ HKO 未保存可复算明细，**不保留任何 HKO 量化差分结论**（曾�
   "term_id": "LICHUN",
   "term_name_zh": "立春",
   "solar_longitude_degrees": 315,
-  "instant_utc": "2024-02-04T08:27:00Z",
+  "instant_utc": "2024-02-04T08:26:49Z",
   "generator_source_id": "GEN-ASTRONOMY-ENGINE-2.1.19",
   "generator_version": "2.1.19",
-  "verification_source_ids": ["SRC-NAOJ-SOLAR-TERM"],
-  "source_precision": "second",
-  "manually_verified": false
+  "timestamp_resolution": "second",
+  "verification_status": "OFFICIAL_MINUTE_CROSSCHECK_AVAILABLE",
+  "verification_source_ids": ["SRC-NAOJ-SOLAR-TERM"]
 }
 ```
 
-本轮不生成 1969-2101 完整生产数据。
+1969—2101共3192条完整候选数据已经生成；文件状态保持`CANDIDATE_NOT_FOR_RUNTIME`，不是生产运行数据。
 
 ## 14. 运行时消费规则
 
@@ -207,7 +207,7 @@ HKO 未保存可复算明细，**不保留任何 HKO 量化差分结论**（曾�
 
 **首选生成器候选**：`PINNED_GENERATOR_PLUS_OFFICIAL_CROSSCHECK`
 
-- 生成器：astronomy-engine 2.1.19（MIT，CLEAR，固定版本）——首选生成器候选明确
+- 生成器：astronomy-engine 2.1.19（MIT，CLEAR），通过版本与官方wheel SHA-256双重锁定——首选生成器候选明确
 - 官方核验：NAOJ 2009-2027（456 点，脚本重算：与打印分钟点偏移 max=70s avg=18.3s，over_60=2 已解释，over_120=0，顺序/跨日错误 0）；HKO 仅辅助人工查看、无量化结论
 - 覆盖：1969-2101 完整 24 节气（方案级确定）
 - 时间标准：UTC（秒级存储）
@@ -216,18 +216,18 @@ HKO 未保存可复算明细，**不保留任何 HKO 量化差分结论**（曾�
 
 否决记录：方案 A（无全范围可批量权威源）、方案 C（sxtwl 混命理规则，DO_NOT_USE_AS_PRODUCTION_SOURCE）。
 
-**当前裁决状态（Phase 2.1.2.1 修正后）**：首选生成器候选明确、许可证主链明确（MIT CLEAR）；但差分统计需按修正后的诚实协议重新终审，`SOLAR-TERM-RUNTIME-DATASET-001` 状态回退为 `REQUIRES_MORE_EVIDENCE`，**暂不允许生成完整生产数据**。
+**当前裁决状态（Phase 2.1.2C）**：1969—2101共3192条完整候选数据已通过完整性验证，2009—2027共456条与官方分钟级矩阵一致；生成器依赖已通过版本与官方wheel SHA-256双重锁定。`SOLAR-TERM-RUNTIME-DATASET-001` 状态为 `PROPOSED_FREEZE`，仅表示等待 ChatGPT 最终裁决；应用接入仍由 `SOLAR_TERM_RUNTIME_DATASET_NOT_FROZEN` 阻断。
 
 ## 19. 是否允许进入下一阶段
 
-**暂不允许。** 本轮为纠错轮：差分统计口径已修正（真实偏移 max=70s avg=18.3s，over_60=2 已解释，NAOJ 舍入规则 UNKNOWN），许可证已纠正（HKO CONDITIONAL / NAOJ 须署名），规则状态回退 `REQUIRES_MORE_EVIDENCE`。等待 ChatGPT 对修正后的统计、协议与许可证重新终审；终审通过后方可决定是否进入下一阶段生成完整静态数据集。
+**暂不允许应用接入。** 本轮已将完整候选数据、依赖哈希、许可证、双次复现与精度语义整理为最终冻结候选，规则状态为`PROPOSED_FREEZE`。只有 ChatGPT 最终裁决并另行冻结正式数据版本后，才可解除应用阻断。
 
 ## 20. 尚未解决事项
 
 1. 1969-2008、2028-2101 年份缺乏官方分钟级数据逐点核验（保持外推，列为已知限制）。
 2. NAOJ 分钟显示舍入规则未公开（UNKNOWN）：已按诚实比较协议处理（标签一致性+粗差检查）；若未来取得官方文字说明，应复核 2010 HANLU、2018 XIAOXUE 两案例并可能重新冻结口径。
 3. USNO 二分二至数据服务恢复后可作为日期级辅助核验补充。
-4. 完整生产数据集**暂不允许生成**，待 ChatGPT 重新终审。
+4. 完整候选数据已生成，但仍为`CANDIDATE_NOT_FOR_RUNTIME`；应用接入待 ChatGPT 最终裁决。
 5. 应用侧数据集加载与阻断逻辑属应用代码，本轮未实现（Phase 2.2 范围）。
 
 ---

@@ -533,16 +533,16 @@
       {
         "rule_id": "SOLAR-TERM-RUNTIME-DATASET-001",
         "rule_class": "IMPLEMENTATION_REQUIREMENT",
-        "statement": "生产节气数据方案：首选生成器候选已明确（astronomy-engine 2.1.19, MIT, 固定版本），许可证主链明确（MIT CLEAR），NAOJ 官方核验 456 点（2009-2027）与打印分钟点偏移 max=70s avg=18.3s，over_60=2（已解释为分钟边界效应，NAOJ 舍入规则未公开故真实误差无法确证）；差分统计需按修正后的协议重新终审，暂不允许生成完整生产数据。",
-        "status": "REQUIRES_MORE_EVIDENCE",
+        "statement": "1969—2101完整节气候选数据已生成并通过3192条完整性检查；2009—2027共456条与NAOJ官方分钟级矩阵一致；Astronomy Engine 2.1.19生成器依赖已通过版本与官方wheel SHA-256双重锁定。时间戳保存到整秒仅表示分辨率，不声称具有官方秒级准确度；1969—2008及2028—2101仍属于生成器外推范围；应用接入仍待ChatGPT最终裁决。",
+        "status": "PROPOSED_FREEZE",
         "source_ids": [
           "GEN-ASTRONOMY-ENGINE-2.1.19",
           "SRC-NAOJ-SOLAR-TERM",
           "SRC-HKO-SOLAR-TERM"
         ],
         "confidence": "HIGH",
-        "implementation_notes": "Phase 2.1.2.1 修正：废弃含义错误的 difference_seconds，改为脚本逐条重算 actual/absolute offset 与 minute_label_delta（四舍五入口径）；NAOJ 舍入规则 UNKNOWN（官方未发布文字说明）；2010 HANLU(+70s)/2018 XIAOXUE(-69s) 已核验解释（无抄录错误、生成器复现一致），不构成否决证据；间隔完整性规则已拆分为 24 节气(13-17天 PROVISIONAL)与十二节(29-32天)；HKO 许可证 CONDITIONAL（RESEARCH_CROSSCHECK_ONLY）；等 ChatGPT 重新终审后方可决定是否进入下一阶段。",
-        "blocking_behavior": "返回 SOLAR_TERM_RUNTIME_DATASET_NOT_FROZEN；正式年柱/月柱引擎开发保持阻断；暂不允许生成完整生产数据。",
+        "implementation_notes": "完整候选数据与双次可复现证据已就绪；依赖锁文件固定astronomy-engine==2.1.19及官方wheel SHA-256。官方逐条交叉核验仅覆盖2009—2027的分钟显示；其余年份保持生成器外推标识。PROPOSED_FREEZE只表示等待ChatGPT最终裁决，不代表允许应用接入或阻断已解除。",
+        "blocking_behavior": "SOLAR_TERM_RUNTIME_DATASET_NOT_FROZEN",
         "protocol_refs": {
           "dataset_spec": "solar_term_runtime_dataset_spec_candidate_v0.1.json",
           "source_registry": "solar_term_source_registry_v0.1.json",

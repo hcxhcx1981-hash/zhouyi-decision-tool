@@ -6,22 +6,22 @@
 
 本轮仅生成并验证1969—2101年完整24节气静态候选数据、可复现生成脚本、独立验证脚本及SHA-256。未修改应用代码、页面、`package.json`、业务规则状态或六爻/八字引擎。
 
-基线提交：`6192658 research: correct solar term differential audit`。
+本轮基线提交：`a47240e research: generate full solar term candidate dataset`。
 
 ## 2. 生成环境
 
 - 操作系统：Windows 11 家庭版 10.0.26200
 - 机器/用户：HCX-2024 / Lenovo
 - Python：3.11.15
-- 隔离环境：`%TEMP%\zhouyi-solar-term-generator-v01`
-- 安装命令：`python -m pip install --disable-pip-version-check --no-cache-dir astronomy-engine==2.1.19`
+- 隔离环境：`%TEMP%\zhouyi-solar-term-2.1.2C-run-A`与`%TEMP%\zhouyi-solar-term-2.1.2C-run-B`
+- 安装命令：`python -m pip install --require-hashes --no-deps --no-cache-dir -r research\bazi\requirements-solar-term-generator.lock.txt`
 - 生成器：`astronomy-engine==2.1.19`
+- 官方wheel SHA-256：`232ba7dd2bbf42225c48be6721b676e8c6c079dbd4588d2781dfa68adcb6f67f`
 - 生成器许可证：MIT License
-- 生成开始：2026-08-06 12:48:44 +08:00
-- 生成结束：2026-08-06 12:48:45 +08:00
-- 临时venv与run-A/run-B清理完成：2026-08-06 12:50:00 +08:00
+- Phase 2.1.2C双次复现完成：2026-08-06 16:52:11 +08:00
+- 临时venv与run-A/run-B：验证完成后删除，不纳入项目或审核包
 
-固定wheel的安装需要访问Python包索引；两次实际数据生成均不联网、不调用在线API、不下载大型星历。venv中除Python自带组件外仅安装`astronomy-engine==2.1.19`，未安装sxtwl或命理库。
+固定wheel的安装需要访问Python包索引；两套环境均由`pip --require-hashes`按版本和wheel SHA-256双重校验，且使用`--no-deps --no-cache-dir`。两次实际数据生成均不联网、不调用在线API、不下载大型星历。venv中除Python自带组件外仅安装`astronomy-engine==2.1.19`，未安装sxtwl或命理库。
 
 ## 3. 生成器与登记表
 
@@ -37,7 +37,7 @@
 
 顶层明确包含候选ID、候选版本、`CANDIDATE_NOT_FOR_RUNTIME`状态、覆盖范围、记录数、UTC标准、固定生成器、生成政策、登记版本、`PENDING_FULL_AUDIT`核验状态、限制及记录数组。
 
-每条记录包含：年份、term_id、中文名、顺序、太阳黄经、节/中气标志、月支边界、UTC时刻、生成器来源和版本、秒级来源精度、外部核验状态与核验来源ID。候选JSON不包含NAOJ差分秒数、官方打印分钟、真实用户信息、正式域名、密钥或正式运行标志。
+每条记录包含：年份、term_id、中文名、顺序、太阳黄经、节/中气标志、月支边界、UTC时刻、生成器来源和版本、整秒时间戳分辨率、外部核验状态与核验来源ID。顶层`precision_policy`明确`second_level_accuracy_claim=false`：保存到整秒不等于官方秒级准确度。候选JSON不包含NAOJ差分秒数、官方打印分钟、真实用户信息、正式域名、密钥或正式运行标志。
 
 ## 5. 覆盖与数量
 
@@ -55,17 +55,20 @@
 
 两个不同临时目录分别生成，不共享输出文件：
 
-- run-A字节数：1,755,450
-- run-B字节数：1,755,450
-- `RUN_A_SHA256 = 8942f65a364f05c8e8fd09b40c18357c4d7610c978770f73bd64220f647ff5b5`
-- `RUN_B_SHA256 = 8942f65a364f05c8e8fd09b40c18357c4d7610c978770f73bd64220f647ff5b5`
+- run-A字节数：1,768,625
+- run-B字节数：1,768,625
+- `OLD_CANDIDATE_SHA256 = 8942f65a364f05c8e8fd09b40c18357c4d7610c978770f73bd64220f647ff5b5`
+- `NEW_CANDIDATE_SHA256 = 21f71221a6390d2ce6091a3668f28b2736478dbcee62c695f11573ecbd95f5f7`
+- `RUN_A_SHA256 = 21f71221a6390d2ce6091a3668f28b2736478dbcee62c695f11573ecbd95f5f7`
+- `RUN_B_SHA256 = 21f71221a6390d2ce6091a3668f28b2736478dbcee62c695f11573ecbd95f5f7`
 - `BYTE_IDENTICAL = PASS`
+- `INSTANT_UTC_MATCHES = 3192/3192`
 
 文件大小、SHA-256、逐字节内容及全部3192个`instant_utc`完全一致。
 
 ## 7. 候选文件SHA-256
 
-`8942f65a364f05c8e8fd09b40c18357c4d7610c978770f73bd64220f647ff5b5  solar_terms_1969_2101.candidate.json`
+`21f71221a6390d2ce6091a3668f28b2736478dbcee62c695f11573ecbd95f5f7  solar_terms_1969_2101.candidate.json`
 
 哈希保存于独立文件`solar_terms_1969_2101.candidate.json.sha256`，未嵌入候选JSON。
 
@@ -119,7 +122,7 @@ NAOJ分钟级差分明细没有复制进候选运行数据。仅2009—2027记�
 
 ## 12. 数据完整性结果
 
-- 独立候选验证器：43 PASS / 0 FAIL
+- 独立候选验证器：54 PASS / 0 FAIL
 - 记录Schema：3192/3192
 - UTC Z格式：3192/3192
 - 重复UTC：0
@@ -141,13 +144,13 @@ NAOJ分钟级差分明细没有复制进候选运行数据。仅2009—2027记�
 
 1. 候选数据尚未经过ChatGPT对完整包的最终审核。
 2. 官方逐条核验覆盖有限，生成器外推年份不能冒充官方验证。
-3. 生成器秒级结果不等于官方秒级真值；NAOJ只提供分钟显示且舍入规则未知。
+3. 时间戳保存到整秒仅表示分辨率，不声称官方秒级准确度；NAOJ只提供分钟显示且舍入规则未知。
 4. PROVISIONAL间隔范围尚未升级为冻结阈值。
 5. 本轮没有生成或验证应用接入代码、运行时加载器与发布流程。
 
 ## 15. 规则状态与阻断
 
-`SOLAR-TERM-RUNTIME-DATASET-001`继续保持`REQUIRES_MORE_EVIDENCE`，其`blocking_behavior`继续为`SOLAR_TERM_RUNTIME_DATASET_NOT_FROZEN`。候选数据生成成功不解除阻断。
+`SOLAR-TERM-RUNTIME-DATASET-001`更新为`PROPOSED_FREEZE`，其`blocking_behavior`继续为`SOLAR_TERM_RUNTIME_DATASET_NOT_FROZEN`。该状态仅表示等待ChatGPT最终裁决，候选数据生成成功不解除阻断。
 
 候选文件顶层状态保持`CANDIDATE_NOT_FOR_RUNTIME`，不包含`ACTIVE`、`FROZEN`、`production_ready=true`或`manually_verified=true`。
 

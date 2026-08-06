@@ -18,6 +18,37 @@ HASH_PATH = RESEARCH / "solar_terms_1969_2101.candidate.json.sha256"
 SPEC_PATH = RESEARCH / "solar_term_runtime_dataset_spec_candidate_v0.1.json"
 MATRIX_PATH = RESEARCH / "solar_term_validation_matrix_v0.1.json"
 REPORT_PATH = RESEARCH / "SOLAR_TERM_RUNTIME_CANDIDATE_GENERATION_REPORT_V0.1.md"
+RULES_PATH = RESEARCH / "bazi_calendar_rules_candidate_v0.1.json"
+LOCK_PATH = RESEARCH / "requirements-solar-term-generator.lock.txt"
+NOTICES_PATH = RESEARCH / "THIRD_PARTY_NOTICES_SOLAR_TERM.md"
+
+OLD_CANDIDATE_SHA256 = "8942f65a364f05c8e8fd09b40c18357c4d7610c978770f73bd64220f647ff5b5"
+BASELINE_INSTANT_SEQUENCE_SHA256 = "deb6ca5dfc82a9ece6a3b1021ce9477d9e5044576c099b067d240c1a9e5858e4"
+EXPECTED_LOCK_LINE = (
+    "astronomy-engine==2.1.19 "
+    "--hash=sha256:232ba7dd2bbf42225c48be6721b676e8c6c079dbd4588d2781dfa68adcb6f67f"
+)
+EXPECTED_MIT_LICENSE = """MIT License
+
+Copyright (c) 2019-2022 Don Cross <cosinekitty@gmail.com>
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE."""
 
 ISO_RE = re.compile(r"^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z$")
 SPECIAL_YEARS = (1969, 1970, 1988, 2000, 2009, 2024, 2027, 2099, 2100, 2101)
@@ -33,7 +64,7 @@ REQUIRED_RECORD_FIELDS = {
     "instant_utc",
     "generator_source_id",
     "generator_version",
-    "source_precision",
+    "timestamp_resolution",
     "verification_status",
     "verification_source_ids",
 }
@@ -47,6 +78,9 @@ FORBIDDEN_RUNTIME_DETAIL_FIELDS = {
     "notes",
     "manually_verified",
     "production_ready",
+    "source_precision",
+    "second_level_verified",
+    "official_second_accuracy",
 }
 
 
@@ -81,6 +115,23 @@ def sha256_file(path: Path) -> str:
     return digest.hexdigest()
 
 
+def instant_sequence_sha256(records: list[dict[str, Any]]) -> str:
+    sequence = [
+        {"year": record.get("year"), "term_id": record.get("term_id"), "instant_utc": record.get("instant_utc")}
+        for record in records
+    ]
+    payload = (json.dumps(sequence, ensure_ascii=False, separators=(",", ":")) + "\n").encode("utf-8")
+    return hashlib.sha256(payload).hexdigest()
+
+
+def count_key(value: Any, target: str) -> int:
+    if isinstance(value, dict):
+        return sum((1 if key == target else 0) + count_key(item, target) for key, item in value.items())
+    if isinstance(value, list):
+        return sum(count_key(item, target) for item in value)
+    return 0
+
+
 def interval_stats(values: list[float]) -> tuple[float, float, float]:
     return min(values), max(values), mean(values)
 
@@ -91,6 +142,7 @@ def main() -> int:
         dataset = load_json(DATASET_PATH)
         spec = load_json(SPEC_PATH)
         matrix = load_json(MATRIX_PATH)
+        rules = load_json(RULES_PATH)
     except Exception as error:
         print(f"[FAIL] 读取JSON: {error}")
         return 1
@@ -118,6 +170,17 @@ def main() -> int:
         generation_policy.get("second_rounding") == "TRUNCATE_SUBSECOND_TOWARD_EARLIER_WHOLE_SECOND"
         and generation_policy.get("network_at_generation_runtime") is False
         and generation_policy.get("online_api_used") is False,
+    )
+    precision_policy = dataset.get("precision_policy", {})
+    audit.check(
+        "精度协议不把整秒分辨率冒充官方秒级准确度",
+        precision_policy == {
+            "timestamp_resolution": "second",
+            "subsecond_policy": "TRUNCATE_SUBSECOND_TOWARD_EARLIER_WHOLE_SECOND",
+            "official_crosscheck_resolution": "minute",
+            "second_level_accuracy_claim": False,
+            "accuracy_statement": "时间戳保存到整秒，但不声称具有官方秒级准确度；官方逐条核验源为分钟显示。",
+        },
     )
     raw_bytes = DATASET_PATH.read_bytes()
     stable_bytes = (json.dumps(dataset, ensure_ascii=False, indent=2) + "\n").encode("utf-8")
@@ -157,6 +220,7 @@ def main() -> int:
     parsed_times: list[datetime] = []
     bad_iso = []
     year_assignment_errors = []
+    timestamp_resolution_pass = 0
     for year in expected_years:
         year_records = by_year[year]
         ids = [r.get("term_id") for r in year_records]
@@ -187,8 +251,12 @@ def main() -> int:
             for field, expected in expected_semantics.items():
                 if record.get(field) != expected:
                     semantic_errors.append((year, record.get("term_id"), field))
-            if record.get("generator_source_id") != "GEN-ASTRONOMY-ENGINE-2.1.19" or record.get("generator_version") != "2.1.19" or record.get("source_precision") != "second":
+            if record.get("generator_source_id") != "GEN-ASTRONOMY-ENGINE-2.1.19" or record.get("generator_version") != "2.1.19":
                 semantic_errors.append((year, record.get("term_id"), "generator_metadata"))
+            if record.get("timestamp_resolution") == "second":
+                timestamp_resolution_pass += 1
+            else:
+                semantic_errors.append((year, record.get("term_id"), "timestamp_resolution"))
 
             official = 2009 <= year <= 2027
             expected_status = "OFFICIAL_MINUTE_CROSSCHECK_AVAILABLE" if official else "GENERATOR_ONLY_NOT_OFFICIALLY_CROSSCHECKED"
@@ -210,6 +278,13 @@ def main() -> int:
 
     audit.check("记录Schema完整", not missing_fields, str(missing_fields[:3]))
     audit.check("不含差分明细或正式标志字段", not extra_forbidden, str(extra_forbidden[:3]))
+    source_precision_count = count_key(dataset, "source_precision")
+    audit.check("source_precision字段数量为0", source_precision_count == 0, f"count={source_precision_count}")
+    audit.check(
+        "timestamp_resolution为second",
+        timestamp_resolution_pass == 3192,
+        f"pass={timestamp_resolution_pass}/3192",
+    )
     audit.check("每年24个term_id唯一且齐全", not bad_term_sets, str(bad_term_sets[:3]))
     audit.check("每年order严格为1—24", not bad_orders, str(bad_orders[:3]))
     audit.check("黄经、节/中气与月支语义来自spec", not semantic_errors, str(semantic_errors[:3]))
@@ -253,6 +328,13 @@ def main() -> int:
     generator_only_count = sum(r["verification_status"] == "GENERATOR_ONLY_NOT_OFFICIALLY_CROSSCHECKED" for r in records)
     audit.check("外部核验覆盖数量正确", official_count == 456 and generator_only_count == 2736, f"official={official_count} generator_only={generator_only_count}")
 
+    instant_fingerprint = instant_sequence_sha256(records)
+    audit.check(
+        "旧候选与新候选3192条instant_utc完全一致",
+        len(records) == 3192 and instant_fingerprint == BASELINE_INSTANT_SEQUENCE_SHA256,
+        f"matches={3192 if instant_fingerprint == BASELINE_INSTANT_SEQUENCE_SHA256 else 0}/3192 fingerprint={instant_fingerprint}",
+    )
+
     actual_hash = sha256_file(DATASET_PATH)
     try:
         hash_line = HASH_PATH.read_text(encoding="ascii").strip()
@@ -263,10 +345,54 @@ def main() -> int:
     audit.check("SHA-256文件匹配候选JSON", hash_ok, actual_hash)
 
     report = REPORT_PATH.read_text(encoding="utf-8") if REPORT_PATH.is_file() else ""
+    old_hash = re.search(r"OLD_CANDIDATE_SHA256\s*=\s*([0-9a-f]{64})", report)
+    new_hash = re.search(r"NEW_CANDIDATE_SHA256\s*=\s*([0-9a-f]{64})", report)
     run_a = re.search(r"RUN_A_SHA256\s*=\s*([0-9a-f]{64})", report)
     run_b = re.search(r"RUN_B_SHA256\s*=\s*([0-9a-f]{64})", report)
-    reproducible = bool(run_a and run_b and run_a.group(1) == run_b.group(1) == actual_hash and "BYTE_IDENTICAL = PASS" in report)
-    audit.check("报告含run-A/run-B字节一致证据", reproducible)
+    reproducible = bool(
+        old_hash and old_hash.group(1) == OLD_CANDIDATE_SHA256
+        and new_hash and new_hash.group(1) == actual_hash
+        and run_a and run_b and run_a.group(1) == run_b.group(1) == actual_hash
+        and "BYTE_IDENTICAL = PASS" in report
+        and "INSTANT_UTC_MATCHES = 3192/3192" in report
+    )
+    audit.check("run-A/run-B新JSON字节一致且旧新时刻证据完整", reproducible)
+
+    try:
+        lock_lines = LOCK_PATH.read_text(encoding="ascii").splitlines()
+    except Exception:
+        lock_lines = []
+    audit.check("requirements锁文件存在且仅含固定依赖", lock_lines == [EXPECTED_LOCK_LINE])
+    audit.check(
+        "依赖版本与官方wheel SHA-256正确",
+        lock_lines == [EXPECTED_LOCK_LINE]
+        and "astronomy-engine==2.1.19" in lock_lines[0]
+        and "232ba7dd2bbf42225c48be6721b676e8c6c079dbd4588d2781dfa68adcb6f67f" in lock_lines[0],
+    )
+
+    notices = NOTICES_PATH.read_text(encoding="utf-8") if NOTICES_PATH.is_file() else ""
+    audit.check("THIRD_PARTY_NOTICES存在", NOTICES_PATH.is_file())
+    audit.check(
+        "Astronomy Engine 2.1.19完整MIT正文存在",
+        EXPECTED_MIT_LICENSE in notices
+        and "https://github.com/cosinekitty/astronomy" in notices
+        and "`astronomy-engine`" in notices,
+    )
+
+    runtime_rule = next(
+        (item for item in rules.get("implementation_dependencies", {}).get("rules", [])
+         if item.get("rule_id") == "SOLAR-TERM-RUNTIME-DATASET-001"),
+        None,
+    )
+    audit.check(
+        "SOLAR-TERM-RUNTIME-DATASET-001为PROPOSED_FREEZE",
+        runtime_rule is not None and runtime_rule.get("status") == "PROPOSED_FREEZE",
+    )
+    audit.check(
+        "blocking_behavior仍为SOLAR_TERM_RUNTIME_DATASET_NOT_FROZEN",
+        runtime_rule is not None
+        and runtime_rule.get("blocking_behavior") == "SOLAR_TERM_RUNTIME_DATASET_NOT_FROZEN",
+    )
 
     serialized = json.dumps(dataset, ensure_ascii=False).lower()
     record_keys = {key for record in records for key in record}
@@ -276,6 +402,13 @@ def main() -> int:
     audit.check("不含正式域名", "http://" not in serialized and "https://" not in serialized)
     audit.check("不含API Key、Token或Cookie", secret_pattern.search(serialized) is None)
     audit.check("不含ACTIVE/FROZEN/production_ready", all(token not in serialized for token in ('"active"', '"frozen"', 'production_ready')))
+    audit.check(
+        "候选未宣称应用已接入",
+        runtime_rule is not None
+        and "应用已接入" not in json.dumps(runtime_rule, ensure_ascii=False)
+        and "应用已接入" not in report
+        and "运行时已接入" not in report,
+    )
 
     for year in SPECIAL_YEARS:
         values = {r["term_id"]: r["instant_utc"] for r in by_year[year]}
@@ -300,6 +433,10 @@ def main() -> int:
     print(f"RECORDS_PASS={len(records) - len(missing_fields) - len(semantic_errors)}/{len(records)}")
     print(f"UTC_FORMAT_PASS={len(parsed_times)}/{len(records)}")
     print(f"MATRIX_INSTANT_MATCHES={456-len(matrix_mismatches)}/456")
+    print(f"BASELINE_INSTANT_MATCHES={3192 if instant_fingerprint == BASELINE_INSTANT_SEQUENCE_SHA256 else 0}/3192")
+    print(f"SOURCE_PRECISION_COUNT={source_precision_count}")
+    print(f"TIMESTAMP_RESOLUTION_PASS={timestamp_resolution_pass}/3192")
+    print(f"SECOND_LEVEL_ACCURACY_CLAIM={precision_policy.get('second_level_accuracy_claim')}")
     print(f"ALL24_INTERVAL_DAYS=min:{all_min:.9f},max:{all_max:.9f},avg:{all_avg:.9f}")
     print(f"TWELVE_JIE_INTERVAL_DAYS=min:{jie_min:.9f},max:{jie_max:.9f},avg:{jie_avg:.9f}")
     print(f"DUPLICATE_UTC={duplicate_count}")

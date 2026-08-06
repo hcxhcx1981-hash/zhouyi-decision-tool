@@ -13,9 +13,10 @@ validate_solar_term_dataset_research_v01.py — Phase 2.1.2.1 强化版
   7. 许可证状态检查（推荐生成器 CLEAR）
   8. HKO 不是 CLEAR（必须 CONDITIONAL）
   9. 相邻节气间隔规则已拆分（24 节气 13-17 / 十二节 29-32，均 PROVISIONAL）
-  10. SOLAR-TERM-RUNTIME-DATASET-001 状态为 REQUIRES_MORE_EVIDENCE
+  10. SOLAR-TERM-RUNTIME-DATASET-001 状态属于研究阶段允许枚举，且与报告和阻断一致
   11. 不存在 _tmp_* 文件
-  12. 本轮修改范围检查（仅限 Phase 2.1.2B 允许的 8 个文件）
+
+Git 任务修改范围由外部命令独立验收，不在通用研究验证器中硬编码。
 
 用法：python research/bazi/validate_solar_term_dataset_research_v01.py
 全部通过输出 PASS；任一失败输出 FAIL 并退出码 1。
@@ -73,6 +74,8 @@ matrix = load_json('solar_term_validation_matrix_v0.1.json')
 spec = load_json('solar_term_runtime_dataset_spec_candidate_v0.1.json')
 sreg = load_json('solar_term_source_registry_v0.1.json')
 rules = load_json('bazi_calendar_rules_candidate_v0.1.json')
+research_report = open(os.path.join(BASE, 'SOLAR_TERM_RUNTIME_DATASET_RESEARCH_V0.1.md'), encoding='utf-8').read()
+generation_report = open(os.path.join(BASE, 'SOLAR_TERM_RUNTIME_CANDIDATE_GENERATION_REPORT_V0.1.md'), encoding='utf-8').read()
 
 recs = matrix['records']
 
@@ -276,43 +279,38 @@ old_rule_gone = not any('29-32 天' in r2 and '十二个节' not in r2 and '24 �
                         for r2 in spec['integrity_policy']['rules'])
 check("旧全局间隔规则（29-32天适用于全部节气）已移除", old_rule_gone)
 
+# 精度字段只表示存储分辨率，不能冒充官方秒级准确度。
+precision_policy = spec.get('precision_policy', {})
+check("精度协议区分整秒分辨率与准确度",
+      precision_policy.get('timestamp_resolution') == 'second'
+      and precision_policy.get('subsecond_policy') == 'TRUNCATE_SUBSECOND_TOWARD_EARLIER_WHOLE_SECOND'
+      and precision_policy.get('official_crosscheck_resolution') == 'minute'
+      and precision_policy.get('second_level_accuracy_claim') is False
+      and bool(precision_policy.get('accuracy_statement')))
+
 # ============ 10. 规则状态 ============
 rule = rules['implementation_dependencies']['rules'][0]
-check("SOLAR-TERM-RUNTIME-DATASET-001 = REQUIRES_MORE_EVIDENCE",
-      rule['rule_id'] == 'SOLAR-TERM-RUNTIME-DATASET-001' and rule['status'] == 'REQUIRES_MORE_EVIDENCE',
-      f"status={rule.get('status')}")
+allowed_statuses = {'REQUIRES_MORE_EVIDENCE', 'PROPOSED_FREEZE'}
+status = rule.get('status')
+check("SOLAR-TERM-RUNTIME-DATASET-001 状态属于研究阶段允许枚举",
+      rule.get('rule_id') == 'SOLAR-TERM-RUNTIME-DATASET-001' and status in allowed_statuses,
+      f"status={status}")
+check("规则状态与两份报告结论一致",
+      status in research_report and status in generation_report,
+      f"status={status}")
+check("研究状态与阻断字段逻辑一致",
+      status in allowed_statuses
+      and rule.get('blocking_behavior') == 'SOLAR_TERM_RUNTIME_DATASET_NOT_FROZEN')
+combined_claims = json.dumps(rule, ensure_ascii=False) + research_report + generation_report
+check("未冒充ACTIVE/FROZEN或应用已接入",
+      '"status": "ACTIVE"' not in combined_claims
+      and '"status": "FROZEN"' not in combined_claims
+      and '应用已接入' not in combined_claims
+      and '运行时已接入' not in combined_claims)
 
 # ============ 11. 无 _tmp_* ============
 tmp_files = [f for f in os.listdir(BASE) if f.startswith('_tmp') or f.endswith('.tmp')]
 check("不存在 _tmp_* / *.tmp 文件", not tmp_files, f"发现: {tmp_files}" if tmp_files else "")
-
-# ============ 12. 本轮修改范围 ============
-allowed = {
-    'research/bazi/SOLAR_TERM_RUNTIME_DATASET_RESEARCH_V0.1.md',
-    'research/bazi/solar_term_runtime_dataset_spec_candidate_v0.1.json',
-    'research/bazi/validate_solar_term_dataset_research_v01.py',
-    'research/bazi/generate_solar_term_runtime_candidate_v01.py',
-    'research/bazi/validate_solar_term_runtime_candidate_v01.py',
-    'research/bazi/solar_terms_1969_2101.candidate.json',
-    'research/bazi/solar_terms_1969_2101.candidate.json.sha256',
-    'research/bazi/SOLAR_TERM_RUNTIME_CANDIDATE_GENERATION_REPORT_V0.1.md',
-}
-# 通过 git status 检查未提交变更是否都在允许清单内
-import subprocess
-try:
-    out = subprocess.run(['git', 'status', '--porcelain'], cwd=os.path.dirname(os.path.dirname(BASE)),
-                         capture_output=True, text=True, timeout=10).stdout
-    modified = []
-    for line in out.splitlines():
-        path = line[3:].replace('\\', '/')
-        if ' -> ' in path:
-            path = path.split(' -> ', 1)[1]
-        modified.append(path)
-    out_of_scope = [path for path in modified if path not in allowed]
-    check("本轮修改范围仅限 Phase 2.1.2B 允许的 8 个文件", not out_of_scope,
-          f"越界: {out_of_scope}" if out_of_scope else f"修改 {len(modified)} 个文件")
-except Exception as e:
-    check("本轮修改范围检查", False, str(e))
 
 # ============ 汇总 ============
 n_pass = sum(1 for _, ok in RESULTS if ok)

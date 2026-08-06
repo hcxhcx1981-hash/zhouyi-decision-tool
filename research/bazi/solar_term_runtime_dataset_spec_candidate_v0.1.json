@@ -21,7 +21,7 @@
     "solar_longitude_definition": "太阳视黄经（apparent true ecliptic of date），节气=黄经 0/15/30/.../345 之十五度整数倍",
     "delta_t_handling": "内建 ΔT 模型",
     "offline": true,
-    "generation_env_reproducible": "pip install astronomy-engine==2.1.19 可复现",
+    "generation_env_reproducible": "使用 requirements-solar-term-generator.lock.txt 与 pip --require-hashes --no-deps --no-cache-dir 安装，版本与官方 wheel SHA-256 双重锁定",
     "note": "应用运行时不调用生成器；生成器仅在开发阶段生成静态数据"
   },
   "verification_sources": [
@@ -50,10 +50,12 @@
     "derived_json_committable": true,
     "legal_risk_level": "LOW"
   },
-  "precision": {
-    "stored_precision": "second",
-    "source_precision": "second（生成器秒级时刻）",
-    "verification_precision": "minute（NAOJ/HKO 分钟级）",
+  "precision_policy": {
+    "timestamp_resolution": "second",
+    "subsecond_policy": "TRUNCATE_SUBSECOND_TOWARD_EARLIER_WHOLE_SECOND",
+    "official_crosscheck_resolution": "minute",
+    "second_level_accuracy_claim": false,
+    "accuracy_statement": "时间戳保存到整秒，但不声称具有官方秒级准确度；官方逐条核验源为分钟显示。",
     "same_minute_policy": "用户出生时刻与节气落在同一分钟时，触发 SOLAR_TERM_SAME_MINUTE_AMBIGUOUS 阻断"
   },
   "term_registry": [
@@ -297,8 +299,8 @@
     "generator_source_id": "string",
     "generator_version": "string",
     "verification_source_ids": "string[]",
-    "source_precision": "second | minute | day",
-    "manually_verified": "bool"
+    "timestamp_resolution": "second",
+    "verification_status": "OFFICIAL_MINUTE_CROSSCHECK_AVAILABLE | GENERATOR_ONLY_NOT_OFFICIALLY_CROSSCHECKED"
   },
   "runtime_policy": {
     "network_required": false,

@@ -89,7 +89,7 @@ def generate_records(registry: list[dict[str, Any]]) -> list[dict[str, Any]]:
                     "instant_utc": truncate_to_whole_second(utc_value),
                     "generator_source_id": GENERATOR_SOURCE_ID,
                     "generator_version": EXPECTED_VERSION,
-                    "source_precision": "second",
+                    "timestamp_resolution": "second",
                     "verification_status": (
                         "OFFICIAL_MINUTE_CROSSCHECK_AVAILABLE"
                         if officially_crosschecked
@@ -137,13 +137,20 @@ def build_dataset(spec: dict[str, Any]) -> dict[str, Any]:
             "network_at_generation_runtime": False,
             "online_api_used": False,
         },
+        "precision_policy": {
+            "timestamp_resolution": "second",
+            "subsecond_policy": "TRUNCATE_SUBSECOND_TOWARD_EARLIER_WHOLE_SECOND",
+            "official_crosscheck_resolution": "minute",
+            "second_level_accuracy_claim": False,
+            "accuracy_statement": "时间戳保存到整秒，但不声称具有官方秒级准确度；官方逐条核验源为分钟显示。",
+        },
         "term_registry_version": "0.1.0",
         "verification_status": "PENDING_FULL_AUDIT",
         "known_limitations": [
             "这是候选数据，不是正式运行数据，不得接入应用。",
             "官方分钟级逐条核验仅覆盖2009—2027共456条。",
             "1969—2008与2028—2101仅由固定生成器产生，尚无官方逐条核验。",
-            "秒级时刻来自生成器；NAOJ核验源只提供分钟级显示且舍入规则未知。",
+            "时间戳保存到整秒，但不声称具有官方秒级准确度；NAOJ核验源只提供分钟级显示且舍入规则未知。",
         ],
         "records": records,
     }
