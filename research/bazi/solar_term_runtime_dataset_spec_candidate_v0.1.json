@@ -57,32 +57,237 @@
     "same_minute_policy": "用户出生时刻与节气落在同一分钟时，触发 SOLAR_TERM_SAME_MINUTE_AMBIGUOUS 阻断"
   },
   "term_registry": [
-    { "term_id": "XIAOHAN", "term_name_zh": "小寒", "solar_longitude_degrees": 285, "order": 1, "is_month_boundary_jie": true, "corresponding_branch": "丑", "is_middle_qi": false },
-    { "term_id": "DAHAN", "term_name_zh": "大寒", "solar_longitude_degrees": 300, "order": 2, "is_month_boundary_jie": false, "corresponding_branch": null, "is_middle_qi": true },
-    { "term_id": "LICHUN", "term_name_zh": "立春", "solar_longitude_degrees": 315, "order": 3, "is_month_boundary_jie": true, "corresponding_branch": "寅", "is_middle_qi": false },
-    { "term_id": "YUSHUI", "term_name_zh": "雨水", "solar_longitude_degrees": 330, "order": 4, "is_month_boundary_jie": false, "corresponding_branch": null, "is_middle_qi": true },
-    { "term_id": "JINGZHE", "term_name_zh": "惊蛰", "solar_longitude_degrees": 345, "order": 5, "is_month_boundary_jie": true, "corresponding_branch": "卯", "is_middle_qi": false },
-    { "term_id": "CHUNFEN", "term_name_zh": "春分", "solar_longitude_degrees": 0, "order": 6, "is_month_boundary_jie": false, "corresponding_branch": null, "is_middle_qi": true },
-    { "term_id": "QINGMING", "term_name_zh": "清明", "solar_longitude_degrees": 15, "order": 7, "is_month_boundary_jie": true, "corresponding_branch": "辰", "is_middle_qi": false },
-    { "term_id": "GUYU", "term_name_zh": "谷雨", "solar_longitude_degrees": 30, "order": 8, "is_month_boundary_jie": false, "corresponding_branch": null, "is_middle_qi": true },
-    { "term_id": "LIXIA", "term_name_zh": "立夏", "solar_longitude_degrees": 45, "order": 9, "is_month_boundary_jie": true, "corresponding_branch": "巳", "is_middle_qi": false },
-    { "term_id": "XIAOMAN", "term_name_zh": "小满", "solar_longitude_degrees": 60, "order": 10, "is_month_boundary_jie": false, "corresponding_branch": null, "is_middle_qi": true },
-    { "term_id": "MANGZHONG", "term_name_zh": "芒种", "solar_longitude_degrees": 75, "order": 11, "is_month_boundary_jie": true, "corresponding_branch": "午", "is_middle_qi": false },
-    { "term_id": "XIAZHI", "term_name_zh": "夏至", "solar_longitude_degrees": 90, "order": 12, "is_month_boundary_jie": false, "corresponding_branch": null, "is_middle_qi": true },
-    { "term_id": "XIAOSHU", "term_name_zh": "小暑", "solar_longitude_degrees": 105, "order": 13, "is_month_boundary_jie": true, "corresponding_branch": "未", "is_middle_qi": false },
-    { "term_id": "DASHU", "term_name_zh": "大暑", "solar_longitude_degrees": 120, "order": 14, "is_month_boundary_jie": false, "corresponding_branch": null, "is_middle_qi": true },
-    { "term_id": "LIQIU", "term_name_zh": "立秋", "solar_longitude_degrees": 135, "order": 15, "is_month_boundary_jie": true, "corresponding_branch": "申", "is_middle_qi": false },
-    { "term_id": "CHUSHU", "term_name_zh": "处暑", "solar_longitude_degrees": 150, "order": 16, "is_month_boundary_jie": false, "corresponding_branch": null, "is_middle_qi": true },
-    { "term_id": "BAILU", "term_name_zh": "白露", "solar_longitude_degrees": 165, "order": 17, "is_month_boundary_jie": true, "corresponding_branch": "酉", "is_middle_qi": false },
-    { "term_id": "QIUFEN", "term_name_zh": "秋分", "solar_longitude_degrees": 180, "order": 18, "is_month_boundary_jie": false, "corresponding_branch": null, "is_middle_qi": true },
-    { "term_id": "HANLU", "term_name_zh": "寒露", "solar_longitude_degrees": 195, "order": 19, "is_month_boundary_jie": true, "corresponding_branch": "戌", "is_middle_qi": false },
-    { "term_id": "SHUANGJIANG", "term_name_zh": "霜降", "solar_longitude_degrees": 210, "order": 20, "is_month_boundary_jie": false, "corresponding_branch": null, "is_middle_qi": true },
-    { "term_id": "LIDONG", "term_name_zh": "立冬", "solar_longitude_degrees": 225, "order": 21, "is_month_boundary_jie": true, "corresponding_branch": "亥", "is_middle_qi": false },
-    { "term_id": "XIAOXUE", "term_name_zh": "小雪", "solar_longitude_degrees": 240, "order": 22, "is_month_boundary_jie": false, "corresponding_branch": null, "is_middle_qi": true },
-    { "term_id": "DAXUE", "term_name_zh": "大雪", "solar_longitude_degrees": 255, "order": 23, "is_month_boundary_jie": true, "corresponding_branch": "子", "is_middle_qi": false },
-    { "term_id": "DONGZHI", "term_name_zh": "冬至", "solar_longitude_degrees": 270, "order": 24, "is_month_boundary_jie": false, "corresponding_branch": null, "is_middle_qi": true }
+    {
+      "term_id": "XIAOHAN",
+      "term_name_zh": "小寒",
+      "solar_longitude_degrees": 285,
+      "order": 1,
+      "is_month_boundary_jie": true,
+      "corresponding_branch": "丑",
+      "is_middle_qi": false
+    },
+    {
+      "term_id": "DAHAN",
+      "term_name_zh": "大寒",
+      "solar_longitude_degrees": 300,
+      "order": 2,
+      "is_month_boundary_jie": false,
+      "corresponding_branch": null,
+      "is_middle_qi": true
+    },
+    {
+      "term_id": "LICHUN",
+      "term_name_zh": "立春",
+      "solar_longitude_degrees": 315,
+      "order": 3,
+      "is_month_boundary_jie": true,
+      "corresponding_branch": "寅",
+      "is_middle_qi": false
+    },
+    {
+      "term_id": "YUSHUI",
+      "term_name_zh": "雨水",
+      "solar_longitude_degrees": 330,
+      "order": 4,
+      "is_month_boundary_jie": false,
+      "corresponding_branch": null,
+      "is_middle_qi": true
+    },
+    {
+      "term_id": "JINGZHE",
+      "term_name_zh": "惊蛰",
+      "solar_longitude_degrees": 345,
+      "order": 5,
+      "is_month_boundary_jie": true,
+      "corresponding_branch": "卯",
+      "is_middle_qi": false
+    },
+    {
+      "term_id": "CHUNFEN",
+      "term_name_zh": "春分",
+      "solar_longitude_degrees": 0,
+      "order": 6,
+      "is_month_boundary_jie": false,
+      "corresponding_branch": null,
+      "is_middle_qi": true
+    },
+    {
+      "term_id": "QINGMING",
+      "term_name_zh": "清明",
+      "solar_longitude_degrees": 15,
+      "order": 7,
+      "is_month_boundary_jie": true,
+      "corresponding_branch": "辰",
+      "is_middle_qi": false
+    },
+    {
+      "term_id": "GUYU",
+      "term_name_zh": "谷雨",
+      "solar_longitude_degrees": 30,
+      "order": 8,
+      "is_month_boundary_jie": false,
+      "corresponding_branch": null,
+      "is_middle_qi": true
+    },
+    {
+      "term_id": "LIXIA",
+      "term_name_zh": "立夏",
+      "solar_longitude_degrees": 45,
+      "order": 9,
+      "is_month_boundary_jie": true,
+      "corresponding_branch": "巳",
+      "is_middle_qi": false
+    },
+    {
+      "term_id": "XIAOMAN",
+      "term_name_zh": "小满",
+      "solar_longitude_degrees": 60,
+      "order": 10,
+      "is_month_boundary_jie": false,
+      "corresponding_branch": null,
+      "is_middle_qi": true
+    },
+    {
+      "term_id": "MANGZHONG",
+      "term_name_zh": "芒种",
+      "solar_longitude_degrees": 75,
+      "order": 11,
+      "is_month_boundary_jie": true,
+      "corresponding_branch": "午",
+      "is_middle_qi": false
+    },
+    {
+      "term_id": "XIAZHI",
+      "term_name_zh": "夏至",
+      "solar_longitude_degrees": 90,
+      "order": 12,
+      "is_month_boundary_jie": false,
+      "corresponding_branch": null,
+      "is_middle_qi": true
+    },
+    {
+      "term_id": "XIAOSHU",
+      "term_name_zh": "小暑",
+      "solar_longitude_degrees": 105,
+      "order": 13,
+      "is_month_boundary_jie": true,
+      "corresponding_branch": "未",
+      "is_middle_qi": false
+    },
+    {
+      "term_id": "DASHU",
+      "term_name_zh": "大暑",
+      "solar_longitude_degrees": 120,
+      "order": 14,
+      "is_month_boundary_jie": false,
+      "corresponding_branch": null,
+      "is_middle_qi": true
+    },
+    {
+      "term_id": "LIQIU",
+      "term_name_zh": "立秋",
+      "solar_longitude_degrees": 135,
+      "order": 15,
+      "is_month_boundary_jie": true,
+      "corresponding_branch": "申",
+      "is_middle_qi": false
+    },
+    {
+      "term_id": "CHUSHU",
+      "term_name_zh": "处暑",
+      "solar_longitude_degrees": 150,
+      "order": 16,
+      "is_month_boundary_jie": false,
+      "corresponding_branch": null,
+      "is_middle_qi": true
+    },
+    {
+      "term_id": "BAILU",
+      "term_name_zh": "白露",
+      "solar_longitude_degrees": 165,
+      "order": 17,
+      "is_month_boundary_jie": true,
+      "corresponding_branch": "酉",
+      "is_middle_qi": false
+    },
+    {
+      "term_id": "QIUFEN",
+      "term_name_zh": "秋分",
+      "solar_longitude_degrees": 180,
+      "order": 18,
+      "is_month_boundary_jie": false,
+      "corresponding_branch": null,
+      "is_middle_qi": true
+    },
+    {
+      "term_id": "HANLU",
+      "term_name_zh": "寒露",
+      "solar_longitude_degrees": 195,
+      "order": 19,
+      "is_month_boundary_jie": true,
+      "corresponding_branch": "戌",
+      "is_middle_qi": false
+    },
+    {
+      "term_id": "SHUANGJIANG",
+      "term_name_zh": "霜降",
+      "solar_longitude_degrees": 210,
+      "order": 20,
+      "is_month_boundary_jie": false,
+      "corresponding_branch": null,
+      "is_middle_qi": true
+    },
+    {
+      "term_id": "LIDONG",
+      "term_name_zh": "立冬",
+      "solar_longitude_degrees": 225,
+      "order": 21,
+      "is_month_boundary_jie": true,
+      "corresponding_branch": "亥",
+      "is_middle_qi": false
+    },
+    {
+      "term_id": "XIAOXUE",
+      "term_name_zh": "小雪",
+      "solar_longitude_degrees": 240,
+      "order": 22,
+      "is_month_boundary_jie": false,
+      "corresponding_branch": null,
+      "is_middle_qi": true
+    },
+    {
+      "term_id": "DAXUE",
+      "term_name_zh": "大雪",
+      "solar_longitude_degrees": 255,
+      "order": 23,
+      "is_month_boundary_jie": true,
+      "corresponding_branch": "子",
+      "is_middle_qi": false
+    },
+    {
+      "term_id": "DONGZHI",
+      "term_name_zh": "冬至",
+      "solar_longitude_degrees": 270,
+      "order": 24,
+      "is_month_boundary_jie": false,
+      "corresponding_branch": null,
+      "is_middle_qi": true
+    }
   ],
-  "jie_list_for_four_pillars": ["LICHUN", "JINGZHE", "QINGMING", "LIXIA", "MANGZHONG", "XIAOSHU", "LIQIU", "BAILU", "HANLU", "LIDONG", "DAXUE", "XIAOHAN"],
+  "jie_list_for_four_pillars": [
+    "LICHUN",
+    "JINGZHE",
+    "QINGMING",
+    "LIXIA",
+    "MANGZHONG",
+    "XIAOSHU",
+    "LIQIU",
+    "BAILU",
+    "HANLU",
+    "LIDONG",
+    "DAXUE",
+    "XIAOHAN"
+  ],
   "record_schema": {
     "year": "int",
     "term_id": "string (term_registry 中的 term_id)",
@@ -126,7 +331,8 @@
       "每年正好 24 条",
       "每个 term_id 每年只出现一次",
       "全部记录按 (year, order) UTC 严格递增",
-      "相邻节气间隔处于合理范围（29-32 天）",
+      "相邻 24 节气间隔处于候选粗范围 13-17 天（PROVISIONAL，见 interval_rules.all_24_terms）",
+      "相邻十二个节（is_month_boundary_jie=true）间隔处于候选粗范围 29-32 天（PROVISIONAL，见 interval_rules.twelve_jie）",
       "黄经顺序按 15 度循环",
       "十二个节全部存在",
       "立春唯一",
@@ -140,7 +346,23 @@
       "来源登记完整",
       "外部差分记录完整",
       "测试 fixture 与生产数据明确分离"
-    ]
+    ],
+    "interval_rules": {
+      "all_24_terms": {
+        "scope": "全部连续 24 节气记录（相邻两条，跨年也检查）",
+        "provisional_range_days": "13-17",
+        "status": "PROVISIONAL",
+        "finalization_note": "最终阈值必须在后续完整数据集生成后，根据全范围最小值和最大值重新冻结",
+        "basis": "24 节气相邻间隔约 15 天（黄经差 15 度），相邻节气跨月/跨年时最短可至 13 天左右、最长约 17 天（因地球公转速度变化）"
+      },
+      "twelve_jie": {
+        "scope": "仅检查 is_month_boundary_jie=true 的十二个节记录（相邻两个节）",
+        "provisional_range_days": "29-32",
+        "status": "PROVISIONAL",
+        "finalization_note": "最终阈值必须在后续完整数据集生成后，根据全范围最小值和最大值重新冻结",
+        "basis": "十二个节相邻间隔约一个朔望月变体（30 天上下），不得用于全部 24 节气检查"
+      }
+    }
   },
   "update_policy": {
     "versioning": "语义化版本；数据集变更必须 bump version 并重算 SHA-256",

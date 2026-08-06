@@ -533,16 +533,16 @@
       {
         "rule_id": "SOLAR-TERM-RUNTIME-DATASET-001",
         "rule_class": "IMPLEMENTATION_REQUIREMENT",
-        "statement": "生产节气数据方案已冻结：固定生成器（astronomy-engine 2.1.19, MIT CLEAR）生成 1969-2101 完整 24 节气静态数据集，NAOJ 2009-2027（456点）+ HKO 2024 官方差分核验全 PASS；应用运行时只读静态 JSON，不联网、不运行天文算法。",
-        "status": "PROPOSED_FREEZE",
+        "statement": "生产节气数据方案：首选生成器候选已明确（astronomy-engine 2.1.19, MIT, 固定版本），许可证主链明确（MIT CLEAR），NAOJ 官方核验 456 点（2009-2027）与打印分钟点偏移 max=70s avg=18.3s，over_60=2（已解释为分钟边界效应，NAOJ 舍入规则未公开故真实误差无法确证）；差分统计需按修正后的协议重新终审，暂不允许生成完整生产数据。",
+        "status": "REQUIRES_MORE_EVIDENCE",
         "source_ids": [
           "GEN-ASTRONOMY-ENGINE-2.1.19",
           "SRC-NAOJ-SOLAR-TERM",
           "SRC-HKO-SOLAR-TERM"
         ],
         "confidence": "HIGH",
-        "implementation_notes": "Phase 2.1.2 完成冻结：数据集协议 solar_term_runtime_dataset_spec_candidate_v0.1.json；来源登记 solar_term_source_registry_v0.1.json；差分矩阵 solar_term_validation_matrix_v0.1.json（456点全PASS，最大差60s分钟口径边界，0超120s未解释）。下一阶段 CX 按协议生成完整静态数据集并附 SHA-256。sxtwl 判定 DO_NOT_USE_AS_PRODUCTION_SOURCE，仅差分辅助。",
-        "blocking_behavior": "SOLAR_TERM_RUNTIME_DATASET_NOT_FROZEN 解除；运行时按协议阻断码执行：SOLAR_TERM_DATASET_MISSING / SOLAR_TERM_YEAR_NOT_COVERED / SOLAR_TERM_RECORD_MISSING / SOLAR_TERM_DUPLICATE / SOLAR_TERM_ORDER_INVALID / SOLAR_TERM_HASH_MISMATCH / SOLAR_TERM_SAME_MINUTE_AMBIGUOUS / SOLAR_TERM_DATASET_VERSION_UNSUPPORTED",
+        "implementation_notes": "Phase 2.1.2.1 修正：废弃含义错误的 difference_seconds，改为脚本逐条重算 actual/absolute offset 与 minute_label_delta（四舍五入口径）；NAOJ 舍入规则 UNKNOWN（官方未发布文字说明）；2010 HANLU(+70s)/2018 XIAOXUE(-69s) 已核验解释（无抄录错误、生成器复现一致），不构成否决证据；间隔完整性规则已拆分为 24 节气(13-17天 PROVISIONAL)与十二节(29-32天)；HKO 许可证 CONDITIONAL（RESEARCH_CROSSCHECK_ONLY）；等 ChatGPT 重新终审后方可决定是否进入下一阶段。",
+        "blocking_behavior": "返回 SOLAR_TERM_RUNTIME_DATASET_NOT_FROZEN；正式年柱/月柱引擎开发保持阻断；暂不允许生成完整生产数据。",
         "protocol_refs": {
           "dataset_spec": "solar_term_runtime_dataset_spec_candidate_v0.1.json",
           "source_registry": "solar_term_source_registry_v0.1.json",

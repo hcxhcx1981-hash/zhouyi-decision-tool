@@ -54,8 +54,8 @@
 - 太阳视黄经定义：视黄经（apparent ecliptic of date），节气 = 黄经 15° 整数倍
 - 章动/岁差/光行差：基于 VSOP87 行星理论 + NOVAS 算法，内建处理
 - 1970-2100 适用性：宣称 -1800 至 +2200，覆盖充分
-- 官方宣称精度：分钟级（节气约 1-2 分钟量级）
-- 实际差分结果：456 点 vs NAOJ（2009-2027）全部 PASS，最大差 60 秒（分钟口径边界），平均 11.8 秒，0 超 120 秒
+- 官方宣称精度：官方仓库声明天体位置精度约 ±1 角分；**未官方保证节气时刻误差 1-2 分钟**；节气时刻表现以实际差分为准
+- 实际差分结果（Phase 2.1.2.1 脚本逐条重算）：456 点 vs NAOJ（2009-2027），与打印分钟点偏移 max=70s avg=18.3s，over_60=2（2010 HANLU、2018 XIAOXUE，已解释为分钟边界效应），over_120=0，顺序/跨日错误=0，无未解释异常
 - 可离线运行：是
 - 星历依赖：无大型星历文件（纯算法库）
 - 生成环境可复现：pip 固定版本可复现
@@ -83,8 +83,8 @@
 |---|---|---|---|---|---|
 | astronomy-engine 2.1.19 | MIT | 允许 | 允许 | 允许（携带文本） | **CLEAR** |
 | Skyfield | MIT | 允许 | 允许 | 允许 | CLEAR（未实测） |
-| NAOJ 数据 | 官方公开 | 允许 | 允许 | 允许（标注出处） | CLEAR |
-| HKO 数据 | 官方公开 | 允许 | 允许 | 允许（标注出处） | CLEAR |
+| NAOJ 数据 | 官方单独版权材料（须合理署名，注意第三方版权例外） | CONDITIONAL（须署名） | CONDITIONAL | CONDITIONAL | 核验源（仅外部差分核验） |
+| HKO 数据 | 官方公开数据（商业/再分发需事先书面授权） | **REQUIRES_PRIOR_WRITTEN_AUTHORIZATION** | CONDITIONAL | CONDITIONAL | **CONDITIONAL**（RESEARCH_CROSSCHECK_ONLY） |
 | sxtwl 系 | BSD/MIT 不一 | CONDITIONAL | CONDITIONAL | CONDITIONAL | REJECTED（混命理） |
 | PMO 年历 | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | 未取得 |
 
@@ -102,6 +102,7 @@
 - **存储标准：UTC**，格式 `YYYY-MM-DDTHH:mm:ssZ`。禁止只保存北京时间/当地时间/公历日期。
 - **运行时比较**：出生时刻（IANA 时区 → UTC）与节气 UTC 时刻在同一 UTC 时间轴比较；节气瞬间及之后进入新年柱/新月柱。
 - **精度**：生成器秒级（source_precision=second）；权威核验源分钟级（NAOJ/HKO）。
+- **NAOJ 分钟显示舍入规则**：官方仅定义"节气为太阳黄经到达特定度数的瞬间"（用語解説），**未发布分钟显示的舍入规则文字说明**；数据模式无法唯一确定四舍五入/截断（两种假设均有反例）→ `authoritative_rounding_policy = UNKNOWN`。与"官方打印分钟点"的偏移**不等于**真实天文误差；分钟级来源不能支持精确秒级误差结论，仅用于分钟标签一致性（四舍五入口径）与粗差检查；不得把 0/60 秒标签差写成真实绝对秒差。
 - **同分钟歧义**：用户出生时刻与节气同一分钟时触发 `SOLAR_TERM_SAME_MINUTE_AMBIGUOUS`。
 - **不虚构秒数**：核验源分钟级数据不得虚构秒；生成器秒级时刻可保存，但差分按统一口径比较。
 
@@ -115,13 +116,14 @@
 
 - 生成器：astronomy-engine 2.1.19 按黄经 15° 整数倍顺序搜索 24 节气 UTC 时刻。
 - 核验源：NAOJ 官方查询工具（POST year + lst=0 → UTC 分钟级时刻），覆盖 2009-2027。
-- 每条差分记录含：year / term_id / generated_instant_utc / authoritative_instant / authoritative_timezone / authoritative_instant_utc / difference_seconds / authoritative_precision / generator_source_id / verification_source_id / pass / notes。
-- 通过规则：官方分钟级按分钟口径比较（差 ≤60 秒即同分钟，pass）；超过 60 秒必须解释；超过 120 秒且无法解释不得冻结；节气顺序错误或跨日错误立即淘汰。
+- 每条差分记录含：year / term_id / generated_instant_utc / authoritative_instant_utc / actual_offset_from_reported_minute_seconds / absolute_offset_from_reported_minute_seconds / minute_label_delta / authoritative_precision / authoritative_rounding_policy / comparison_status / pass / notes。
+- 比较口径（Phase 2.1.2.1 修正）：废弃含义错误的 `difference_seconds`（原为分钟标签差换算，非真实秒差）；真实偏移一律由脚本从两个 ISO UTC 时刻重算：`actual_offset = generated UTC - authoritative printed minute UTC`。
+- 通过规则：pass = 通过分钟级核验（无跨日错误、无顺序错误、无未解释粗差）；`over_60_seconds` 为观测指标（与打印分钟点偏移超 60 秒），超过 60 秒必须单独核验解释；超过 120 秒且无法解释不得冻结；节气顺序错误或跨日错误立即淘汰。
 - 核验源限制：NAOJ 仅覆盖 2009-2027，1969/1970/1980/2030/2050/2099/2100/2101 等年份无官方分钟级数据可批量取得，故差分矩阵以 2009-2027 全节气为主（456 点，远超 135 点下限）。
 
-## 12. 差分结果
+## 12. 差分结果（Phase 2.1.2.1 修正后，脚本逐条重算）
 
-详见 `solar_term_validation_matrix_v0.1.json`（456 条明细，含全部字段）：
+详见 `solar_term_validation_matrix_v0.1.json`（456 条明细，全部由脚本从 ISO UTC 时刻重算，不信任人工汇总）：
 
 - 研究年份：2009-2027（19 年）
 - 研究节气：全部 24 个
@@ -129,14 +131,23 @@
 - 秒级来源：0（NAOJ 为分钟级）
 - 分钟级来源：456
 - 日期级辅助：0
-- 最大绝对差值：60 秒（分钟口径边界，判定 pass）
-- 平均绝对差值：11.8 秒
-- 超过 60 秒数量：0
+- **真实最大偏移（与打印分钟点）**：70 秒（2010 HANLU）
+- **真实平均偏移**：18.3 秒
+- **超过 60 秒数量：2**（2010 HANLU +70s、2018 XIAOXUE -69s）
 - 超过 120 秒数量：0
-- 未解释异常数量：0
-- pass：456 / fail：0
+- 分钟标签一致（四舍五入口径）：366 / 456；标签差 ±1 分钟：90（秒位进位所致，分钟级核验正常现象）
+- 顺序/跨日错误：0
+- 未解释异常：0
+- pass（分钟级核验协议）：456 / fail：0
 
-另外 HKO 2024 年 24 节气独立差分最大差 42 秒（本轮早前实测，辅助佐证）。
+**两个超过 60 秒案例结论（均单独核验）**：
+
+1. **2010 HANLU**：生成 2010-10-08T09:27:10Z（复算一致），NAOJ 官方 2010-10-08T09:26:00Z（重抓一致，无抄录错误），黄经 195° 映射正确，偏移 +70s，分钟标签差 +1。判定：分钟边界效应（生成器秒位 + 官方舍入规则未公开），真实天文误差无法确证；**已解释，不构成生成器否决证据**。
+2. **2018 XIAOXUE**：生成 2018-11-22T09:00:51Z（复算一致），NAOJ 官方 2018-11-22T09:02:00Z（重抓一致，无抄录错误），黄经 240° 映射正确，偏移 -69s，分钟标签差 -1。判定：分钟边界效应（同前）；**已解释，不构成生成器否决证据**。
+
+**NAOJ 舍入规则调查结论**：官方定义节气为"太阳黄经到达特定度数的瞬间"（用語解説原文），但未发布分钟显示舍入规则文字说明；数据模式（454/456 条与单一舍入假设不完全吻合）无法唯一确定四舍五入/截断 → `authoritative_rounding_policy = UNKNOWN`，按诚实比较协议处理（见第 9 节）。
+
+HKO 未保存可复算明细，**不保留任何 HKO 量化差分结论**（曾作辅助人工查看，不计入正式矩阵）。
 
 ## 13. 生产数据 Schema
 
@@ -175,7 +186,7 @@
 
 ## 15. 完整性与哈希规则
 
-见 `solar_term_runtime_dataset_spec_candidate_v0.1.json` `integrity_policy`（18 条规则）：覆盖 1969-2101、每年 24 条、term_id 每年唯一、UTC 严格递增、间隔 29-32 天合理、黄经 15° 循环、十二节齐全、立春唯一、无重复时刻、无非法 ISO、dataset_id/version/generator 版本存在、许可证 CLEAR、SHA-256 存在、来源登记完整、外部差分完整、fixture 与生产数据分离。不得只校验 JSON 语法。
+见 `solar_term_runtime_dataset_spec_candidate_v0.1.json` `integrity_policy`（规则含）：覆盖 1969-2101、每年 24 条、term_id 每年唯一、UTC 严格递增、黄经 15° 循环、十二节齐全、立春唯一、无重复时刻、无非法 ISO、dataset_id/version/generator 版本存在、许可证 CLEAR、SHA-256 存在、来源登记完整、外部差分完整、fixture 与生产数据分离。**间隔规则已拆分（Phase 2.1.2.1）**：相邻 24 节气候选粗范围 13-17 天（PROVISIONAL）；相邻十二个节（is_month_boundary_jie=true）候选粗范围 29-32 天（PROVISIONAL）；两者最终阈值均须在完整数据集生成后按全范围最小/最大值重新冻结。不得只校验 JSON 语法。
 
 ## 16. 更新和版本策略
 
@@ -187,35 +198,37 @@
 ## 17. 风险与限制
 
 - 权威核验仅覆盖 2009-2027（官方可得范围）；1969-2008 与 2028-2101 无官方分钟级数据可差分，依赖生成器算法一致性外推（VSOP87 在该范围的长期精度有理论保障，但无法与官方数据逐点核验）。
-- NAOJ/HKO 为分钟级，秒级仅生成器自证；同分钟边界存在理论歧义，已用阻断码兜底。
+- NAOJ 为分钟级且舍入规则未公开（UNKNOWN），秒级仅生成器自证；与打印分钟点的偏移不等于真实天文误差；同分钟边界存在理论歧义，已用阻断码兜底。
+- 2010 HANLU、2018 XIAOXUE 两案例偏移超 60 秒（与打印分钟点），已解释为分钟边界效应；若未来取得 NAOJ 舍入规则文字说明，应复核这两个案例的真实误差。
 - USNO 本轮不可用；若未来可用可作为日期级辅助核验。
 - 若未来官方数据覆盖扩大，应补充差分并 bump 数据集版本。
 
-## 18. 唯一推荐方案
+## 18. 唯一推荐方案（Phase 2.1.2.1 修正后：候选待终审）
 
-**`PINNED_GENERATOR_PLUS_OFFICIAL_CROSSCHECK`**
+**首选生成器候选**：`PINNED_GENERATOR_PLUS_OFFICIAL_CROSSCHECK`
 
-- 生成器：astronomy-engine 2.1.19（MIT，CLEAR，固定版本）
-- 官方核验：NAOJ 2009-2027（456 点，全 PASS）+ HKO 2024（24 点辅助）
-- 覆盖：1969-2101 完整 24 节气
+- 生成器：astronomy-engine 2.1.19（MIT，CLEAR，固定版本）——首选生成器候选明确
+- 官方核验：NAOJ 2009-2027（456 点，脚本重算：与打印分钟点偏移 max=70s avg=18.3s，over_60=2 已解释，over_120=0，顺序/跨日错误 0）；HKO 仅辅助人工查看、无量化结论
+- 覆盖：1969-2101 完整 24 节气（方案级确定）
 - 时间标准：UTC（秒级存储）
 - 派生静态 JSON：允许提交项目（MIT 允许派生数据）
 - 应用运行时：只读静态 JSON，不联网、不计算
 
 否决记录：方案 A（无全范围可批量权威源）、方案 C（sxtwl 混命理规则，DO_NOT_USE_AS_PRODUCTION_SOURCE）。
 
+**当前裁决状态（Phase 2.1.2.1 修正后）**：首选生成器候选明确、许可证主链明确（MIT CLEAR）；但差分统计需按修正后的诚实协议重新终审，`SOLAR-TERM-RUNTIME-DATASET-001` 状态回退为 `REQUIRES_MORE_EVIDENCE`，**暂不允许生成完整生产数据**。
+
 ## 19. 是否允许进入下一阶段
 
-**允许。** 所有停止条件均未触发：许可证 CLEAR、固定版本明确、覆盖范围明确、UTC 协议明确、外部差分达标（456 点全 PASS）、无未解释异常、派生静态 JSON 允许提交、运行时不联网。
-
-下一阶段（CX）：按本协议用 astronomy-engine 2.1.19 生成 1969-2101 完整静态节气数据集，随包附 SHA-256。
+**暂不允许。** 本轮为纠错轮：差分统计口径已修正（真实偏移 max=70s avg=18.3s，over_60=2 已解释，NAOJ 舍入规则 UNKNOWN），许可证已纠正（HKO CONDITIONAL / NAOJ 须署名），规则状态回退 `REQUIRES_MORE_EVIDENCE`。等待 ChatGPT 对修正后的统计、协议与许可证重新终审；终审通过后方可决定是否进入下一阶段生成完整静态数据集。
 
 ## 20. 尚未解决事项
 
 1. 1969-2008、2028-2101 年份缺乏官方分钟级数据逐点核验（保持外推，列为已知限制）。
-2. USNO 二分二至数据服务恢复后可作为日期级辅助核验补充。
-3. 完整生产数据集由下一阶段 CX 生成并差分复核后提交。
-4. 应用侧数据集加载与阻断逻辑属应用代码，本轮未实现（Phase 2.2 范围）。
+2. NAOJ 分钟显示舍入规则未公开（UNKNOWN）：已按诚实比较协议处理（标签一致性+粗差检查）；若未来取得官方文字说明，应复核 2010 HANLU、2018 XIAOXUE 两案例并可能重新冻结口径。
+3. USNO 二分二至数据服务恢复后可作为日期级辅助核验补充。
+4. 完整生产数据集**暂不允许生成**，待 ChatGPT 重新终审。
+5. 应用侧数据集加载与阻断逻辑属应用代码，本轮未实现（Phase 2.2 范围）。
 
 ---
 
@@ -223,9 +236,9 @@
 
 | source_id | 名称 | 角色 |
 |---|---|---|
-| GEN-ASTRONOMY-ENGINE-2.1.19 | Astronomy Engine 2.1.19 | 推荐生成器（MIT, CLEAR） |
-| SRC-NAOJ-SOLAR-TERM | 国立天文台 2009-2027 | 核心官方核验源 |
-| SRC-HKO-SOLAR-TERM | 香港天文台 2024 | 辅助官方核验源 |
+| GEN-ASTRONOMY-ENGINE-2.1.19 | Astronomy Engine 2.1.19 | 首选生成器候选（MIT, CLEAR） |
+| SRC-NAOJ-SOLAR-TERM | 国立天文台 2009-2027 | 核心官方核验源（仅外部差分核验；须署名） |
+| SRC-HKO-SOLAR-TERM | 香港天文台 2024 | 辅助人工查看（CONDITIONAL, RESEARCH_CROSSCHECK_ONLY，无量化结论） |
 | SRC-PMO-ZIJINSHAN | 紫金山天文台 | 未取得 |
 | SRC-USNO-EARTHSEASONS | USNO 二分二至 | 未取得（页面 500） |
 | SRC-SKYFIELD-DE421 | Skyfield 备选 | 备份未实测 |
