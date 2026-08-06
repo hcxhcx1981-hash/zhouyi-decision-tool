@@ -1,0 +1,160 @@
+{
+  "dataset_id": "BAZI_SOLAR_TERMS_RUNTIME_CANDIDATE_V0_1",
+  "version": "0.1.0",
+  "status": "RESEARCH_CANDIDATE",
+  "coverage": {
+    "start_year": 1969,
+    "end_year": 2101,
+    "start_instant_utc": "1969-01-01T00:00:00Z",
+    "end_instant_utc": "2101-12-31T23:59:59Z",
+    "buffer_reason": "产品出生日期下限 1970-01-01，1970 年初月柱判断需 1969 年末节气（小寒/大寒/立春）；算法验证范围至 2100 年，2100 年末边界需 2101 年相邻节气（小雪/大雪/冬至）"
+  },
+  "time_standard": "UTC",
+  "storage_format": "YYYY-MM-DDTHH:mm:ssZ",
+  "source_strategy": "PINNED_GENERATOR_PLUS_OFFICIAL_CROSSCHECK",
+  "generator": {
+    "source_id": "GEN-ASTRONOMY-ENGINE-2.1.19",
+    "name": "Astronomy Engine (Python)",
+    "version": "2.1.19",
+    "license": "MIT (CLEAR)",
+    "repository": "https://github.com/cosinekitty/astronomy",
+    "solar_longitude_definition": "太阳视黄经（apparent true ecliptic of date），节气=黄经 0/15/30/.../345 之十五度整数倍",
+    "delta_t_handling": "内建 ΔT 模型",
+    "offline": true,
+    "generation_env_reproducible": "pip install astronomy-engine==2.1.19 可复现",
+    "note": "应用运行时不调用生成器；生成器仅在开发阶段生成静态数据"
+  },
+  "verification_sources": [
+    {
+      "source_id": "SRC-NAOJ-SOLAR-TERM",
+      "role": "core_official_crosscheck",
+      "coverage": "2009-2027",
+      "precision": "minute",
+      "diff_points": 456
+    },
+    {
+      "source_id": "SRC-HKO-SOLAR-TERM",
+      "role": "auxiliary_official_crosscheck",
+      "coverage": "2024",
+      "precision": "minute",
+      "diff_points": 24
+    }
+  ],
+  "license": {
+    "license_name": "MIT License（生成器）",
+    "license_url": "https://github.com/cosinekitty/astronomy/blob/master/LICENSE",
+    "commercial_use": "CLEAR",
+    "derivative_data_allowed": "CLEAR（允许生成并分发派生静态 JSON）",
+    "redistribution_allowed": "CLEAR（携带许可证文本）",
+    "attribution_required": "建议保留版权声明",
+    "derived_json_committable": true,
+    "legal_risk_level": "LOW"
+  },
+  "precision": {
+    "stored_precision": "second",
+    "source_precision": "second（生成器秒级时刻）",
+    "verification_precision": "minute（NAOJ/HKO 分钟级）",
+    "same_minute_policy": "用户出生时刻与节气落在同一分钟时，触发 SOLAR_TERM_SAME_MINUTE_AMBIGUOUS 阻断"
+  },
+  "term_registry": [
+    { "term_id": "XIAOHAN", "term_name_zh": "小寒", "solar_longitude_degrees": 285, "order": 1, "is_month_boundary_jie": true, "corresponding_branch": "丑", "is_middle_qi": false },
+    { "term_id": "DAHAN", "term_name_zh": "大寒", "solar_longitude_degrees": 300, "order": 2, "is_month_boundary_jie": false, "corresponding_branch": null, "is_middle_qi": true },
+    { "term_id": "LICHUN", "term_name_zh": "立春", "solar_longitude_degrees": 315, "order": 3, "is_month_boundary_jie": true, "corresponding_branch": "寅", "is_middle_qi": false },
+    { "term_id": "YUSHUI", "term_name_zh": "雨水", "solar_longitude_degrees": 330, "order": 4, "is_month_boundary_jie": false, "corresponding_branch": null, "is_middle_qi": true },
+    { "term_id": "JINGZHE", "term_name_zh": "惊蛰", "solar_longitude_degrees": 345, "order": 5, "is_month_boundary_jie": true, "corresponding_branch": "卯", "is_middle_qi": false },
+    { "term_id": "CHUNFEN", "term_name_zh": "春分", "solar_longitude_degrees": 0, "order": 6, "is_month_boundary_jie": false, "corresponding_branch": null, "is_middle_qi": true },
+    { "term_id": "QINGMING", "term_name_zh": "清明", "solar_longitude_degrees": 15, "order": 7, "is_month_boundary_jie": true, "corresponding_branch": "辰", "is_middle_qi": false },
+    { "term_id": "GUYU", "term_name_zh": "谷雨", "solar_longitude_degrees": 30, "order": 8, "is_month_boundary_jie": false, "corresponding_branch": null, "is_middle_qi": true },
+    { "term_id": "LIXIA", "term_name_zh": "立夏", "solar_longitude_degrees": 45, "order": 9, "is_month_boundary_jie": true, "corresponding_branch": "巳", "is_middle_qi": false },
+    { "term_id": "XIAOMAN", "term_name_zh": "小满", "solar_longitude_degrees": 60, "order": 10, "is_month_boundary_jie": false, "corresponding_branch": null, "is_middle_qi": true },
+    { "term_id": "MANGZHONG", "term_name_zh": "芒种", "solar_longitude_degrees": 75, "order": 11, "is_month_boundary_jie": true, "corresponding_branch": "午", "is_middle_qi": false },
+    { "term_id": "XIAZHI", "term_name_zh": "夏至", "solar_longitude_degrees": 90, "order": 12, "is_month_boundary_jie": false, "corresponding_branch": null, "is_middle_qi": true },
+    { "term_id": "XIAOSHU", "term_name_zh": "小暑", "solar_longitude_degrees": 105, "order": 13, "is_month_boundary_jie": true, "corresponding_branch": "未", "is_middle_qi": false },
+    { "term_id": "DASHU", "term_name_zh": "大暑", "solar_longitude_degrees": 120, "order": 14, "is_month_boundary_jie": false, "corresponding_branch": null, "is_middle_qi": true },
+    { "term_id": "LIQIU", "term_name_zh": "立秋", "solar_longitude_degrees": 135, "order": 15, "is_month_boundary_jie": true, "corresponding_branch": "申", "is_middle_qi": false },
+    { "term_id": "CHUSHU", "term_name_zh": "处暑", "solar_longitude_degrees": 150, "order": 16, "is_month_boundary_jie": false, "corresponding_branch": null, "is_middle_qi": true },
+    { "term_id": "BAILU", "term_name_zh": "白露", "solar_longitude_degrees": 165, "order": 17, "is_month_boundary_jie": true, "corresponding_branch": "酉", "is_middle_qi": false },
+    { "term_id": "QIUFEN", "term_name_zh": "秋分", "solar_longitude_degrees": 180, "order": 18, "is_month_boundary_jie": false, "corresponding_branch": null, "is_middle_qi": true },
+    { "term_id": "HANLU", "term_name_zh": "寒露", "solar_longitude_degrees": 195, "order": 19, "is_month_boundary_jie": true, "corresponding_branch": "戌", "is_middle_qi": false },
+    { "term_id": "SHUANGJIANG", "term_name_zh": "霜降", "solar_longitude_degrees": 210, "order": 20, "is_month_boundary_jie": false, "corresponding_branch": null, "is_middle_qi": true },
+    { "term_id": "LIDONG", "term_name_zh": "立冬", "solar_longitude_degrees": 225, "order": 21, "is_month_boundary_jie": true, "corresponding_branch": "亥", "is_middle_qi": false },
+    { "term_id": "XIAOXUE", "term_name_zh": "小雪", "solar_longitude_degrees": 240, "order": 22, "is_month_boundary_jie": false, "corresponding_branch": null, "is_middle_qi": true },
+    { "term_id": "DAXUE", "term_name_zh": "大雪", "solar_longitude_degrees": 255, "order": 23, "is_month_boundary_jie": true, "corresponding_branch": "子", "is_middle_qi": false },
+    { "term_id": "DONGZHI", "term_name_zh": "冬至", "solar_longitude_degrees": 270, "order": 24, "is_month_boundary_jie": false, "corresponding_branch": null, "is_middle_qi": true }
+  ],
+  "jie_list_for_four_pillars": ["LICHUN", "JINGZHE", "QINGMING", "LIXIA", "MANGZHONG", "XIAOSHU", "LIQIU", "BAILU", "HANLU", "LIDONG", "DAXUE", "XIAOHAN"],
+  "record_schema": {
+    "year": "int",
+    "term_id": "string (term_registry 中的 term_id)",
+    "term_name_zh": "string",
+    "solar_longitude_degrees": "int (0/15/30/.../345)",
+    "instant_utc": "string YYYY-MM-DDTHH:mm:ssZ",
+    "generator_source_id": "string",
+    "generator_version": "string",
+    "verification_source_ids": "string[]",
+    "source_precision": "second | minute | day",
+    "manually_verified": "bool"
+  },
+  "runtime_policy": {
+    "network_required": false,
+    "astronomy_algorithm_at_runtime": false,
+    "reads_versioned_static_json_only": true,
+    "block_on_missing_year": true,
+    "block_on_missing_term": true,
+    "block_on_sha256_mismatch": true,
+    "block_on_duplicate_term_id": true,
+    "block_on_order_invalid": true,
+    "block_on_same_minute_ambiguous": true,
+    "term_instant_rule": "节气瞬间及之后进入新年柱/新月柱（UTC 时间轴比较）",
+    "dataset_version_in_audit_result": true,
+    "generator_version_in_audit_result": true,
+    "blocking_codes": [
+      "SOLAR_TERM_DATASET_MISSING",
+      "SOLAR_TERM_YEAR_NOT_COVERED",
+      "SOLAR_TERM_RECORD_MISSING",
+      "SOLAR_TERM_DUPLICATE",
+      "SOLAR_TERM_ORDER_INVALID",
+      "SOLAR_TERM_HASH_MISMATCH",
+      "SOLAR_TERM_SAME_MINUTE_AMBIGUOUS",
+      "SOLAR_TERM_DATASET_VERSION_UNSUPPORTED"
+    ]
+  },
+  "integrity_policy": {
+    "sha256": "数据集提交时计算并随包发布",
+    "rules": [
+      "覆盖 1969-2101",
+      "每年正好 24 条",
+      "每个 term_id 每年只出现一次",
+      "全部记录按 (year, order) UTC 严格递增",
+      "相邻节气间隔处于合理范围（29-32 天）",
+      "黄经顺序按 15 度循环",
+      "十二个节全部存在",
+      "立春唯一",
+      "无重复 UTC 时刻",
+      "无非法 ISO 时间",
+      "dataset_id 存在",
+      "version 存在",
+      "generator 版本存在",
+      "许可证状态 CLEAR",
+      "SHA-256 存在",
+      "来源登记完整",
+      "外部差分记录完整",
+      "测试 fixture 与生产数据明确分离"
+    ]
+  },
+  "update_policy": {
+    "versioning": "语义化版本；数据集变更必须 bump version 并重算 SHA-256",
+    "regeneration": "仅当生成器版本升级或官方核验发现系统性偏差时重新生成",
+    "audit_trail": "每次发布记录生成器版本、核验源、差分摘要、生成时间",
+    "runtime_backward_compat": "应用必须显式支持数据集版本，否则阻断（SOLAR_TERM_DATASET_VERSION_UNSUPPORTED）"
+  },
+  "blocking_conditions": [
+    "SOLAR_TERM_RUNTIME_DATASET_NOT_FROZEN",
+    "若官方核验发现未解释 >120 秒差异：禁止冻结",
+    "若出现节气顺序错误或跨日错误：禁止冻结",
+    "若许可证状态非 CLEAR：禁止作为唯一生成器",
+    "若运行时需联网或运行天文算法：禁止冻结"
+  ],
+  "fixture_separation_note": "solar_term_test_fixture_v0.1.json 仅用于回归测试，不升级为生产数据；生产数据由生成器全新生成并差分核验",
+  "production_dataset_generation": "本轮不生成 1969-2101 完整生产数据；留待下一阶段由 CX 按本协议生成"
+}
