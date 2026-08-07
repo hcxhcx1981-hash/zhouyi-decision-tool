@@ -1,0 +1,886 @@
+{
+  "protocol_id": "BAZI_CALENDAR_RULES_V0_1_1",
+  "version": "0.1.1",
+  "status": "FROZEN",
+  "frozen_from_commit": "6ab8cbc",
+  "frozen_at": "2026-08-07T03:49:11Z",
+  "runtime_dataset_id": "BAZI_SOLAR_TERMS_1969_2101_V0_1_0",
+  "decision_authority": "ChatGPT最终冻结补丁裁决（Phase 2.1.3.1）",
+  "scope": {
+    "included": [
+      "输入民用时间标准化",
+      "时区和夏令时",
+      "节气时刻",
+      "年柱、月柱、日柱、时柱",
+      "未知时辰",
+      "阻断条件"
+    ],
+    "excluded": [
+      "五行旺衰",
+      "身强身弱",
+      "格局",
+      "喜用神",
+      "十神解释",
+      "神煞",
+      "大运",
+      "流年吉凶",
+      "性格事业财运婚姻健康",
+      "命理断语",
+      "AI解释",
+      "六爻纳甲"
+    ],
+    "algorithm_validation_date_range": {
+      "start": "1970-01-01",
+      "end": "2100-12-31",
+      "reason": "仅用于节气、时区、连续日和世纪年算法验证；不代表产品允许输入未来出生日期。"
+    },
+    "product_birth_input_range": {
+      "start": "1970-01-01",
+      "end": "CURRENT_LOCAL_CIVIL_DATE",
+      "reason": "最晚日期必须按当前运行环境或用户选择IANA时区的当地民用日期动态求值。"
+    }
+  },
+  "input_contract": {
+    "required_fields": [
+      "calendar_type",
+      "local_date",
+      "time_known",
+      "location_name",
+      "iana_timezone"
+    ],
+    "conditional_fields": {
+      "local_time": "time_known=true 时必填，精确到分钟",
+      "fold_choice": "当地时间在DST回拨重叠区间时必填",
+      "location_id": "使用地点选择器时必填，并与iana_timezone由同一静态登记表产生；无location_id时只允许按模式显式选择时区",
+      "leap_month": "未来开放农历输入时必填；V0.1不接收"
+    },
+    "rules": [
+      {
+        "rule_id": "INPUT-CIVIL-TIME-001",
+        "rule_class": "CIVIL_TIME_FACT",
+        "statement": "输入日期时间表示出生地当时钟表记录的当地民用时间，不是UTC，也不得默认重解释为北京时间。",
+        "status": "FROZEN",
+        "source_ids": [
+          "SRC-IANA-TZ-LINK",
+          "SRC-IANA-TZ-THEORY"
+        ],
+        "confidence": "HIGH",
+        "implementation_notes": "保留原始local_date/local_time和iana_timezone，再解析为唯一时间点；禁止只存固定UTC偏移。",
+        "blocking_behavior": "缺少时区或地点时返回 TIMEZONE_OR_LOCATION_REQUIRED。"
+      },
+      {
+        "rule_id": "INPUT-UNKNOWN-TIME-002",
+        "rule_class": "PRODUCT_SAFETY_POLICY",
+        "statement": "用户选择未知时辰时不得填充12:00、午时或其他替代时间。",
+        "status": "FROZEN",
+        "source_ids": [
+          "SRC-SANMING-TONGHUI-TIME",
+          "SRC-YTL-SEXAGENARY"
+        ],
+        "confidence": "HIGH",
+        "implementation_notes": "time_known=false 时 local_time=null，时柱=null。",
+        "blocking_behavior": "不阻断年、月、日三柱候选输出；阻断一切依赖时柱的后续能力。"
+      }
+    ],
+    "minute_interval_semantics": {
+      "input_precision": "MINUTE",
+      "local_interval": "[HH:mm:00, next local minute)",
+      "comparison_axis": "由标准化时区适配器转换为同一UTC时间轴后，与正式instant_utc比较",
+      "blocking_rule": "若月界节instant_utc落入出生分钟半开区间，返回SOLAR_TERM_SAME_MINUTE_AMBIGUOUS",
+      "non_rounding_rule": "不得把正式instant_utc四舍五入、向上取整或改写为历书展示分钟后再比较"
+    }
+  },
+  "timezone_policy": {
+    "rules": [
+      {
+        "rule_id": "TZ-IANA-001",
+        "rule_class": "CIVIL_TIME_FACT",
+        "statement": "所有已知时辰必须绑定IANA区域时区标识，并使用版本化tzdb解析历史偏移、夏令时缺口和重叠。",
+        "status": "FROZEN",
+        "source_ids": [
+          "SRC-IANA-TZ-LINK",
+          "SRC-IANA-TZ-THEORY"
+        ],
+        "confidence": "HIGH",
+        "implementation_notes": "示例使用Asia/Shanghai而非CST或+08:00；保存tzdb版本供复算。",
+        "blocking_behavior": "无有效IANA时区则 TIMEZONE_REQUIRED；不存在的当地时间则 NONEXISTENT_LOCAL_TIME；重叠时间未选fold则 AMBIGUOUS_LOCAL_TIME。"
+      },
+      {
+        "rule_id": "TZ-MAINLAND-002",
+        "rule_class": "PRODUCT_SAFETY_POLICY",
+        "statement": "输入协议由地点选择器从同一静态登记表产生location_id和iana_timezone；自由文本地点只用于展示，不参与时区猜测或校验。无location_id时，中国大陆模式可显式选择Asia/Shanghai，海外模式必须显式选择IANA时区。",
+        "status": "FROZEN",
+        "source_ids": [
+          "SRC-PMO-GB33661-EXPLANATION",
+          "SRC-IANA-TZ-THEORY"
+        ],
+        "confidence": "HIGH",
+        "implementation_notes": "本轮只冻结协议，不建立全球地点数据库；登记表是唯一可机器执行的location_id与iana_timezone映射。",
+        "blocking_behavior": "location_id与静态登记表中的iana_timezone不一致时 LOCATION_TIMEZONE_MISMATCH；不得基于城市自由文本触发。"
+      },
+      {
+        "rule_id": "TZ-HISTORICAL-DST-003",
+        "rule_class": "CIVIL_TIME_FACT",
+        "statement": "历史夏令时必须由固定版本tzdb解析，不能用当前UTC偏移反推。",
+        "status": "FROZEN",
+        "source_ids": [
+          "SRC-IANA-TZ-LINK",
+          "SRC-IANA-TZ-THEORY"
+        ],
+        "confidence": "HIGH",
+        "implementation_notes": "对DST跳跃与回拨分别检测gap和fold；1970年前暂不支持。",
+        "blocking_behavior": "gap阻断；fold要求用户明确较早或较晚偏移。"
+      }
+    ]
+  },
+  "calendar_policy": {
+    "rules": [
+      {
+        "rule_id": "CAL-GREGORIAN-ONLY-001",
+        "rule_class": "PRODUCT_SAFETY_POLICY",
+        "statement": "V0.1只开放公历输入；农历及闰月输入延后。",
+        "status": "FROZEN",
+        "source_ids": [
+          "SRC-SAMR-GB33661",
+          "SRC-PMO-GB33661-EXPLANATION",
+          "SRC-HKO-GANZHI-YEAR"
+        ],
+        "confidence": "HIGH",
+        "implementation_notes": "保留calendar_type字段，但仅接受GREGORIAN；不得把农历年直接当干支年。",
+        "blocking_behavior": "calendar_type=LUNAR 返回 LUNAR_INPUT_NOT_SUPPORTED_V0_1。"
+      },
+      {
+        "rule_id": "CAL-ALGORITHM-RANGE-002A",
+        "rule_class": "IMPLEMENTATION_REQUIREMENT",
+        "statement": "算法目标验证范围为1970-01-01至2100-12-31，用于节气、时区、连续日和世纪非闰年测试，不代表产品允许输入未来出生日期。",
+        "status": "FROZEN",
+        "source_ids": [
+          "SRC-IANA-TZ-THEORY",
+          "SRC-HKO-GANZHI-YEAR",
+          "SRC-USNO-JD-FORMULA"
+        ],
+        "confidence": "MEDIUM",
+        "implementation_notes": "case_scope=ALGORITHM_VALIDATION的案例可晚于当前日期，但不得晚于2100-12-31。",
+        "blocking_behavior": "算法验证日期超出范围时返回 DATE_OUT_OF_ALGORITHM_RANGE。"
+      },
+      {
+        "rule_id": "CAL-BIRTH-INPUT-RANGE-002B",
+        "rule_class": "PRODUCT_SAFETY_POLICY",
+        "statement": "产品出生输入最早允许1970-01-01，最晚允许用户所选IANA时区的当前民用日期。",
+        "status": "FROZEN",
+        "source_ids": [
+          "SRC-IANA-TZ-THEORY",
+          "SRC-USNO-JD-FORMULA"
+        ],
+        "confidence": "HIGH",
+        "implementation_notes": "今天必须运行时动态求值；不得使用固定构建日期，也不得用北京时间代替所有用户时区。",
+        "blocking_behavior": "早于下限返回 DATE_OUT_OF_SUPPORTED_RANGE；晚于当地今天返回 FUTURE_BIRTH_DATE_NOT_ALLOWED。"
+      },
+      {
+        "rule_id": "CAL-JIEQI-INSTANT-003",
+        "rule_class": "ASTRONOMICAL_FACT",
+        "statement": "节气是太阳地心视黄经达到15度整数倍的时刻，年柱/月柱边界比较必须使用精确时间点而非仅比较日期。",
+        "status": "FROZEN",
+        "source_ids": [
+          "SRC-PMO-GB33661-EXPLANATION",
+          "SRC-PMO-ALMANAC-2024",
+          "SRC-REINGOLD-CALENDARS"
+        ],
+        "confidence": "HIGH",
+        "implementation_notes": "节气源数据必须带时间尺度和时区；先把出生地民用时间与节气时刻转换到同一时间轴再比较。",
+        "blocking_behavior": "节气数据缺失或版本不明时 SOLAR_TERM_DATA_UNAVAILABLE。"
+      },
+      {
+        "rule_id": "CAL-TRUE-SOLAR-004",
+        "rule_class": "PRODUCT_TRADITION_POLICY",
+        "statement": "真太阳时在V0.1暂不支持，不参与四柱计算。",
+        "status": "OUT_OF_SCOPE_V0_1",
+        "source_ids": [
+          "SRC-NOAA-SOLAR-EQUATIONS",
+          "SRC-HKO-ALMANAC-2026",
+          "SRC-SXTWL"
+        ],
+        "confidence": "HIGH",
+        "implementation_notes": "天文上可计算，但是否用于四柱属于流派选择；经度校正与均时差必须分开，不能只做经度换算后称真太阳时。",
+        "blocking_behavior": "用户要求真太阳时时返回 TRUE_SOLAR_TIME_NOT_SUPPORTED_V0_1。"
+      },
+      {
+        "rule_id": "CAL-MINUTE-INTERVAL-005",
+        "rule_class": "IMPLEMENTATION_REQUIREMENT",
+        "statement": "当出生时间只精确到分钟时，HH:mm表示当地民用时间半开区间[HH:mm:00,下一分钟)；月界节instant_utc落入该区间即为同分钟歧义并阻断。",
+        "status": "FROZEN",
+        "source_ids": [
+          "SRC-HKO-SOLAR-TERM-DATA",
+          "SRC-PMO-GB33661-EXPLANATION"
+        ],
+        "confidence": "HIGH",
+        "implementation_notes": "先由版本化时区适配器把当地分钟区间转换到UTC，再直接与V0.1.0正式节气instant_utc比较；不得按历书展示分钟取整，也不得读取测试案例决定边界。",
+        "blocking_behavior": "区间包含立春或十二个月界节令instant_utc时返回SOLAR_TERM_SAME_MINUTE_AMBIGUOUS。"
+      }
+    ]
+  },
+  "year_pillar_policy": {
+    "rules": [
+      {
+        "rule_id": "YEAR-LICHUN-001",
+        "rule_class": "PRODUCT_TRADITION_POLICY",
+        "statement": "四柱年柱候选以出生地民用时刻对应的立春节气瞬间为换年边界。",
+        "status": "FROZEN",
+        "source_ids": [
+          "SRC-HKO-GANZHI-YEAR",
+          "SRC-SANMING-TONGHUI-TIME",
+          "SRC-PMO-GB33661-EXPLANATION"
+        ],
+        "confidence": "MEDIUM",
+        "implementation_notes": "明确标注这是四柱产品规则，不是官方农历干支年规则；立春前使用上一干支年，立春时刻起使用新干支年。",
+        "blocking_behavior": "立春精确时刻不可得时 YEAR_BOUNDARY_UNAVAILABLE。"
+      },
+      {
+        "rule_id": "YEAR-ZODIAC-SEPARATION-002",
+        "rule_class": "PRODUCT_TRADITION_POLICY",
+        "statement": "若未来显示官方农历生肖或农历干支年，必须按正月初一换年，并与立春年柱使用不同字段和标签。",
+        "status": "FROZEN",
+        "source_ids": [
+          "SRC-PMO-GB33661-EXPLANATION",
+          "SRC-HKO-GANZHI-YEAR"
+        ],
+        "confidence": "HIGH",
+        "implementation_notes": "year_pillar_ganzhi与lunar_year_ganzhi/zodiac_year不得共用边界函数。",
+        "blocking_behavior": "两个口径未标注时禁止显示生肖，返回 YEAR_SYSTEM_LABEL_REQUIRED。"
+      },
+      {
+        "rule_id": "YEAR-CYCLE-003",
+        "rule_class": "TRADITIONAL_CALENDAR_RULE",
+        "statement": "年干支按六十干支周循环；候选实现以1984公历年对应甲子序号作现代计算锚点，再由立春决定使用当前或上一序号。",
+        "status": "FROZEN",
+        "source_ids": [
+          "SRC-PMO-GB33661-EXPLANATION",
+          "SRC-HKO-STEMS-BRANCHES"
+        ],
+        "confidence": "HIGH",
+        "implementation_notes": "索引使用数学floor-mod，避免负数取模差异；V0.1范围内无需处理公元前年。",
+        "blocking_behavior": "锚点或干支表版本不一致时 INTERNAL_RULE_VERSION_MISMATCH。"
+      }
+    ]
+  },
+  "month_pillar_policy": {
+    "month_branch_map": [
+      {
+        "from_jie": "立春",
+        "to_before_jie": "惊蛰",
+        "branch": "寅"
+      },
+      {
+        "from_jie": "惊蛰",
+        "to_before_jie": "清明",
+        "branch": "卯"
+      },
+      {
+        "from_jie": "清明",
+        "to_before_jie": "立夏",
+        "branch": "辰"
+      },
+      {
+        "from_jie": "立夏",
+        "to_before_jie": "芒种",
+        "branch": "巳"
+      },
+      {
+        "from_jie": "芒种",
+        "to_before_jie": "小暑",
+        "branch": "午"
+      },
+      {
+        "from_jie": "小暑",
+        "to_before_jie": "立秋",
+        "branch": "未"
+      },
+      {
+        "from_jie": "立秋",
+        "to_before_jie": "白露",
+        "branch": "申"
+      },
+      {
+        "from_jie": "白露",
+        "to_before_jie": "寒露",
+        "branch": "酉"
+      },
+      {
+        "from_jie": "寒露",
+        "to_before_jie": "立冬",
+        "branch": "戌"
+      },
+      {
+        "from_jie": "立冬",
+        "to_before_jie": "大雪",
+        "branch": "亥"
+      },
+      {
+        "from_jie": "大雪",
+        "to_before_jie": "小寒",
+        "branch": "子"
+      },
+      {
+        "from_jie": "小寒",
+        "to_before_jie": "立春",
+        "branch": "丑"
+      }
+    ],
+    "yin_month_stem_map": {
+      "甲己": "丙",
+      "乙庚": "戊",
+      "丙辛": "庚",
+      "丁壬": "壬",
+      "戊癸": "甲"
+    },
+    "rules": [
+      {
+        "rule_id": "MONTH-JIE-001",
+        "rule_class": "PRODUCT_TRADITION_POLICY",
+        "statement": "月柱地支以十二个节令的精确时刻切换，不按公历月、农历月或中气切换。",
+        "status": "FROZEN",
+        "source_ids": [
+          "SRC-YTL-SEXAGENARY",
+          "SRC-PMO-GB33661-EXPLANATION",
+          "SRC-PMO-ALMANAC-2024",
+          "SRC-SANMING-TONGHUI-TIME"
+        ],
+        "confidence": "MEDIUM",
+        "implementation_notes": "使用month_branch_map；节令瞬间归新月柱。",
+        "blocking_behavior": "边界节令缺失时 MONTH_BOUNDARY_UNAVAILABLE。"
+      },
+      {
+        "rule_id": "MONTH-FIVE-TIGER-002",
+        "rule_class": "TRADITIONAL_CALENDAR_RULE",
+        "statement": "月干由四柱年干按五虎遁确定寅月起干，随后按天干顺序逐月推进。",
+        "status": "FROZEN",
+        "source_ids": [
+          "SRC-GUJIN-TUSHU-FIVE-TIGER",
+          "SRC-SANMING-TONGHUI-TIME",
+          "SRC-YTL-SEXAGENARY"
+        ],
+        "confidence": "HIGH",
+        "implementation_notes": "先确定立春口径的年干，再应用yin_month_stem_map；不得使用官方农历年干替代。",
+        "blocking_behavior": "年柱未确定时 MONTH_STEM_REQUIRES_YEAR_STEM。"
+      }
+    ]
+  },
+  "day_pillar_policy": {
+    "sexagenary_reference": {
+      "civil_date": "1949-10-01",
+      "timezone": "Asia/Shanghai",
+      "day_ganzhi": "甲子",
+      "source_id": "SRC-PMO-GB33661-EXPLANATION"
+    },
+    "rules": [
+      {
+        "rule_id": "DAY-BASELINE-001",
+        "rule_class": "TRADITIONAL_CALENDAR_RULE",
+        "statement": "以北京时间公历1949-10-01农历日为甲子日，按连续民用日差对60取模得到候选日干支。",
+        "status": "FROZEN",
+        "source_ids": [
+          "SRC-PMO-GB33661-EXPLANATION",
+          "SRC-HKO-STEMS-BRANCHES"
+        ],
+        "confidence": "HIGH",
+        "implementation_notes": "目标地点先解析为当地民用日期；floorMod(day_difference,60)，甲子索引为0。",
+        "blocking_behavior": "日期无效、时区未定或两套日序算法不一致时阻断。"
+      },
+      {
+        "rule_id": "DAY-CONTINUOUS-COUNT-002",
+        "rule_class": "IMPLEMENTATION_REQUIREMENT",
+        "statement": "连续日差可由经验证的格里历/JD算法计算，并至少与两套独立实现进行差分测试。",
+        "status": "FROZEN",
+        "source_ids": [
+          "SRC-USNO-JULIAN-DATE",
+          "SRC-USNO-JD-FORMULA",
+          "SRC-REINGOLD-CALENDARS",
+          "SRC-SXTWL",
+          "SRC-YTL-SEXAGENARY",
+          "SRC-ZHANG-RIZHU"
+        ],
+        "confidence": "HIGH",
+        "implementation_notes": "V0.1采用前推格里历且限定1970-2100；至少用纯整数格里历日序与独立Julian Day整数算法差分，不把同一函数换名充当双实现。",
+        "blocking_behavior": "实现之间不一致时 DAY_ALGORITHM_CROSSCHECK_FAILED。"
+      },
+      {
+        "rule_id": "DAY-BOUNDARY-003",
+        "rule_class": "PRODUCT_TRADITION_POLICY",
+        "statement": "V0.1采用出生地当地民用时间00:00换日：00:00起进入新日柱，23:59仍属于当前民用日期；这是产品流派政策，不宣称为所有流派唯一标准。",
+        "status": "FROZEN",
+        "source_ids": [
+          "SRC-PMO-GB33661-EXPLANATION",
+          "SRC-SANMING-TONGHUI-TIME",
+          "SRC-YTL-SEXAGENARY"
+        ],
+        "confidence": "HIGH",
+        "implementation_notes": "未来页面必须标注：V0.1采用子正换日口径；其他流派可能采用子初换日。禁止继续返回DAY_BOUNDARY_UNRESOLVED。",
+        "blocking_behavior": "不因23:00-00:59自动阻断；日期无效或日序双算法不一致时按对应错误码阻断。"
+      }
+    ]
+  },
+  "hour_pillar_policy": {
+    "hour_branch_intervals": [
+      {
+        "branch": "子",
+        "local_time": "23:00-00:59"
+      },
+      {
+        "branch": "丑",
+        "local_time": "01:00-02:59"
+      },
+      {
+        "branch": "寅",
+        "local_time": "03:00-04:59"
+      },
+      {
+        "branch": "卯",
+        "local_time": "05:00-06:59"
+      },
+      {
+        "branch": "辰",
+        "local_time": "07:00-08:59"
+      },
+      {
+        "branch": "巳",
+        "local_time": "09:00-10:59"
+      },
+      {
+        "branch": "午",
+        "local_time": "11:00-12:59"
+      },
+      {
+        "branch": "未",
+        "local_time": "13:00-14:59"
+      },
+      {
+        "branch": "申",
+        "local_time": "15:00-16:59"
+      },
+      {
+        "branch": "酉",
+        "local_time": "17:00-18:59"
+      },
+      {
+        "branch": "戌",
+        "local_time": "19:00-20:59"
+      },
+      {
+        "branch": "亥",
+        "local_time": "21:00-22:59"
+      }
+    ],
+    "zi_hour_stem_map": {
+      "甲己": "甲",
+      "乙庚": "丙",
+      "丙辛": "戊",
+      "丁壬": "庚",
+      "戊癸": "壬"
+    },
+    "rules": [
+      {
+        "rule_id": "HOUR-BRANCH-001",
+        "rule_class": "TRADITIONAL_CALENDAR_RULE",
+        "statement": "十二时支按当地民用时间每两小时划分，子时为23:00-00:59，其余依次推进。",
+        "status": "FROZEN",
+        "source_ids": [
+          "SRC-YTL-SEXAGENARY",
+          "SRC-SANMING-TONGHUI-TIME"
+        ],
+        "confidence": "MEDIUM",
+        "implementation_notes": "先完成时区/DST解析，再对规范化的当地民用时分配时支；子时仍为23:00-00:59。",
+        "blocking_behavior": "当地时间不存在或歧义时先按时区规则阻断。"
+      },
+      {
+        "rule_id": "HOUR-FIVE-RAT-002",
+        "rule_class": "TRADITIONAL_CALENDAR_RULE",
+        "statement": "时干由日干按五鼠遁确定子时起干，随后按时支顺序推进。",
+        "status": "FROZEN",
+        "source_ids": [
+          "SRC-QINDING-XIEJI",
+          "SRC-YTL-SEXAGENARY"
+        ],
+        "confidence": "HIGH",
+        "implementation_notes": "使用zi_hour_stem_map；非子时可直接由已确定日干与时支索引推导。",
+        "blocking_behavior": "日干未确定时 HOUR_STEM_REQUIRES_DAY_STEM。"
+      },
+      {
+        "rule_id": "HOUR-ZI-DAY-COUPLING-003",
+        "rule_class": "PRODUCT_TRADITION_POLICY",
+        "statement": "子时地支仍为23:00-00:59；晚子时23:00-23:59使用当前民用日期的日干推时干，早子时00:00-00:59使用新民用日期的日干推时干。",
+        "status": "FROZEN",
+        "source_ids": [
+          "SRC-SANMING-TONGHUI-TIME",
+          "SRC-QINDING-XIEJI",
+          "SRC-YTL-SEXAGENARY"
+        ],
+        "confidence": "HIGH",
+        "implementation_notes": "日柱与五鼠遁时干必须共享同一个00:00日界；禁止日柱00:00换日而时干23:00换日。",
+        "blocking_behavior": "日干未确定时返回 HOUR_STEM_REQUIRES_DAY_STEM，不返回DAY_BOUNDARY_UNRESOLVED。"
+      }
+    ]
+  },
+  "unknown_time_policy": {
+    "rules": [
+      {
+        "rule_id": "UNKNOWN-HOUR-001",
+        "rule_class": "PRODUCT_SAFETY_POLICY",
+        "statement": "出生时辰未知时hour_pillar必须为null，年、月、日柱在其他输入充分时仍可候选计算。",
+        "status": "FROZEN",
+        "source_ids": [
+          "SRC-YTL-SEXAGENARY",
+          "SRC-SANMING-TONGHUI-TIME"
+        ],
+        "confidence": "HIGH",
+        "implementation_notes": "结果必须携带completeness=THREE_PILLARS_ONLY和time_known=false。",
+        "blocking_behavior": "普通日期可输出三柱；任何依赖时柱的分析均返回 HOUR_REQUIRED_FOR_FEATURE。"
+      },
+      {
+        "rule_id": "UNKNOWN-HOUR-SOLAR-TERM-DAY-002",
+        "rule_class": "PRODUCT_SAFETY_POLICY",
+        "statement": "出生时间未知且该出生地民用日期内存在立春或十二月界节令时，不得唯一输出受影响的年柱或月柱；中气不触发月柱切换。",
+        "status": "FROZEN",
+        "source_ids": [
+          "SRC-HKO-SOLAR-TERM-DATA",
+          "SRC-PMO-GB33661-EXPLANATION",
+          "SRC-YTL-SEXAGENARY"
+        ],
+        "confidence": "HIGH",
+        "implementation_notes": "普通日期输出年、月、日三柱且hour_pillar=null、completeness=THREE_PILLARS_ONLY；节令切换日可展示前后两种可能但不得默认选择。",
+        "blocking_behavior": "立春或十二月界节令发生在该地民用日期内且时间未知时返回 SOLAR_TERM_TIME_REQUIRED。"
+      }
+    ]
+  },
+  "implementation_dependencies": {
+    "rules": [
+      {
+        "rule_id": "SOLAR-TERM-RUNTIME-DATASET-001",
+        "rule_class": "IMPLEMENTATION_REQUIREMENT",
+        "statement": "1969—2101完整节气候选数据已生成并通过3192条完整性检查；2009—2027共456条与NAOJ官方分钟级矩阵一致；Astronomy Engine 2.1.19生成器依赖已通过版本与官方wheel SHA-256双重锁定。时间戳保存到整秒仅表示分辨率，不声称具有官方秒级准确度；1969—2008及2028—2101仍属于生成器外推范围；应用接入仍待ChatGPT最终裁决。",
+        "status": "FROZEN",
+        "source_ids": [
+          "GEN-ASTRONOMY-ENGINE-2.1.19",
+          "SRC-NAOJ-SOLAR-TERM",
+          "SRC-HKO-SOLAR-TERM"
+        ],
+        "confidence": "HIGH",
+        "implementation_notes": "完整候选数据与双次可复现证据已就绪；依赖锁文件固定astronomy-engine==2.1.19及官方wheel SHA-256。官方逐条交叉核验仅覆盖2009—2027的分钟显示；其余年份保持生成器外推标识。PROPOSED_FREEZE只表示等待ChatGPT最终裁决，不代表允许应用接入或阻断已解除。",
+        "blocking_behavior": null,
+        "protocol_refs": {
+          "dataset_spec": "solar_term_runtime_dataset_spec_candidate_v0.1.json",
+          "source_registry": "solar_term_source_registry_v0.1.json",
+          "validation_matrix": "solar_term_validation_matrix_v0.1.json",
+          "research_report": "SOLAR_TERM_RUNTIME_DATASET_RESEARCH_V0.1.md"
+        }
+      }
+    ]
+  },
+  "blocking_conditions": [
+    {
+      "code": "INVALID_CIVIL_DATE",
+      "when": "公历日期不存在",
+      "result": "BLOCKED"
+    },
+    {
+      "code": "DATE_OUT_OF_SUPPORTED_RANGE",
+      "when": "产品出生日期早于1970-01-01",
+      "result": "BLOCKED"
+    },
+    {
+      "code": "DATE_OUT_OF_ALGORITHM_RANGE",
+      "when": "算法验证日期早于1970-01-01或晚于2100-12-31",
+      "result": "BLOCKED"
+    },
+    {
+      "code": "FUTURE_BIRTH_DATE_NOT_ALLOWED",
+      "when": "PRODUCT_INPUT出生日期晚于所选IANA时区的当前民用日期",
+      "result": "BLOCKED"
+    },
+    {
+      "code": "LUNAR_INPUT_NOT_SUPPORTED_V0_1",
+      "when": "calendar_type不是GREGORIAN",
+      "result": "BLOCKED"
+    },
+    {
+      "code": "TIMEZONE_REQUIRED",
+      "when": "缺少或无效IANA时区",
+      "result": "BLOCKED"
+    },
+    {
+      "code": "LOCATION_REQUIRED",
+      "when": "出生地缺失",
+      "result": "BLOCKED"
+    },
+    {
+      "code": "LOCATION_TIMEZONE_MISMATCH",
+      "when": "location_id与同一静态登记表中的iana_timezone不一致",
+      "result": "BLOCKED"
+    },
+    {
+      "code": "NONEXISTENT_LOCAL_TIME",
+      "when": "DST跳跃导致当地时间不存在",
+      "result": "BLOCKED"
+    },
+    {
+      "code": "AMBIGUOUS_LOCAL_TIME",
+      "when": "DST回拨导致当地时间重复且未指定fold",
+      "result": "BLOCKED"
+    },
+    {
+      "code": "SOLAR_TERM_DATA_UNAVAILABLE",
+      "when": "无法取得覆盖出生时刻的版本化节气数据",
+      "result": "BLOCKED"
+    },
+    {
+      "code": "SOLAR_TERM_TIME_REQUIRED",
+      "when": "未知时辰且出生地民用日期内存在立春或十二月界节令",
+      "result": "BLOCKED"
+    },
+    {
+      "code": "SOLAR_TERM_SAME_MINUTE_AMBIGUOUS",
+      "when": "出生时间只精确到分钟，且立春或十二个月界节令instant_utc落入该当地民用分钟对应的UTC半开区间",
+      "result": "BLOCKED"
+    },
+    {
+      "code": "BOUNDARY_SENSITIVE",
+      "when": "已知出生时刻距立春或十二月界节令不超过2分钟且可唯一判定",
+      "result": "WARNING"
+    },
+    {
+      "code": "TRUE_SOLAR_TIME_NOT_SUPPORTED_V0_1",
+      "when": "请求使用真太阳时",
+      "result": "BLOCKED"
+    }
+  ],
+  "unresolved_conflicts": [
+    {
+      "conflict_id": "CONFLICT-YEAR-001",
+      "topic": "年柱边界",
+      "option_a": "立春瞬间换四柱年柱",
+      "option_b": "正月初一换官方农历干支年",
+      "source_a_ids": [
+        "SRC-HKO-GANZHI-YEAR",
+        "SRC-SANMING-TONGHUI-TIME"
+      ],
+      "source_b_ids": [
+        "SRC-PMO-GB33661-EXPLANATION",
+        "SRC-HKO-GANZHI-YEAR"
+      ],
+      "affected_fields": [
+        "year_pillar",
+        "month_stem",
+        "zodiac_display"
+      ],
+      "recommended_status": "PROPOSED_FREEZE",
+      "recommendation": "四柱年柱用立春；生肖和官方农历年若显示则另字段按正月初一。"
+    },
+    {
+      "conflict_id": "CONFLICT-DAY-002",
+      "topic": "日界",
+      "option_a": "23:00子初换日",
+      "option_b": "00:00子正或民用午夜换日",
+      "source_a_ids": [
+        "SRC-YTL-SEXAGENARY"
+      ],
+      "source_b_ids": [
+        "SRC-PMO-GB33661-EXPLANATION",
+        "SRC-SANMING-TONGHUI-TIME"
+      ],
+      "affected_fields": [
+        "day_pillar",
+        "hour_pillar"
+      ],
+      "recommended_status": "PROPOSED_FREEZE",
+      "recommendation": "V0.1采用00:00子正/民用午夜换日；晚子时和早子时的时干分别使用同一民用日期规则下的日干。"
+    },
+    {
+      "conflict_id": "CONFLICT-SOLAR-003",
+      "topic": "真太阳时",
+      "option_a": "强制使用",
+      "option_b": "可选使用",
+      "option_c": "V0.1不使用",
+      "source_a_ids": [
+        "SRC-SXTWL"
+      ],
+      "source_b_ids": [
+        "SRC-NOAA-SOLAR-EQUATIONS",
+        "SRC-HKO-ALMANAC-2026"
+      ],
+      "affected_fields": [
+        "normalized_time",
+        "day_pillar",
+        "hour_pillar",
+        "year_month_boundary"
+      ],
+      "recommended_status": "OUT_OF_SCOPE_V0_1",
+      "recommendation": "V0.1不使用；未来若开放须同时实现经度校正与均时差并标注流派。"
+    },
+    {
+      "conflict_id": "CONFLICT-MONTH-004",
+      "topic": "月界",
+      "option_a": "十二节令瞬间",
+      "option_b": "十二中气",
+      "option_c": "农历月初一",
+      "source_a_ids": [
+        "SRC-YTL-SEXAGENARY",
+        "SRC-SANMING-TONGHUI-TIME"
+      ],
+      "source_b_ids": [
+        "SRC-PMO-GB33661-EXPLANATION"
+      ],
+      "affected_fields": [
+        "month_branch",
+        "month_stem"
+      ],
+      "recommended_status": "PROPOSED_FREEZE",
+      "recommendation": "四柱月柱使用十二节令瞬间，不使用中气或农历月。"
+    },
+    {
+      "conflict_id": "CONFLICT-LUNAR-005",
+      "topic": "农历输入",
+      "option_a": "直接支持含闰月",
+      "option_b": "延后至转换算法和闰月输入协议另行冻结",
+      "source_a_ids": [
+        "SRC-PMO-GB33661-EXPLANATION",
+        "SRC-HKO-GANZHI-YEAR"
+      ],
+      "source_b_ids": [
+        "SRC-REINGOLD-CALENDARS",
+        "SRC-SXTWL"
+      ],
+      "affected_fields": [
+        "input_contract",
+        "normalized_date"
+      ],
+      "recommended_status": "OUT_OF_SCOPE_V0_1",
+      "recommendation": "V0.1只收公历，农历与闰月延后。"
+    },
+    {
+      "conflict_id": "CONFLICT-OVERSEAS-006",
+      "topic": "海外出生时间",
+      "option_a": "出生地当地民用时间加IANA时区",
+      "option_b": "统一北京时间",
+      "source_a_ids": [
+        "SRC-IANA-TZ-LINK",
+        "SRC-IANA-TZ-THEORY"
+      ],
+      "source_b_ids": [
+        "SRC-PMO-GB33661-EXPLANATION"
+      ],
+      "affected_fields": [
+        "normalized_instant",
+        "local_date",
+        "all_pillars"
+      ],
+      "recommended_status": "PROPOSED_FREEZE",
+      "recommendation": "采用出生地当地民用时间和IANA时区；不得统一北京时间。"
+    },
+    {
+      "conflict_id": "CONFLICT-RANGE-007",
+      "topic": "历史日期范围",
+      "option_a": "支持所有历史日期",
+      "option_b": "限定现代范围",
+      "source_a_ids": [
+        "SRC-USNO-JULIAN-DATE",
+        "SRC-REINGOLD-CALENDARS",
+        "SRC-SXTWL"
+      ],
+      "source_b_ids": [
+        "SRC-IANA-TZ-THEORY",
+        "SRC-USNO-JD-FORMULA"
+      ],
+      "affected_fields": [
+        "input_contract",
+        "timezone_resolution",
+        "day_pillar"
+      ],
+      "recommended_status": "PROPOSED_FREEZE",
+      "recommendation": "算法验证范围限定1970-2100；产品出生输入范围为1970至用户所选时区的当地今天。"
+    },
+    {
+      "conflict_id": "CONFLICT-DST-008",
+      "topic": "历史夏令时",
+      "option_a": "忽略并使用固定UTC偏移",
+      "option_b": "使用版本化tzdb",
+      "source_a_ids": [],
+      "source_b_ids": [
+        "SRC-IANA-TZ-LINK",
+        "SRC-IANA-TZ-THEORY"
+      ],
+      "affected_fields": [
+        "normalized_instant",
+        "local_date",
+        "all_pillars"
+      ],
+      "recommended_status": "PROPOSED_FREEZE",
+      "recommendation": "必须使用版本化tzdb；gap阻断，fold要求选择。"
+    },
+    {
+      "conflict_id": "CONFLICT-UNKNOWN-HOUR-009",
+      "topic": "未知时辰",
+      "option_a": "填充午时或12:00",
+      "option_b": "时柱为null",
+      "source_a_ids": [],
+      "source_b_ids": [
+        "SRC-SANMING-TONGHUI-TIME",
+        "SRC-YTL-SEXAGENARY"
+      ],
+      "affected_fields": [
+        "hour_pillar",
+        "result_completeness"
+      ],
+      "recommended_status": "PROPOSED_FREEZE",
+      "recommendation": "时柱为null，只允许三柱结果。"
+    },
+    {
+      "conflict_id": "CONFLICT-BOUNDARY-010",
+      "topic": "临界时刻提示",
+      "option_a": "静默给出单一结果",
+      "option_b": "显示边界敏感并要求确认输入精度",
+      "source_a_ids": [],
+      "source_b_ids": [
+        "SRC-PMO-GB33661-EXPLANATION",
+        "SRC-IANA-TZ-THEORY"
+      ],
+      "affected_fields": [
+        "result_status",
+        "warnings"
+      ],
+      "recommended_status": "PROPOSED_FREEZE",
+      "recommendation": "距离节令、日界或DST切换不超过2分钟时显示边界敏感。"
+    }
+  ],
+  "location_timezone_registry_protocol": {
+    "registry_is_single_source": true,
+    "free_text_location_is_display_only": true,
+    "sample_test_mappings": {
+      "CN-MAINLAND": "Asia/Shanghai",
+      "US-NY": "America/New_York",
+      "US-LA": "America/Los_Angeles",
+      "US-HNL": "Pacific/Honolulu"
+    },
+    "production_global_registry_status": "NOT_BUILT_IN_THIS_PHASE"
+  },
+  "source_registry": [
+    "SRC-SAMR-GB33661",
+    "SRC-PMO-GB33661-EXPLANATION",
+    "SRC-PMO-ALMANAC-2024",
+    "SRC-HKO-GANZHI-YEAR",
+    "SRC-HKO-STEMS-BRANCHES",
+    "SRC-HKO-ALMANAC-2026",
+    "SRC-IANA-TZ-LINK",
+    "SRC-IANA-TZ-THEORY",
+    "SRC-USNO-JULIAN-DATE",
+    "SRC-USNO-JD-FORMULA",
+    "SRC-NOAA-SOLAR-EQUATIONS",
+    "SRC-REINGOLD-CALENDARS",
+    "SRC-SXTWL",
+    "SRC-YTL-SEXAGENARY",
+    "SRC-ZHANG-RIZHU",
+    "SRC-SANMING-TONGHUI-TIME",
+    "SRC-QINDING-XIEJI",
+    "SRC-GUJIN-TUSHU-FIVE-TIGER",
+    "SRC-HKO-SOLAR-TERM-DATA",
+    "SRC-HKO-LEAP-YEAR"
+  ]
+}

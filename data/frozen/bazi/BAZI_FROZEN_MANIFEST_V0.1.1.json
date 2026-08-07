@@ -1,0 +1,62 @@
+{
+  "manifest_id": "BAZI_FROZEN_MANIFEST_V0_1_1",
+  "version": "0.1.1",
+  "status": "FROZEN_MINUTE_BOUNDARY_PATCH_MANIFEST",
+  "frozen_from_commit": "6ab8cbc",
+  "generated_at_utc": "2026-08-07T03:49:11Z",
+  "decision_authority": "ChatGPT最终冻结补丁裁决（Phase 2.1.3.1）",
+  "previous_release": {
+    "manifest_path": "data/frozen/bazi/BAZI_FROZEN_MANIFEST_V0.1.0.json",
+    "manifest_sha256": "5dc276e7436f62dd8ec53dc334b2c04dc38d93e4adae384d502e2e5735392b09",
+    "rules_sha256": "24dad075ad478f2017e7519b2a9c375c2dcf0cb4cd5432c6b4291b8d40e8e3fa",
+    "cases_sha256": "b04e2adfbc48affb3890e04ea7e3728711ed1220af005740e8e32ed41e21f0ad",
+    "solar_terms_sha256": "0e22ce7738ee0aedfb15056a3888959907a2e0b88b06ed2b54bce838fc5d5ea2"
+  },
+  "files": [
+    {
+      "relative_path": "data/frozen/bazi/bazi_calendar_rules_v0.1.1.json",
+      "file_role": "FROZEN_CALENDAR_RULES_PATCH",
+      "sha256": "bd5a534ac449c838dbdb9b49f7ac7447da2b95d35d5ba215d8d33cf965e1d9da",
+      "byte_size": 32979,
+      "rule_count": 25
+    },
+    {
+      "relative_path": "data/frozen/bazi/bazi_calendar_test_cases_v0.1.1.json",
+      "file_role": "FROZEN_REGRESSION_SUITE_PATCH",
+      "sha256": "51ec490be14b7c8b1a31c300d4f96e1808e70b5a6feeda68c25b07883f46ce4e",
+      "byte_size": 56161,
+      "case_count": 70
+    },
+    {
+      "relative_path": "data/frozen/bazi/solar_terms_1969_2101_v0.1.0.json",
+      "file_role": "REUSED_FROZEN_SOLAR_TERM_RUNTIME_DATA",
+      "sha256": "0e22ce7738ee0aedfb15056a3888959907a2e0b88b06ed2b54bce838fc5d5ea2",
+      "byte_size": 1768636,
+      "record_count": 3192
+    }
+  ],
+  "patch_semantics": {
+    "local_minute_interval": "[HH:mm:00, next local minute)",
+    "comparison": "boundary instant_utc in normalized UTC half-open interval",
+    "boundary_rounding": "FORBIDDEN",
+    "resolved_v0_1_0_conflict_count": 6,
+    "month_boundary_same_minute_cases": 12
+  },
+  "runtime_contract": {
+    "solar_term_dataset_id": "BAZI_SOLAR_TERMS_1969_2101_V0_1_0",
+    "solar_term_dataset_version": "0.1.0",
+    "solar_term_records": 3192,
+    "solar_term_instant_utc_changes": 0,
+    "read_only_static_json": true,
+    "network_required": false,
+    "astronomy_algorithm_at_runtime": false,
+    "application_integration_completed": false,
+    "page_not_implemented_remains": true
+  },
+  "audit_summary": {
+    "v0_1_0_conflicts_found": 6,
+    "v0_1_1_case_count": 70,
+    "month_boundary_same_minute_blocked": "12/12",
+    "solar_term_instant_identity": "3192/3192"
+  }
+}
