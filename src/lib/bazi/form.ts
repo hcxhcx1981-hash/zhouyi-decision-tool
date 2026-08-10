@@ -7,7 +7,7 @@ import type {
 } from "./types";
 
 export const BAZI_BLOCKING_REASON =
-  "八字历法与排盘规则尚未冻结，本阶段仅完成出生资料录入，不生成四柱和运势结论。";
+  "确定性四柱规则与运行链已完成内部冻结，当前页面尚未接入正式排盘流程，不生成四柱和运势结论。";
 
 export interface BaziBirthDraft {
   calendarType: CalendarType;

@@ -10,6 +10,8 @@
     "start": "next start",
     "lint": "eslint",
     "release:audit": "node scripts/audit-release.mjs",
+    "build:bazi-browser-runtime": "node scripts/build-bazi-browser-runtime.mjs",
+    "validate:bazi-browser-runtime": "node --experimental-strip-types scripts/validate-bazi-browser-runtime.mjs",
     "typecheck": "tsc --noEmit",
     "test": "node --test --experimental-strip-types tests/*.test.mjs",
     "validate:rules": "python data/frozen/validate_zhouyi_rules_v01.py"
