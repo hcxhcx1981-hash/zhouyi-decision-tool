@@ -16,6 +16,36 @@ export interface BaziPageDraft {
   referenceInstantUtc: string;
 }
 
+export interface BaziPageResolutionState {
+  foldChoice: "EARLIER" | "LATER" | null;
+  referenceInstantUtc: string | null;
+}
+
+export interface ResolvedBaziPageSubmission {
+  foldChoice: "EARLIER" | "LATER" | null;
+  referenceInstantUtc: string;
+}
+
+export const EMPTY_BAZI_PAGE_RESOLUTION: BaziPageResolutionState = {
+  foldChoice: null,
+  referenceInstantUtc: null,
+};
+
+export function resetBaziPageResolution(): BaziPageResolutionState {
+  return { ...EMPTY_BAZI_PAGE_RESOLUTION };
+}
+
+export function beginBaziPageSubmission(
+  state: BaziPageResolutionState,
+  clock: () => string,
+): ResolvedBaziPageSubmission {
+  const generatedReference = state.referenceInstantUtc ?? clock();
+  return {
+    foldChoice: state.foldChoice,
+    referenceInstantUtc: generatedReference.replace(/\.\d{3}Z$/, "Z"),
+  };
+}
+
 export function toRawBaziDeterministicInput(draft: BaziPageDraft): RawBaziDeterministicInput {
   return {
     calendarType: draft.calendarType,

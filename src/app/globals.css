@@ -833,6 +833,7 @@ button {
 
 .field-stack input,
 .field-stack textarea,
+.field-stack select,
 .time-grid input {
   width: 100%;
   min-width: 0;
@@ -855,12 +856,14 @@ button {
 
 .field-stack input:focus-visible,
 .field-stack textarea:focus-visible,
+.field-stack select:focus-visible,
 .time-grid input:focus-visible {
   border-color: var(--purple);
   box-shadow: 0 0 0 3px rgba(155, 109, 255, 0.15);
 }
 
 .field-stack input:disabled,
+.field-stack select:disabled,
 .time-grid input:disabled {
   cursor: not-allowed;
   opacity: 0.45;
@@ -892,6 +895,15 @@ button {
   height: 20px;
   flex: 0 0 auto;
   accent-color: var(--purple);
+}
+
+.disabled-option {
+  opacity: 0.48;
+}
+
+.location-mode-options label {
+  align-items: flex-start;
+  line-height: 1.45;
 }
 
 .time-grid,
@@ -951,6 +963,155 @@ button {
   border: 1px solid rgba(255, 138, 165, 0.38);
   border-radius: 15px;
   background: rgba(255, 138, 165, 0.07);
+}
+
+.module-status.blocked {
+  border-color: rgba(255, 138, 165, 0.42);
+  color: #ffb3c4;
+  background: rgba(108, 25, 51, 0.22);
+}
+
+.blocked-result small {
+  display: block;
+  margin-top: 12px;
+  color: var(--muted);
+  overflow-wrap: anywhere;
+}
+
+.fold-actions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  margin-top: 15px;
+}
+
+.fold-actions button {
+  min-height: 46px;
+  border: 1px solid rgba(197, 175, 255, 0.44);
+  border-radius: 12px;
+  color: white;
+  background: rgba(123, 77, 224, 0.24);
+  font-weight: 800;
+}
+
+.fold-actions details {
+  grid-column: 1 / -1;
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+
+.bazi-result {
+  margin-top: 18px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: #0e0c12;
+}
+
+.bazi-result-heading {
+  padding: 16px 14px;
+  background: var(--surface-raised);
+}
+
+.bazi-result-heading h2 {
+  margin: 10px 0 0;
+  font-size: 1.15rem;
+}
+
+.bazi-pillar-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1px;
+  background: var(--line);
+}
+
+.bazi-pillar-card {
+  min-width: 0;
+  padding: 16px 5px 18px;
+  background: #0b0a0e;
+  text-align: center;
+}
+
+.bazi-pillar-card > span {
+  color: var(--muted);
+  font-size: 0.72rem;
+}
+
+.bazi-pillar-card strong {
+  display: grid;
+  gap: 4px;
+  margin-top: 12px;
+  color: #eee8f7;
+  font-size: clamp(1.2rem, 7vw, 1.75rem);
+  line-height: 1.05;
+}
+
+.bazi-pillar-card strong b {
+  font-weight: 800;
+}
+
+.bazi-pillar-card.unknown strong {
+  min-height: 2.5em;
+  place-items: center;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.bazi-result-note,
+.bazi-boundary-warning {
+  margin: 0;
+  padding: 14px;
+  color: #d3c9db;
+  font-size: 0.85rem;
+  line-height: 1.65;
+}
+
+.bazi-boundary-warning {
+  border-top: 1px solid rgba(241, 167, 79, 0.4);
+  color: #ffd7a1;
+  background: rgba(241, 167, 79, 0.08);
+}
+
+.bazi-audit-details {
+  padding: 14px;
+  border-top: 1px solid var(--line);
+  color: #d8cfe0;
+  font-size: 0.82rem;
+}
+
+.bazi-audit-details summary {
+  min-height: 44px;
+  cursor: pointer;
+  font-weight: 800;
+  line-height: 44px;
+}
+
+.bazi-audit-details dl {
+  margin: 4px 0 0;
+}
+
+.bazi-audit-details dl div {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px 0;
+  border-top: 1px solid #2c2535;
+}
+
+.bazi-audit-details dt {
+  color: var(--muted);
+}
+
+.bazi-audit-details dd {
+  margin: 0;
+  text-align: right;
+  overflow-wrap: anywhere;
+}
+
+.bazi-rule-ids {
+  color: var(--muted);
+  font: 0.68rem/1.65 ui-monospace, "SFMono-Regular", Consolas, monospace;
+  overflow-wrap: anywhere;
 }
 
 .blocked-result h2,

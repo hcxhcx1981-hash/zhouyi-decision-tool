@@ -7,8 +7,8 @@ test("首页包含两个模块入口", () => {
   assert.deepEqual(PRODUCT_MODULES.map((module) => module.href), ["/bazi/", "/liuyao/"]);
 });
 
-test("首页模块状态区分规则准备中和基础功能可用", () => {
-  assert.equal(PRODUCT_MODULES.find((module) => module.id === "bazi")?.tone, "warning");
+test("首页两个模块均明确标记基础功能可用", () => {
+  assert.equal(PRODUCT_MODULES.find((module) => module.id === "bazi")?.tone, "available");
   assert.equal(PRODUCT_MODULES.find((module) => module.id === "liuyao")?.tone, "available");
 });
 

@@ -3,10 +3,10 @@ export const PRODUCT_MODULES = [
     id: "bazi",
     href: "/bazi/",
     title: "生辰八字",
-    description: "输入出生资料，建立四柱命盘与基础命理分析。",
-    status: "排盘规则准备中",
+    description: "输入出生资料与正式时区，生成确定性的基础四柱。",
+    status: "基础四柱排盘可用",
     action: "填写出生资料",
-    tone: "warning",
+    tone: "available",
   },
   {
     id: "liuyao",

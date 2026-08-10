@@ -2,95 +2,180 @@
 
 import { type FormEvent, useState } from "react";
 import { BaziBlockedResult } from "./bazi-blocked-result";
+import { BaziPillarResult } from "./bazi-pillar-result";
 import {
-  BAZI_BLOCKING_REASON,
-  createBlockedBaziResult,
-  INITIAL_BAZI_DRAFT,
-  toBaziBirthInput,
-  validateBaziBirthDraft,
-  type BaziBirthDraft,
-  type BaziValidationCode,
-} from "@/lib/bazi/form";
-import type { BaziAnalysisResult } from "@/lib/bazi/types";
+  defaultBrowserFetch,
+  loadVerifiedIanaZoneIds,
+  runBaziBrowserPipeline,
+  type BaziBrowserPipelineResult,
+} from "@/lib/bazi/bazi-browser-pipeline";
+import {
+  beginBaziPageSubmission,
+  EMPTY_BAZI_PAGE_RESOLUTION,
+  resetBaziPageResolution,
+  type BaziPageDraft,
+  type BaziPageResolutionState,
+  type ResolvedBaziPageSubmission,
+} from "@/lib/bazi/bazi-page-contract";
 
-const ERROR_MESSAGES: Record<BaziValidationCode, string> = {
-  LUNAR_NOT_IMPLEMENTED: "农历转换规则尚未接入，本阶段不可提交。",
-  BIRTH_DATE_REQUIRED: "请填写出生日期。",
-  BIRTH_TIME_REQUIRED: "请填写出生时和分，或选择不知道准确时辰。",
-  BIRTH_TIME_INVALID: "出生时间必须是有效的 0—23 时和 0—59 分。",
+type LocationMode = "REGISTERED_LOCATION" | "MANUAL_IANA";
+
+interface FormDraft {
+  birthDate: string;
+  birthTime: string;
+  timeKnown: boolean;
+  gender: "MALE" | "FEMALE";
+  locationMode: LocationMode;
+  displayLocationName: string;
+  manualIanaTimezone: string;
+}
+
+const INITIAL_DRAFT: FormDraft = {
+  birthDate: "",
+  birthTime: "",
+  timeKnown: true,
+  gender: "MALE",
+  locationMode: "REGISTERED_LOCATION",
+  displayLocationName: "",
+  manualIanaTimezone: "",
 };
 
-export function BirthInputForm() {
-  const [draft, setDraft] = useState<BaziBirthDraft>(INITIAL_BAZI_DRAFT);
-  const [errors, setErrors] = useState<BaziValidationCode[]>([]);
-  const [result, setResult] = useState<BaziAnalysisResult | null>(null);
+function validate(draft: FormDraft): string[] {
+  const errors: string[] = [];
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(draft.birthDate)) errors.push("请填写有效的公历出生日期。");
+  if (draft.timeKnown && !/^([01]\d|2[0-3]):[0-5]\d$/.test(draft.birthTime)) errors.push("请填写精确到分钟的出生时间。");
+  if (draft.locationMode === "MANUAL_IANA" && !draft.displayLocationName.trim()) errors.push("请填写出生地名称。");
+  if (draft.locationMode === "MANUAL_IANA" && !draft.manualIanaTimezone) errors.push("请从正式目录选择 IANA 时区。");
+  return errors;
+}
 
-  function updateDraft(patch: Partial<BaziBirthDraft>) {
+function toPageDraft(draft: FormDraft, resolution: ResolvedBaziPageSubmission): BaziPageDraft {
+  return {
+    calendarType: "GREGORIAN",
+    localDate: draft.birthDate,
+    localTime: draft.timeKnown ? draft.birthTime : null,
+    timeKnown: draft.timeKnown,
+    gender: draft.gender,
+    locationName: draft.locationMode === "REGISTERED_LOCATION" ? draft.displayLocationName.trim() || "中国大陆" : draft.displayLocationName.trim(),
+    selectionMode: draft.locationMode,
+    registeredLocationId: draft.locationMode === "REGISTERED_LOCATION" ? "CN-MAINLAND" : null,
+    manualIanaTimezone: draft.locationMode === "MANUAL_IANA" ? draft.manualIanaTimezone : null,
+    foldChoice: resolution.foldChoice,
+    referenceInstantUtc: resolution.referenceInstantUtc,
+  };
+}
+
+export function BirthInputForm({ clock = () => new Date().toISOString() }: { clock?: () => string }) {
+  const [draft, setDraft] = useState<FormDraft>(INITIAL_DRAFT);
+  const [resolution, setResolution] = useState<BaziPageResolutionState>(EMPTY_BAZI_PAGE_RESOLUTION);
+  const [errors, setErrors] = useState<string[]>([]);
+  const [pipeline, setPipeline] = useState<BaziBrowserPipelineResult | null>(null);
+  const [busy, setBusy] = useState(false);
+  const [loadError, setLoadError] = useState(false);
+  const [ianaZones, setIanaZones] = useState<readonly string[]>([]);
+  const [ianaLoading, setIanaLoading] = useState(false);
+
+  function updateDraft(patch: Partial<FormDraft>) {
     setDraft((current) => ({ ...current, ...patch }));
     setErrors([]);
-    setResult(null);
+    setPipeline(null);
+    setLoadError(false);
+    setResolution(resetBaziPageResolution());
   }
 
-  function submit(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    const nextErrors = validateBaziBirthDraft(draft);
-    setErrors(nextErrors);
-    if (nextErrors.length > 0 || !toBaziBirthInput(draft)) {
-      setResult(null);
-      return;
+  async function selectLocationMode(mode: LocationMode) {
+    updateDraft({ locationMode: mode, manualIanaTimezone: "" });
+    if (mode === "MANUAL_IANA" && ianaZones.length === 0 && !ianaLoading) {
+      setIanaLoading(true);
+      try {
+        setIanaZones(await loadVerifiedIanaZoneIds(defaultBrowserFetch));
+      } catch {
+        setLoadError(true);
+      } finally {
+        setIanaLoading(false);
+      }
     }
-    setResult(createBlockedBaziResult());
   }
 
-  const lunarBlocked = draft.calendarType === "lunar";
-  const timeUnknown = draft.timePrecision === "unknown";
+  async function execute(nextResolution: ResolvedBaziPageSubmission) {
+    setBusy(true);
+    setLoadError(false);
+    try {
+      const pageDraft = toPageDraft(draft, nextResolution);
+      const next = await runBaziBrowserPipeline(pageDraft, {
+        fetchImpl: defaultBrowserFetch,
+        referenceInstantUtc: nextResolution.referenceInstantUtc,
+      });
+      setPipeline(next);
+      setResolution(nextResolution);
+    } catch (error) {
+      if (process.env.NODE_ENV === "development") console.error("Bazi browser pipeline failed", error);
+      setPipeline(null);
+      setLoadError(true);
+    } finally {
+      setBusy(false);
+    }
+  }
+
+  async function submit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    const nextErrors = validate(draft);
+    setErrors(nextErrors);
+    if (nextErrors.length > 0) return;
+    await execute(beginBaziPageSubmission(resolution, clock));
+  }
+
+  async function chooseFold(foldChoice: "EARLIER" | "LATER") {
+    if (!resolution.referenceInstantUtc) return;
+    await execute({ foldChoice, referenceInstantUtc: resolution.referenceInstantUtc });
+  }
 
   return (
     <form className="bazi-form panel" onSubmit={submit} noValidate>
       <fieldset className="form-section">
-        <legend>1. 历法类型</legend>
+        <legend>1. 历法</legend>
         <div className="segmented-options">
-          <label><input type="radio" name="calendar" checked={draft.calendarType === "solar"} onChange={() => updateDraft({ calendarType: "solar" })} />公历</label>
-          <label><input type="radio" name="calendar" checked={draft.calendarType === "lunar"} onChange={() => updateDraft({ calendarType: "lunar" })} />农历</label>
+          <label><input type="radio" name="calendar" checked readOnly />公历</label>
+          <label className="disabled-option"><input type="radio" name="calendar" disabled />农历（暂未支持）</label>
         </div>
-        {lunarBlocked ? <p className="inline-warning" role="status">农历转换规则尚未接入，本阶段不可提交。</p> : null}
       </fieldset>
 
-      <label className="field-stack">
-        <span>2. 出生日期</span>
-        <input type="date" value={draft.birthDate} onChange={(event) => updateDraft({ birthDate: event.target.value })} />
-      </label>
+      <label className="field-stack"><span>2. 出生日期</span><input aria-label="出生日期" type="date" required value={draft.birthDate} onChange={(event) => updateDraft({ birthDate: event.target.value })} /></label>
 
       <fieldset className="form-section">
         <legend>3. 出生时间</legend>
-        <div className="time-grid">
-          <label><span>时</span><input aria-label="出生时" type="number" min="0" max="23" inputMode="numeric" disabled={timeUnknown} value={draft.birthHour} onChange={(event) => updateDraft({ birthHour: event.target.value })} /></label>
-          <label><span>分</span><input aria-label="出生分" type="number" min="0" max="59" inputMode="numeric" disabled={timeUnknown} value={draft.birthMinute} onChange={(event) => updateDraft({ birthMinute: event.target.value })} /></label>
-        </div>
-        <label className="check-row"><input type="checkbox" checked={timeUnknown} onChange={(event) => updateDraft({ timePrecision: event.target.checked ? "unknown" : "exact", birthHour: event.target.checked ? "" : draft.birthHour, birthMinute: event.target.checked ? "" : draft.birthMinute })} />不知道准确时辰</label>
+        <label className="field-stack"><span>当地民用时间</span><input aria-label="出生时间" type="time" step="60" disabled={!draft.timeKnown} required={draft.timeKnown} value={draft.birthTime} onChange={(event) => updateDraft({ birthTime: event.target.value })} /></label>
+        <label className="check-row"><input type="checkbox" checked={!draft.timeKnown} onChange={(event) => updateDraft({ timeKnown: !event.target.checked, birthTime: event.target.checked ? "" : draft.birthTime })} />不知道准确时辰</label>
       </fieldset>
 
       <fieldset className="form-section">
         <legend>4. 性别</legend>
         <div className="segmented-options">
-          <label><input type="radio" name="gender" checked={draft.gender === "male"} onChange={() => updateDraft({ gender: "male" })} />男</label>
-          <label><input type="radio" name="gender" checked={draft.gender === "female"} onChange={() => updateDraft({ gender: "female" })} />女</label>
+          <label><input type="radio" name="gender" checked={draft.gender === "MALE"} onChange={() => updateDraft({ gender: "MALE" })} />男</label>
+          <label><input type="radio" name="gender" checked={draft.gender === "FEMALE"} onChange={() => updateDraft({ gender: "FEMALE" })} />女</label>
         </div>
+        <p className="field-note">性别为后续模块预留，不参与当前基础四柱计算。</p>
       </fieldset>
 
       <fieldset className="form-section">
-        <legend>5. 出生地</legend>
-        <div className="location-grid">
-          <label className="field-stack"><span>国家或地区</span><input type="text" value={draft.countryOrRegion} onChange={(event) => updateDraft({ countryOrRegion: event.target.value })} /></label>
-          <label className="field-stack"><span>城市</span><input type="text" value={draft.city} onChange={(event) => updateDraft({ city: event.target.value })} /></label>
+        <legend>5. 出生地 / 时区</legend>
+        <div className="segmented-options location-mode-options">
+          <label><input type="radio" name="location-mode" checked={draft.locationMode === "REGISTERED_LOCATION"} onChange={() => void selectLocationMode("REGISTERED_LOCATION")} />中国大陆（北京时间）</label>
+          <label><input type="radio" name="location-mode" checked={draft.locationMode === "MANUAL_IANA"} onChange={() => void selectLocationMode("MANUAL_IANA")} />其他地区 / IANA</label>
         </div>
-        <p className="field-note">出生地将在后续用于时区与真太阳时校准，本阶段暂不参与计算。</p>
+        <label className="field-stack"><span>{draft.locationMode === "REGISTERED_LOCATION" ? "出生城市/地区（选填，仅显示）" : "出生地名称"}</span><input aria-label="出生地名称" type="text" autoComplete="off" value={draft.displayLocationName} onChange={(event) => updateDraft({ displayLocationName: event.target.value })} /></label>
+        {draft.locationMode === "MANUAL_IANA" ? (
+          <label className="field-stack"><span>IANA 时区</span><select aria-label="IANA 时区" disabled={ianaLoading || ianaZones.length === 0} required value={draft.manualIanaTimezone} onChange={(event) => updateDraft({ manualIanaTimezone: event.target.value })}><option value="">{ianaLoading ? "正在加载正式时区目录…" : "请选择 IANA 时区"}</option>{ianaZones.map((zone) => <option value={zone} key={zone}>{zone}</option>)}</select></label>
+        ) : null}
+        <p className="field-note">城市名称仅用于显示；当前基础排盘按所选正式时区计算，不使用真太阳时。</p>
       </fieldset>
 
-      {errors.length ? <div className="form-error" role="alert">{errors.map((error) => <p key={error}>{ERROR_MESSAGES[error]}</p>)}</div> : null}
-      <button className="calculate-button" type="submit" disabled={lunarBlocked}>生成基础命盘</button>
-      <p className="form-boundary">{BAZI_BLOCKING_REASON}</p>
-      {result ? <BaziBlockedResult result={result} /> : null}
+      {errors.length > 0 ? <div className="form-error" role="alert">{errors.map((error) => <p key={error}>{error}</p>)}</div> : null}
+      {loadError ? <div className="form-error" role="alert"><p>排盘数据加载失败，请重新尝试。</p></div> : null}
+      <button className="calculate-button" type="submit" disabled={busy}>{busy ? "正在排盘…" : "生成基础命盘"}</button>
+      <p className="form-boundary">仅生成基础四柱；不提供五行、十神、喜用神、大运或运势解读。</p>
+      {pipeline?.result.coreResult.status === "READY" ? <BaziPillarResult pipeline={pipeline} /> : null}
+      {pipeline?.result.coreResult.status === "BLOCKED" ? <BaziBlockedResult pipeline={pipeline} busy={busy} onFoldChoice={(choice) => void chooseFold(choice)} /> : null}
     </form>
   );
 }

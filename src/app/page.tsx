@@ -19,7 +19,7 @@ export default function Home() {
         <span className="module-status warning">当前开发状态</span>
         <h2>产品骨架已建立，规则按阶段冻结</h2>
         <ul>
-          <li>八字：只开放出生资料录入，不生成四柱或运势。</li>
+          <li>八字：基础四柱排盘已开放；五行、十神、大运与运势解读仍未开放。</li>
           <li>六爻：基础卦象、动爻、占变路由与乾坤屯原文可用。</li>
           <li>纳甲、世应、六亲、六神、用神、旺衰与结局均未实现。</li>
         </ul>

@@ -169,7 +169,7 @@ test("all 70 frozen cases satisfy the Phase 2.2A acceptance counters", () => {
 test("core source has no case-id, candidate-data, wall-clock, or fixture dependency", () => {
   const directory = join(root, "src", "lib", "bazi");
   const source = readdirSync(directory)
-    .filter((name) => name.endsWith(".ts") && name !== "form.ts" && name !== "types.ts")
+    .filter((name) => name.endsWith(".ts") && !["form.ts", "types.ts", "bazi-browser-pipeline.ts"].includes(name))
     .map((name) => readFileSync(join(directory, name), "utf8"))
     .join("\n");
   assert.doesNotMatch(source, /BZ-C/);
