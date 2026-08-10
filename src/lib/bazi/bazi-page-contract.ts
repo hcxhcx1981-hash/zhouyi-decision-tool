@@ -26,6 +26,18 @@ export interface ResolvedBaziPageSubmission {
   referenceInstantUtc: string;
 }
 
+export interface LatestRequestGate {
+  begin(): number;
+  invalidate(): void;
+  isCurrent(requestId: number): boolean;
+}
+
+export interface LatestRequestHandlers<T> {
+  onSuccess(value: T): void;
+  onError(error: unknown): void;
+  onFinally(): void;
+}
+
 export const EMPTY_BAZI_PAGE_RESOLUTION: BaziPageResolutionState = {
   foldChoice: null,
   referenceInstantUtc: null,
@@ -35,15 +47,46 @@ export function resetBaziPageResolution(): BaziPageResolutionState {
   return { ...EMPTY_BAZI_PAGE_RESOLUTION };
 }
 
-export function beginBaziPageSubmission(
-  state: BaziPageResolutionState,
-  clock: () => string,
-): ResolvedBaziPageSubmission {
-  const generatedReference = state.referenceInstantUtc ?? clock();
+export function beginBaziPageSubmission(clock: () => string): ResolvedBaziPageSubmission {
   return {
-    foldChoice: state.foldChoice,
-    referenceInstantUtc: generatedReference.replace(/\.\d{3}Z$/, "Z"),
+    foldChoice: null,
+    referenceInstantUtc: clock().replace(/\.\d{3}Z$/, "Z"),
   };
+}
+
+export function createLatestRequestGate(): LatestRequestGate {
+  let latestRequestId = 0;
+  return {
+    begin() {
+      latestRequestId += 1;
+      return latestRequestId;
+    },
+    invalidate() {
+      latestRequestId += 1;
+    },
+    isCurrent(requestId) {
+      return requestId === latestRequestId;
+    },
+  };
+}
+
+export async function settleLatestRequest<T>(
+  gate: LatestRequestGate,
+  requestId: number,
+  task: Promise<T>,
+  handlers: LatestRequestHandlers<T>,
+): Promise<boolean> {
+  try {
+    const value = await task;
+    if (!gate.isCurrent(requestId)) return false;
+    handlers.onSuccess(value);
+  } catch (error) {
+    if (!gate.isCurrent(requestId)) return false;
+    handlers.onError(error);
+  } finally {
+    if (gate.isCurrent(requestId)) handlers.onFinally();
+  }
+  return true;
 }
 
 export function toRawBaziDeterministicInput(draft: BaziPageDraft): RawBaziDeterministicInput {

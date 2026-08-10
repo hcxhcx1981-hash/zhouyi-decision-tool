@@ -1,6 +1,6 @@
 "use client";
 
-import { type FormEvent, useState } from "react";
+import { type FormEvent, useRef, useState } from "react";
 import { BaziBlockedResult } from "./bazi-blocked-result";
 import { BaziPillarResult } from "./bazi-pillar-result";
 import {
@@ -11,8 +11,10 @@ import {
 } from "@/lib/bazi/bazi-browser-pipeline";
 import {
   beginBaziPageSubmission,
+  createLatestRequestGate,
   EMPTY_BAZI_PAGE_RESOLUTION,
   resetBaziPageResolution,
+  settleLatestRequest,
   type BaziPageDraft,
   type BaziPageResolutionState,
   type ResolvedBaziPageSubmission,
@@ -74,47 +76,64 @@ export function BirthInputForm({ clock = () => new Date().toISOString() }: { clo
   const [loadError, setLoadError] = useState(false);
   const [ianaZones, setIanaZones] = useState<readonly string[]>([]);
   const [ianaLoading, setIanaLoading] = useState(false);
+  const pipelineRequests = useRef(createLatestRequestGate());
+  const ianaRequests = useRef(createLatestRequestGate());
 
   function updateDraft(patch: Partial<FormDraft>) {
+    pipelineRequests.current.invalidate();
     setDraft((current) => ({ ...current, ...patch }));
     setErrors([]);
     setPipeline(null);
     setLoadError(false);
+    setBusy(false);
     setResolution(resetBaziPageResolution());
   }
 
   async function selectLocationMode(mode: LocationMode) {
+    ianaRequests.current.invalidate();
+    setIanaLoading(false);
     updateDraft({ locationMode: mode, manualIanaTimezone: "" });
     if (mode === "MANUAL_IANA" && ianaZones.length === 0 && !ianaLoading) {
+      const requestId = ianaRequests.current.begin();
       setIanaLoading(true);
-      try {
-        setIanaZones(await loadVerifiedIanaZoneIds(defaultBrowserFetch));
-      } catch {
-        setLoadError(true);
-      } finally {
-        setIanaLoading(false);
-      }
+      await settleLatestRequest(
+        ianaRequests.current,
+        requestId,
+        loadVerifiedIanaZoneIds(defaultBrowserFetch),
+        {
+          onSuccess: setIanaZones,
+          onError: () => setLoadError(true),
+          onFinally: () => setIanaLoading(false),
+        },
+      );
     }
   }
 
   async function execute(nextResolution: ResolvedBaziPageSubmission) {
+    const requestId = pipelineRequests.current.begin();
     setBusy(true);
     setLoadError(false);
-    try {
-      const pageDraft = toPageDraft(draft, nextResolution);
-      const next = await runBaziBrowserPipeline(pageDraft, {
+    const pageDraft = toPageDraft(draft, nextResolution);
+    await settleLatestRequest(
+      pipelineRequests.current,
+      requestId,
+      runBaziBrowserPipeline(pageDraft, {
         fetchImpl: defaultBrowserFetch,
         referenceInstantUtc: nextResolution.referenceInstantUtc,
-      });
-      setPipeline(next);
-      setResolution(nextResolution);
-    } catch (error) {
-      if (process.env.NODE_ENV === "development") console.error("Bazi browser pipeline failed", error);
-      setPipeline(null);
-      setLoadError(true);
-    } finally {
-      setBusy(false);
-    }
+      }),
+      {
+        onSuccess: (next) => {
+          setPipeline(next);
+          setResolution(nextResolution);
+        },
+        onError: (error) => {
+          if (process.env.NODE_ENV === "development") console.error("Bazi browser pipeline failed", error);
+          setPipeline(null);
+          setLoadError(true);
+        },
+        onFinally: () => setBusy(false),
+      },
+    );
   }
 
   async function submit(event: FormEvent<HTMLFormElement>) {
@@ -122,7 +141,7 @@ export function BirthInputForm({ clock = () => new Date().toISOString() }: { clo
     const nextErrors = validate(draft);
     setErrors(nextErrors);
     if (nextErrors.length > 0) return;
-    await execute(beginBaziPageSubmission(resolution, clock));
+    await execute(beginBaziPageSubmission(clock));
   }
 
   async function chooseFold(foldChoice: "EARLIER" | "LATER") {
