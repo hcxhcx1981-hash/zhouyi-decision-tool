@@ -1,0 +1,52 @@
+{
+  "dataset_id": "BAZI_IANA_TZDB_2026C_V0_1_0",
+  "version": "0.1.0",
+  "status": "FROZEN_RUNTIME_DATA",
+  "iana_release": "2026c",
+  "python_tzdata_version": "2026.3",
+  "wheel_sha256": "dc096730c87af6cab1b171c9d532be840741ff5d459015e7f6947bd7d7e54931",
+  "coverage": {
+    "start_utc": "1969-01-01T00:00:00Z",
+    "end_utc_exclusive": "2102-01-01T00:00:00Z"
+  },
+  "zone_count": 598,
+  "transition_count": 55642,
+  "statistics": {
+    "minimum_offset_seconds": -43200,
+    "maximum_offset_seconds": 50400,
+    "maximum_offset_change_seconds": 86400,
+    "gap_count": 27730,
+    "fold_count": 27681,
+    "duplicate_transition_count": 0
+  },
+  "data_file": "iana_tzdb_2026c_v0.1.0.json",
+  "data_sha256": "a15f271214fb2b595856d93c365ed6beb6dfbfbb429d6b3c2fa0fc9b58d7c6c2",
+  "reproducibility": {
+    "run_a_sha256": "a15f271214fb2b595856d93c365ed6beb6dfbfbb429d6b3c2fa0fc9b58d7c6c2",
+    "run_b_sha256": "a15f271214fb2b595856d93c365ed6beb6dfbfbb429d6b3c2fa0fc9b58d7c6c2",
+    "byte_identical": true
+  },
+  "generation_policy": {
+    "explicit_transitions": "TZif transition arrays from locked tzdata wheel",
+    "future_transitions": "Locked ZoneInfo POSIX footer rules materialized with six-hour bracketing and second-level binary search",
+    "system_tzpath_used": false
+  },
+  "runtime_policy": {
+    "static_timezone_json_only": true,
+    "network_access": false,
+    "host_system_tzdb_dependency": false,
+    "browser_intl_historical_offset": false
+  },
+  "source_provenance": {
+    "source": "IANA TZDB via Python tzdata official wheel",
+    "package": "tzdata==2026.3",
+    "iana_release": "2026c",
+    "wheel_sha256": "dc096730c87af6cab1b171c9d532be840741ff5d459015e7f6947bd7d7e54931"
+  },
+  "known_limitations": [
+    "Coverage is limited to the stated end-exclusive UTC interval.",
+    "Abbreviations are audit-only and are never used to resolve offsets.",
+    "City-to-timezone mapping and geocoding are outside Phase 2.2B."
+  ],
+  "license_reference": "research/bazi_timezone/THIRD_PARTY_NOTICES_TZDATA.md"
+}
