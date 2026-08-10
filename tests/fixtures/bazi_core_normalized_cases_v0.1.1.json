@@ -1,0 +1,2479 @@
+{
+  "fixture_id": "BAZI_CORE_NORMALIZED_CASES_V0_1_1",
+  "version": "0.1.1",
+  "status": "TEST_ONLY_NOT_FOR_RUNTIME",
+  "source_cases_sha256": "51ec490be14b7c8b1a31c300d4f96e1808e70b5a6feeda68c25b07883f46ce4e",
+  "reference_local_date": "2026-08-07",
+  "timezone_resolver_id": "TEST_PYTHON_ZONEINFO_FIXTURE",
+  "timezone_data_version": "tzdata-2025.3",
+  "python_version": "3.11.15",
+  "zoneinfo_tzpath": [],
+  "case_count": 70,
+  "cases": [
+    {
+      "source_case_id": "BZ-C001-WINTER-MORNING",
+      "normalized_input": {
+        "calendarType": "GREGORIAN",
+        "caseScope": "PRODUCT_INPUT",
+        "localDate": "2024-01-15",
+        "localTime": "08:30",
+        "timeKnown": true,
+        "locationName": "中国大陆匿名城市",
+        "ianaTimezone": "Asia/Shanghai",
+        "timeResolutionStatus": "READY",
+        "foldChoice": null,
+        "minuteRangeUtc": {
+          "startUtc": "2024-01-15T00:30:00Z",
+          "endUtcExclusive": "2024-01-15T00:31:00Z"
+        },
+        "localCivilDayRangeUtc": {
+          "startUtc": "2024-01-14T16:00:00Z",
+          "endUtcExclusive": "2024-01-15T16:00:00Z"
+        },
+        "referenceLocalDate": "2026-08-07",
+        "timezoneResolverId": "TEST_PYTHON_ZONEINFO_FIXTURE",
+        "timezoneDataVersion": "tzdata-2025.3"
+      },
+      "normalization_evidence": {
+        "resolved_utc_offset": "+08:00"
+      },
+      "expected": {
+        "expected_status": "PROPOSED_EXPECTATION",
+        "expected_pillars": {
+          "year": "癸卯",
+          "month": "乙丑",
+          "day": "戊寅",
+          "hour": "丙辰"
+        }
+      }
+    },
+    {
+      "source_case_id": "BZ-C002-SPRING-AFTERNOON",
+      "normalized_input": {
+        "calendarType": "GREGORIAN",
+        "caseScope": "PRODUCT_INPUT",
+        "localDate": "2024-03-20",
+        "localTime": "14:30",
+        "timeKnown": true,
+        "locationName": "中国大陆匿名城市",
+        "ianaTimezone": "Asia/Shanghai",
+        "timeResolutionStatus": "READY",
+        "foldChoice": null,
+        "minuteRangeUtc": {
+          "startUtc": "2024-03-20T06:30:00Z",
+          "endUtcExclusive": "2024-03-20T06:31:00Z"
+        },
+        "localCivilDayRangeUtc": {
+          "startUtc": "2024-03-19T16:00:00Z",
+          "endUtcExclusive": "2024-03-20T16:00:00Z"
+        },
+        "referenceLocalDate": "2026-08-07",
+        "timezoneResolverId": "TEST_PYTHON_ZONEINFO_FIXTURE",
+        "timezoneDataVersion": "tzdata-2025.3"
+      },
+      "normalization_evidence": {
+        "resolved_utc_offset": "+08:00"
+      },
+      "expected": {
+        "expected_status": "PROPOSED_EXPECTATION",
+        "expected_pillars": {
+          "year": "甲辰",
+          "month": "丁卯",
+          "day": "癸未",
+          "hour": "己未"
+        }
+      }
+    },
+    {
+      "source_case_id": "BZ-C003-SUMMER-EVENING",
+      "normalized_input": {
+        "calendarType": "GREGORIAN",
+        "caseScope": "PRODUCT_INPUT",
+        "localDate": "2024-06-21",
+        "localTime": "18:30",
+        "timeKnown": true,
+        "locationName": "中国大陆匿名城市",
+        "ianaTimezone": "Asia/Shanghai",
+        "timeResolutionStatus": "READY",
+        "foldChoice": null,
+        "minuteRangeUtc": {
+          "startUtc": "2024-06-21T10:30:00Z",
+          "endUtcExclusive": "2024-06-21T10:31:00Z"
+        },
+        "localCivilDayRangeUtc": {
+          "startUtc": "2024-06-20T16:00:00Z",
+          "endUtcExclusive": "2024-06-21T16:00:00Z"
+        },
+        "referenceLocalDate": "2026-08-07",
+        "timezoneResolverId": "TEST_PYTHON_ZONEINFO_FIXTURE",
+        "timezoneDataVersion": "tzdata-2025.3"
+      },
+      "normalization_evidence": {
+        "resolved_utc_offset": "+08:00"
+      },
+      "expected": {
+        "expected_status": "PROPOSED_EXPECTATION",
+        "expected_pillars": {
+          "year": "甲辰",
+          "month": "庚午",
+          "day": "丙辰",
+          "hour": "丁酉"
+        }
+      }
+    },
+    {
+      "source_case_id": "BZ-C004-AUTUMN-EARLY",
+      "normalized_input": {
+        "calendarType": "GREGORIAN",
+        "caseScope": "PRODUCT_INPUT",
+        "localDate": "2024-09-22",
+        "localTime": "06:30",
+        "timeKnown": true,
+        "locationName": "中国大陆匿名城市",
+        "ianaTimezone": "Asia/Shanghai",
+        "timeResolutionStatus": "READY",
+        "foldChoice": null,
+        "minuteRangeUtc": {
+          "startUtc": "2024-09-21T22:30:00Z",
+          "endUtcExclusive": "2024-09-21T22:31:00Z"
+        },
+        "localCivilDayRangeUtc": {
+          "startUtc": "2024-09-21T16:00:00Z",
+          "endUtcExclusive": "2024-09-22T16:00:00Z"
+        },
+        "referenceLocalDate": "2026-08-07",
+        "timezoneResolverId": "TEST_PYTHON_ZONEINFO_FIXTURE",
+        "timezoneDataVersion": "tzdata-2025.3"
+      },
+      "normalization_evidence": {
+        "resolved_utc_offset": "+08:00"
+      },
+      "expected": {
+        "expected_status": "PROPOSED_EXPECTATION",
+        "expected_pillars": {
+          "year": "甲辰",
+          "month": "癸酉",
+          "day": "己丑",
+          "hour": "丁卯"
+        }
+      }
+    },
+    {
+      "source_case_id": "BZ-C005-WINTER-NIGHT",
+      "normalized_input": {
+        "calendarType": "GREGORIAN",
+        "caseScope": "PRODUCT_INPUT",
+        "localDate": "2024-12-20",
+        "localTime": "20:30",
+        "timeKnown": true,
+        "locationName": "中国大陆匿名城市",
+        "ianaTimezone": "Asia/Shanghai",
+        "timeResolutionStatus": "READY",
+        "foldChoice": null,
+        "minuteRangeUtc": {
+          "startUtc": "2024-12-20T12:30:00Z",
+          "endUtcExclusive": "2024-12-20T12:31:00Z"
+        },
+        "localCivilDayRangeUtc": {
+          "startUtc": "2024-12-19T16:00:00Z",
+          "endUtcExclusive": "2024-12-20T16:00:00Z"
+        },
+        "referenceLocalDate": "2026-08-07",
+        "timezoneResolverId": "TEST_PYTHON_ZONEINFO_FIXTURE",
+        "timezoneDataVersion": "tzdata-2025.3"
+      },
+      "normalization_evidence": {
+        "resolved_utc_offset": "+08:00"
+      },
+      "expected": {
+        "expected_status": "PROPOSED_EXPECTATION",
+        "expected_pillars": {
+          "year": "甲辰",
+          "month": "丙子",
+          "day": "戊午",
+          "hour": "壬戌"
+        }
+      }
+    },
+    {
+      "source_case_id": "BZ-C006-LEAP-DAY-2000",
+      "normalized_input": {
+        "calendarType": "GREGORIAN",
+        "caseScope": "PRODUCT_INPUT",
+        "localDate": "2000-02-29",
+        "localTime": "10:30",
+        "timeKnown": true,
+        "locationName": "中国大陆匿名城市",
+        "ianaTimezone": "Asia/Shanghai",
+        "timeResolutionStatus": "READY",
+        "foldChoice": null,
+        "minuteRangeUtc": {
+          "startUtc": "2000-02-29T02:30:00Z",
+          "endUtcExclusive": "2000-02-29T02:31:00Z"
+        },
+        "localCivilDayRangeUtc": {
+          "startUtc": "2000-02-28T16:00:00Z",
+          "endUtcExclusive": "2000-02-29T16:00:00Z"
+        },
+        "referenceLocalDate": "2026-08-07",
+        "timezoneResolverId": "TEST_PYTHON_ZONEINFO_FIXTURE",
+        "timezoneDataVersion": "tzdata-2025.3"
+      },
+      "normalization_evidence": {
+        "resolved_utc_offset": "+08:00"
+      },
+      "expected": {
+        "expected_status": "PROPOSED_EXPECTATION",
+        "expected_pillars": {
+          "year": "庚辰",
+          "month": "戊寅",
+          "day": "丁巳",
+          "hour": "乙巳"
+        }
+      }
+    },
+    {
+      "source_case_id": "BZ-C007-EARLY-RANGE",
+      "normalized_input": {
+        "calendarType": "GREGORIAN",
+        "caseScope": "PRODUCT_INPUT",
+        "localDate": "1992-01-01",
+        "localTime": "12:30",
+        "timeKnown": true,
+        "locationName": "中国大陆匿名城市",
+        "ianaTimezone": "Asia/Shanghai",
+        "timeResolutionStatus": "READY",
+        "foldChoice": null,
+        "minuteRangeUtc": {
+          "startUtc": "1992-01-01T04:30:00Z",
+          "endUtcExclusive": "1992-01-01T04:31:00Z"
+        },
+        "localCivilDayRangeUtc": {
+          "startUtc": "1991-12-31T16:00:00Z",
+          "endUtcExclusive": "1992-01-01T16:00:00Z"
+        },
+        "referenceLocalDate": "2026-08-07",
+        "timezoneResolverId": "TEST_PYTHON_ZONEINFO_FIXTURE",
+        "timezoneDataVersion": "tzdata-2025.3"
+      },
+      "normalization_evidence": {
+        "resolved_utc_offset": "+08:00"
+      },
+      "expected": {
+        "expected_status": "PROPOSED_EXPECTATION",
+        "expected_pillars": {
+          "year": "辛未",
+          "month": "庚子",
+          "day": "丙子",
+          "hour": "甲午"
+        }
+      }
+    },
+    {
+      "source_case_id": "BZ-C008-YEAR-END",
+      "normalized_input": {
+        "calendarType": "GREGORIAN",
+        "caseScope": "PRODUCT_INPUT",
+        "localDate": "2024-12-31",
+        "localTime": "22:30",
+        "timeKnown": true,
+        "locationName": "中国大陆匿名城市",
+        "ianaTimezone": "Asia/Shanghai",
+        "timeResolutionStatus": "READY",
+        "foldChoice": null,
+        "minuteRangeUtc": {
+          "startUtc": "2024-12-31T14:30:00Z",
+          "endUtcExclusive": "2024-12-31T14:31:00Z"
+        },
+        "localCivilDayRangeUtc": {
+          "startUtc": "2024-12-30T16:00:00Z",
+          "endUtcExclusive": "2024-12-31T16:00:00Z"
+        },
+        "referenceLocalDate": "2026-08-07",
+        "timezoneResolverId": "TEST_PYTHON_ZONEINFO_FIXTURE",
+        "timezoneDataVersion": "tzdata-2025.3"
+      },
+      "normalization_evidence": {
+        "resolved_utc_offset": "+08:00"
+      },
+      "expected": {
+        "expected_status": "PROPOSED_EXPECTATION",
+        "expected_pillars": {
+          "year": "甲辰",
+          "month": "丙子",
+          "day": "己巳",
+          "hour": "乙亥"
+        }
+      }
+    },
+    {
+      "source_case_id": "BZ-C009-UNKNOWN-HOUR",
+      "normalized_input": {
+        "calendarType": "GREGORIAN",
+        "caseScope": "PRODUCT_INPUT",
+        "localDate": "2024-03-20",
+        "localTime": null,
+        "timeKnown": false,
+        "locationName": "中国大陆匿名城市",
+        "ianaTimezone": "Asia/Shanghai",
+        "timeResolutionStatus": "READY",
+        "foldChoice": null,
+        "minuteRangeUtc": null,
+        "localCivilDayRangeUtc": {
+          "startUtc": "2024-03-19T16:00:00Z",
+          "endUtcExclusive": "2024-03-20T16:00:00Z"
+        },
+        "referenceLocalDate": "2026-08-07",
+        "timezoneResolverId": "TEST_PYTHON_ZONEINFO_FIXTURE",
+        "timezoneDataVersion": "tzdata-2025.3"
+      },
+      "normalization_evidence": {
+        "resolved_utc_offset": null
+      },
+      "expected": {
+        "expected_status": "PROPOSED_EXPECTATION",
+        "expected_pillars": {
+          "year": "甲辰",
+          "month": "丁卯",
+          "day": "癸未",
+          "hour": null
+        },
+        "expected_completeness": "THREE_PILLARS_ONLY"
+      }
+    },
+    {
+      "source_case_id": "BZ-C010-XIAOHAN-BEFORE",
+      "normalized_input": {
+        "calendarType": "GREGORIAN",
+        "caseScope": "PRODUCT_INPUT",
+        "localDate": "2024-01-06",
+        "localTime": "04:48",
+        "timeKnown": true,
+        "locationName": "中国大陆匿名城市",
+        "ianaTimezone": "Asia/Shanghai",
+        "timeResolutionStatus": "READY",
+        "foldChoice": null,
+        "minuteRangeUtc": {
+          "startUtc": "2024-01-05T20:48:00Z",
+          "endUtcExclusive": "2024-01-05T20:49:00Z"
+        },
+        "localCivilDayRangeUtc": {
+          "startUtc": "2024-01-05T16:00:00Z",
+          "endUtcExclusive": "2024-01-06T16:00:00Z"
+        },
+        "referenceLocalDate": "2026-08-07",
+        "timezoneResolverId": "TEST_PYTHON_ZONEINFO_FIXTURE",
+        "timezoneDataVersion": "tzdata-2025.3"
+      },
+      "normalization_evidence": {
+        "resolved_utc_offset": "+08:00"
+      },
+      "expected": {
+        "expected_warnings": [
+          "BOUNDARY_SENSITIVE"
+        ],
+        "expected_status": "PROPOSED_EXPECTATION",
+        "expected_pillars": {
+          "year": "癸卯",
+          "month": "甲子",
+          "day": "己巳",
+          "hour": "丙寅"
+        }
+      }
+    },
+    {
+      "source_case_id": "BZ-C011-XIAOHAN-AFTER",
+      "normalized_input": {
+        "calendarType": "GREGORIAN",
+        "caseScope": "PRODUCT_INPUT",
+        "localDate": "2024-01-06",
+        "localTime": "04:50",
+        "timeKnown": true,
+        "locationName": "中国大陆匿名城市",
+        "ianaTimezone": "Asia/Shanghai",
+        "timeResolutionStatus": "READY",
+        "foldChoice": null,
+        "minuteRangeUtc": {
+          "startUtc": "2024-01-05T20:50:00Z",
+          "endUtcExclusive": "2024-01-05T20:51:00Z"
+        },
+        "localCivilDayRangeUtc": {
+          "startUtc": "2024-01-05T16:00:00Z",
+          "endUtcExclusive": "2024-01-06T16:00:00Z"
+        },
+        "referenceLocalDate": "2026-08-07",
+        "timezoneResolverId": "TEST_PYTHON_ZONEINFO_FIXTURE",
+        "timezoneDataVersion": "tzdata-2025.3"
+      },
+      "normalization_evidence": {
+        "resolved_utc_offset": "+08:00"
+      },
+      "expected": {
+        "expected_warnings": [
+          "BOUNDARY_SENSITIVE"
+        ],
+        "expected_status": "PROPOSED_EXPECTATION",
+        "expected_pillars": {
+          "year": "癸卯",
+          "month": "乙丑",
+          "day": "己巳",
+          "hour": "丙寅"
+        }
+      }
+    },
+    {
+      "source_case_id": "BZ-C012-LICHUN-BEFORE",
+      "normalized_input": {
+        "calendarType": "GREGORIAN",
+        "caseScope": "PRODUCT_INPUT",
+        "localDate": "2024-02-04",
+        "localTime": "16:26",
+        "timeKnown": true,
+        "locationName": "中国大陆匿名城市",
+        "ianaTimezone": "Asia/Shanghai",
+        "timeResolutionStatus": "READY",
+        "foldChoice": null,
+        "minuteRangeUtc": {
+          "startUtc": "2024-02-04T08:26:00Z",
+          "endUtcExclusive": "2024-02-04T08:27:00Z"
+        },
+        "localCivilDayRangeUtc": {
+          "startUtc": "2024-02-03T16:00:00Z",
+          "endUtcExclusive": "2024-02-04T16:00:00Z"
+        },
+        "referenceLocalDate": "2026-08-07",
+        "timezoneResolverId": "TEST_PYTHON_ZONEINFO_FIXTURE",
+        "timezoneDataVersion": "tzdata-2025.3"
+      },
+      "normalization_evidence": {
+        "resolved_utc_offset": "+08:00"
+      },
+      "expected": {
+        "expected_status": "BLOCKED",
+        "expected_blocking_code": "SOLAR_TERM_SAME_MINUTE_AMBIGUOUS"
+      }
+    },
+    {
+      "source_case_id": "BZ-C013-LICHUN-AFTER",
+      "normalized_input": {
+        "calendarType": "GREGORIAN",
+        "caseScope": "PRODUCT_INPUT",
+        "localDate": "2024-02-04",
+        "localTime": "16:28",
+        "timeKnown": true,
+        "locationName": "中国大陆匿名城市",
+        "ianaTimezone": "Asia/Shanghai",
+        "timeResolutionStatus": "READY",
+        "foldChoice": null,
+        "minuteRangeUtc": {
+          "startUtc": "2024-02-04T08:28:00Z",
+          "endUtcExclusive": "2024-02-04T08:29:00Z"
+        },
+        "localCivilDayRangeUtc": {
+          "startUtc": "2024-02-03T16:00:00Z",
+          "endUtcExclusive": "2024-02-04T16:00:00Z"
+        },
+        "referenceLocalDate": "2026-08-07",
+        "timezoneResolverId": "TEST_PYTHON_ZONEINFO_FIXTURE",
+        "timezoneDataVersion": "tzdata-2025.3"
+      },
+      "normalization_evidence": {
+        "resolved_utc_offset": "+08:00"
+      },
+      "expected": {
+        "expected_warnings": [
+          "BOUNDARY_SENSITIVE"
+        ],
+        "expected_status": "PROPOSED_EXPECTATION",
+        "expected_pillars": {
+          "year": "甲辰",
+          "month": "丙寅",
+          "day": "戊戌",
+          "hour": "庚申"
+        }
+      }
+    },
+    {
+      "source_case_id": "BZ-C014-JINGZHE-BEFORE",
+      "normalized_input": {
+        "calendarType": "GREGORIAN",
+        "caseScope": "PRODUCT_INPUT",
+        "localDate": "2024-03-05",
+        "localTime": "10:22",
+        "timeKnown": true,
+        "locationName": "中国大陆匿名城市",
+        "ianaTimezone": "Asia/Shanghai",
+        "timeResolutionStatus": "READY",
+        "foldChoice": null,
+        "minuteRangeUtc": {
+          "startUtc": "2024-03-05T02:22:00Z",
+          "endUtcExclusive": "2024-03-05T02:23:00Z"
+        },
+        "localCivilDayRangeUtc": {
+          "startUtc": "2024-03-04T16:00:00Z",
+          "endUtcExclusive": "2024-03-05T16:00:00Z"
+        },
+        "referenceLocalDate": "2026-08-07",
+        "timezoneResolverId": "TEST_PYTHON_ZONEINFO_FIXTURE",
+        "timezoneDataVersion": "tzdata-2025.3"
+      },
+      "normalization_evidence": {
+        "resolved_utc_offset": "+08:00"
+      },
+      "expected": {
+        "expected_status": "BLOCKED",
+        "expected_blocking_code": "SOLAR_TERM_SAME_MINUTE_AMBIGUOUS"
+      }
+    },
+    {
+      "source_case_id": "BZ-C015-JINGZHE-AFTER",
+      "normalized_input": {
+        "calendarType": "GREGORIAN",
+        "caseScope": "PRODUCT_INPUT",
+        "localDate": "2024-03-05",
+        "localTime": "10:24",
+        "timeKnown": true,
+        "locationName": "中国大陆匿名城市",
+        "ianaTimezone": "Asia/Shanghai",
+        "timeResolutionStatus": "READY",
+        "foldChoice": null,
+        "minuteRangeUtc": {
+          "startUtc": "2024-03-05T02:24:00Z",
+          "endUtcExclusive": "2024-03-05T02:25:00Z"
+        },
+        "localCivilDayRangeUtc": {
+          "startUtc": "2024-03-04T16:00:00Z",
+          "endUtcExclusive": "2024-03-05T16:00:00Z"
+        },
+        "referenceLocalDate": "2026-08-07",
+        "timezoneResolverId": "TEST_PYTHON_ZONEINFO_FIXTURE",
+        "timezoneDataVersion": "tzdata-2025.3"
+      },
+      "normalization_evidence": {
+        "resolved_utc_offset": "+08:00"
+      },
+      "expected": {
+        "expected_warnings": [
+          "BOUNDARY_SENSITIVE"
+        ],
+        "expected_status": "PROPOSED_EXPECTATION",
+        "expected_pillars": {
+          "year": "甲辰",
+          "month": "丁卯",
+          "day": "戊辰",
+          "hour": "丁巳"
+        }
+      }
+    },
+    {
+      "source_case_id": "BZ-C016-QINGMING-BEFORE",
+      "normalized_input": {
+        "calendarType": "GREGORIAN",
+        "caseScope": "PRODUCT_INPUT",
+        "localDate": "2024-04-04",
+        "localTime": "15:01",
+        "timeKnown": true,
+        "locationName": "中国大陆匿名城市",
+        "ianaTimezone": "Asia/Shanghai",
+        "timeResolutionStatus": "READY",
+        "foldChoice": null,
+        "minuteRangeUtc": {
+          "startUtc": "2024-04-04T07:01:00Z",
+          "endUtcExclusive": "2024-04-04T07:02:00Z"
+        },
+        "localCivilDayRangeUtc": {
+          "startUtc": "2024-04-03T16:00:00Z",
+          "endUtcExclusive": "2024-04-04T16:00:00Z"
+        },
+        "referenceLocalDate": "2026-08-07",
+        "timezoneResolverId": "TEST_PYTHON_ZONEINFO_FIXTURE",
+        "timezoneDataVersion": "tzdata-2025.3"
+      },
+      "normalization_evidence": {
+        "resolved_utc_offset": "+08:00"
+      },
+      "expected": {
+        "expected_warnings": [
+          "BOUNDARY_SENSITIVE"
+        ],
+        "expected_status": "PROPOSED_EXPECTATION",
+        "expected_pillars": {
+          "year": "甲辰",
+          "month": "丁卯",
+          "day": "戊戌",
+          "hour": "庚申"
+        }
+      }
+    },
+    {
+      "source_case_id": "BZ-C017-QINGMING-AFTER",
+      "normalized_input": {
+        "calendarType": "GREGORIAN",
+        "caseScope": "PRODUCT_INPUT",
+        "localDate": "2024-04-04",
+        "localTime": "15:03",
+        "timeKnown": true,
+        "locationName": "中国大陆匿名城市",
+        "ianaTimezone": "Asia/Shanghai",
+        "timeResolutionStatus": "READY",
+        "foldChoice": null,
+        "minuteRangeUtc": {
+          "startUtc": "2024-04-04T07:03:00Z",
+          "endUtcExclusive": "2024-04-04T07:04:00Z"
+        },
+        "localCivilDayRangeUtc": {
+          "startUtc": "2024-04-03T16:00:00Z",
+          "endUtcExclusive": "2024-04-04T16:00:00Z"
+        },
+        "referenceLocalDate": "2026-08-07",
+        "timezoneResolverId": "TEST_PYTHON_ZONEINFO_FIXTURE",
+        "timezoneDataVersion": "tzdata-2025.3"
+      },
+      "normalization_evidence": {
+        "resolved_utc_offset": "+08:00"
+      },
+      "expected": {
+        "expected_warnings": [
+          "BOUNDARY_SENSITIVE"
+        ],
+        "expected_status": "PROPOSED_EXPECTATION",
+        "expected_pillars": {
+          "year": "甲辰",
+          "month": "戊辰",
+          "day": "戊戌",
+          "hour": "庚申"
+        }
+      }
+    },
+    {
+      "source_case_id": "BZ-C018-LIXIA-BEFORE",
+      "normalized_input": {
+        "calendarType": "GREGORIAN",
+        "caseScope": "PRODUCT_INPUT",
+        "localDate": "2024-05-05",
+        "localTime": "08:09",
+        "timeKnown": true,
+        "locationName": "中国大陆匿名城市",
+        "ianaTimezone": "Asia/Shanghai",
+        "timeResolutionStatus": "READY",
+        "foldChoice": null,
+        "minuteRangeUtc": {
+          "startUtc": "2024-05-05T00:09:00Z",
+          "endUtcExclusive": "2024-05-05T00:10:00Z"
+        },
+        "localCivilDayRangeUtc": {
+          "startUtc": "2024-05-04T16:00:00Z",
+          "endUtcExclusive": "2024-05-05T16:00:00Z"
+        },
+        "referenceLocalDate": "2026-08-07",
+        "timezoneResolverId": "TEST_PYTHON_ZONEINFO_FIXTURE",
+        "timezoneDataVersion": "tzdata-2025.3"
+      },
+      "normalization_evidence": {
+        "resolved_utc_offset": "+08:00"
+      },
+      "expected": {
+        "expected_warnings": [
+          "BOUNDARY_SENSITIVE"
+        ],
+        "expected_status": "PROPOSED_EXPECTATION",
+        "expected_pillars": {
+          "year": "甲辰",
+          "month": "戊辰",
+          "day": "己巳",
+          "hour": "戊辰"
+        }
+      }
+    },
+    {
+      "source_case_id": "BZ-C019-LIXIA-AFTER",
+      "normalized_input": {
+        "calendarType": "GREGORIAN",
+        "caseScope": "PRODUCT_INPUT",
+        "localDate": "2024-05-05",
+        "localTime": "08:11",
+        "timeKnown": true,
+        "locationName": "中国大陆匿名城市",
+        "ianaTimezone": "Asia/Shanghai",
+        "timeResolutionStatus": "READY",
+        "foldChoice": null,
+        "minuteRangeUtc": {
+          "startUtc": "2024-05-05T00:11:00Z",
+          "endUtcExclusive": "2024-05-05T00:12:00Z"
+        },
+        "localCivilDayRangeUtc": {
+          "startUtc": "2024-05-04T16:00:00Z",
+          "endUtcExclusive": "2024-05-05T16:00:00Z"
+        },
+        "referenceLocalDate": "2026-08-07",
+        "timezoneResolverId": "TEST_PYTHON_ZONEINFO_FIXTURE",
+        "timezoneDataVersion": "tzdata-2025.3"
+      },
+      "normalization_evidence": {
+        "resolved_utc_offset": "+08:00"
+      },
+      "expected": {
+        "expected_warnings": [
+          "BOUNDARY_SENSITIVE"
+        ],
+        "expected_status": "PROPOSED_EXPECTATION",
+        "expected_pillars": {
+          "year": "甲辰",
+          "month": "己巳",
+          "day": "己巳",
+          "hour": "戊辰"
+        }
+      }
+    },
+    {
+      "source_case_id": "BZ-C020-MANGZHONG-BEFORE",
+      "normalized_input": {
+        "calendarType": "GREGORIAN",
+        "caseScope": "PRODUCT_INPUT",
+        "localDate": "2024-06-05",
+        "localTime": "12:09",
+        "timeKnown": true,
+        "locationName": "中国大陆匿名城市",
+        "ianaTimezone": "Asia/Shanghai",
+        "timeResolutionStatus": "READY",
+        "foldChoice": null,
+        "minuteRangeUtc": {
+          "startUtc": "2024-06-05T04:09:00Z",
+          "endUtcExclusive": "2024-06-05T04:10:00Z"
+        },
+        "localCivilDayRangeUtc": {
+          "startUtc": "2024-06-04T16:00:00Z",
+          "endUtcExclusive": "2024-06-05T16:00:00Z"
+        },
+        "referenceLocalDate": "2026-08-07",
+        "timezoneResolverId": "TEST_PYTHON_ZONEINFO_FIXTURE",
+        "timezoneDataVersion": "tzdata-2025.3"
+      },
+      "normalization_evidence": {
+        "resolved_utc_offset": "+08:00"
+      },
+      "expected": {
+        "expected_status": "BLOCKED",
+        "expected_blocking_code": "SOLAR_TERM_SAME_MINUTE_AMBIGUOUS"
+      }
+    },
+    {
+      "source_case_id": "BZ-C021-MANGZHONG-AFTER",
+      "normalized_input": {
+        "calendarType": "GREGORIAN",
+        "caseScope": "PRODUCT_INPUT",
+        "localDate": "2024-06-05",
+        "localTime": "12:11",
+        "timeKnown": true,
+        "locationName": "中国大陆匿名城市",
+        "ianaTimezone": "Asia/Shanghai",
+        "timeResolutionStatus": "READY",
+        "foldChoice": null,
+        "minuteRangeUtc": {
+          "startUtc": "2024-06-05T04:11:00Z",
+          "endUtcExclusive": "2024-06-05T04:12:00Z"
+        },
+        "localCivilDayRangeUtc": {
+          "startUtc": "2024-06-04T16:00:00Z",
+          "endUtcExclusive": "2024-06-05T16:00:00Z"
+        },
+        "referenceLocalDate": "2026-08-07",
+        "timezoneResolverId": "TEST_PYTHON_ZONEINFO_FIXTURE",
+        "timezoneDataVersion": "tzdata-2025.3"
+      },
+      "normalization_evidence": {
+        "resolved_utc_offset": "+08:00"
+      },
+      "expected": {
+        "expected_warnings": [
+          "BOUNDARY_SENSITIVE"
+        ],
+        "expected_status": "PROPOSED_EXPECTATION",
+        "expected_pillars": {
+          "year": "甲辰",
+          "month": "庚午",
+          "day": "庚子",
+          "hour": "壬午"
+        }
+      }
+    },
+    {
+      "source_case_id": "BZ-C022-XIAOSHU-BEFORE",
+      "normalized_input": {
+        "calendarType": "GREGORIAN",
+        "caseScope": "PRODUCT_INPUT",
+        "localDate": "2024-07-06",
+        "localTime": "22:19",
+        "timeKnown": true,
+        "locationName": "中国大陆匿名城市",
+        "ianaTimezone": "Asia/Shanghai",
+        "timeResolutionStatus": "READY",
+        "foldChoice": null,
+        "minuteRangeUtc": {
+          "startUtc": "2024-07-06T14:19:00Z",
+          "endUtcExclusive": "2024-07-06T14:20:00Z"
+        },
+        "localCivilDayRangeUtc": {
+          "startUtc": "2024-07-05T16:00:00Z",
+          "endUtcExclusive": "2024-07-06T16:00:00Z"
+        },
+        "referenceLocalDate": "2026-08-07",
+        "timezoneResolverId": "TEST_PYTHON_ZONEINFO_FIXTURE",
+        "timezoneDataVersion": "tzdata-2025.3"
+      },
+      "normalization_evidence": {
+        "resolved_utc_offset": "+08:00"
+      },
+      "expected": {
+        "expected_warnings": [
+          "BOUNDARY_SENSITIVE"
+        ],
+        "expected_status": "PROPOSED_EXPECTATION",
+        "expected_pillars": {
+          "year": "甲辰",
+          "month": "庚午",
+          "day": "辛未",
+          "hour": "己亥"
+        }
+      }
+    },
+    {
+      "source_case_id": "BZ-C023-XIAOSHU-AFTER",
+      "normalized_input": {
+        "calendarType": "GREGORIAN",
+        "caseScope": "PRODUCT_INPUT",
+        "localDate": "2024-07-06",
+        "localTime": "22:21",
+        "timeKnown": true,
+        "locationName": "中国大陆匿名城市",
+        "ianaTimezone": "Asia/Shanghai",
+        "timeResolutionStatus": "READY",
+        "foldChoice": null,
+        "minuteRangeUtc": {
+          "startUtc": "2024-07-06T14:21:00Z",
+          "endUtcExclusive": "2024-07-06T14:22:00Z"
+        },
+        "localCivilDayRangeUtc": {
+          "startUtc": "2024-07-05T16:00:00Z",
+          "endUtcExclusive": "2024-07-06T16:00:00Z"
+        },
+        "referenceLocalDate": "2026-08-07",
+        "timezoneResolverId": "TEST_PYTHON_ZONEINFO_FIXTURE",
+        "timezoneDataVersion": "tzdata-2025.3"
+      },
+      "normalization_evidence": {
+        "resolved_utc_offset": "+08:00"
+      },
+      "expected": {
+        "expected_warnings": [
+          "BOUNDARY_SENSITIVE"
+        ],
+        "expected_status": "PROPOSED_EXPECTATION",
+        "expected_pillars": {
+          "year": "甲辰",
+          "month": "辛未",
+          "day": "辛未",
+          "hour": "己亥"
+        }
+      }
+    },
+    {
+      "source_case_id": "BZ-C024-LIQIU-BEFORE",
+      "normalized_input": {
+        "calendarType": "GREGORIAN",
+        "caseScope": "PRODUCT_INPUT",
+        "localDate": "2024-08-07",
+        "localTime": "08:08",
+        "timeKnown": true,
+        "locationName": "中国大陆匿名城市",
+        "ianaTimezone": "Asia/Shanghai",
+        "timeResolutionStatus": "READY",
+        "foldChoice": null,
+        "minuteRangeUtc": {
+          "startUtc": "2024-08-07T00:08:00Z",
+          "endUtcExclusive": "2024-08-07T00:09:00Z"
+        },
+        "localCivilDayRangeUtc": {
+          "startUtc": "2024-08-06T16:00:00Z",
+          "endUtcExclusive": "2024-08-07T16:00:00Z"
+        },
+        "referenceLocalDate": "2026-08-07",
+        "timezoneResolverId": "TEST_PYTHON_ZONEINFO_FIXTURE",
+        "timezoneDataVersion": "tzdata-2025.3"
+      },
+      "normalization_evidence": {
+        "resolved_utc_offset": "+08:00"
+      },
+      "expected": {
+        "expected_warnings": [
+          "BOUNDARY_SENSITIVE"
+        ],
+        "expected_status": "PROPOSED_EXPECTATION",
+        "expected_pillars": {
+          "year": "甲辰",
+          "month": "辛未",
+          "day": "癸卯",
+          "hour": "丙辰"
+        }
+      }
+    },
+    {
+      "source_case_id": "BZ-C025-LIQIU-AFTER",
+      "normalized_input": {
+        "calendarType": "GREGORIAN",
+        "caseScope": "PRODUCT_INPUT",
+        "localDate": "2024-08-07",
+        "localTime": "08:10",
+        "timeKnown": true,
+        "locationName": "中国大陆匿名城市",
+        "ianaTimezone": "Asia/Shanghai",
+        "timeResolutionStatus": "READY",
+        "foldChoice": null,
+        "minuteRangeUtc": {
+          "startUtc": "2024-08-07T00:10:00Z",
+          "endUtcExclusive": "2024-08-07T00:11:00Z"
+        },
+        "localCivilDayRangeUtc": {
+          "startUtc": "2024-08-06T16:00:00Z",
+          "endUtcExclusive": "2024-08-07T16:00:00Z"
+        },
+        "referenceLocalDate": "2026-08-07",
+        "timezoneResolverId": "TEST_PYTHON_ZONEINFO_FIXTURE",
+        "timezoneDataVersion": "tzdata-2025.3"
+      },
+      "normalization_evidence": {
+        "resolved_utc_offset": "+08:00"
+      },
+      "expected": {
+        "expected_warnings": [
+          "BOUNDARY_SENSITIVE"
+        ],
+        "expected_status": "PROPOSED_EXPECTATION",
+        "expected_pillars": {
+          "year": "甲辰",
+          "month": "壬申",
+          "day": "癸卯",
+          "hour": "丙辰"
+        }
+      }
+    },
+    {
+      "source_case_id": "BZ-C026-BAILU-BEFORE",
+      "normalized_input": {
+        "calendarType": "GREGORIAN",
+        "caseScope": "PRODUCT_INPUT",
+        "localDate": "2024-09-07",
+        "localTime": "11:10",
+        "timeKnown": true,
+        "locationName": "中国大陆匿名城市",
+        "ianaTimezone": "Asia/Shanghai",
+        "timeResolutionStatus": "READY",
+        "foldChoice": null,
+        "minuteRangeUtc": {
+          "startUtc": "2024-09-07T03:10:00Z",
+          "endUtcExclusive": "2024-09-07T03:11:00Z"
+        },
+        "localCivilDayRangeUtc": {
+          "startUtc": "2024-09-06T16:00:00Z",
+          "endUtcExclusive": "2024-09-07T16:00:00Z"
+        },
+        "referenceLocalDate": "2026-08-07",
+        "timezoneResolverId": "TEST_PYTHON_ZONEINFO_FIXTURE",
+        "timezoneDataVersion": "tzdata-2025.3"
+      },
+      "normalization_evidence": {
+        "resolved_utc_offset": "+08:00"
+      },
+      "expected": {
+        "expected_warnings": [
+          "BOUNDARY_SENSITIVE"
+        ],
+        "expected_status": "PROPOSED_EXPECTATION",
+        "expected_pillars": {
+          "year": "甲辰",
+          "month": "壬申",
+          "day": "甲戌",
+          "hour": "庚午"
+        }
+      }
+    },
+    {
+      "source_case_id": "BZ-C027-BAILU-AFTER",
+      "normalized_input": {
+        "calendarType": "GREGORIAN",
+        "caseScope": "PRODUCT_INPUT",
+        "localDate": "2024-09-07",
+        "localTime": "11:12",
+        "timeKnown": true,
+        "locationName": "中国大陆匿名城市",
+        "ianaTimezone": "Asia/Shanghai",
+        "timeResolutionStatus": "READY",
+        "foldChoice": null,
+        "minuteRangeUtc": {
+          "startUtc": "2024-09-07T03:12:00Z",
+          "endUtcExclusive": "2024-09-07T03:13:00Z"
+        },
+        "localCivilDayRangeUtc": {
+          "startUtc": "2024-09-06T16:00:00Z",
+          "endUtcExclusive": "2024-09-07T16:00:00Z"
+        },
+        "referenceLocalDate": "2026-08-07",
+        "timezoneResolverId": "TEST_PYTHON_ZONEINFO_FIXTURE",
+        "timezoneDataVersion": "tzdata-2025.3"
+      },
+      "normalization_evidence": {
+        "resolved_utc_offset": "+08:00"
+      },
+      "expected": {
+        "expected_warnings": [
+          "BOUNDARY_SENSITIVE"
+        ],
+        "expected_status": "PROPOSED_EXPECTATION",
+        "expected_pillars": {
+          "year": "甲辰",
+          "month": "癸酉",
+          "day": "甲戌",
+          "hour": "庚午"
+        }
+      }
+    },
+    {
+      "source_case_id": "BZ-C028-HANLU-BEFORE",
+      "normalized_input": {
+        "calendarType": "GREGORIAN",
+        "caseScope": "PRODUCT_INPUT",
+        "localDate": "2024-10-08",
+        "localTime": "02:59",
+        "timeKnown": true,
+        "locationName": "中国大陆匿名城市",
+        "ianaTimezone": "Asia/Shanghai",
+        "timeResolutionStatus": "READY",
+        "foldChoice": null,
+        "minuteRangeUtc": {
+          "startUtc": "2024-10-07T18:59:00Z",
+          "endUtcExclusive": "2024-10-07T19:00:00Z"
+        },
+        "localCivilDayRangeUtc": {
+          "startUtc": "2024-10-07T16:00:00Z",
+          "endUtcExclusive": "2024-10-08T16:00:00Z"
+        },
+        "referenceLocalDate": "2026-08-07",
+        "timezoneResolverId": "TEST_PYTHON_ZONEINFO_FIXTURE",
+        "timezoneDataVersion": "tzdata-2025.3"
+      },
+      "normalization_evidence": {
+        "resolved_utc_offset": "+08:00"
+      },
+      "expected": {
+        "expected_warnings": [
+          "BOUNDARY_SENSITIVE"
+        ],
+        "expected_status": "PROPOSED_EXPECTATION",
+        "expected_pillars": {
+          "year": "甲辰",
+          "month": "癸酉",
+          "day": "乙巳",
+          "hour": "丁丑"
+        }
+      }
+    },
+    {
+      "source_case_id": "BZ-C029-HANLU-AFTER",
+      "normalized_input": {
+        "calendarType": "GREGORIAN",
+        "caseScope": "PRODUCT_INPUT",
+        "localDate": "2024-10-08",
+        "localTime": "03:01",
+        "timeKnown": true,
+        "locationName": "中国大陆匿名城市",
+        "ianaTimezone": "Asia/Shanghai",
+        "timeResolutionStatus": "READY",
+        "foldChoice": null,
+        "minuteRangeUtc": {
+          "startUtc": "2024-10-07T19:01:00Z",
+          "endUtcExclusive": "2024-10-07T19:02:00Z"
+        },
+        "localCivilDayRangeUtc": {
+          "startUtc": "2024-10-07T16:00:00Z",
+          "endUtcExclusive": "2024-10-08T16:00:00Z"
+        },
+        "referenceLocalDate": "2026-08-07",
+        "timezoneResolverId": "TEST_PYTHON_ZONEINFO_FIXTURE",
+        "timezoneDataVersion": "tzdata-2025.3"
+      },
+      "normalization_evidence": {
+        "resolved_utc_offset": "+08:00"
+      },
+      "expected": {
+        "expected_warnings": [
+          "BOUNDARY_SENSITIVE"
+        ],
+        "expected_status": "PROPOSED_EXPECTATION",
+        "expected_pillars": {
+          "year": "甲辰",
+          "month": "甲戌",
+          "day": "乙巳",
+          "hour": "戊寅"
+        }
+      }
+    },
+    {
+      "source_case_id": "BZ-C030-LIDONG-BEFORE",
+      "normalized_input": {
+        "calendarType": "GREGORIAN",
+        "caseScope": "PRODUCT_INPUT",
+        "localDate": "2024-11-07",
+        "localTime": "06:19",
+        "timeKnown": true,
+        "locationName": "中国大陆匿名城市",
+        "ianaTimezone": "Asia/Shanghai",
+        "timeResolutionStatus": "READY",
+        "foldChoice": null,
+        "minuteRangeUtc": {
+          "startUtc": "2024-11-06T22:19:00Z",
+          "endUtcExclusive": "2024-11-06T22:20:00Z"
+        },
+        "localCivilDayRangeUtc": {
+          "startUtc": "2024-11-06T16:00:00Z",
+          "endUtcExclusive": "2024-11-07T16:00:00Z"
+        },
+        "referenceLocalDate": "2026-08-07",
+        "timezoneResolverId": "TEST_PYTHON_ZONEINFO_FIXTURE",
+        "timezoneDataVersion": "tzdata-2025.3"
+      },
+      "normalization_evidence": {
+        "resolved_utc_offset": "+08:00"
+      },
+      "expected": {
+        "expected_status": "BLOCKED",
+        "expected_blocking_code": "SOLAR_TERM_SAME_MINUTE_AMBIGUOUS"
+      }
+    },
+    {
+      "source_case_id": "BZ-C031-LIDONG-AFTER",
+      "normalized_input": {
+        "calendarType": "GREGORIAN",
+        "caseScope": "PRODUCT_INPUT",
+        "localDate": "2024-11-07",
+        "localTime": "06:21",
+        "timeKnown": true,
+        "locationName": "中国大陆匿名城市",
+        "ianaTimezone": "Asia/Shanghai",
+        "timeResolutionStatus": "READY",
+        "foldChoice": null,
+        "minuteRangeUtc": {
+          "startUtc": "2024-11-06T22:21:00Z",
+          "endUtcExclusive": "2024-11-06T22:22:00Z"
+        },
+        "localCivilDayRangeUtc": {
+          "startUtc": "2024-11-06T16:00:00Z",
+          "endUtcExclusive": "2024-11-07T16:00:00Z"
+        },
+        "referenceLocalDate": "2026-08-07",
+        "timezoneResolverId": "TEST_PYTHON_ZONEINFO_FIXTURE",
+        "timezoneDataVersion": "tzdata-2025.3"
+      },
+      "normalization_evidence": {
+        "resolved_utc_offset": "+08:00"
+      },
+      "expected": {
+        "expected_warnings": [
+          "BOUNDARY_SENSITIVE"
+        ],
+        "expected_status": "PROPOSED_EXPECTATION",
+        "expected_pillars": {
+          "year": "甲辰",
+          "month": "乙亥",
+          "day": "乙亥",
+          "hour": "己卯"
+        }
+      }
+    },
+    {
+      "source_case_id": "BZ-C032-DAXUE-BEFORE",
+      "normalized_input": {
+        "calendarType": "GREGORIAN",
+        "caseScope": "PRODUCT_INPUT",
+        "localDate": "2024-12-06",
+        "localTime": "23:16",
+        "timeKnown": true,
+        "locationName": "中国大陆匿名城市",
+        "ianaTimezone": "Asia/Shanghai",
+        "timeResolutionStatus": "READY",
+        "foldChoice": null,
+        "minuteRangeUtc": {
+          "startUtc": "2024-12-06T15:16:00Z",
+          "endUtcExclusive": "2024-12-06T15:17:00Z"
+        },
+        "localCivilDayRangeUtc": {
+          "startUtc": "2024-12-05T16:00:00Z",
+          "endUtcExclusive": "2024-12-06T16:00:00Z"
+        },
+        "referenceLocalDate": "2026-08-07",
+        "timezoneResolverId": "TEST_PYTHON_ZONEINFO_FIXTURE",
+        "timezoneDataVersion": "tzdata-2025.3"
+      },
+      "normalization_evidence": {
+        "resolved_utc_offset": "+08:00"
+      },
+      "expected": {
+        "expected_status": "BLOCKED",
+        "expected_blocking_code": "SOLAR_TERM_SAME_MINUTE_AMBIGUOUS"
+      }
+    },
+    {
+      "source_case_id": "BZ-C033-DAXUE-AFTER",
+      "normalized_input": {
+        "calendarType": "GREGORIAN",
+        "caseScope": "PRODUCT_INPUT",
+        "localDate": "2024-12-06",
+        "localTime": "23:18",
+        "timeKnown": true,
+        "locationName": "中国大陆匿名城市",
+        "ianaTimezone": "Asia/Shanghai",
+        "timeResolutionStatus": "READY",
+        "foldChoice": null,
+        "minuteRangeUtc": {
+          "startUtc": "2024-12-06T15:18:00Z",
+          "endUtcExclusive": "2024-12-06T15:19:00Z"
+        },
+        "localCivilDayRangeUtc": {
+          "startUtc": "2024-12-05T16:00:00Z",
+          "endUtcExclusive": "2024-12-06T16:00:00Z"
+        },
+        "referenceLocalDate": "2026-08-07",
+        "timezoneResolverId": "TEST_PYTHON_ZONEINFO_FIXTURE",
+        "timezoneDataVersion": "tzdata-2025.3"
+      },
+      "normalization_evidence": {
+        "resolved_utc_offset": "+08:00"
+      },
+      "expected": {
+        "expected_warnings": [
+          "BOUNDARY_SENSITIVE"
+        ],
+        "expected_status": "PROPOSED_EXPECTATION",
+        "expected_pillars": {
+          "year": "甲辰",
+          "month": "丙子",
+          "day": "甲辰",
+          "hour": "甲子"
+        }
+      }
+    },
+    {
+      "source_case_id": "BZ-C034-ZI-2300",
+      "normalized_input": {
+        "calendarType": "GREGORIAN",
+        "caseScope": "PRODUCT_INPUT",
+        "localDate": "2024-05-20",
+        "localTime": "23:30",
+        "timeKnown": true,
+        "locationName": "中国大陆匿名城市",
+        "ianaTimezone": "Asia/Shanghai",
+        "timeResolutionStatus": "READY",
+        "foldChoice": null,
+        "minuteRangeUtc": {
+          "startUtc": "2024-05-20T15:30:00Z",
+          "endUtcExclusive": "2024-05-20T15:31:00Z"
+        },
+        "localCivilDayRangeUtc": {
+          "startUtc": "2024-05-19T16:00:00Z",
+          "endUtcExclusive": "2024-05-20T16:00:00Z"
+        },
+        "referenceLocalDate": "2026-08-07",
+        "timezoneResolverId": "TEST_PYTHON_ZONEINFO_FIXTURE",
+        "timezoneDataVersion": "tzdata-2025.3"
+      },
+      "normalization_evidence": {
+        "resolved_utc_offset": "+08:00"
+      },
+      "expected": {
+        "expected_status": "PROPOSED_EXPECTATION",
+        "expected_pillars": {
+          "year": "甲辰",
+          "month": "己巳",
+          "day": "甲申",
+          "hour": "甲子"
+        }
+      }
+    },
+    {
+      "source_case_id": "BZ-C035-ZI-0059",
+      "normalized_input": {
+        "calendarType": "GREGORIAN",
+        "caseScope": "PRODUCT_INPUT",
+        "localDate": "2024-05-21",
+        "localTime": "00:30",
+        "timeKnown": true,
+        "locationName": "中国大陆匿名城市",
+        "ianaTimezone": "Asia/Shanghai",
+        "timeResolutionStatus": "READY",
+        "foldChoice": null,
+        "minuteRangeUtc": {
+          "startUtc": "2024-05-20T16:30:00Z",
+          "endUtcExclusive": "2024-05-20T16:31:00Z"
+        },
+        "localCivilDayRangeUtc": {
+          "startUtc": "2024-05-20T16:00:00Z",
+          "endUtcExclusive": "2024-05-21T16:00:00Z"
+        },
+        "referenceLocalDate": "2026-08-07",
+        "timezoneResolverId": "TEST_PYTHON_ZONEINFO_FIXTURE",
+        "timezoneDataVersion": "tzdata-2025.3"
+      },
+      "normalization_evidence": {
+        "resolved_utc_offset": "+08:00"
+      },
+      "expected": {
+        "expected_status": "PROPOSED_EXPECTATION",
+        "expected_pillars": {
+          "year": "甲辰",
+          "month": "己巳",
+          "day": "乙酉",
+          "hour": "丙子"
+        }
+      }
+    },
+    {
+      "source_case_id": "BZ-C036-MONTH-END",
+      "normalized_input": {
+        "calendarType": "GREGORIAN",
+        "caseScope": "PRODUCT_INPUT",
+        "localDate": "2024-05-31",
+        "localTime": "14:30",
+        "timeKnown": true,
+        "locationName": "中国大陆匿名城市",
+        "ianaTimezone": "Asia/Shanghai",
+        "timeResolutionStatus": "READY",
+        "foldChoice": null,
+        "minuteRangeUtc": {
+          "startUtc": "2024-05-31T06:30:00Z",
+          "endUtcExclusive": "2024-05-31T06:31:00Z"
+        },
+        "localCivilDayRangeUtc": {
+          "startUtc": "2024-05-30T16:00:00Z",
+          "endUtcExclusive": "2024-05-31T16:00:00Z"
+        },
+        "referenceLocalDate": "2026-08-07",
+        "timezoneResolverId": "TEST_PYTHON_ZONEINFO_FIXTURE",
+        "timezoneDataVersion": "tzdata-2025.3"
+      },
+      "normalization_evidence": {
+        "resolved_utc_offset": "+08:00"
+      },
+      "expected": {
+        "expected_status": "PROPOSED_EXPECTATION",
+        "expected_pillars": {
+          "year": "甲辰",
+          "month": "己巳",
+          "day": "乙未",
+          "hour": "癸未"
+        }
+      }
+    },
+    {
+      "source_case_id": "BZ-C037-NEW-YEAR-DAY",
+      "normalized_input": {
+        "calendarType": "GREGORIAN",
+        "caseScope": "PRODUCT_INPUT",
+        "localDate": "2025-01-01",
+        "localTime": "10:30",
+        "timeKnown": true,
+        "locationName": "中国大陆匿名城市",
+        "ianaTimezone": "Asia/Shanghai",
+        "timeResolutionStatus": "READY",
+        "foldChoice": null,
+        "minuteRangeUtc": {
+          "startUtc": "2025-01-01T02:30:00Z",
+          "endUtcExclusive": "2025-01-01T02:31:00Z"
+        },
+        "localCivilDayRangeUtc": {
+          "startUtc": "2024-12-31T16:00:00Z",
+          "endUtcExclusive": "2025-01-01T16:00:00Z"
+        },
+        "referenceLocalDate": "2026-08-07",
+        "timezoneResolverId": "TEST_PYTHON_ZONEINFO_FIXTURE",
+        "timezoneDataVersion": "tzdata-2025.3"
+      },
+      "normalization_evidence": {
+        "resolved_utc_offset": "+08:00"
+      },
+      "expected": {
+        "expected_status": "PROPOSED_EXPECTATION",
+        "expected_pillars": {
+          "year": "甲辰",
+          "month": "丙子",
+          "day": "庚午",
+          "hour": "辛巳"
+        }
+      }
+    },
+    {
+      "source_case_id": "BZ-C038-LEAP-DAY-2024",
+      "normalized_input": {
+        "calendarType": "GREGORIAN",
+        "caseScope": "PRODUCT_INPUT",
+        "localDate": "2024-02-29",
+        "localTime": "10:30",
+        "timeKnown": true,
+        "locationName": "中国大陆匿名城市",
+        "ianaTimezone": "Asia/Shanghai",
+        "timeResolutionStatus": "READY",
+        "foldChoice": null,
+        "minuteRangeUtc": {
+          "startUtc": "2024-02-29T02:30:00Z",
+          "endUtcExclusive": "2024-02-29T02:31:00Z"
+        },
+        "localCivilDayRangeUtc": {
+          "startUtc": "2024-02-28T16:00:00Z",
+          "endUtcExclusive": "2024-02-29T16:00:00Z"
+        },
+        "referenceLocalDate": "2026-08-07",
+        "timezoneResolverId": "TEST_PYTHON_ZONEINFO_FIXTURE",
+        "timezoneDataVersion": "tzdata-2025.3"
+      },
+      "normalization_evidence": {
+        "resolved_utc_offset": "+08:00"
+      },
+      "expected": {
+        "expected_status": "PROPOSED_EXPECTATION",
+        "expected_pillars": {
+          "year": "甲辰",
+          "month": "丙寅",
+          "day": "癸亥",
+          "hour": "丁巳"
+        }
+      }
+    },
+    {
+      "source_case_id": "BZ-C039-LUNAR-LEAP-MONTH",
+      "normalized_input": {
+        "calendarType": "LUNAR",
+        "caseScope": "PRODUCT_INPUT",
+        "localDate": "",
+        "localTime": "10:30",
+        "timeKnown": true,
+        "locationName": "中国大陆匿名城市",
+        "ianaTimezone": "Asia/Shanghai",
+        "timeResolutionStatus": "READY",
+        "foldChoice": null,
+        "minuteRangeUtc": null,
+        "localCivilDayRangeUtc": null,
+        "referenceLocalDate": "2026-08-07",
+        "timezoneResolverId": "TEST_PYTHON_ZONEINFO_FIXTURE",
+        "timezoneDataVersion": "tzdata-2025.3"
+      },
+      "normalization_evidence": {
+        "resolved_utc_offset": null
+      },
+      "expected": {
+        "expected_status": "BLOCKED",
+        "expected_blocking_code": "LUNAR_INPUT_NOT_SUPPORTED_V0_1"
+      }
+    },
+    {
+      "source_case_id": "BZ-C040-OVERSEAS-CROSS-UTC-DATE",
+      "normalized_input": {
+        "calendarType": "GREGORIAN",
+        "caseScope": "PRODUCT_INPUT",
+        "localDate": "2024-01-01",
+        "localTime": "20:30",
+        "timeKnown": true,
+        "locationName": "美国西海岸匿名城市",
+        "ianaTimezone": "America/Los_Angeles",
+        "timeResolutionStatus": "READY",
+        "foldChoice": null,
+        "minuteRangeUtc": {
+          "startUtc": "2024-01-02T04:30:00Z",
+          "endUtcExclusive": "2024-01-02T04:31:00Z"
+        },
+        "localCivilDayRangeUtc": {
+          "startUtc": "2024-01-01T08:00:00Z",
+          "endUtcExclusive": "2024-01-02T08:00:00Z"
+        },
+        "referenceLocalDate": "2026-08-07",
+        "timezoneResolverId": "TEST_PYTHON_ZONEINFO_FIXTURE",
+        "timezoneDataVersion": "tzdata-2025.3"
+      },
+      "normalization_evidence": {
+        "resolved_utc_offset": "-08:00"
+      },
+      "expected": {
+        "expected_status": "PROPOSED_EXPECTATION",
+        "expected_pillars": {
+          "year": "癸卯",
+          "month": "甲子",
+          "day": "甲子",
+          "hour": "甲戌"
+        }
+      }
+    },
+    {
+      "source_case_id": "BZ-C041-DST-GAP",
+      "normalized_input": {
+        "calendarType": "GREGORIAN",
+        "caseScope": "PRODUCT_INPUT",
+        "localDate": "2024-03-10",
+        "localTime": "02:30",
+        "timeKnown": true,
+        "locationName": "美国东部匿名城市",
+        "ianaTimezone": "America/New_York",
+        "timeResolutionStatus": "NONEXISTENT_LOCAL_TIME",
+        "foldChoice": null,
+        "minuteRangeUtc": null,
+        "localCivilDayRangeUtc": {
+          "startUtc": "2024-03-10T05:00:00Z",
+          "endUtcExclusive": "2024-03-11T04:00:00Z"
+        },
+        "referenceLocalDate": "2026-08-07",
+        "timezoneResolverId": "TEST_PYTHON_ZONEINFO_FIXTURE",
+        "timezoneDataVersion": "tzdata-2025.3"
+      },
+      "normalization_evidence": {
+        "resolved_utc_offset": null
+      },
+      "expected": {
+        "expected_status": "BLOCKED",
+        "expected_blocking_code": "NONEXISTENT_LOCAL_TIME"
+      }
+    },
+    {
+      "source_case_id": "BZ-C042-DST-FOLD",
+      "normalized_input": {
+        "calendarType": "GREGORIAN",
+        "caseScope": "PRODUCT_INPUT",
+        "localDate": "2024-11-03",
+        "localTime": "01:30",
+        "timeKnown": true,
+        "locationName": "美国东部匿名城市",
+        "ianaTimezone": "America/New_York",
+        "timeResolutionStatus": "AMBIGUOUS_LOCAL_TIME",
+        "foldChoice": null,
+        "minuteRangeUtc": null,
+        "localCivilDayRangeUtc": {
+          "startUtc": "2024-11-03T04:00:00Z",
+          "endUtcExclusive": "2024-11-04T05:00:00Z"
+        },
+        "referenceLocalDate": "2026-08-07",
+        "timezoneResolverId": "TEST_PYTHON_ZONEINFO_FIXTURE",
+        "timezoneDataVersion": "tzdata-2025.3"
+      },
+      "normalization_evidence": {
+        "resolved_utc_offset": null
+      },
+      "expected": {
+        "expected_status": "BLOCKED",
+        "expected_blocking_code": "AMBIGUOUS_LOCAL_TIME"
+      }
+    },
+    {
+      "source_case_id": "BZ-C043-INVALID-DATE",
+      "normalized_input": {
+        "calendarType": "GREGORIAN",
+        "caseScope": "PRODUCT_INPUT",
+        "localDate": "2023-02-29",
+        "localTime": "10:30",
+        "timeKnown": true,
+        "locationName": "中国大陆匿名城市",
+        "ianaTimezone": "Asia/Shanghai",
+        "timeResolutionStatus": "READY",
+        "foldChoice": null,
+        "minuteRangeUtc": null,
+        "localCivilDayRangeUtc": null,
+        "referenceLocalDate": "2026-08-07",
+        "timezoneResolverId": "TEST_PYTHON_ZONEINFO_FIXTURE",
+        "timezoneDataVersion": "tzdata-2025.3"
+      },
+      "normalization_evidence": {
+        "resolved_utc_offset": null
+      },
+      "expected": {
+        "expected_status": "BLOCKED",
+        "expected_blocking_code": "INVALID_CIVIL_DATE"
+      }
+    },
+    {
+      "source_case_id": "BZ-C044-MISSING-LOCATION",
+      "normalized_input": {
+        "calendarType": "GREGORIAN",
+        "caseScope": "PRODUCT_INPUT",
+        "localDate": "2024-05-20",
+        "localTime": "10:30",
+        "timeKnown": true,
+        "locationName": null,
+        "ianaTimezone": "Asia/Shanghai",
+        "timeResolutionStatus": "LOCATION_REQUIRED",
+        "foldChoice": null,
+        "minuteRangeUtc": null,
+        "localCivilDayRangeUtc": null,
+        "referenceLocalDate": "2026-08-07",
+        "timezoneResolverId": "TEST_PYTHON_ZONEINFO_FIXTURE",
+        "timezoneDataVersion": "tzdata-2025.3"
+      },
+      "normalization_evidence": {
+        "resolved_utc_offset": null
+      },
+      "expected": {
+        "expected_status": "BLOCKED",
+        "expected_blocking_code": "LOCATION_REQUIRED"
+      }
+    },
+    {
+      "source_case_id": "BZ-C045-MISSING-TIMEZONE",
+      "normalized_input": {
+        "calendarType": "GREGORIAN",
+        "caseScope": "PRODUCT_INPUT",
+        "localDate": "2024-05-20",
+        "localTime": "10:30",
+        "timeKnown": true,
+        "locationName": "海外匿名城市",
+        "ianaTimezone": null,
+        "timeResolutionStatus": "TIMEZONE_REQUIRED",
+        "foldChoice": null,
+        "minuteRangeUtc": null,
+        "localCivilDayRangeUtc": null,
+        "referenceLocalDate": "2026-08-07",
+        "timezoneResolverId": "TEST_PYTHON_ZONEINFO_FIXTURE",
+        "timezoneDataVersion": "tzdata-2025.3"
+      },
+      "normalization_evidence": {
+        "resolved_utc_offset": null
+      },
+      "expected": {
+        "expected_status": "BLOCKED",
+        "expected_blocking_code": "TIMEZONE_REQUIRED"
+      }
+    },
+    {
+      "source_case_id": "BZ-C046-HISTORICAL-OUT-OF-RANGE",
+      "normalized_input": {
+        "calendarType": "GREGORIAN",
+        "caseScope": "PRODUCT_INPUT",
+        "localDate": "1949-10-01",
+        "localTime": "10:30",
+        "timeKnown": true,
+        "locationName": "中国大陆匿名城市",
+        "ianaTimezone": "Asia/Shanghai",
+        "timeResolutionStatus": "READY",
+        "foldChoice": null,
+        "minuteRangeUtc": {
+          "startUtc": "1949-10-01T02:30:00Z",
+          "endUtcExclusive": "1949-10-01T02:31:00Z"
+        },
+        "localCivilDayRangeUtc": {
+          "startUtc": "1949-09-30T16:00:00Z",
+          "endUtcExclusive": "1949-10-01T16:00:00Z"
+        },
+        "referenceLocalDate": "2026-08-07",
+        "timezoneResolverId": "TEST_PYTHON_ZONEINFO_FIXTURE",
+        "timezoneDataVersion": "tzdata-2025.3"
+      },
+      "normalization_evidence": {
+        "resolved_utc_offset": "+08:00"
+      },
+      "expected": {
+        "expected_status": "BLOCKED",
+        "expected_blocking_code": "DATE_OUT_OF_SUPPORTED_RANGE"
+      }
+    },
+    {
+      "source_case_id": "BZ-C047-ALGORITHM-LOWER-BOUND",
+      "normalized_input": {
+        "calendarType": "GREGORIAN",
+        "caseScope": "ALGORITHM_VALIDATION",
+        "localDate": "1970-01-01",
+        "localTime": "12:30",
+        "timeKnown": true,
+        "locationName": "算法验证",
+        "ianaTimezone": "Asia/Shanghai",
+        "timeResolutionStatus": "READY",
+        "foldChoice": null,
+        "minuteRangeUtc": {
+          "startUtc": "1970-01-01T04:30:00Z",
+          "endUtcExclusive": "1970-01-01T04:31:00Z"
+        },
+        "localCivilDayRangeUtc": {
+          "startUtc": "1969-12-31T16:00:00Z",
+          "endUtcExclusive": "1970-01-01T16:00:00Z"
+        },
+        "referenceLocalDate": "2026-08-07",
+        "timezoneResolverId": "TEST_PYTHON_ZONEINFO_FIXTURE",
+        "timezoneDataVersion": "tzdata-2025.3"
+      },
+      "normalization_evidence": {
+        "resolved_utc_offset": "+08:00"
+      },
+      "expected": {
+        "expected_status": "PROPOSED_EXPECTATION",
+        "expected_assertions": {
+          "civil_date_valid": true,
+          "day_pillar": "辛巳"
+        }
+      }
+    },
+    {
+      "source_case_id": "BZ-C048-PRODUCT-BELOW-LOWER-BOUND",
+      "normalized_input": {
+        "calendarType": "GREGORIAN",
+        "caseScope": "PRODUCT_INPUT",
+        "localDate": "1969-12-31",
+        "localTime": "12:30",
+        "timeKnown": true,
+        "locationName": "中国大陆匿名城市",
+        "ianaTimezone": "Asia/Shanghai",
+        "timeResolutionStatus": "READY",
+        "foldChoice": null,
+        "minuteRangeUtc": {
+          "startUtc": "1969-12-31T04:30:00Z",
+          "endUtcExclusive": "1969-12-31T04:31:00Z"
+        },
+        "localCivilDayRangeUtc": {
+          "startUtc": "1969-12-30T16:00:00Z",
+          "endUtcExclusive": "1969-12-31T16:00:00Z"
+        },
+        "referenceLocalDate": "2026-08-07",
+        "timezoneResolverId": "TEST_PYTHON_ZONEINFO_FIXTURE",
+        "timezoneDataVersion": "tzdata-2025.3"
+      },
+      "normalization_evidence": {
+        "resolved_utc_offset": "+08:00"
+      },
+      "expected": {
+        "expected_status": "BLOCKED",
+        "expected_blocking_code": "DATE_OUT_OF_SUPPORTED_RANGE"
+      }
+    },
+    {
+      "source_case_id": "BZ-C049-CURRENT-LOCAL-DATE",
+      "normalized_input": {
+        "calendarType": "GREGORIAN",
+        "caseScope": "PRODUCT_INPUT",
+        "localDate": "2026-08-07",
+        "localTime": "12:30",
+        "timeKnown": true,
+        "locationName": "中国大陆匿名城市",
+        "ianaTimezone": "Asia/Shanghai",
+        "timeResolutionStatus": "READY",
+        "foldChoice": null,
+        "minuteRangeUtc": {
+          "startUtc": "2026-08-07T04:30:00Z",
+          "endUtcExclusive": "2026-08-07T04:31:00Z"
+        },
+        "localCivilDayRangeUtc": {
+          "startUtc": "2026-08-06T16:00:00Z",
+          "endUtcExclusive": "2026-08-07T16:00:00Z"
+        },
+        "referenceLocalDate": "2026-08-07",
+        "timezoneResolverId": "TEST_PYTHON_ZONEINFO_FIXTURE",
+        "timezoneDataVersion": "tzdata-2025.3"
+      },
+      "normalization_evidence": {
+        "resolved_utc_offset": "+08:00"
+      },
+      "expected": {
+        "expected_status": "PROPOSED_EXPECTATION",
+        "expected_assertions": {
+          "birth_date_allowed": true
+        }
+      }
+    },
+    {
+      "source_case_id": "BZ-C050-FUTURE-LOCAL-DATE",
+      "normalized_input": {
+        "calendarType": "GREGORIAN",
+        "caseScope": "PRODUCT_INPUT",
+        "localDate": "2026-08-08",
+        "localTime": "12:30",
+        "timeKnown": true,
+        "locationName": "中国大陆匿名城市",
+        "ianaTimezone": "Asia/Shanghai",
+        "timeResolutionStatus": "READY",
+        "foldChoice": null,
+        "minuteRangeUtc": {
+          "startUtc": "2026-08-08T04:30:00Z",
+          "endUtcExclusive": "2026-08-08T04:31:00Z"
+        },
+        "localCivilDayRangeUtc": {
+          "startUtc": "2026-08-07T16:00:00Z",
+          "endUtcExclusive": "2026-08-08T16:00:00Z"
+        },
+        "referenceLocalDate": "2026-08-07",
+        "timezoneResolverId": "TEST_PYTHON_ZONEINFO_FIXTURE",
+        "timezoneDataVersion": "tzdata-2025.3"
+      },
+      "normalization_evidence": {
+        "resolved_utc_offset": "+08:00"
+      },
+      "expected": {
+        "expected_status": "BLOCKED",
+        "expected_blocking_code": "FUTURE_BIRTH_DATE_NOT_ALLOWED"
+      }
+    },
+    {
+      "source_case_id": "BZ-C051-ALGORITHM-2099-END",
+      "normalized_input": {
+        "calendarType": "GREGORIAN",
+        "caseScope": "ALGORITHM_VALIDATION",
+        "localDate": "2099-12-31",
+        "localTime": "12:30",
+        "timeKnown": true,
+        "locationName": "算法验证",
+        "ianaTimezone": "Asia/Shanghai",
+        "timeResolutionStatus": "READY",
+        "foldChoice": null,
+        "minuteRangeUtc": {
+          "startUtc": "2099-12-31T04:30:00Z",
+          "endUtcExclusive": "2099-12-31T04:31:00Z"
+        },
+        "localCivilDayRangeUtc": {
+          "startUtc": "2099-12-30T16:00:00Z",
+          "endUtcExclusive": "2099-12-31T16:00:00Z"
+        },
+        "referenceLocalDate": "2026-08-07",
+        "timezoneResolverId": "TEST_PYTHON_ZONEINFO_FIXTURE",
+        "timezoneDataVersion": "tzdata-2025.3"
+      },
+      "normalization_evidence": {
+        "resolved_utc_offset": "+08:00"
+      },
+      "expected": {
+        "expected_status": "PROPOSED_EXPECTATION",
+        "expected_assertions": {
+          "civil_date_valid": true,
+          "day_pillar": "壬寅"
+        }
+      }
+    },
+    {
+      "source_case_id": "BZ-C052-ALGORITHM-2100-START",
+      "normalized_input": {
+        "calendarType": "GREGORIAN",
+        "caseScope": "ALGORITHM_VALIDATION",
+        "localDate": "2100-01-01",
+        "localTime": "12:30",
+        "timeKnown": true,
+        "locationName": "算法验证",
+        "ianaTimezone": "Asia/Shanghai",
+        "timeResolutionStatus": "READY",
+        "foldChoice": null,
+        "minuteRangeUtc": {
+          "startUtc": "2100-01-01T04:30:00Z",
+          "endUtcExclusive": "2100-01-01T04:31:00Z"
+        },
+        "localCivilDayRangeUtc": {
+          "startUtc": "2099-12-31T16:00:00Z",
+          "endUtcExclusive": "2100-01-01T16:00:00Z"
+        },
+        "referenceLocalDate": "2026-08-07",
+        "timezoneResolverId": "TEST_PYTHON_ZONEINFO_FIXTURE",
+        "timezoneDataVersion": "tzdata-2025.3"
+      },
+      "normalization_evidence": {
+        "resolved_utc_offset": "+08:00"
+      },
+      "expected": {
+        "expected_status": "PROPOSED_EXPECTATION",
+        "expected_assertions": {
+          "civil_date_valid": true,
+          "day_pillar": "癸卯"
+        }
+      }
+    },
+    {
+      "source_case_id": "BZ-C053-2100-FEB-28",
+      "normalized_input": {
+        "calendarType": "GREGORIAN",
+        "caseScope": "ALGORITHM_VALIDATION",
+        "localDate": "2100-02-28",
+        "localTime": "12:30",
+        "timeKnown": true,
+        "locationName": "算法验证",
+        "ianaTimezone": "Asia/Shanghai",
+        "timeResolutionStatus": "READY",
+        "foldChoice": null,
+        "minuteRangeUtc": {
+          "startUtc": "2100-02-28T04:30:00Z",
+          "endUtcExclusive": "2100-02-28T04:31:00Z"
+        },
+        "localCivilDayRangeUtc": {
+          "startUtc": "2100-02-27T16:00:00Z",
+          "endUtcExclusive": "2100-02-28T16:00:00Z"
+        },
+        "referenceLocalDate": "2026-08-07",
+        "timezoneResolverId": "TEST_PYTHON_ZONEINFO_FIXTURE",
+        "timezoneDataVersion": "tzdata-2025.3"
+      },
+      "normalization_evidence": {
+        "resolved_utc_offset": "+08:00"
+      },
+      "expected": {
+        "expected_status": "PROPOSED_EXPECTATION",
+        "expected_assertions": {
+          "civil_date_valid": true,
+          "day_pillar": "辛丑",
+          "gregorian_leap_year": false
+        }
+      }
+    },
+    {
+      "source_case_id": "BZ-C054-2100-MAR-01",
+      "normalized_input": {
+        "calendarType": "GREGORIAN",
+        "caseScope": "ALGORITHM_VALIDATION",
+        "localDate": "2100-03-01",
+        "localTime": "12:30",
+        "timeKnown": true,
+        "locationName": "算法验证",
+        "ianaTimezone": "Asia/Shanghai",
+        "timeResolutionStatus": "READY",
+        "foldChoice": null,
+        "minuteRangeUtc": {
+          "startUtc": "2100-03-01T04:30:00Z",
+          "endUtcExclusive": "2100-03-01T04:31:00Z"
+        },
+        "localCivilDayRangeUtc": {
+          "startUtc": "2100-02-28T16:00:00Z",
+          "endUtcExclusive": "2100-03-01T16:00:00Z"
+        },
+        "referenceLocalDate": "2026-08-07",
+        "timezoneResolverId": "TEST_PYTHON_ZONEINFO_FIXTURE",
+        "timezoneDataVersion": "tzdata-2025.3"
+      },
+      "normalization_evidence": {
+        "resolved_utc_offset": "+08:00"
+      },
+      "expected": {
+        "expected_status": "PROPOSED_EXPECTATION",
+        "expected_assertions": {
+          "civil_date_valid": true,
+          "day_pillar": "壬寅",
+          "gregorian_leap_year": false,
+          "days_since_previous_case": 1
+        }
+      }
+    },
+    {
+      "source_case_id": "BZ-C055-CHINA-HISTORICAL-DST",
+      "normalized_input": {
+        "calendarType": "GREGORIAN",
+        "caseScope": "ALGORITHM_VALIDATION",
+        "localDate": "1988-07-01",
+        "localTime": "12:30",
+        "timeKnown": true,
+        "locationName": "中国大陆匿名城市",
+        "ianaTimezone": "Asia/Shanghai",
+        "timeResolutionStatus": "READY",
+        "foldChoice": null,
+        "minuteRangeUtc": {
+          "startUtc": "1988-07-01T03:30:00Z",
+          "endUtcExclusive": "1988-07-01T03:31:00Z"
+        },
+        "localCivilDayRangeUtc": {
+          "startUtc": "1988-06-30T15:00:00Z",
+          "endUtcExclusive": "1988-07-01T15:00:00Z"
+        },
+        "referenceLocalDate": "2026-08-07",
+        "timezoneResolverId": "TEST_PYTHON_ZONEINFO_FIXTURE",
+        "timezoneDataVersion": "tzdata-2025.3"
+      },
+      "normalization_evidence": {
+        "resolved_utc_offset": "+09:00"
+      },
+      "expected": {
+        "expected_status": "PROPOSED_EXPECTATION",
+        "expected_pillars": {
+          "year": "戊辰",
+          "month": "戊午",
+          "day": "丁巳",
+          "hour": "丙午"
+        },
+        "expected_assertions": {
+          "utc_offset": "+09:00"
+        }
+      }
+    },
+    {
+      "source_case_id": "BZ-C056-CHINA-DST-GAP",
+      "normalized_input": {
+        "calendarType": "GREGORIAN",
+        "caseScope": "ALGORITHM_VALIDATION",
+        "localDate": "1988-04-17",
+        "localTime": "02:30",
+        "timeKnown": true,
+        "locationName": "中国大陆匿名城市",
+        "ianaTimezone": "Asia/Shanghai",
+        "timeResolutionStatus": "NONEXISTENT_LOCAL_TIME",
+        "foldChoice": null,
+        "minuteRangeUtc": null,
+        "localCivilDayRangeUtc": {
+          "startUtc": "1988-04-16T16:00:00Z",
+          "endUtcExclusive": "1988-04-17T15:00:00Z"
+        },
+        "referenceLocalDate": "2026-08-07",
+        "timezoneResolverId": "TEST_PYTHON_ZONEINFO_FIXTURE",
+        "timezoneDataVersion": "tzdata-2025.3"
+      },
+      "normalization_evidence": {
+        "resolved_utc_offset": null
+      },
+      "expected": {
+        "expected_status": "BLOCKED",
+        "expected_blocking_code": "NONEXISTENT_LOCAL_TIME"
+      }
+    },
+    {
+      "source_case_id": "BZ-C057-UNKNOWN-LICHUN-DAY",
+      "normalized_input": {
+        "calendarType": "GREGORIAN",
+        "caseScope": "PRODUCT_INPUT",
+        "localDate": "2024-02-04",
+        "localTime": null,
+        "timeKnown": false,
+        "locationName": "中国大陆匿名城市",
+        "ianaTimezone": "Asia/Shanghai",
+        "timeResolutionStatus": "READY",
+        "foldChoice": null,
+        "minuteRangeUtc": null,
+        "localCivilDayRangeUtc": {
+          "startUtc": "2024-02-03T16:00:00Z",
+          "endUtcExclusive": "2024-02-04T16:00:00Z"
+        },
+        "referenceLocalDate": "2026-08-07",
+        "timezoneResolverId": "TEST_PYTHON_ZONEINFO_FIXTURE",
+        "timezoneDataVersion": "tzdata-2025.3"
+      },
+      "normalization_evidence": {
+        "resolved_utc_offset": null
+      },
+      "expected": {
+        "expected_status": "BLOCKED",
+        "expected_blocking_code": "SOLAR_TERM_TIME_REQUIRED"
+      }
+    },
+    {
+      "source_case_id": "BZ-C058-UNKNOWN-ORDINARY-DAY",
+      "normalized_input": {
+        "calendarType": "GREGORIAN",
+        "caseScope": "PRODUCT_INPUT",
+        "localDate": "2024-01-15",
+        "localTime": null,
+        "timeKnown": false,
+        "locationName": "中国大陆匿名城市",
+        "ianaTimezone": "Asia/Shanghai",
+        "timeResolutionStatus": "READY",
+        "foldChoice": null,
+        "minuteRangeUtc": null,
+        "localCivilDayRangeUtc": {
+          "startUtc": "2024-01-14T16:00:00Z",
+          "endUtcExclusive": "2024-01-15T16:00:00Z"
+        },
+        "referenceLocalDate": "2026-08-07",
+        "timezoneResolverId": "TEST_PYTHON_ZONEINFO_FIXTURE",
+        "timezoneDataVersion": "tzdata-2025.3"
+      },
+      "normalization_evidence": {
+        "resolved_utc_offset": null
+      },
+      "expected": {
+        "expected_status": "PROPOSED_EXPECTATION",
+        "expected_pillars": {
+          "year": "癸卯",
+          "month": "乙丑",
+          "day": "戊寅",
+          "hour": null
+        },
+        "expected_completeness": "THREE_PILLARS_ONLY"
+      }
+    },
+    {
+      "source_case_id": "BZ-C059-UNKNOWN-JINGZHE-DAY",
+      "normalized_input": {
+        "calendarType": "GREGORIAN",
+        "caseScope": "PRODUCT_INPUT",
+        "localDate": "2024-03-05",
+        "localTime": null,
+        "timeKnown": false,
+        "locationName": "中国大陆匿名城市",
+        "ianaTimezone": "Asia/Shanghai",
+        "timeResolutionStatus": "READY",
+        "foldChoice": null,
+        "minuteRangeUtc": null,
+        "localCivilDayRangeUtc": {
+          "startUtc": "2024-03-04T16:00:00Z",
+          "endUtcExclusive": "2024-03-05T16:00:00Z"
+        },
+        "referenceLocalDate": "2026-08-07",
+        "timezoneResolverId": "TEST_PYTHON_ZONEINFO_FIXTURE",
+        "timezoneDataVersion": "tzdata-2025.3"
+      },
+      "normalization_evidence": {
+        "resolved_utc_offset": null
+      },
+      "expected": {
+        "expected_status": "BLOCKED",
+        "expected_blocking_code": "SOLAR_TERM_TIME_REQUIRED"
+      }
+    },
+    {
+      "source_case_id": "BZ-C060-UNKNOWN-MAJOR-TERM-DAY",
+      "normalized_input": {
+        "calendarType": "GREGORIAN",
+        "caseScope": "PRODUCT_INPUT",
+        "localDate": "2024-03-20",
+        "localTime": null,
+        "timeKnown": false,
+        "locationName": "中国大陆匿名城市",
+        "ianaTimezone": "Asia/Shanghai",
+        "timeResolutionStatus": "READY",
+        "foldChoice": null,
+        "minuteRangeUtc": null,
+        "localCivilDayRangeUtc": {
+          "startUtc": "2024-03-19T16:00:00Z",
+          "endUtcExclusive": "2024-03-20T16:00:00Z"
+        },
+        "referenceLocalDate": "2026-08-07",
+        "timezoneResolverId": "TEST_PYTHON_ZONEINFO_FIXTURE",
+        "timezoneDataVersion": "tzdata-2025.3"
+      },
+      "normalization_evidence": {
+        "resolved_utc_offset": null
+      },
+      "expected": {
+        "expected_status": "PROPOSED_EXPECTATION",
+        "expected_pillars": {
+          "year": "甲辰",
+          "month": "丁卯",
+          "day": "癸未",
+          "hour": null
+        },
+        "expected_completeness": "THREE_PILLARS_ONLY"
+      }
+    },
+    {
+      "source_case_id": "BZ-C061-UNKNOWN-OVERSEAS-CROSS-DATE",
+      "normalized_input": {
+        "calendarType": "GREGORIAN",
+        "caseScope": "ALGORITHM_VALIDATION",
+        "localDate": "2024-02-04",
+        "localTime": null,
+        "timeKnown": false,
+        "locationName": "海外匿名城市",
+        "ianaTimezone": "Pacific/Honolulu",
+        "timeResolutionStatus": "READY",
+        "foldChoice": null,
+        "minuteRangeUtc": null,
+        "localCivilDayRangeUtc": {
+          "startUtc": "2024-02-04T10:00:00Z",
+          "endUtcExclusive": "2024-02-05T10:00:00Z"
+        },
+        "referenceLocalDate": "2026-08-07",
+        "timezoneResolverId": "TEST_PYTHON_ZONEINFO_FIXTURE",
+        "timezoneDataVersion": "tzdata-2025.3"
+      },
+      "normalization_evidence": {
+        "resolved_utc_offset": null
+      },
+      "expected": {
+        "expected_status": "PROPOSED_EXPECTATION",
+        "expected_pillars": {
+          "year": "甲辰",
+          "month": "丙寅",
+          "day": "戊戌",
+          "hour": null
+        },
+        "expected_completeness": "THREE_PILLARS_ONLY"
+      }
+    },
+    {
+      "source_case_id": "BZ-C062-SAME-MINUTE-AMBIGUOUS",
+      "normalized_input": {
+        "calendarType": "GREGORIAN",
+        "caseScope": "PRODUCT_INPUT",
+        "localDate": "2024-02-04",
+        "localTime": "16:27",
+        "timeKnown": true,
+        "locationName": "中国大陆匿名城市",
+        "ianaTimezone": "Asia/Shanghai",
+        "timeResolutionStatus": "READY",
+        "foldChoice": null,
+        "minuteRangeUtc": {
+          "startUtc": "2024-02-04T08:27:00Z",
+          "endUtcExclusive": "2024-02-04T08:28:00Z"
+        },
+        "localCivilDayRangeUtc": {
+          "startUtc": "2024-02-03T16:00:00Z",
+          "endUtcExclusive": "2024-02-04T16:00:00Z"
+        },
+        "referenceLocalDate": "2026-08-07",
+        "timezoneResolverId": "TEST_PYTHON_ZONEINFO_FIXTURE",
+        "timezoneDataVersion": "tzdata-2025.3"
+      },
+      "normalization_evidence": {
+        "resolved_utc_offset": "+08:00"
+      },
+      "expected": {
+        "expected_status": "PROPOSED_EXPECTATION",
+        "expected_warnings": [
+          "BOUNDARY_SENSITIVE"
+        ],
+        "expected_pillars": {
+          "year": "甲辰",
+          "month": "丙寅",
+          "day": "戊戌",
+          "hour": "庚申"
+        }
+      }
+    },
+    {
+      "source_case_id": "BZ-C063-LOCATION-TIMEZONE-MISMATCH",
+      "normalized_input": {
+        "calendarType": "GREGORIAN",
+        "caseScope": "PRODUCT_INPUT",
+        "localDate": "2024-05-20",
+        "localTime": "10:30",
+        "timeKnown": true,
+        "locationName": "自由文本不参与校验",
+        "ianaTimezone": "America/New_York",
+        "timeResolutionStatus": "LOCATION_TIMEZONE_MISMATCH",
+        "foldChoice": null,
+        "minuteRangeUtc": null,
+        "localCivilDayRangeUtc": null,
+        "referenceLocalDate": "2026-08-07",
+        "timezoneResolverId": "TEST_PYTHON_ZONEINFO_FIXTURE",
+        "timezoneDataVersion": "tzdata-2025.3"
+      },
+      "normalization_evidence": {
+        "resolved_utc_offset": null
+      },
+      "expected": {
+        "expected_status": "BLOCKED",
+        "expected_blocking_code": "LOCATION_TIMEZONE_MISMATCH"
+      }
+    },
+    {
+      "source_case_id": "BZ-C064-XIAOHAN-SAME-MINUTE",
+      "normalized_input": {
+        "calendarType": "GREGORIAN",
+        "caseScope": "PRODUCT_INPUT",
+        "localDate": "2024-01-06",
+        "localTime": "04:49",
+        "timeKnown": true,
+        "locationName": "中国大陆匿名城市",
+        "ianaTimezone": "Asia/Shanghai",
+        "timeResolutionStatus": "READY",
+        "foldChoice": null,
+        "minuteRangeUtc": {
+          "startUtc": "2024-01-05T20:49:00Z",
+          "endUtcExclusive": "2024-01-05T20:50:00Z"
+        },
+        "localCivilDayRangeUtc": {
+          "startUtc": "2024-01-05T16:00:00Z",
+          "endUtcExclusive": "2024-01-06T16:00:00Z"
+        },
+        "referenceLocalDate": "2026-08-07",
+        "timezoneResolverId": "TEST_PYTHON_ZONEINFO_FIXTURE",
+        "timezoneDataVersion": "tzdata-2025.3"
+      },
+      "normalization_evidence": {
+        "resolved_utc_offset": "+08:00"
+      },
+      "expected": {
+        "expected_status": "BLOCKED",
+        "expected_blocking_code": "SOLAR_TERM_SAME_MINUTE_AMBIGUOUS"
+      }
+    },
+    {
+      "source_case_id": "BZ-C065-QINGMING-SAME-MINUTE",
+      "normalized_input": {
+        "calendarType": "GREGORIAN",
+        "caseScope": "PRODUCT_INPUT",
+        "localDate": "2024-04-04",
+        "localTime": "15:02",
+        "timeKnown": true,
+        "locationName": "中国大陆匿名城市",
+        "ianaTimezone": "Asia/Shanghai",
+        "timeResolutionStatus": "READY",
+        "foldChoice": null,
+        "minuteRangeUtc": {
+          "startUtc": "2024-04-04T07:02:00Z",
+          "endUtcExclusive": "2024-04-04T07:03:00Z"
+        },
+        "localCivilDayRangeUtc": {
+          "startUtc": "2024-04-03T16:00:00Z",
+          "endUtcExclusive": "2024-04-04T16:00:00Z"
+        },
+        "referenceLocalDate": "2026-08-07",
+        "timezoneResolverId": "TEST_PYTHON_ZONEINFO_FIXTURE",
+        "timezoneDataVersion": "tzdata-2025.3"
+      },
+      "normalization_evidence": {
+        "resolved_utc_offset": "+08:00"
+      },
+      "expected": {
+        "expected_status": "BLOCKED",
+        "expected_blocking_code": "SOLAR_TERM_SAME_MINUTE_AMBIGUOUS"
+      }
+    },
+    {
+      "source_case_id": "BZ-C066-LIXIA-SAME-MINUTE",
+      "normalized_input": {
+        "calendarType": "GREGORIAN",
+        "caseScope": "PRODUCT_INPUT",
+        "localDate": "2024-05-05",
+        "localTime": "08:10",
+        "timeKnown": true,
+        "locationName": "中国大陆匿名城市",
+        "ianaTimezone": "Asia/Shanghai",
+        "timeResolutionStatus": "READY",
+        "foldChoice": null,
+        "minuteRangeUtc": {
+          "startUtc": "2024-05-05T00:10:00Z",
+          "endUtcExclusive": "2024-05-05T00:11:00Z"
+        },
+        "localCivilDayRangeUtc": {
+          "startUtc": "2024-05-04T16:00:00Z",
+          "endUtcExclusive": "2024-05-05T16:00:00Z"
+        },
+        "referenceLocalDate": "2026-08-07",
+        "timezoneResolverId": "TEST_PYTHON_ZONEINFO_FIXTURE",
+        "timezoneDataVersion": "tzdata-2025.3"
+      },
+      "normalization_evidence": {
+        "resolved_utc_offset": "+08:00"
+      },
+      "expected": {
+        "expected_status": "BLOCKED",
+        "expected_blocking_code": "SOLAR_TERM_SAME_MINUTE_AMBIGUOUS"
+      }
+    },
+    {
+      "source_case_id": "BZ-C067-XIAOSHU-SAME-MINUTE",
+      "normalized_input": {
+        "calendarType": "GREGORIAN",
+        "caseScope": "PRODUCT_INPUT",
+        "localDate": "2024-07-06",
+        "localTime": "22:20",
+        "timeKnown": true,
+        "locationName": "中国大陆匿名城市",
+        "ianaTimezone": "Asia/Shanghai",
+        "timeResolutionStatus": "READY",
+        "foldChoice": null,
+        "minuteRangeUtc": {
+          "startUtc": "2024-07-06T14:20:00Z",
+          "endUtcExclusive": "2024-07-06T14:21:00Z"
+        },
+        "localCivilDayRangeUtc": {
+          "startUtc": "2024-07-05T16:00:00Z",
+          "endUtcExclusive": "2024-07-06T16:00:00Z"
+        },
+        "referenceLocalDate": "2026-08-07",
+        "timezoneResolverId": "TEST_PYTHON_ZONEINFO_FIXTURE",
+        "timezoneDataVersion": "tzdata-2025.3"
+      },
+      "normalization_evidence": {
+        "resolved_utc_offset": "+08:00"
+      },
+      "expected": {
+        "expected_status": "BLOCKED",
+        "expected_blocking_code": "SOLAR_TERM_SAME_MINUTE_AMBIGUOUS"
+      }
+    },
+    {
+      "source_case_id": "BZ-C068-LIQIU-SAME-MINUTE",
+      "normalized_input": {
+        "calendarType": "GREGORIAN",
+        "caseScope": "PRODUCT_INPUT",
+        "localDate": "2024-08-07",
+        "localTime": "08:09",
+        "timeKnown": true,
+        "locationName": "中国大陆匿名城市",
+        "ianaTimezone": "Asia/Shanghai",
+        "timeResolutionStatus": "READY",
+        "foldChoice": null,
+        "minuteRangeUtc": {
+          "startUtc": "2024-08-07T00:09:00Z",
+          "endUtcExclusive": "2024-08-07T00:10:00Z"
+        },
+        "localCivilDayRangeUtc": {
+          "startUtc": "2024-08-06T16:00:00Z",
+          "endUtcExclusive": "2024-08-07T16:00:00Z"
+        },
+        "referenceLocalDate": "2026-08-07",
+        "timezoneResolverId": "TEST_PYTHON_ZONEINFO_FIXTURE",
+        "timezoneDataVersion": "tzdata-2025.3"
+      },
+      "normalization_evidence": {
+        "resolved_utc_offset": "+08:00"
+      },
+      "expected": {
+        "expected_status": "BLOCKED",
+        "expected_blocking_code": "SOLAR_TERM_SAME_MINUTE_AMBIGUOUS"
+      }
+    },
+    {
+      "source_case_id": "BZ-C069-BAILU-SAME-MINUTE",
+      "normalized_input": {
+        "calendarType": "GREGORIAN",
+        "caseScope": "PRODUCT_INPUT",
+        "localDate": "2024-09-07",
+        "localTime": "11:11",
+        "timeKnown": true,
+        "locationName": "中国大陆匿名城市",
+        "ianaTimezone": "Asia/Shanghai",
+        "timeResolutionStatus": "READY",
+        "foldChoice": null,
+        "minuteRangeUtc": {
+          "startUtc": "2024-09-07T03:11:00Z",
+          "endUtcExclusive": "2024-09-07T03:12:00Z"
+        },
+        "localCivilDayRangeUtc": {
+          "startUtc": "2024-09-06T16:00:00Z",
+          "endUtcExclusive": "2024-09-07T16:00:00Z"
+        },
+        "referenceLocalDate": "2026-08-07",
+        "timezoneResolverId": "TEST_PYTHON_ZONEINFO_FIXTURE",
+        "timezoneDataVersion": "tzdata-2025.3"
+      },
+      "normalization_evidence": {
+        "resolved_utc_offset": "+08:00"
+      },
+      "expected": {
+        "expected_status": "BLOCKED",
+        "expected_blocking_code": "SOLAR_TERM_SAME_MINUTE_AMBIGUOUS"
+      }
+    },
+    {
+      "source_case_id": "BZ-C070-HANLU-SAME-MINUTE",
+      "normalized_input": {
+        "calendarType": "GREGORIAN",
+        "caseScope": "PRODUCT_INPUT",
+        "localDate": "2024-10-08",
+        "localTime": "03:00",
+        "timeKnown": true,
+        "locationName": "中国大陆匿名城市",
+        "ianaTimezone": "Asia/Shanghai",
+        "timeResolutionStatus": "READY",
+        "foldChoice": null,
+        "minuteRangeUtc": {
+          "startUtc": "2024-10-07T19:00:00Z",
+          "endUtcExclusive": "2024-10-07T19:01:00Z"
+        },
+        "localCivilDayRangeUtc": {
+          "startUtc": "2024-10-07T16:00:00Z",
+          "endUtcExclusive": "2024-10-08T16:00:00Z"
+        },
+        "referenceLocalDate": "2026-08-07",
+        "timezoneResolverId": "TEST_PYTHON_ZONEINFO_FIXTURE",
+        "timezoneDataVersion": "tzdata-2025.3"
+      },
+      "normalization_evidence": {
+        "resolved_utc_offset": "+08:00"
+      },
+      "expected": {
+        "expected_status": "BLOCKED",
+        "expected_blocking_code": "SOLAR_TERM_SAME_MINUTE_AMBIGUOUS"
+      }
+    }
+  ]
+}
