@@ -11,4 +11,15 @@ test("frozen IANA timezone adapter passes formal end-to-end regression", () => {
   assert.equal(result.sameMinute, 12);
   assert.equal(result.oldRangeMatches, result.oldRangeComparable);
   assert.equal(result.oldOffsetMatches, result.oldOffsetComparable);
+  assert.equal(result.nonMinuteAlignedTransitions, 1);
+  assert.equal(result.nonMinuteAlignedZoneCount, 1);
+  assert.equal(result.partialMinuteCases, 1);
+  assert.equal(result.partialMinutePass, 1);
+  assert.equal(result.monroviaBefore.status, "NONEXISTENT_LOCAL_TIME");
+  assert.equal(result.monroviaPartial.status, "READY");
+  assert.deepEqual(result.monroviaPartial.minuteRangeUtc, {
+    startUtc: "1972-01-07T00:44:30Z",
+    endUtcExclusive: "1972-01-07T00:45:00Z",
+  });
+  assert.equal(result.monroviaAfter.status, "READY");
 });

@@ -138,6 +138,51 @@ export function validateTimezoneRuntime() {
   const skippedLocalDate = new Date(Date.parse(dateLineTransition.instant_utc) + dateLineTransition.offset_before_seconds * 1000).toISOString().slice(0, 10);
   assert.equal(resolveLocalCivilDay(timezoneData, dateLineEvidence.zone_id, skippedLocalDate).status, "NONEXISTENT_LOCAL_TIME");
 
+  let nonMinuteAlignedTransitions = 0;
+  let partialMinuteCases = 0;
+  let partialMinutePass = 0;
+  const nonMinuteAlignedZones = new Set();
+  for (const zone of timezoneData.dataset.zones) {
+    for (const transition of zone.transitions) {
+      const instantMs = Date.parse(transition.instant_utc);
+      if (new Date(instantMs).getUTCSeconds() === 0) continue;
+      nonMinuteAlignedTransitions += 1;
+      nonMinuteAlignedZones.add(zone.zone_id);
+      const localBoundaries = new Set([
+        instantMs + transition.offset_before_seconds * 1000,
+        instantMs + transition.offset_after_seconds * 1000,
+      ]);
+      for (const localBoundary of localBoundaries) {
+        if (((localBoundary % 60_000) + 60_000) % 60_000 === 0) continue;
+        const minuteText = new Date(Math.floor(localBoundary / 60_000) * 60_000).toISOString();
+        const resolution = resolveKnownLocalMinute(
+          timezoneData,
+          zone.zone_id,
+          minuteText.slice(0, 10),
+          minuteText.slice(11, 16),
+          null,
+        );
+        partialMinuteCases += 1;
+        assert.notEqual(resolution.status, "NONEXISTENT_LOCAL_TIME", `${zone.zone_id} ${transition.instant_utc}`);
+        partialMinutePass += 1;
+      }
+    }
+  }
+  assert.ok(nonMinuteAlignedTransitions > 0);
+  assert.equal(partialMinutePass, partialMinuteCases);
+
+  const monroviaBefore = resolveKnownLocalMinute(timezoneData, "Africa/Monrovia", "1972-01-07", "00:43", null);
+  const monroviaPartial = resolveKnownLocalMinute(timezoneData, "Africa/Monrovia", "1972-01-07", "00:44", null);
+  const monroviaAfter = resolveKnownLocalMinute(timezoneData, "Africa/Monrovia", "1972-01-07", "00:45", null);
+  assert.equal(monroviaBefore.status, "NONEXISTENT_LOCAL_TIME");
+  assert.equal(monroviaPartial.status, "READY");
+  assert.deepEqual(monroviaPartial.minuteRangeUtc, {
+    startUtc: "1972-01-07T00:44:30Z",
+    endUtcExclusive: "1972-01-07T00:45:00Z",
+  });
+  assert.equal(monroviaPartial.resolvedOffsetSeconds, 0);
+  assert.equal(monroviaAfter.status, "READY");
+
   const sourceDirectory = join(root, "src", "lib", "bazi");
   const runtimeFiles = ["timezone-runtime-types.ts", "timezone-data-node.ts", "timezone-resolver.ts", "bazi-time-normalizer.ts"];
   const runtimeSource = runtimeFiles.map((name) => readFileSync(join(sourceDirectory, name), "utf8")).join("\n");
@@ -157,6 +202,13 @@ export function validateTimezoneRuntime() {
     earlierUtc: earlier.minuteRangeUtc.startUtc,
     laterUtc: later.minuteRangeUtc.startUtc,
     shanghaiHistoricalGap: "NONEXISTENT_LOCAL_TIME",
+    nonMinuteAlignedTransitions,
+    nonMinuteAlignedZoneCount: nonMinuteAlignedZones.size,
+    partialMinuteCases,
+    partialMinutePass,
+    monroviaBefore,
+    monroviaPartial,
+    monroviaAfter,
   };
 }
 
@@ -174,5 +226,12 @@ if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) 
   console.log(`DST_GAP=${summary.gapStatus}`);
   console.log(`DST_FOLD=${summary.foldStatus};EARLIER=${summary.earlierUtc};LATER=${summary.laterUtc}`);
   console.log(`ASIA_SHANGHAI_HISTORICAL_DST=${summary.shanghaiHistoricalGap}`);
+  console.log(`NON_MINUTE_ALIGNED_TRANSITIONS=${summary.nonMinuteAlignedTransitions}`);
+  console.log(`NON_MINUTE_ALIGNED_ZONES=${summary.nonMinuteAlignedZoneCount}`);
+  console.log(`PARTIAL_MINUTE_CASES=${summary.partialMinuteCases}`);
+  console.log(`PARTIAL_MINUTE_PASS=${summary.partialMinutePass}`);
+  console.log(`MONROVIA_0043=${summary.monroviaBefore.status}`);
+  console.log(`MONROVIA_0044=${summary.monroviaPartial.status};RANGE=${summary.monroviaPartial.minuteRangeUtc.startUtc}/${summary.monroviaPartial.minuteRangeUtc.endUtcExclusive}`);
+  console.log(`MONROVIA_0045=${summary.monroviaAfter.status}`);
   console.log("BAZI_TIMEZONE_RUNTIME: ALL PASS");
 }

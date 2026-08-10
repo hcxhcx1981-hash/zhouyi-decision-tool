@@ -84,13 +84,32 @@ export function resolveKnownLocalMinute(
     return { status: "NONEXISTENT_LOCAL_TIME", minuteRangeUtc: null, resolvedOffsetSeconds: null, utcCandidateStarts: [] };
   }
   const localEnd = localStart + 60_000;
-  const candidates = intervalsFor(zone, data).flatMap((interval) => {
-    const utcStart = localStart - interval.offsetSeconds * 1000;
-    const utcEnd = localEnd - interval.offsetSeconds * 1000;
-    return utcStart >= interval.startMs && utcEnd <= interval.endMs
-      ? [{ utcStart, utcEnd, offsetSeconds: interval.offsetSeconds }]
+  const segments = intervalsFor(zone, data).flatMap((interval) => {
+    const mappedLocalStart = interval.startMs + interval.offsetSeconds * 1000;
+    const mappedLocalEnd = interval.endMs + interval.offsetSeconds * 1000;
+    const overlapStart = Math.max(localStart, mappedLocalStart);
+    const overlapEnd = Math.min(localEnd, mappedLocalEnd);
+    return overlapStart < overlapEnd
+      ? [{
+          utcStart: overlapStart - interval.offsetSeconds * 1000,
+          utcEnd: overlapEnd - interval.offsetSeconds * 1000,
+          offsetSeconds: interval.offsetSeconds,
+        }]
       : [];
-  }).sort((left, right) => left.utcStart - right.utcStart);
+  }).sort((left, right) => left.utcStart - right.utcStart || left.utcEnd - right.utcEnd);
+  const candidates = segments.reduce<typeof segments>((merged, segment) => {
+    const previous = merged.at(-1);
+    if (
+      previous &&
+      previous.offsetSeconds === segment.offsetSeconds &&
+      segment.utcStart <= previous.utcEnd
+    ) {
+      previous.utcEnd = Math.max(previous.utcEnd, segment.utcEnd);
+    } else {
+      merged.push({ ...segment });
+    }
+    return merged;
+  }, []);
 
   if (candidates.length === 0) {
     return { status: "NONEXISTENT_LOCAL_TIME", minuteRangeUtc: null, resolvedOffsetSeconds: null, utcCandidateStarts: [] };

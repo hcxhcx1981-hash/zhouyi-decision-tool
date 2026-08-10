@@ -46,6 +46,12 @@
 
 `AUDIT_RULE_TRACE_DYNAMIC_PENDING`：当前`pillar-core.ts`的`appliedRuleIds`仍是静态完整规则表，不严格表示每一步实际执行轨迹。本阶段按边界要求不修改核心；必须在页面正式接入前改为动态审计轨迹。
 
+## Phase 2.2B.1 非整分钟跳变补丁
+
+正式resolver不再要求整个60秒当地分钟落在单个时区interval内。它先计算当地分钟与每个UTC interval映射出的当地有效区间之交，再将每个非空交集按该interval的offset反算为UTC candidate range；同offset且UTC连续的segment确定性合并。candidate range可以短于60秒。
+
+冻结数据55,642个transition的自动扫描发现1个UTC秒值非零的transition，涉及1个zone；自动构造出的部分有效分钟1/1通过。明确回归中，Africa/Monrovia 1972-01-07 00:43仍为`NONEXISTENT_LOCAL_TIME`，00:44改为`READY`且有效范围为`[1972-01-07T00:44:30Z, 1972-01-07T00:45:00Z)`，00:45为正常完整分钟。该补丁未修改时区数据、公开类型、normalizer或Phase 2.2A核心。
+
 ## 下一阶段边界
 
 Phase 2.2C仅可建设正式地点选择与`locationTimezoneStatus`上游协议，不得让自由文本城市驱动时区猜测。页面接入与解除`NOT_IMPLEMENTED`仍需单独裁决。
