@@ -97,7 +97,7 @@ test("页面消息覆盖指定阻断并提供未知 code 回退", () => {
 });
 
 test("Bazi 页面链无持久化和算法复制", () => {
-  const files = ["src/app/bazi/page.tsx", "src/components/bazi/birth-input-form.tsx", "src/components/bazi/bazi-pillar-result.tsx", "src/components/bazi/bazi-blocked-result.tsx", "src/lib/bazi/bazi-page-contract.ts", "src/lib/bazi/bazi-browser-pipeline.ts"];
+  const files = ["src/app/bazi/page.tsx", "src/components/bazi/birth-input-form.tsx", "src/components/bazi/bazi-pillar-result.tsx", "src/components/bazi/bazi-chart-presentation.ts", "src/components/bazi/bazi-blocked-result.tsx", "src/lib/bazi/bazi-page-contract.ts", "src/lib/bazi/bazi-browser-pipeline.ts"];
   const source = files.map((file) => readFileSync(file, "utf8")).join("\n");
   for (const forbidden of [/localStorage/, /sessionStorage/, /indexedDB/, /document\.cookie/, /五虎遁/, /五鼠遁/, /BZ-C\d+/, /Intl\.DateTimeFormat/]) assert.doesNotMatch(source, forbidden);
 });

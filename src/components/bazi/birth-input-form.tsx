@@ -72,6 +72,7 @@ export function BirthInputForm({ clock = () => new Date().toISOString() }: { clo
   const [resolution, setResolution] = useState<BaziPageResolutionState>(EMPTY_BAZI_PAGE_RESOLUTION);
   const [errors, setErrors] = useState<string[]>([]);
   const [pipeline, setPipeline] = useState<BaziBrowserPipelineResult | null>(null);
+  const [submittedDraft, setSubmittedDraft] = useState<BaziPageDraft | null>(null);
   const [busy, setBusy] = useState(false);
   const [loadError, setLoadError] = useState(false);
   const [ianaZones, setIanaZones] = useState<readonly string[]>([]);
@@ -84,6 +85,7 @@ export function BirthInputForm({ clock = () => new Date().toISOString() }: { clo
     setDraft((current) => ({ ...current, ...patch }));
     setErrors([]);
     setPipeline(null);
+    setSubmittedDraft(null);
     setLoadError(false);
     setBusy(false);
     setResolution(resetBaziPageResolution());
@@ -124,11 +126,13 @@ export function BirthInputForm({ clock = () => new Date().toISOString() }: { clo
       {
         onSuccess: (next) => {
           setPipeline(next);
+          setSubmittedDraft(pageDraft);
           setResolution(nextResolution);
         },
         onError: (error) => {
           if (process.env.NODE_ENV === "development") console.error("Bazi browser pipeline failed", error);
           setPipeline(null);
+          setSubmittedDraft(null);
           setLoadError(true);
         },
         onFinally: () => setBusy(false),
@@ -191,9 +195,9 @@ export function BirthInputForm({ clock = () => new Date().toISOString() }: { clo
 
       {errors.length > 0 ? <div className="form-error" role="alert">{errors.map((error) => <p key={error}>{error}</p>)}</div> : null}
       {loadError ? <div className="form-error" role="alert"><p>排盘数据加载失败，请重新尝试。</p></div> : null}
-      <button className="calculate-button" type="submit" disabled={busy}>{busy ? "正在排盘…" : "生成基础命盘"}</button>
+      <button className="calculate-button" type="submit" disabled={busy}>{busy ? "正在排盘…" : pipeline ? "重新排盘" : "生成基础命盘"}</button>
       <p className="form-boundary">仅生成基础四柱；不提供五行、十神、喜用神、大运或运势解读。</p>
-      {pipeline?.result.coreResult.status === "READY" ? <BaziPillarResult pipeline={pipeline} /> : null}
+      {pipeline?.result.coreResult.status === "READY" && submittedDraft ? <BaziPillarResult pipeline={pipeline} submittedDraft={submittedDraft} /> : null}
       {pipeline?.result.coreResult.status === "BLOCKED" ? <BaziBlockedResult pipeline={pipeline} busy={busy} onFoldChoice={(choice) => void chooseFold(choice)} /> : null}
     </form>
   );
