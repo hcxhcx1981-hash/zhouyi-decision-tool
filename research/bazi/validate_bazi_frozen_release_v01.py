@@ -40,6 +40,13 @@ EXPECTED_FILES = {
     "BAZI_FROZEN_MANIFEST_V0.1.0.json",
     "SHA256SUMS.txt",
 }
+VERSIONED_FROZEN_ASSET_PATTERNS = (
+    re.compile(r"^bazi_calendar_rules_v\d+\.\d+\.\d+\.json$"),
+    re.compile(r"^bazi_calendar_test_cases_v\d+\.\d+\.\d+\.json$"),
+    re.compile(r"^solar_terms_\d{4}_\d{4}_v\d+\.\d+\.\d+\.json$"),
+    re.compile(r"^BAZI_FROZEN_MANIFEST_V\d+\.\d+\.\d+\.json$"),
+    re.compile(r"^SHA256SUMS_V\d+\.\d+\.\d+\.txt$"),
+)
 
 
 class Audit:
@@ -89,6 +96,17 @@ def parse_utc(value: str) -> datetime:
     return datetime.strptime(value, "%Y-%m-%dT%H:%M:%SZ").replace(tzinfo=timezone.utc)
 
 
+def inspect_frozen_asset_names(directory: Path) -> tuple[set[str], set[str]]:
+    names = {path.name for path in directory.iterdir()} if directory.is_dir() else set()
+    missing = EXPECTED_FILES - names
+    unknown = {
+        name
+        for name in names - EXPECTED_FILES
+        if not any(pattern.fullmatch(name) for pattern in VERSIONED_FROZEN_ASSET_PATTERNS)
+    }
+    return missing, unknown
+
+
 def expected_promoted_rules(candidate: dict[str, Any]) -> dict[str, Any]:
     body = json.loads(json.dumps(candidate, ensure_ascii=False))
     ref = body.pop("final_freeze_reference")
@@ -117,10 +135,14 @@ def expected_promoted_rules(candidate: dict[str, Any]) -> dict[str, Any]:
 
 def main() -> int:
     audit = Audit()
-    names = {path.name for path in FROZEN.iterdir()} if FROZEN.is_dir() else set()
-    audit.check("五个正式文件存在", EXPECTED_FILES <= names)
-    audit.check("正式目录无多余文件", names == EXPECTED_FILES, f"files={sorted(names)}")
-    if not EXPECTED_FILES <= names:
+    missing_assets, unknown_assets = inspect_frozen_asset_names(FROZEN)
+    audit.check("V0.1.0必需正式资产完整", not missing_assets, f"missing={sorted(missing_assets)}")
+    audit.check(
+        "正式目录无未知/非法资产",
+        not unknown_assets,
+        "UNKNOWN_FROZEN_ASSET=" + repr(sorted(unknown_assets)),
+    )
+    if missing_assets:
         return 1
 
     json_paths = (RULES, CASES, SOLAR, MANIFEST)
