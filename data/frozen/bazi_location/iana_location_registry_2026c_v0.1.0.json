@@ -1,0 +1,3899 @@
+{
+  "registry_id": "BAZI_IANA_LOCATION_REGISTRY_2026C_V0_1_0",
+  "version": "0.1.0",
+  "status": "FROZEN_RUNTIME_DATA",
+  "iana_release": "2026c",
+  "python_tzdata_version": "2026.3",
+  "wheel_sha256": "dc096730c87af6cab1b171c9d532be840741ff5d459015e7f6947bd7d7e54931",
+  "source_snapshot_sha256": {
+    "iso3166.tab": "837c80785080c8433fd9d4ea87e78f161ac7a40389301c5153d4f90198baeb2a",
+    "zone1970.tab": "77b5e45415fa684fcc42de3421a6b0f15cc9b2c137f258083850346e8f76eea8"
+  },
+  "country_count": 249,
+  "iana_zone1970_entry_count": 312,
+  "product_registered_count": 4,
+  "total_entry_count": 316,
+  "iana_zone_directory": [
+    {
+      "location_id": "IANA:Europe/Andorra",
+      "zone_id": "Europe/Andorra",
+      "country_codes": [
+        "AD"
+      ],
+      "coordinates_raw": "+4230+00131",
+      "latitude": 42.5,
+      "longitude": 1.516667,
+      "comment": "",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Asia/Dubai",
+      "zone_id": "Asia/Dubai",
+      "country_codes": [
+        "AE",
+        "OM",
+        "RE",
+        "SC",
+        "TF"
+      ],
+      "coordinates_raw": "+2518+05518",
+      "latitude": 25.3,
+      "longitude": 55.3,
+      "comment": "Crozet",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Asia/Kabul",
+      "zone_id": "Asia/Kabul",
+      "country_codes": [
+        "AF"
+      ],
+      "coordinates_raw": "+3431+06912",
+      "latitude": 34.516667,
+      "longitude": 69.2,
+      "comment": "",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Europe/Tirane",
+      "zone_id": "Europe/Tirane",
+      "country_codes": [
+        "AL"
+      ],
+      "coordinates_raw": "+4120+01950",
+      "latitude": 41.333333,
+      "longitude": 19.833333,
+      "comment": "",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Asia/Yerevan",
+      "zone_id": "Asia/Yerevan",
+      "country_codes": [
+        "AM"
+      ],
+      "coordinates_raw": "+4011+04430",
+      "latitude": 40.183333,
+      "longitude": 44.5,
+      "comment": "",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Antarctica/Casey",
+      "zone_id": "Antarctica/Casey",
+      "country_codes": [
+        "AQ"
+      ],
+      "coordinates_raw": "-6617+11031",
+      "latitude": -66.283333,
+      "longitude": 110.516667,
+      "comment": "Casey",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Antarctica/Davis",
+      "zone_id": "Antarctica/Davis",
+      "country_codes": [
+        "AQ"
+      ],
+      "coordinates_raw": "-6835+07758",
+      "latitude": -68.583333,
+      "longitude": 77.966667,
+      "comment": "Davis",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Antarctica/Mawson",
+      "zone_id": "Antarctica/Mawson",
+      "country_codes": [
+        "AQ"
+      ],
+      "coordinates_raw": "-6736+06253",
+      "latitude": -67.6,
+      "longitude": 62.883333,
+      "comment": "Mawson",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Antarctica/Palmer",
+      "zone_id": "Antarctica/Palmer",
+      "country_codes": [
+        "AQ"
+      ],
+      "coordinates_raw": "-6448-06406",
+      "latitude": -64.8,
+      "longitude": -64.1,
+      "comment": "Palmer",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Antarctica/Rothera",
+      "zone_id": "Antarctica/Rothera",
+      "country_codes": [
+        "AQ"
+      ],
+      "coordinates_raw": "-6734-06808",
+      "latitude": -67.566667,
+      "longitude": -68.133333,
+      "comment": "Rothera",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Antarctica/Troll",
+      "zone_id": "Antarctica/Troll",
+      "country_codes": [
+        "AQ"
+      ],
+      "coordinates_raw": "-720041+0023206",
+      "latitude": -72.011389,
+      "longitude": 2.535,
+      "comment": "Troll",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Antarctica/Vostok",
+      "zone_id": "Antarctica/Vostok",
+      "country_codes": [
+        "AQ"
+      ],
+      "coordinates_raw": "-7824+10654",
+      "latitude": -78.4,
+      "longitude": 106.9,
+      "comment": "Vostok",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:America/Argentina/Buenos_Aires",
+      "zone_id": "America/Argentina/Buenos_Aires",
+      "country_codes": [
+        "AR"
+      ],
+      "coordinates_raw": "-3436-05827",
+      "latitude": -34.6,
+      "longitude": -58.45,
+      "comment": "Buenos Aires (BA, CF)",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:America/Argentina/Cordoba",
+      "zone_id": "America/Argentina/Cordoba",
+      "country_codes": [
+        "AR"
+      ],
+      "coordinates_raw": "-3124-06411",
+      "latitude": -31.4,
+      "longitude": -64.183333,
+      "comment": "most areas: CB, CC, CN, ER, FM, MN, SE, SF",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:America/Argentina/Salta",
+      "zone_id": "America/Argentina/Salta",
+      "country_codes": [
+        "AR"
+      ],
+      "coordinates_raw": "-2447-06525",
+      "latitude": -24.783333,
+      "longitude": -65.416667,
+      "comment": "Salta (SA, LP, NQ, RN)",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:America/Argentina/Jujuy",
+      "zone_id": "America/Argentina/Jujuy",
+      "country_codes": [
+        "AR"
+      ],
+      "coordinates_raw": "-2411-06518",
+      "latitude": -24.183333,
+      "longitude": -65.3,
+      "comment": "Jujuy (JY)",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:America/Argentina/Tucuman",
+      "zone_id": "America/Argentina/Tucuman",
+      "country_codes": [
+        "AR"
+      ],
+      "coordinates_raw": "-2649-06513",
+      "latitude": -26.816667,
+      "longitude": -65.216667,
+      "comment": "Tucumán (TM)",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:America/Argentina/Catamarca",
+      "zone_id": "America/Argentina/Catamarca",
+      "country_codes": [
+        "AR"
+      ],
+      "coordinates_raw": "-2828-06547",
+      "latitude": -28.466667,
+      "longitude": -65.783333,
+      "comment": "Catamarca (CT), Chubut (CH)",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:America/Argentina/La_Rioja",
+      "zone_id": "America/Argentina/La_Rioja",
+      "country_codes": [
+        "AR"
+      ],
+      "coordinates_raw": "-2926-06651",
+      "latitude": -29.433333,
+      "longitude": -66.85,
+      "comment": "La Rioja (LR)",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:America/Argentina/San_Juan",
+      "zone_id": "America/Argentina/San_Juan",
+      "country_codes": [
+        "AR"
+      ],
+      "coordinates_raw": "-3132-06831",
+      "latitude": -31.533333,
+      "longitude": -68.516667,
+      "comment": "San Juan (SJ)",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:America/Argentina/Mendoza",
+      "zone_id": "America/Argentina/Mendoza",
+      "country_codes": [
+        "AR"
+      ],
+      "coordinates_raw": "-3253-06849",
+      "latitude": -32.883333,
+      "longitude": -68.816667,
+      "comment": "Mendoza (MZ)",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:America/Argentina/San_Luis",
+      "zone_id": "America/Argentina/San_Luis",
+      "country_codes": [
+        "AR"
+      ],
+      "coordinates_raw": "-3319-06621",
+      "latitude": -33.316667,
+      "longitude": -66.35,
+      "comment": "San Luis (SL)",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:America/Argentina/Rio_Gallegos",
+      "zone_id": "America/Argentina/Rio_Gallegos",
+      "country_codes": [
+        "AR"
+      ],
+      "coordinates_raw": "-5138-06913",
+      "latitude": -51.633333,
+      "longitude": -69.216667,
+      "comment": "Santa Cruz (SC)",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:America/Argentina/Ushuaia",
+      "zone_id": "America/Argentina/Ushuaia",
+      "country_codes": [
+        "AR"
+      ],
+      "coordinates_raw": "-5448-06818",
+      "latitude": -54.8,
+      "longitude": -68.3,
+      "comment": "Tierra del Fuego (TF)",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Pacific/Pago_Pago",
+      "zone_id": "Pacific/Pago_Pago",
+      "country_codes": [
+        "AS",
+        "UM"
+      ],
+      "coordinates_raw": "-1416-17042",
+      "latitude": -14.266667,
+      "longitude": -170.7,
+      "comment": "Midway",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Europe/Vienna",
+      "zone_id": "Europe/Vienna",
+      "country_codes": [
+        "AT"
+      ],
+      "coordinates_raw": "+4813+01620",
+      "latitude": 48.216667,
+      "longitude": 16.333333,
+      "comment": "",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Australia/Lord_Howe",
+      "zone_id": "Australia/Lord_Howe",
+      "country_codes": [
+        "AU"
+      ],
+      "coordinates_raw": "-3133+15905",
+      "latitude": -31.55,
+      "longitude": 159.083333,
+      "comment": "Lord Howe Island",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Antarctica/Macquarie",
+      "zone_id": "Antarctica/Macquarie",
+      "country_codes": [
+        "AU"
+      ],
+      "coordinates_raw": "-5430+15857",
+      "latitude": -54.5,
+      "longitude": 158.95,
+      "comment": "Macquarie Island",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Australia/Hobart",
+      "zone_id": "Australia/Hobart",
+      "country_codes": [
+        "AU"
+      ],
+      "coordinates_raw": "-4253+14719",
+      "latitude": -42.883333,
+      "longitude": 147.316667,
+      "comment": "Tasmania",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Australia/Melbourne",
+      "zone_id": "Australia/Melbourne",
+      "country_codes": [
+        "AU"
+      ],
+      "coordinates_raw": "-3749+14458",
+      "latitude": -37.816667,
+      "longitude": 144.966667,
+      "comment": "Victoria",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Australia/Sydney",
+      "zone_id": "Australia/Sydney",
+      "country_codes": [
+        "AU"
+      ],
+      "coordinates_raw": "-3352+15113",
+      "latitude": -33.866667,
+      "longitude": 151.216667,
+      "comment": "New South Wales (most areas)",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Australia/Broken_Hill",
+      "zone_id": "Australia/Broken_Hill",
+      "country_codes": [
+        "AU"
+      ],
+      "coordinates_raw": "-3157+14127",
+      "latitude": -31.95,
+      "longitude": 141.45,
+      "comment": "New South Wales (Yancowinna)",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Australia/Brisbane",
+      "zone_id": "Australia/Brisbane",
+      "country_codes": [
+        "AU"
+      ],
+      "coordinates_raw": "-2728+15302",
+      "latitude": -27.466667,
+      "longitude": 153.033333,
+      "comment": "Queensland (most areas)",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Australia/Lindeman",
+      "zone_id": "Australia/Lindeman",
+      "country_codes": [
+        "AU"
+      ],
+      "coordinates_raw": "-2016+14900",
+      "latitude": -20.266667,
+      "longitude": 149.0,
+      "comment": "Queensland (Whitsunday Islands)",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Australia/Adelaide",
+      "zone_id": "Australia/Adelaide",
+      "country_codes": [
+        "AU"
+      ],
+      "coordinates_raw": "-3455+13835",
+      "latitude": -34.916667,
+      "longitude": 138.583333,
+      "comment": "South Australia",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Australia/Darwin",
+      "zone_id": "Australia/Darwin",
+      "country_codes": [
+        "AU"
+      ],
+      "coordinates_raw": "-1228+13050",
+      "latitude": -12.466667,
+      "longitude": 130.833333,
+      "comment": "Northern Territory",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Australia/Perth",
+      "zone_id": "Australia/Perth",
+      "country_codes": [
+        "AU"
+      ],
+      "coordinates_raw": "-3157+11551",
+      "latitude": -31.95,
+      "longitude": 115.85,
+      "comment": "Western Australia (most areas)",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Australia/Eucla",
+      "zone_id": "Australia/Eucla",
+      "country_codes": [
+        "AU"
+      ],
+      "coordinates_raw": "-3143+12852",
+      "latitude": -31.716667,
+      "longitude": 128.866667,
+      "comment": "Western Australia (Eucla)",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Asia/Baku",
+      "zone_id": "Asia/Baku",
+      "country_codes": [
+        "AZ"
+      ],
+      "coordinates_raw": "+4023+04951",
+      "latitude": 40.383333,
+      "longitude": 49.85,
+      "comment": "",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:America/Barbados",
+      "zone_id": "America/Barbados",
+      "country_codes": [
+        "BB"
+      ],
+      "coordinates_raw": "+1306-05937",
+      "latitude": 13.1,
+      "longitude": -59.616667,
+      "comment": "",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Asia/Dhaka",
+      "zone_id": "Asia/Dhaka",
+      "country_codes": [
+        "BD"
+      ],
+      "coordinates_raw": "+2343+09025",
+      "latitude": 23.716667,
+      "longitude": 90.416667,
+      "comment": "",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Europe/Brussels",
+      "zone_id": "Europe/Brussels",
+      "country_codes": [
+        "BE",
+        "LU",
+        "NL"
+      ],
+      "coordinates_raw": "+5050+00420",
+      "latitude": 50.833333,
+      "longitude": 4.333333,
+      "comment": "",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Europe/Sofia",
+      "zone_id": "Europe/Sofia",
+      "country_codes": [
+        "BG"
+      ],
+      "coordinates_raw": "+4241+02319",
+      "latitude": 42.683333,
+      "longitude": 23.316667,
+      "comment": "",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Atlantic/Bermuda",
+      "zone_id": "Atlantic/Bermuda",
+      "country_codes": [
+        "BM"
+      ],
+      "coordinates_raw": "+3217-06446",
+      "latitude": 32.283333,
+      "longitude": -64.766667,
+      "comment": "",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:America/La_Paz",
+      "zone_id": "America/La_Paz",
+      "country_codes": [
+        "BO"
+      ],
+      "coordinates_raw": "-1630-06809",
+      "latitude": -16.5,
+      "longitude": -68.15,
+      "comment": "",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:America/Noronha",
+      "zone_id": "America/Noronha",
+      "country_codes": [
+        "BR"
+      ],
+      "coordinates_raw": "-0351-03225",
+      "latitude": -3.85,
+      "longitude": -32.416667,
+      "comment": "Atlantic islands",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:America/Belem",
+      "zone_id": "America/Belem",
+      "country_codes": [
+        "BR"
+      ],
+      "coordinates_raw": "-0127-04829",
+      "latitude": -1.45,
+      "longitude": -48.483333,
+      "comment": "Pará (east), Amapá",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:America/Fortaleza",
+      "zone_id": "America/Fortaleza",
+      "country_codes": [
+        "BR"
+      ],
+      "coordinates_raw": "-0343-03830",
+      "latitude": -3.716667,
+      "longitude": -38.5,
+      "comment": "Brazil (northeast: MA, PI, CE, RN, PB)",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:America/Recife",
+      "zone_id": "America/Recife",
+      "country_codes": [
+        "BR"
+      ],
+      "coordinates_raw": "-0803-03454",
+      "latitude": -8.05,
+      "longitude": -34.9,
+      "comment": "Pernambuco",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:America/Araguaina",
+      "zone_id": "America/Araguaina",
+      "country_codes": [
+        "BR"
+      ],
+      "coordinates_raw": "-0712-04812",
+      "latitude": -7.2,
+      "longitude": -48.2,
+      "comment": "Tocantins",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:America/Maceio",
+      "zone_id": "America/Maceio",
+      "country_codes": [
+        "BR"
+      ],
+      "coordinates_raw": "-0940-03543",
+      "latitude": -9.666667,
+      "longitude": -35.716667,
+      "comment": "Alagoas, Sergipe",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:America/Bahia",
+      "zone_id": "America/Bahia",
+      "country_codes": [
+        "BR"
+      ],
+      "coordinates_raw": "-1259-03831",
+      "latitude": -12.983333,
+      "longitude": -38.516667,
+      "comment": "Bahia",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:America/Sao_Paulo",
+      "zone_id": "America/Sao_Paulo",
+      "country_codes": [
+        "BR"
+      ],
+      "coordinates_raw": "-2332-04637",
+      "latitude": -23.533333,
+      "longitude": -46.616667,
+      "comment": "Brazil (southeast: GO, DF, MG, ES, RJ, SP, PR, SC, RS)",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:America/Campo_Grande",
+      "zone_id": "America/Campo_Grande",
+      "country_codes": [
+        "BR"
+      ],
+      "coordinates_raw": "-2027-05437",
+      "latitude": -20.45,
+      "longitude": -54.616667,
+      "comment": "Mato Grosso do Sul",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:America/Cuiaba",
+      "zone_id": "America/Cuiaba",
+      "country_codes": [
+        "BR"
+      ],
+      "coordinates_raw": "-1535-05605",
+      "latitude": -15.583333,
+      "longitude": -56.083333,
+      "comment": "Mato Grosso",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:America/Santarem",
+      "zone_id": "America/Santarem",
+      "country_codes": [
+        "BR"
+      ],
+      "coordinates_raw": "-0226-05452",
+      "latitude": -2.433333,
+      "longitude": -54.866667,
+      "comment": "Pará (west)",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:America/Porto_Velho",
+      "zone_id": "America/Porto_Velho",
+      "country_codes": [
+        "BR"
+      ],
+      "coordinates_raw": "-0846-06354",
+      "latitude": -8.766667,
+      "longitude": -63.9,
+      "comment": "Rondônia",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:America/Boa_Vista",
+      "zone_id": "America/Boa_Vista",
+      "country_codes": [
+        "BR"
+      ],
+      "coordinates_raw": "+0249-06040",
+      "latitude": 2.816667,
+      "longitude": -60.666667,
+      "comment": "Roraima",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:America/Manaus",
+      "zone_id": "America/Manaus",
+      "country_codes": [
+        "BR"
+      ],
+      "coordinates_raw": "-0308-06001",
+      "latitude": -3.133333,
+      "longitude": -60.016667,
+      "comment": "Amazonas (east)",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:America/Eirunepe",
+      "zone_id": "America/Eirunepe",
+      "country_codes": [
+        "BR"
+      ],
+      "coordinates_raw": "-0640-06952",
+      "latitude": -6.666667,
+      "longitude": -69.866667,
+      "comment": "Amazonas (west)",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:America/Rio_Branco",
+      "zone_id": "America/Rio_Branco",
+      "country_codes": [
+        "BR"
+      ],
+      "coordinates_raw": "-0958-06748",
+      "latitude": -9.966667,
+      "longitude": -67.8,
+      "comment": "Acre",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Asia/Thimphu",
+      "zone_id": "Asia/Thimphu",
+      "country_codes": [
+        "BT"
+      ],
+      "coordinates_raw": "+2728+08939",
+      "latitude": 27.466667,
+      "longitude": 89.65,
+      "comment": "",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Europe/Minsk",
+      "zone_id": "Europe/Minsk",
+      "country_codes": [
+        "BY"
+      ],
+      "coordinates_raw": "+5354+02734",
+      "latitude": 53.9,
+      "longitude": 27.566667,
+      "comment": "",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:America/Belize",
+      "zone_id": "America/Belize",
+      "country_codes": [
+        "BZ"
+      ],
+      "coordinates_raw": "+1730-08812",
+      "latitude": 17.5,
+      "longitude": -88.2,
+      "comment": "",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:America/St_Johns",
+      "zone_id": "America/St_Johns",
+      "country_codes": [
+        "CA"
+      ],
+      "coordinates_raw": "+4734-05243",
+      "latitude": 47.566667,
+      "longitude": -52.716667,
+      "comment": "Newfoundland, Labrador (SE)",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:America/Halifax",
+      "zone_id": "America/Halifax",
+      "country_codes": [
+        "CA"
+      ],
+      "coordinates_raw": "+4439-06336",
+      "latitude": 44.65,
+      "longitude": -63.6,
+      "comment": "Atlantic - NS (most areas), PE",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:America/Glace_Bay",
+      "zone_id": "America/Glace_Bay",
+      "country_codes": [
+        "CA"
+      ],
+      "coordinates_raw": "+4612-05957",
+      "latitude": 46.2,
+      "longitude": -59.95,
+      "comment": "Atlantic - NS (Cape Breton)",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:America/Moncton",
+      "zone_id": "America/Moncton",
+      "country_codes": [
+        "CA"
+      ],
+      "coordinates_raw": "+4606-06447",
+      "latitude": 46.1,
+      "longitude": -64.783333,
+      "comment": "Atlantic - New Brunswick",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:America/Goose_Bay",
+      "zone_id": "America/Goose_Bay",
+      "country_codes": [
+        "CA"
+      ],
+      "coordinates_raw": "+5320-06025",
+      "latitude": 53.333333,
+      "longitude": -60.416667,
+      "comment": "Atlantic - Labrador (most areas)",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:America/Toronto",
+      "zone_id": "America/Toronto",
+      "country_codes": [
+        "CA",
+        "BS"
+      ],
+      "coordinates_raw": "+4339-07923",
+      "latitude": 43.65,
+      "longitude": -79.383333,
+      "comment": "Eastern - ON & QC (most areas)",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:America/Iqaluit",
+      "zone_id": "America/Iqaluit",
+      "country_codes": [
+        "CA"
+      ],
+      "coordinates_raw": "+6344-06828",
+      "latitude": 63.733333,
+      "longitude": -68.466667,
+      "comment": "Eastern - NU (most areas)",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:America/Winnipeg",
+      "zone_id": "America/Winnipeg",
+      "country_codes": [
+        "CA"
+      ],
+      "coordinates_raw": "+4953-09709",
+      "latitude": 49.883333,
+      "longitude": -97.15,
+      "comment": "Central - ON (west), Manitoba",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:America/Resolute",
+      "zone_id": "America/Resolute",
+      "country_codes": [
+        "CA"
+      ],
+      "coordinates_raw": "+744144-0944945",
+      "latitude": 74.695556,
+      "longitude": -94.829167,
+      "comment": "Central - NU (Resolute)",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:America/Rankin_Inlet",
+      "zone_id": "America/Rankin_Inlet",
+      "country_codes": [
+        "CA"
+      ],
+      "coordinates_raw": "+624900-0920459",
+      "latitude": 62.816667,
+      "longitude": -92.083056,
+      "comment": "Central - NU (central)",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:America/Regina",
+      "zone_id": "America/Regina",
+      "country_codes": [
+        "CA"
+      ],
+      "coordinates_raw": "+5024-10439",
+      "latitude": 50.4,
+      "longitude": -104.65,
+      "comment": "CST - SK (most areas)",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:America/Swift_Current",
+      "zone_id": "America/Swift_Current",
+      "country_codes": [
+        "CA"
+      ],
+      "coordinates_raw": "+5017-10750",
+      "latitude": 50.283333,
+      "longitude": -107.833333,
+      "comment": "CST - SK (midwest)",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:America/Edmonton",
+      "zone_id": "America/Edmonton",
+      "country_codes": [
+        "CA"
+      ],
+      "coordinates_raw": "+5333-11328",
+      "latitude": 53.55,
+      "longitude": -113.466667,
+      "comment": "CST - AB, BC(E), NT(E), SK(W)",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:America/Cambridge_Bay",
+      "zone_id": "America/Cambridge_Bay",
+      "country_codes": [
+        "CA"
+      ],
+      "coordinates_raw": "+690650-1050310",
+      "latitude": 69.113889,
+      "longitude": -105.052778,
+      "comment": "Mountain - NU (west)",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:America/Inuvik",
+      "zone_id": "America/Inuvik",
+      "country_codes": [
+        "CA"
+      ],
+      "coordinates_raw": "+682059-1334300",
+      "latitude": 68.349722,
+      "longitude": -133.716667,
+      "comment": "Mountain - NT (west)",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:America/Vancouver",
+      "zone_id": "America/Vancouver",
+      "country_codes": [
+        "CA"
+      ],
+      "coordinates_raw": "+4916-12307",
+      "latitude": 49.266667,
+      "longitude": -123.116667,
+      "comment": "MST - BC (most areas)",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:America/Dawson_Creek",
+      "zone_id": "America/Dawson_Creek",
+      "country_codes": [
+        "CA"
+      ],
+      "coordinates_raw": "+5546-12014",
+      "latitude": 55.766667,
+      "longitude": -120.233333,
+      "comment": "MST - BC (Dawson Cr, Ft St John)",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:America/Fort_Nelson",
+      "zone_id": "America/Fort_Nelson",
+      "country_codes": [
+        "CA"
+      ],
+      "coordinates_raw": "+5848-12242",
+      "latitude": 58.8,
+      "longitude": -122.7,
+      "comment": "MST - BC (Ft Nelson)",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:America/Whitehorse",
+      "zone_id": "America/Whitehorse",
+      "country_codes": [
+        "CA"
+      ],
+      "coordinates_raw": "+6043-13503",
+      "latitude": 60.716667,
+      "longitude": -135.05,
+      "comment": "MST - Yukon (east)",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:America/Dawson",
+      "zone_id": "America/Dawson",
+      "country_codes": [
+        "CA"
+      ],
+      "coordinates_raw": "+6404-13925",
+      "latitude": 64.066667,
+      "longitude": -139.416667,
+      "comment": "MST - Yukon (west)",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Europe/Zurich",
+      "zone_id": "Europe/Zurich",
+      "country_codes": [
+        "CH",
+        "DE",
+        "LI"
+      ],
+      "coordinates_raw": "+4723+00832",
+      "latitude": 47.383333,
+      "longitude": 8.533333,
+      "comment": "Büsingen",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Africa/Abidjan",
+      "zone_id": "Africa/Abidjan",
+      "country_codes": [
+        "CI",
+        "BF",
+        "GH",
+        "GM",
+        "GN",
+        "IS",
+        "ML",
+        "MR",
+        "SH",
+        "SL",
+        "SN",
+        "TG"
+      ],
+      "coordinates_raw": "+0519-00402",
+      "latitude": 5.316667,
+      "longitude": -4.033333,
+      "comment": "",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Pacific/Rarotonga",
+      "zone_id": "Pacific/Rarotonga",
+      "country_codes": [
+        "CK"
+      ],
+      "coordinates_raw": "-2114-15946",
+      "latitude": -21.233333,
+      "longitude": -159.766667,
+      "comment": "",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:America/Santiago",
+      "zone_id": "America/Santiago",
+      "country_codes": [
+        "CL"
+      ],
+      "coordinates_raw": "-3327-07040",
+      "latitude": -33.45,
+      "longitude": -70.666667,
+      "comment": "most of Chile",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:America/Coyhaique",
+      "zone_id": "America/Coyhaique",
+      "country_codes": [
+        "CL"
+      ],
+      "coordinates_raw": "-4534-07204",
+      "latitude": -45.566667,
+      "longitude": -72.066667,
+      "comment": "Aysén Region",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:America/Punta_Arenas",
+      "zone_id": "America/Punta_Arenas",
+      "country_codes": [
+        "CL"
+      ],
+      "coordinates_raw": "-5309-07055",
+      "latitude": -53.15,
+      "longitude": -70.916667,
+      "comment": "Magallanes Region",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Pacific/Easter",
+      "zone_id": "Pacific/Easter",
+      "country_codes": [
+        "CL"
+      ],
+      "coordinates_raw": "-2709-10926",
+      "latitude": -27.15,
+      "longitude": -109.433333,
+      "comment": "Easter Island",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Asia/Shanghai",
+      "zone_id": "Asia/Shanghai",
+      "country_codes": [
+        "CN"
+      ],
+      "coordinates_raw": "+3114+12128",
+      "latitude": 31.233333,
+      "longitude": 121.466667,
+      "comment": "Beijing Time",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Asia/Urumqi",
+      "zone_id": "Asia/Urumqi",
+      "country_codes": [
+        "CN"
+      ],
+      "coordinates_raw": "+4348+08735",
+      "latitude": 43.8,
+      "longitude": 87.583333,
+      "comment": "Xinjiang Time",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:America/Bogota",
+      "zone_id": "America/Bogota",
+      "country_codes": [
+        "CO"
+      ],
+      "coordinates_raw": "+0436-07405",
+      "latitude": 4.6,
+      "longitude": -74.083333,
+      "comment": "",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:America/Costa_Rica",
+      "zone_id": "America/Costa_Rica",
+      "country_codes": [
+        "CR"
+      ],
+      "coordinates_raw": "+0956-08405",
+      "latitude": 9.933333,
+      "longitude": -84.083333,
+      "comment": "",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:America/Havana",
+      "zone_id": "America/Havana",
+      "country_codes": [
+        "CU"
+      ],
+      "coordinates_raw": "+2308-08222",
+      "latitude": 23.133333,
+      "longitude": -82.366667,
+      "comment": "",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Atlantic/Cape_Verde",
+      "zone_id": "Atlantic/Cape_Verde",
+      "country_codes": [
+        "CV"
+      ],
+      "coordinates_raw": "+1455-02331",
+      "latitude": 14.916667,
+      "longitude": -23.516667,
+      "comment": "",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Asia/Nicosia",
+      "zone_id": "Asia/Nicosia",
+      "country_codes": [
+        "CY"
+      ],
+      "coordinates_raw": "+3510+03322",
+      "latitude": 35.166667,
+      "longitude": 33.366667,
+      "comment": "most of Cyprus",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Asia/Famagusta",
+      "zone_id": "Asia/Famagusta",
+      "country_codes": [
+        "CY"
+      ],
+      "coordinates_raw": "+3507+03357",
+      "latitude": 35.116667,
+      "longitude": 33.95,
+      "comment": "Northern Cyprus",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Europe/Prague",
+      "zone_id": "Europe/Prague",
+      "country_codes": [
+        "CZ",
+        "SK"
+      ],
+      "coordinates_raw": "+5005+01426",
+      "latitude": 50.083333,
+      "longitude": 14.433333,
+      "comment": "",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Europe/Berlin",
+      "zone_id": "Europe/Berlin",
+      "country_codes": [
+        "DE",
+        "DK",
+        "NO",
+        "SE",
+        "SJ"
+      ],
+      "coordinates_raw": "+5230+01322",
+      "latitude": 52.5,
+      "longitude": 13.366667,
+      "comment": "most of Germany",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:America/Santo_Domingo",
+      "zone_id": "America/Santo_Domingo",
+      "country_codes": [
+        "DO"
+      ],
+      "coordinates_raw": "+1828-06954",
+      "latitude": 18.466667,
+      "longitude": -69.9,
+      "comment": "",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Africa/Algiers",
+      "zone_id": "Africa/Algiers",
+      "country_codes": [
+        "DZ"
+      ],
+      "coordinates_raw": "+3647+00303",
+      "latitude": 36.783333,
+      "longitude": 3.05,
+      "comment": "",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:America/Guayaquil",
+      "zone_id": "America/Guayaquil",
+      "country_codes": [
+        "EC"
+      ],
+      "coordinates_raw": "-0210-07950",
+      "latitude": -2.166667,
+      "longitude": -79.833333,
+      "comment": "Ecuador (mainland)",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Pacific/Galapagos",
+      "zone_id": "Pacific/Galapagos",
+      "country_codes": [
+        "EC"
+      ],
+      "coordinates_raw": "-0054-08936",
+      "latitude": -0.9,
+      "longitude": -89.6,
+      "comment": "Galápagos Islands",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Europe/Tallinn",
+      "zone_id": "Europe/Tallinn",
+      "country_codes": [
+        "EE"
+      ],
+      "coordinates_raw": "+5925+02445",
+      "latitude": 59.416667,
+      "longitude": 24.75,
+      "comment": "",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Africa/Cairo",
+      "zone_id": "Africa/Cairo",
+      "country_codes": [
+        "EG"
+      ],
+      "coordinates_raw": "+3003+03115",
+      "latitude": 30.05,
+      "longitude": 31.25,
+      "comment": "",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Africa/El_Aaiun",
+      "zone_id": "Africa/El_Aaiun",
+      "country_codes": [
+        "EH"
+      ],
+      "coordinates_raw": "+2709-01312",
+      "latitude": 27.15,
+      "longitude": -13.2,
+      "comment": "",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Europe/Madrid",
+      "zone_id": "Europe/Madrid",
+      "country_codes": [
+        "ES"
+      ],
+      "coordinates_raw": "+4024-00341",
+      "latitude": 40.4,
+      "longitude": -3.683333,
+      "comment": "Spain (mainland)",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Africa/Ceuta",
+      "zone_id": "Africa/Ceuta",
+      "country_codes": [
+        "ES"
+      ],
+      "coordinates_raw": "+3553-00519",
+      "latitude": 35.883333,
+      "longitude": -5.316667,
+      "comment": "Ceuta, Melilla",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Atlantic/Canary",
+      "zone_id": "Atlantic/Canary",
+      "country_codes": [
+        "ES"
+      ],
+      "coordinates_raw": "+2806-01524",
+      "latitude": 28.1,
+      "longitude": -15.4,
+      "comment": "Canary Islands",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Europe/Helsinki",
+      "zone_id": "Europe/Helsinki",
+      "country_codes": [
+        "FI",
+        "AX"
+      ],
+      "coordinates_raw": "+6010+02458",
+      "latitude": 60.166667,
+      "longitude": 24.966667,
+      "comment": "",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Pacific/Fiji",
+      "zone_id": "Pacific/Fiji",
+      "country_codes": [
+        "FJ"
+      ],
+      "coordinates_raw": "-1808+17825",
+      "latitude": -18.133333,
+      "longitude": 178.416667,
+      "comment": "",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Atlantic/Stanley",
+      "zone_id": "Atlantic/Stanley",
+      "country_codes": [
+        "FK"
+      ],
+      "coordinates_raw": "-5142-05751",
+      "latitude": -51.7,
+      "longitude": -57.85,
+      "comment": "",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Pacific/Kosrae",
+      "zone_id": "Pacific/Kosrae",
+      "country_codes": [
+        "FM"
+      ],
+      "coordinates_raw": "+0519+16259",
+      "latitude": 5.316667,
+      "longitude": 162.983333,
+      "comment": "Kosrae",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Atlantic/Faroe",
+      "zone_id": "Atlantic/Faroe",
+      "country_codes": [
+        "FO"
+      ],
+      "coordinates_raw": "+6201-00646",
+      "latitude": 62.016667,
+      "longitude": -6.766667,
+      "comment": "",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Europe/Paris",
+      "zone_id": "Europe/Paris",
+      "country_codes": [
+        "FR",
+        "MC"
+      ],
+      "coordinates_raw": "+4852+00220",
+      "latitude": 48.866667,
+      "longitude": 2.333333,
+      "comment": "",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Europe/London",
+      "zone_id": "Europe/London",
+      "country_codes": [
+        "GB",
+        "GG",
+        "IM",
+        "JE"
+      ],
+      "coordinates_raw": "+513030-0000731",
+      "latitude": 51.508333,
+      "longitude": -0.125278,
+      "comment": "",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Asia/Tbilisi",
+      "zone_id": "Asia/Tbilisi",
+      "country_codes": [
+        "GE"
+      ],
+      "coordinates_raw": "+4143+04449",
+      "latitude": 41.716667,
+      "longitude": 44.816667,
+      "comment": "",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:America/Cayenne",
+      "zone_id": "America/Cayenne",
+      "country_codes": [
+        "GF"
+      ],
+      "coordinates_raw": "+0456-05220",
+      "latitude": 4.933333,
+      "longitude": -52.333333,
+      "comment": "",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Europe/Gibraltar",
+      "zone_id": "Europe/Gibraltar",
+      "country_codes": [
+        "GI"
+      ],
+      "coordinates_raw": "+3608-00521",
+      "latitude": 36.133333,
+      "longitude": -5.35,
+      "comment": "",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:America/Nuuk",
+      "zone_id": "America/Nuuk",
+      "country_codes": [
+        "GL"
+      ],
+      "coordinates_raw": "+6411-05144",
+      "latitude": 64.183333,
+      "longitude": -51.733333,
+      "comment": "most of Greenland",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:America/Danmarkshavn",
+      "zone_id": "America/Danmarkshavn",
+      "country_codes": [
+        "GL"
+      ],
+      "coordinates_raw": "+7646-01840",
+      "latitude": 76.766667,
+      "longitude": -18.666667,
+      "comment": "National Park (east coast)",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:America/Scoresbysund",
+      "zone_id": "America/Scoresbysund",
+      "country_codes": [
+        "GL"
+      ],
+      "coordinates_raw": "+7029-02158",
+      "latitude": 70.483333,
+      "longitude": -21.966667,
+      "comment": "Scoresbysund/Ittoqqortoormiit",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:America/Thule",
+      "zone_id": "America/Thule",
+      "country_codes": [
+        "GL"
+      ],
+      "coordinates_raw": "+7634-06847",
+      "latitude": 76.566667,
+      "longitude": -68.783333,
+      "comment": "Thule/Pituffik",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Europe/Athens",
+      "zone_id": "Europe/Athens",
+      "country_codes": [
+        "GR"
+      ],
+      "coordinates_raw": "+3758+02343",
+      "latitude": 37.966667,
+      "longitude": 23.716667,
+      "comment": "",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Atlantic/South_Georgia",
+      "zone_id": "Atlantic/South_Georgia",
+      "country_codes": [
+        "GS"
+      ],
+      "coordinates_raw": "-5416-03632",
+      "latitude": -54.266667,
+      "longitude": -36.533333,
+      "comment": "",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:America/Guatemala",
+      "zone_id": "America/Guatemala",
+      "country_codes": [
+        "GT"
+      ],
+      "coordinates_raw": "+1438-09031",
+      "latitude": 14.633333,
+      "longitude": -90.516667,
+      "comment": "",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Pacific/Guam",
+      "zone_id": "Pacific/Guam",
+      "country_codes": [
+        "GU",
+        "MP"
+      ],
+      "coordinates_raw": "+1328+14445",
+      "latitude": 13.466667,
+      "longitude": 144.75,
+      "comment": "",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Africa/Bissau",
+      "zone_id": "Africa/Bissau",
+      "country_codes": [
+        "GW"
+      ],
+      "coordinates_raw": "+1151-01535",
+      "latitude": 11.85,
+      "longitude": -15.583333,
+      "comment": "",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:America/Guyana",
+      "zone_id": "America/Guyana",
+      "country_codes": [
+        "GY"
+      ],
+      "coordinates_raw": "+0648-05810",
+      "latitude": 6.8,
+      "longitude": -58.166667,
+      "comment": "",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Asia/Hong_Kong",
+      "zone_id": "Asia/Hong_Kong",
+      "country_codes": [
+        "HK"
+      ],
+      "coordinates_raw": "+2217+11409",
+      "latitude": 22.283333,
+      "longitude": 114.15,
+      "comment": "",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:America/Tegucigalpa",
+      "zone_id": "America/Tegucigalpa",
+      "country_codes": [
+        "HN"
+      ],
+      "coordinates_raw": "+1406-08713",
+      "latitude": 14.1,
+      "longitude": -87.216667,
+      "comment": "",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:America/Port-au-Prince",
+      "zone_id": "America/Port-au-Prince",
+      "country_codes": [
+        "HT"
+      ],
+      "coordinates_raw": "+1832-07220",
+      "latitude": 18.533333,
+      "longitude": -72.333333,
+      "comment": "",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Europe/Budapest",
+      "zone_id": "Europe/Budapest",
+      "country_codes": [
+        "HU"
+      ],
+      "coordinates_raw": "+4730+01905",
+      "latitude": 47.5,
+      "longitude": 19.083333,
+      "comment": "",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Asia/Jakarta",
+      "zone_id": "Asia/Jakarta",
+      "country_codes": [
+        "ID"
+      ],
+      "coordinates_raw": "-0610+10648",
+      "latitude": -6.166667,
+      "longitude": 106.8,
+      "comment": "Java, Sumatra",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Asia/Pontianak",
+      "zone_id": "Asia/Pontianak",
+      "country_codes": [
+        "ID"
+      ],
+      "coordinates_raw": "-0002+10920",
+      "latitude": -0.033333,
+      "longitude": 109.333333,
+      "comment": "Borneo (west, central)",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Asia/Makassar",
+      "zone_id": "Asia/Makassar",
+      "country_codes": [
+        "ID"
+      ],
+      "coordinates_raw": "-0507+11924",
+      "latitude": -5.116667,
+      "longitude": 119.4,
+      "comment": "Borneo (east, south), Sulawesi/Celebes, Bali, Nusa Tengarra, Timor (west)",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Asia/Jayapura",
+      "zone_id": "Asia/Jayapura",
+      "country_codes": [
+        "ID"
+      ],
+      "coordinates_raw": "-0232+14042",
+      "latitude": -2.533333,
+      "longitude": 140.7,
+      "comment": "New Guinea (West Papua / Irian Jaya), Malukus/Moluccas",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Europe/Dublin",
+      "zone_id": "Europe/Dublin",
+      "country_codes": [
+        "IE"
+      ],
+      "coordinates_raw": "+5320-00615",
+      "latitude": 53.333333,
+      "longitude": -6.25,
+      "comment": "",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Asia/Jerusalem",
+      "zone_id": "Asia/Jerusalem",
+      "country_codes": [
+        "IL"
+      ],
+      "coordinates_raw": "+314650+0351326",
+      "latitude": 31.780556,
+      "longitude": 35.223889,
+      "comment": "",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Asia/Kolkata",
+      "zone_id": "Asia/Kolkata",
+      "country_codes": [
+        "IN"
+      ],
+      "coordinates_raw": "+2232+08822",
+      "latitude": 22.533333,
+      "longitude": 88.366667,
+      "comment": "",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Indian/Chagos",
+      "zone_id": "Indian/Chagos",
+      "country_codes": [
+        "IO"
+      ],
+      "coordinates_raw": "-0720+07225",
+      "latitude": -7.333333,
+      "longitude": 72.416667,
+      "comment": "",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Asia/Baghdad",
+      "zone_id": "Asia/Baghdad",
+      "country_codes": [
+        "IQ"
+      ],
+      "coordinates_raw": "+3321+04425",
+      "latitude": 33.35,
+      "longitude": 44.416667,
+      "comment": "",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Asia/Tehran",
+      "zone_id": "Asia/Tehran",
+      "country_codes": [
+        "IR"
+      ],
+      "coordinates_raw": "+3540+05126",
+      "latitude": 35.666667,
+      "longitude": 51.433333,
+      "comment": "",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Europe/Rome",
+      "zone_id": "Europe/Rome",
+      "country_codes": [
+        "IT",
+        "SM",
+        "VA"
+      ],
+      "coordinates_raw": "+4154+01229",
+      "latitude": 41.9,
+      "longitude": 12.483333,
+      "comment": "",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:America/Jamaica",
+      "zone_id": "America/Jamaica",
+      "country_codes": [
+        "JM"
+      ],
+      "coordinates_raw": "+175805-0764736",
+      "latitude": 17.968056,
+      "longitude": -76.793333,
+      "comment": "",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Asia/Amman",
+      "zone_id": "Asia/Amman",
+      "country_codes": [
+        "JO"
+      ],
+      "coordinates_raw": "+3157+03556",
+      "latitude": 31.95,
+      "longitude": 35.933333,
+      "comment": "",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Asia/Tokyo",
+      "zone_id": "Asia/Tokyo",
+      "country_codes": [
+        "JP",
+        "AU"
+      ],
+      "coordinates_raw": "+353916+1394441",
+      "latitude": 35.654444,
+      "longitude": 139.744722,
+      "comment": "Eyre Bird Observatory",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Africa/Nairobi",
+      "zone_id": "Africa/Nairobi",
+      "country_codes": [
+        "KE",
+        "DJ",
+        "ER",
+        "ET",
+        "KM",
+        "MG",
+        "SO",
+        "TZ",
+        "UG",
+        "YT"
+      ],
+      "coordinates_raw": "-0117+03649",
+      "latitude": -1.283333,
+      "longitude": 36.816667,
+      "comment": "",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Asia/Bishkek",
+      "zone_id": "Asia/Bishkek",
+      "country_codes": [
+        "KG"
+      ],
+      "coordinates_raw": "+4254+07436",
+      "latitude": 42.9,
+      "longitude": 74.6,
+      "comment": "",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Pacific/Tarawa",
+      "zone_id": "Pacific/Tarawa",
+      "country_codes": [
+        "KI",
+        "MH",
+        "TV",
+        "UM",
+        "WF"
+      ],
+      "coordinates_raw": "+0125+17300",
+      "latitude": 1.416667,
+      "longitude": 173.0,
+      "comment": "Gilberts, Marshalls, Wake",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Pacific/Kanton",
+      "zone_id": "Pacific/Kanton",
+      "country_codes": [
+        "KI"
+      ],
+      "coordinates_raw": "-0247-17143",
+      "latitude": -2.783333,
+      "longitude": -171.716667,
+      "comment": "Phoenix Islands",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Pacific/Kiritimati",
+      "zone_id": "Pacific/Kiritimati",
+      "country_codes": [
+        "KI"
+      ],
+      "coordinates_raw": "+0152-15720",
+      "latitude": 1.866667,
+      "longitude": -157.333333,
+      "comment": "Line Islands",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Asia/Pyongyang",
+      "zone_id": "Asia/Pyongyang",
+      "country_codes": [
+        "KP"
+      ],
+      "coordinates_raw": "+3901+12545",
+      "latitude": 39.016667,
+      "longitude": 125.75,
+      "comment": "",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Asia/Seoul",
+      "zone_id": "Asia/Seoul",
+      "country_codes": [
+        "KR"
+      ],
+      "coordinates_raw": "+3733+12658",
+      "latitude": 37.55,
+      "longitude": 126.966667,
+      "comment": "",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Asia/Almaty",
+      "zone_id": "Asia/Almaty",
+      "country_codes": [
+        "KZ"
+      ],
+      "coordinates_raw": "+4315+07657",
+      "latitude": 43.25,
+      "longitude": 76.95,
+      "comment": "most of Kazakhstan",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Asia/Qyzylorda",
+      "zone_id": "Asia/Qyzylorda",
+      "country_codes": [
+        "KZ"
+      ],
+      "coordinates_raw": "+4448+06528",
+      "latitude": 44.8,
+      "longitude": 65.466667,
+      "comment": "Qyzylorda/Kyzylorda/Kzyl-Orda",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Asia/Qostanay",
+      "zone_id": "Asia/Qostanay",
+      "country_codes": [
+        "KZ"
+      ],
+      "coordinates_raw": "+5312+06337",
+      "latitude": 53.2,
+      "longitude": 63.616667,
+      "comment": "Qostanay/Kostanay/Kustanay",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Asia/Aqtobe",
+      "zone_id": "Asia/Aqtobe",
+      "country_codes": [
+        "KZ"
+      ],
+      "coordinates_raw": "+5017+05710",
+      "latitude": 50.283333,
+      "longitude": 57.166667,
+      "comment": "Aqtöbe/Aktobe",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Asia/Aqtau",
+      "zone_id": "Asia/Aqtau",
+      "country_codes": [
+        "KZ"
+      ],
+      "coordinates_raw": "+4431+05016",
+      "latitude": 44.516667,
+      "longitude": 50.266667,
+      "comment": "Mangghystaū/Mankistau",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Asia/Atyrau",
+      "zone_id": "Asia/Atyrau",
+      "country_codes": [
+        "KZ"
+      ],
+      "coordinates_raw": "+4707+05156",
+      "latitude": 47.116667,
+      "longitude": 51.933333,
+      "comment": "Atyraū/Atirau/Gur’yev",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Asia/Oral",
+      "zone_id": "Asia/Oral",
+      "country_codes": [
+        "KZ"
+      ],
+      "coordinates_raw": "+5113+05121",
+      "latitude": 51.216667,
+      "longitude": 51.35,
+      "comment": "West Kazakhstan",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Asia/Beirut",
+      "zone_id": "Asia/Beirut",
+      "country_codes": [
+        "LB"
+      ],
+      "coordinates_raw": "+3353+03530",
+      "latitude": 33.883333,
+      "longitude": 35.5,
+      "comment": "",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Asia/Colombo",
+      "zone_id": "Asia/Colombo",
+      "country_codes": [
+        "LK"
+      ],
+      "coordinates_raw": "+0656+07951",
+      "latitude": 6.933333,
+      "longitude": 79.85,
+      "comment": "",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Africa/Monrovia",
+      "zone_id": "Africa/Monrovia",
+      "country_codes": [
+        "LR"
+      ],
+      "coordinates_raw": "+0618-01047",
+      "latitude": 6.3,
+      "longitude": -10.783333,
+      "comment": "",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Europe/Vilnius",
+      "zone_id": "Europe/Vilnius",
+      "country_codes": [
+        "LT"
+      ],
+      "coordinates_raw": "+5441+02519",
+      "latitude": 54.683333,
+      "longitude": 25.316667,
+      "comment": "",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Europe/Riga",
+      "zone_id": "Europe/Riga",
+      "country_codes": [
+        "LV"
+      ],
+      "coordinates_raw": "+5657+02406",
+      "latitude": 56.95,
+      "longitude": 24.1,
+      "comment": "",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Africa/Tripoli",
+      "zone_id": "Africa/Tripoli",
+      "country_codes": [
+        "LY"
+      ],
+      "coordinates_raw": "+3254+01311",
+      "latitude": 32.9,
+      "longitude": 13.183333,
+      "comment": "",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Africa/Casablanca",
+      "zone_id": "Africa/Casablanca",
+      "country_codes": [
+        "MA"
+      ],
+      "coordinates_raw": "+3339-00735",
+      "latitude": 33.65,
+      "longitude": -7.583333,
+      "comment": "",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Europe/Chisinau",
+      "zone_id": "Europe/Chisinau",
+      "country_codes": [
+        "MD"
+      ],
+      "coordinates_raw": "+4700+02850",
+      "latitude": 47.0,
+      "longitude": 28.833333,
+      "comment": "",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Pacific/Kwajalein",
+      "zone_id": "Pacific/Kwajalein",
+      "country_codes": [
+        "MH"
+      ],
+      "coordinates_raw": "+0905+16720",
+      "latitude": 9.083333,
+      "longitude": 167.333333,
+      "comment": "Kwajalein",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Asia/Yangon",
+      "zone_id": "Asia/Yangon",
+      "country_codes": [
+        "MM",
+        "CC"
+      ],
+      "coordinates_raw": "+1647+09610",
+      "latitude": 16.783333,
+      "longitude": 96.166667,
+      "comment": "",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Asia/Ulaanbaatar",
+      "zone_id": "Asia/Ulaanbaatar",
+      "country_codes": [
+        "MN"
+      ],
+      "coordinates_raw": "+4755+10653",
+      "latitude": 47.916667,
+      "longitude": 106.883333,
+      "comment": "most of Mongolia",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Asia/Hovd",
+      "zone_id": "Asia/Hovd",
+      "country_codes": [
+        "MN"
+      ],
+      "coordinates_raw": "+4801+09139",
+      "latitude": 48.016667,
+      "longitude": 91.65,
+      "comment": "Bayan-Ölgii, Hovd, Uvs",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Asia/Macau",
+      "zone_id": "Asia/Macau",
+      "country_codes": [
+        "MO"
+      ],
+      "coordinates_raw": "+221150+1133230",
+      "latitude": 22.197222,
+      "longitude": 113.541667,
+      "comment": "",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:America/Martinique",
+      "zone_id": "America/Martinique",
+      "country_codes": [
+        "MQ"
+      ],
+      "coordinates_raw": "+1436-06105",
+      "latitude": 14.6,
+      "longitude": -61.083333,
+      "comment": "",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Europe/Malta",
+      "zone_id": "Europe/Malta",
+      "country_codes": [
+        "MT"
+      ],
+      "coordinates_raw": "+3554+01431",
+      "latitude": 35.9,
+      "longitude": 14.516667,
+      "comment": "",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Indian/Mauritius",
+      "zone_id": "Indian/Mauritius",
+      "country_codes": [
+        "MU"
+      ],
+      "coordinates_raw": "-2010+05730",
+      "latitude": -20.166667,
+      "longitude": 57.5,
+      "comment": "",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Indian/Maldives",
+      "zone_id": "Indian/Maldives",
+      "country_codes": [
+        "MV",
+        "TF"
+      ],
+      "coordinates_raw": "+0410+07330",
+      "latitude": 4.166667,
+      "longitude": 73.5,
+      "comment": "Kerguelen, St Paul I, Amsterdam I",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:America/Mexico_City",
+      "zone_id": "America/Mexico_City",
+      "country_codes": [
+        "MX"
+      ],
+      "coordinates_raw": "+1924-09909",
+      "latitude": 19.4,
+      "longitude": -99.15,
+      "comment": "Central Mexico",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:America/Cancun",
+      "zone_id": "America/Cancun",
+      "country_codes": [
+        "MX"
+      ],
+      "coordinates_raw": "+2105-08646",
+      "latitude": 21.083333,
+      "longitude": -86.766667,
+      "comment": "Quintana Roo",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:America/Merida",
+      "zone_id": "America/Merida",
+      "country_codes": [
+        "MX"
+      ],
+      "coordinates_raw": "+2058-08937",
+      "latitude": 20.966667,
+      "longitude": -89.616667,
+      "comment": "Campeche, Yucatán",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:America/Monterrey",
+      "zone_id": "America/Monterrey",
+      "country_codes": [
+        "MX"
+      ],
+      "coordinates_raw": "+2540-10019",
+      "latitude": 25.666667,
+      "longitude": -100.316667,
+      "comment": "Durango; Coahuila, Nuevo León, Tamaulipas (most areas)",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:America/Matamoros",
+      "zone_id": "America/Matamoros",
+      "country_codes": [
+        "MX"
+      ],
+      "coordinates_raw": "+2550-09730",
+      "latitude": 25.833333,
+      "longitude": -97.5,
+      "comment": "Coahuila, Nuevo León, Tamaulipas (US border)",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:America/Chihuahua",
+      "zone_id": "America/Chihuahua",
+      "country_codes": [
+        "MX"
+      ],
+      "coordinates_raw": "+2838-10605",
+      "latitude": 28.633333,
+      "longitude": -106.083333,
+      "comment": "Chihuahua (most areas)",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:America/Ciudad_Juarez",
+      "zone_id": "America/Ciudad_Juarez",
+      "country_codes": [
+        "MX"
+      ],
+      "coordinates_raw": "+3144-10629",
+      "latitude": 31.733333,
+      "longitude": -106.483333,
+      "comment": "Chihuahua (US border - west)",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:America/Ojinaga",
+      "zone_id": "America/Ojinaga",
+      "country_codes": [
+        "MX"
+      ],
+      "coordinates_raw": "+2934-10425",
+      "latitude": 29.566667,
+      "longitude": -104.416667,
+      "comment": "Chihuahua (US border - east)",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:America/Mazatlan",
+      "zone_id": "America/Mazatlan",
+      "country_codes": [
+        "MX"
+      ],
+      "coordinates_raw": "+2313-10625",
+      "latitude": 23.216667,
+      "longitude": -106.416667,
+      "comment": "Baja California Sur, Nayarit (most areas), Sinaloa",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:America/Bahia_Banderas",
+      "zone_id": "America/Bahia_Banderas",
+      "country_codes": [
+        "MX"
+      ],
+      "coordinates_raw": "+2048-10515",
+      "latitude": 20.8,
+      "longitude": -105.25,
+      "comment": "Bahía de Banderas",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:America/Hermosillo",
+      "zone_id": "America/Hermosillo",
+      "country_codes": [
+        "MX"
+      ],
+      "coordinates_raw": "+2904-11058",
+      "latitude": 29.066667,
+      "longitude": -110.966667,
+      "comment": "Sonora",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:America/Tijuana",
+      "zone_id": "America/Tijuana",
+      "country_codes": [
+        "MX"
+      ],
+      "coordinates_raw": "+3232-11701",
+      "latitude": 32.533333,
+      "longitude": -117.016667,
+      "comment": "Baja California",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Asia/Kuching",
+      "zone_id": "Asia/Kuching",
+      "country_codes": [
+        "MY",
+        "BN"
+      ],
+      "coordinates_raw": "+0133+11020",
+      "latitude": 1.55,
+      "longitude": 110.333333,
+      "comment": "Sabah, Sarawak",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Africa/Maputo",
+      "zone_id": "Africa/Maputo",
+      "country_codes": [
+        "MZ",
+        "BI",
+        "BW",
+        "CD",
+        "MW",
+        "RW",
+        "ZM",
+        "ZW"
+      ],
+      "coordinates_raw": "-2558+03235",
+      "latitude": -25.966667,
+      "longitude": 32.583333,
+      "comment": "Central Africa Time",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Africa/Windhoek",
+      "zone_id": "Africa/Windhoek",
+      "country_codes": [
+        "NA"
+      ],
+      "coordinates_raw": "-2234+01706",
+      "latitude": -22.566667,
+      "longitude": 17.1,
+      "comment": "",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Pacific/Noumea",
+      "zone_id": "Pacific/Noumea",
+      "country_codes": [
+        "NC"
+      ],
+      "coordinates_raw": "-2216+16627",
+      "latitude": -22.266667,
+      "longitude": 166.45,
+      "comment": "",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Pacific/Norfolk",
+      "zone_id": "Pacific/Norfolk",
+      "country_codes": [
+        "NF"
+      ],
+      "coordinates_raw": "-2903+16758",
+      "latitude": -29.05,
+      "longitude": 167.966667,
+      "comment": "",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Africa/Lagos",
+      "zone_id": "Africa/Lagos",
+      "country_codes": [
+        "NG",
+        "AO",
+        "BJ",
+        "CD",
+        "CF",
+        "CG",
+        "CM",
+        "GA",
+        "GQ",
+        "NE"
+      ],
+      "coordinates_raw": "+0627+00324",
+      "latitude": 6.45,
+      "longitude": 3.4,
+      "comment": "West Africa Time",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:America/Managua",
+      "zone_id": "America/Managua",
+      "country_codes": [
+        "NI"
+      ],
+      "coordinates_raw": "+1209-08617",
+      "latitude": 12.15,
+      "longitude": -86.283333,
+      "comment": "",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Asia/Kathmandu",
+      "zone_id": "Asia/Kathmandu",
+      "country_codes": [
+        "NP"
+      ],
+      "coordinates_raw": "+2743+08519",
+      "latitude": 27.716667,
+      "longitude": 85.316667,
+      "comment": "",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Pacific/Nauru",
+      "zone_id": "Pacific/Nauru",
+      "country_codes": [
+        "NR"
+      ],
+      "coordinates_raw": "-0031+16655",
+      "latitude": -0.516667,
+      "longitude": 166.916667,
+      "comment": "",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Pacific/Niue",
+      "zone_id": "Pacific/Niue",
+      "country_codes": [
+        "NU"
+      ],
+      "coordinates_raw": "-1901-16955",
+      "latitude": -19.016667,
+      "longitude": -169.916667,
+      "comment": "",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Pacific/Auckland",
+      "zone_id": "Pacific/Auckland",
+      "country_codes": [
+        "NZ",
+        "AQ"
+      ],
+      "coordinates_raw": "-3652+17446",
+      "latitude": -36.866667,
+      "longitude": 174.766667,
+      "comment": "New Zealand time",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Pacific/Chatham",
+      "zone_id": "Pacific/Chatham",
+      "country_codes": [
+        "NZ"
+      ],
+      "coordinates_raw": "-4357-17633",
+      "latitude": -43.95,
+      "longitude": -176.55,
+      "comment": "Chatham Islands",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:America/Panama",
+      "zone_id": "America/Panama",
+      "country_codes": [
+        "PA",
+        "CA",
+        "KY"
+      ],
+      "coordinates_raw": "+0858-07932",
+      "latitude": 8.966667,
+      "longitude": -79.533333,
+      "comment": "EST - ON (Atikokan), NU (Coral H)",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:America/Lima",
+      "zone_id": "America/Lima",
+      "country_codes": [
+        "PE"
+      ],
+      "coordinates_raw": "-1203-07703",
+      "latitude": -12.05,
+      "longitude": -77.05,
+      "comment": "",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Pacific/Tahiti",
+      "zone_id": "Pacific/Tahiti",
+      "country_codes": [
+        "PF"
+      ],
+      "coordinates_raw": "-1732-14934",
+      "latitude": -17.533333,
+      "longitude": -149.566667,
+      "comment": "Society Islands",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Pacific/Marquesas",
+      "zone_id": "Pacific/Marquesas",
+      "country_codes": [
+        "PF"
+      ],
+      "coordinates_raw": "-0900-13930",
+      "latitude": -9.0,
+      "longitude": -139.5,
+      "comment": "Marquesas Islands",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Pacific/Gambier",
+      "zone_id": "Pacific/Gambier",
+      "country_codes": [
+        "PF"
+      ],
+      "coordinates_raw": "-2308-13457",
+      "latitude": -23.133333,
+      "longitude": -134.95,
+      "comment": "Gambier Islands",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Pacific/Port_Moresby",
+      "zone_id": "Pacific/Port_Moresby",
+      "country_codes": [
+        "PG",
+        "AQ",
+        "FM"
+      ],
+      "coordinates_raw": "-0930+14710",
+      "latitude": -9.5,
+      "longitude": 147.166667,
+      "comment": "Papua New Guinea (most areas), Chuuk, Yap, Dumont d’Urville",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Pacific/Bougainville",
+      "zone_id": "Pacific/Bougainville",
+      "country_codes": [
+        "PG"
+      ],
+      "coordinates_raw": "-0613+15534",
+      "latitude": -6.216667,
+      "longitude": 155.566667,
+      "comment": "Bougainville",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Asia/Manila",
+      "zone_id": "Asia/Manila",
+      "country_codes": [
+        "PH"
+      ],
+      "coordinates_raw": "+143512+1205804",
+      "latitude": 14.586667,
+      "longitude": 120.967778,
+      "comment": "",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Asia/Karachi",
+      "zone_id": "Asia/Karachi",
+      "country_codes": [
+        "PK"
+      ],
+      "coordinates_raw": "+2452+06703",
+      "latitude": 24.866667,
+      "longitude": 67.05,
+      "comment": "",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Europe/Warsaw",
+      "zone_id": "Europe/Warsaw",
+      "country_codes": [
+        "PL"
+      ],
+      "coordinates_raw": "+5215+02100",
+      "latitude": 52.25,
+      "longitude": 21.0,
+      "comment": "",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:America/Miquelon",
+      "zone_id": "America/Miquelon",
+      "country_codes": [
+        "PM"
+      ],
+      "coordinates_raw": "+4703-05620",
+      "latitude": 47.05,
+      "longitude": -56.333333,
+      "comment": "",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Pacific/Pitcairn",
+      "zone_id": "Pacific/Pitcairn",
+      "country_codes": [
+        "PN"
+      ],
+      "coordinates_raw": "-2504-13005",
+      "latitude": -25.066667,
+      "longitude": -130.083333,
+      "comment": "",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:America/Puerto_Rico",
+      "zone_id": "America/Puerto_Rico",
+      "country_codes": [
+        "PR",
+        "AG",
+        "CA",
+        "AI",
+        "AW",
+        "BL",
+        "BQ",
+        "CW",
+        "DM",
+        "GD",
+        "GP",
+        "KN",
+        "LC",
+        "MF",
+        "MS",
+        "SX",
+        "TT",
+        "VC",
+        "VG",
+        "VI"
+      ],
+      "coordinates_raw": "+182806-0660622",
+      "latitude": 18.468333,
+      "longitude": -66.106111,
+      "comment": "AST - QC (Lower North Shore)",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Asia/Gaza",
+      "zone_id": "Asia/Gaza",
+      "country_codes": [
+        "PS"
+      ],
+      "coordinates_raw": "+3130+03428",
+      "latitude": 31.5,
+      "longitude": 34.466667,
+      "comment": "Gaza Strip",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Asia/Hebron",
+      "zone_id": "Asia/Hebron",
+      "country_codes": [
+        "PS"
+      ],
+      "coordinates_raw": "+313200+0350542",
+      "latitude": 31.533333,
+      "longitude": 35.095,
+      "comment": "West Bank",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Europe/Lisbon",
+      "zone_id": "Europe/Lisbon",
+      "country_codes": [
+        "PT"
+      ],
+      "coordinates_raw": "+3843-00908",
+      "latitude": 38.716667,
+      "longitude": -9.133333,
+      "comment": "Portugal (mainland)",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Atlantic/Madeira",
+      "zone_id": "Atlantic/Madeira",
+      "country_codes": [
+        "PT"
+      ],
+      "coordinates_raw": "+3238-01654",
+      "latitude": 32.633333,
+      "longitude": -16.9,
+      "comment": "Madeira Islands",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Atlantic/Azores",
+      "zone_id": "Atlantic/Azores",
+      "country_codes": [
+        "PT"
+      ],
+      "coordinates_raw": "+3744-02540",
+      "latitude": 37.733333,
+      "longitude": -25.666667,
+      "comment": "Azores",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Pacific/Palau",
+      "zone_id": "Pacific/Palau",
+      "country_codes": [
+        "PW"
+      ],
+      "coordinates_raw": "+0720+13429",
+      "latitude": 7.333333,
+      "longitude": 134.483333,
+      "comment": "",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:America/Asuncion",
+      "zone_id": "America/Asuncion",
+      "country_codes": [
+        "PY"
+      ],
+      "coordinates_raw": "-2516-05740",
+      "latitude": -25.266667,
+      "longitude": -57.666667,
+      "comment": "",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Asia/Qatar",
+      "zone_id": "Asia/Qatar",
+      "country_codes": [
+        "QA",
+        "BH"
+      ],
+      "coordinates_raw": "+2517+05132",
+      "latitude": 25.283333,
+      "longitude": 51.533333,
+      "comment": "",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Europe/Bucharest",
+      "zone_id": "Europe/Bucharest",
+      "country_codes": [
+        "RO"
+      ],
+      "coordinates_raw": "+4426+02606",
+      "latitude": 44.433333,
+      "longitude": 26.1,
+      "comment": "",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Europe/Belgrade",
+      "zone_id": "Europe/Belgrade",
+      "country_codes": [
+        "RS",
+        "BA",
+        "HR",
+        "ME",
+        "MK",
+        "SI"
+      ],
+      "coordinates_raw": "+4450+02030",
+      "latitude": 44.833333,
+      "longitude": 20.5,
+      "comment": "",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Europe/Kaliningrad",
+      "zone_id": "Europe/Kaliningrad",
+      "country_codes": [
+        "RU"
+      ],
+      "coordinates_raw": "+5443+02030",
+      "latitude": 54.716667,
+      "longitude": 20.5,
+      "comment": "MSK-01 - Kaliningrad",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Europe/Moscow",
+      "zone_id": "Europe/Moscow",
+      "country_codes": [
+        "RU"
+      ],
+      "coordinates_raw": "+554521+0373704",
+      "latitude": 55.755833,
+      "longitude": 37.617778,
+      "comment": "MSK+00 - Moscow area",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Europe/Simferopol",
+      "zone_id": "Europe/Simferopol",
+      "country_codes": [
+        "RU",
+        "UA"
+      ],
+      "coordinates_raw": "+4457+03406",
+      "latitude": 44.95,
+      "longitude": 34.1,
+      "comment": "Crimea",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Europe/Kirov",
+      "zone_id": "Europe/Kirov",
+      "country_codes": [
+        "RU"
+      ],
+      "coordinates_raw": "+5836+04939",
+      "latitude": 58.6,
+      "longitude": 49.65,
+      "comment": "MSK+00 - Kirov",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Europe/Volgograd",
+      "zone_id": "Europe/Volgograd",
+      "country_codes": [
+        "RU"
+      ],
+      "coordinates_raw": "+4844+04425",
+      "latitude": 48.733333,
+      "longitude": 44.416667,
+      "comment": "MSK+00 - Volgograd",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Europe/Astrakhan",
+      "zone_id": "Europe/Astrakhan",
+      "country_codes": [
+        "RU"
+      ],
+      "coordinates_raw": "+4621+04803",
+      "latitude": 46.35,
+      "longitude": 48.05,
+      "comment": "MSK+01 - Astrakhan",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Europe/Saratov",
+      "zone_id": "Europe/Saratov",
+      "country_codes": [
+        "RU"
+      ],
+      "coordinates_raw": "+5134+04602",
+      "latitude": 51.566667,
+      "longitude": 46.033333,
+      "comment": "MSK+01 - Saratov",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Europe/Ulyanovsk",
+      "zone_id": "Europe/Ulyanovsk",
+      "country_codes": [
+        "RU"
+      ],
+      "coordinates_raw": "+5420+04824",
+      "latitude": 54.333333,
+      "longitude": 48.4,
+      "comment": "MSK+01 - Ulyanovsk",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Europe/Samara",
+      "zone_id": "Europe/Samara",
+      "country_codes": [
+        "RU"
+      ],
+      "coordinates_raw": "+5312+05009",
+      "latitude": 53.2,
+      "longitude": 50.15,
+      "comment": "MSK+01 - Samara, Udmurtia",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Asia/Yekaterinburg",
+      "zone_id": "Asia/Yekaterinburg",
+      "country_codes": [
+        "RU"
+      ],
+      "coordinates_raw": "+5651+06036",
+      "latitude": 56.85,
+      "longitude": 60.6,
+      "comment": "MSK+02 - Urals",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Asia/Omsk",
+      "zone_id": "Asia/Omsk",
+      "country_codes": [
+        "RU"
+      ],
+      "coordinates_raw": "+5500+07324",
+      "latitude": 55.0,
+      "longitude": 73.4,
+      "comment": "MSK+03 - Omsk",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Asia/Novosibirsk",
+      "zone_id": "Asia/Novosibirsk",
+      "country_codes": [
+        "RU"
+      ],
+      "coordinates_raw": "+5502+08255",
+      "latitude": 55.033333,
+      "longitude": 82.916667,
+      "comment": "MSK+04 - Novosibirsk",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Asia/Barnaul",
+      "zone_id": "Asia/Barnaul",
+      "country_codes": [
+        "RU"
+      ],
+      "coordinates_raw": "+5322+08345",
+      "latitude": 53.366667,
+      "longitude": 83.75,
+      "comment": "MSK+04 - Altai",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Asia/Tomsk",
+      "zone_id": "Asia/Tomsk",
+      "country_codes": [
+        "RU"
+      ],
+      "coordinates_raw": "+5630+08458",
+      "latitude": 56.5,
+      "longitude": 84.966667,
+      "comment": "MSK+04 - Tomsk",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Asia/Novokuznetsk",
+      "zone_id": "Asia/Novokuznetsk",
+      "country_codes": [
+        "RU"
+      ],
+      "coordinates_raw": "+5345+08707",
+      "latitude": 53.75,
+      "longitude": 87.116667,
+      "comment": "MSK+04 - Kemerovo",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Asia/Krasnoyarsk",
+      "zone_id": "Asia/Krasnoyarsk",
+      "country_codes": [
+        "RU"
+      ],
+      "coordinates_raw": "+5601+09250",
+      "latitude": 56.016667,
+      "longitude": 92.833333,
+      "comment": "MSK+04 - Krasnoyarsk area",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Asia/Irkutsk",
+      "zone_id": "Asia/Irkutsk",
+      "country_codes": [
+        "RU"
+      ],
+      "coordinates_raw": "+5216+10420",
+      "latitude": 52.266667,
+      "longitude": 104.333333,
+      "comment": "MSK+05 - Irkutsk, Buryatia",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Asia/Chita",
+      "zone_id": "Asia/Chita",
+      "country_codes": [
+        "RU"
+      ],
+      "coordinates_raw": "+5203+11328",
+      "latitude": 52.05,
+      "longitude": 113.466667,
+      "comment": "MSK+06 - Zabaykalsky",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Asia/Yakutsk",
+      "zone_id": "Asia/Yakutsk",
+      "country_codes": [
+        "RU"
+      ],
+      "coordinates_raw": "+6200+12940",
+      "latitude": 62.0,
+      "longitude": 129.666667,
+      "comment": "MSK+06 - Lena River",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Asia/Khandyga",
+      "zone_id": "Asia/Khandyga",
+      "country_codes": [
+        "RU"
+      ],
+      "coordinates_raw": "+623923+1353314",
+      "latitude": 62.656389,
+      "longitude": 135.553889,
+      "comment": "MSK+06 - Tomponsky, Ust-Maysky",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Asia/Vladivostok",
+      "zone_id": "Asia/Vladivostok",
+      "country_codes": [
+        "RU"
+      ],
+      "coordinates_raw": "+4310+13156",
+      "latitude": 43.166667,
+      "longitude": 131.933333,
+      "comment": "MSK+07 - Amur River",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Asia/Ust-Nera",
+      "zone_id": "Asia/Ust-Nera",
+      "country_codes": [
+        "RU"
+      ],
+      "coordinates_raw": "+643337+1431336",
+      "latitude": 64.560278,
+      "longitude": 143.226667,
+      "comment": "MSK+07 - Oymyakonsky",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Asia/Magadan",
+      "zone_id": "Asia/Magadan",
+      "country_codes": [
+        "RU"
+      ],
+      "coordinates_raw": "+5934+15048",
+      "latitude": 59.566667,
+      "longitude": 150.8,
+      "comment": "MSK+08 - Magadan",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Asia/Sakhalin",
+      "zone_id": "Asia/Sakhalin",
+      "country_codes": [
+        "RU"
+      ],
+      "coordinates_raw": "+4658+14242",
+      "latitude": 46.966667,
+      "longitude": 142.7,
+      "comment": "MSK+08 - Sakhalin Island",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Asia/Srednekolymsk",
+      "zone_id": "Asia/Srednekolymsk",
+      "country_codes": [
+        "RU"
+      ],
+      "coordinates_raw": "+6728+15343",
+      "latitude": 67.466667,
+      "longitude": 153.716667,
+      "comment": "MSK+08 - Sakha (E), N Kuril Is",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Asia/Kamchatka",
+      "zone_id": "Asia/Kamchatka",
+      "country_codes": [
+        "RU"
+      ],
+      "coordinates_raw": "+5301+15839",
+      "latitude": 53.016667,
+      "longitude": 158.65,
+      "comment": "MSK+09 - Kamchatka",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Asia/Anadyr",
+      "zone_id": "Asia/Anadyr",
+      "country_codes": [
+        "RU"
+      ],
+      "coordinates_raw": "+6445+17729",
+      "latitude": 64.75,
+      "longitude": 177.483333,
+      "comment": "MSK+09 - Bering Sea",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Asia/Riyadh",
+      "zone_id": "Asia/Riyadh",
+      "country_codes": [
+        "SA",
+        "AQ",
+        "KW",
+        "YE"
+      ],
+      "coordinates_raw": "+2438+04643",
+      "latitude": 24.633333,
+      "longitude": 46.716667,
+      "comment": "Syowa",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Pacific/Guadalcanal",
+      "zone_id": "Pacific/Guadalcanal",
+      "country_codes": [
+        "SB",
+        "FM"
+      ],
+      "coordinates_raw": "-0932+16012",
+      "latitude": -9.533333,
+      "longitude": 160.2,
+      "comment": "Pohnpei",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Africa/Khartoum",
+      "zone_id": "Africa/Khartoum",
+      "country_codes": [
+        "SD"
+      ],
+      "coordinates_raw": "+1536+03232",
+      "latitude": 15.6,
+      "longitude": 32.533333,
+      "comment": "",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Asia/Singapore",
+      "zone_id": "Asia/Singapore",
+      "country_codes": [
+        "SG",
+        "AQ",
+        "MY"
+      ],
+      "coordinates_raw": "+0117+10351",
+      "latitude": 1.283333,
+      "longitude": 103.85,
+      "comment": "peninsular Malaysia, Concordia",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:America/Paramaribo",
+      "zone_id": "America/Paramaribo",
+      "country_codes": [
+        "SR"
+      ],
+      "coordinates_raw": "+0550-05510",
+      "latitude": 5.833333,
+      "longitude": -55.166667,
+      "comment": "",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Africa/Juba",
+      "zone_id": "Africa/Juba",
+      "country_codes": [
+        "SS"
+      ],
+      "coordinates_raw": "+0451+03137",
+      "latitude": 4.85,
+      "longitude": 31.616667,
+      "comment": "",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Africa/Sao_Tome",
+      "zone_id": "Africa/Sao_Tome",
+      "country_codes": [
+        "ST"
+      ],
+      "coordinates_raw": "+0020+00644",
+      "latitude": 0.333333,
+      "longitude": 6.733333,
+      "comment": "",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:America/El_Salvador",
+      "zone_id": "America/El_Salvador",
+      "country_codes": [
+        "SV"
+      ],
+      "coordinates_raw": "+1342-08912",
+      "latitude": 13.7,
+      "longitude": -89.2,
+      "comment": "",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Asia/Damascus",
+      "zone_id": "Asia/Damascus",
+      "country_codes": [
+        "SY"
+      ],
+      "coordinates_raw": "+3330+03618",
+      "latitude": 33.5,
+      "longitude": 36.3,
+      "comment": "",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:America/Grand_Turk",
+      "zone_id": "America/Grand_Turk",
+      "country_codes": [
+        "TC"
+      ],
+      "coordinates_raw": "+2128-07108",
+      "latitude": 21.466667,
+      "longitude": -71.133333,
+      "comment": "",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Africa/Ndjamena",
+      "zone_id": "Africa/Ndjamena",
+      "country_codes": [
+        "TD"
+      ],
+      "coordinates_raw": "+1207+01503",
+      "latitude": 12.116667,
+      "longitude": 15.05,
+      "comment": "",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Asia/Bangkok",
+      "zone_id": "Asia/Bangkok",
+      "country_codes": [
+        "TH",
+        "CX",
+        "KH",
+        "LA",
+        "VN"
+      ],
+      "coordinates_raw": "+1345+10031",
+      "latitude": 13.75,
+      "longitude": 100.516667,
+      "comment": "north Vietnam",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Asia/Dushanbe",
+      "zone_id": "Asia/Dushanbe",
+      "country_codes": [
+        "TJ"
+      ],
+      "coordinates_raw": "+3835+06848",
+      "latitude": 38.583333,
+      "longitude": 68.8,
+      "comment": "",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Pacific/Fakaofo",
+      "zone_id": "Pacific/Fakaofo",
+      "country_codes": [
+        "TK"
+      ],
+      "coordinates_raw": "-0922-17114",
+      "latitude": -9.366667,
+      "longitude": -171.233333,
+      "comment": "",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Asia/Dili",
+      "zone_id": "Asia/Dili",
+      "country_codes": [
+        "TL"
+      ],
+      "coordinates_raw": "-0833+12535",
+      "latitude": -8.55,
+      "longitude": 125.583333,
+      "comment": "",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Asia/Ashgabat",
+      "zone_id": "Asia/Ashgabat",
+      "country_codes": [
+        "TM"
+      ],
+      "coordinates_raw": "+3757+05823",
+      "latitude": 37.95,
+      "longitude": 58.383333,
+      "comment": "",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Africa/Tunis",
+      "zone_id": "Africa/Tunis",
+      "country_codes": [
+        "TN"
+      ],
+      "coordinates_raw": "+3648+01011",
+      "latitude": 36.8,
+      "longitude": 10.183333,
+      "comment": "",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Pacific/Tongatapu",
+      "zone_id": "Pacific/Tongatapu",
+      "country_codes": [
+        "TO"
+      ],
+      "coordinates_raw": "-210800-1751200",
+      "latitude": -21.133333,
+      "longitude": -175.2,
+      "comment": "",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Europe/Istanbul",
+      "zone_id": "Europe/Istanbul",
+      "country_codes": [
+        "TR"
+      ],
+      "coordinates_raw": "+4101+02858",
+      "latitude": 41.016667,
+      "longitude": 28.966667,
+      "comment": "",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Asia/Taipei",
+      "zone_id": "Asia/Taipei",
+      "country_codes": [
+        "TW"
+      ],
+      "coordinates_raw": "+2503+12130",
+      "latitude": 25.05,
+      "longitude": 121.5,
+      "comment": "",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Europe/Kyiv",
+      "zone_id": "Europe/Kyiv",
+      "country_codes": [
+        "UA"
+      ],
+      "coordinates_raw": "+5026+03031",
+      "latitude": 50.433333,
+      "longitude": 30.516667,
+      "comment": "most of Ukraine",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:America/New_York",
+      "zone_id": "America/New_York",
+      "country_codes": [
+        "US"
+      ],
+      "coordinates_raw": "+404251-0740023",
+      "latitude": 40.714167,
+      "longitude": -74.006389,
+      "comment": "Eastern (most areas)",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:America/Detroit",
+      "zone_id": "America/Detroit",
+      "country_codes": [
+        "US"
+      ],
+      "coordinates_raw": "+421953-0830245",
+      "latitude": 42.331389,
+      "longitude": -83.045833,
+      "comment": "Eastern - MI (most areas)",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:America/Kentucky/Louisville",
+      "zone_id": "America/Kentucky/Louisville",
+      "country_codes": [
+        "US"
+      ],
+      "coordinates_raw": "+381515-0854534",
+      "latitude": 38.254167,
+      "longitude": -85.759444,
+      "comment": "Eastern - KY (Louisville area)",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:America/Kentucky/Monticello",
+      "zone_id": "America/Kentucky/Monticello",
+      "country_codes": [
+        "US"
+      ],
+      "coordinates_raw": "+364947-0845057",
+      "latitude": 36.829722,
+      "longitude": -84.849167,
+      "comment": "Eastern - KY (Wayne)",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:America/Indiana/Indianapolis",
+      "zone_id": "America/Indiana/Indianapolis",
+      "country_codes": [
+        "US"
+      ],
+      "coordinates_raw": "+394606-0860929",
+      "latitude": 39.768333,
+      "longitude": -86.158056,
+      "comment": "Eastern - IN (most areas)",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:America/Indiana/Vincennes",
+      "zone_id": "America/Indiana/Vincennes",
+      "country_codes": [
+        "US"
+      ],
+      "coordinates_raw": "+384038-0873143",
+      "latitude": 38.677222,
+      "longitude": -87.528611,
+      "comment": "Eastern - IN (Da, Du, K, Mn)",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:America/Indiana/Winamac",
+      "zone_id": "America/Indiana/Winamac",
+      "country_codes": [
+        "US"
+      ],
+      "coordinates_raw": "+410305-0863611",
+      "latitude": 41.051389,
+      "longitude": -86.603056,
+      "comment": "Eastern - IN (Pulaski)",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:America/Indiana/Marengo",
+      "zone_id": "America/Indiana/Marengo",
+      "country_codes": [
+        "US"
+      ],
+      "coordinates_raw": "+382232-0862041",
+      "latitude": 38.375556,
+      "longitude": -86.344722,
+      "comment": "Eastern - IN (Crawford)",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:America/Indiana/Petersburg",
+      "zone_id": "America/Indiana/Petersburg",
+      "country_codes": [
+        "US"
+      ],
+      "coordinates_raw": "+382931-0871643",
+      "latitude": 38.491944,
+      "longitude": -87.278611,
+      "comment": "Eastern - IN (Pike)",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:America/Indiana/Vevay",
+      "zone_id": "America/Indiana/Vevay",
+      "country_codes": [
+        "US"
+      ],
+      "coordinates_raw": "+384452-0850402",
+      "latitude": 38.747778,
+      "longitude": -85.067222,
+      "comment": "Eastern - IN (Switzerland)",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:America/Chicago",
+      "zone_id": "America/Chicago",
+      "country_codes": [
+        "US"
+      ],
+      "coordinates_raw": "+415100-0873900",
+      "latitude": 41.85,
+      "longitude": -87.65,
+      "comment": "Central (most areas)",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:America/Indiana/Tell_City",
+      "zone_id": "America/Indiana/Tell_City",
+      "country_codes": [
+        "US"
+      ],
+      "coordinates_raw": "+375711-0864541",
+      "latitude": 37.953056,
+      "longitude": -86.761389,
+      "comment": "Central - IN (Perry)",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:America/Indiana/Knox",
+      "zone_id": "America/Indiana/Knox",
+      "country_codes": [
+        "US"
+      ],
+      "coordinates_raw": "+411745-0863730",
+      "latitude": 41.295833,
+      "longitude": -86.625,
+      "comment": "Central - IN (Starke)",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:America/Menominee",
+      "zone_id": "America/Menominee",
+      "country_codes": [
+        "US"
+      ],
+      "coordinates_raw": "+450628-0873651",
+      "latitude": 45.107778,
+      "longitude": -87.614167,
+      "comment": "Central - MI (Wisconsin border)",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:America/North_Dakota/Center",
+      "zone_id": "America/North_Dakota/Center",
+      "country_codes": [
+        "US"
+      ],
+      "coordinates_raw": "+470659-1011757",
+      "latitude": 47.116389,
+      "longitude": -101.299167,
+      "comment": "Central - ND (Oliver)",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:America/North_Dakota/New_Salem",
+      "zone_id": "America/North_Dakota/New_Salem",
+      "country_codes": [
+        "US"
+      ],
+      "coordinates_raw": "+465042-1012439",
+      "latitude": 46.845,
+      "longitude": -101.410833,
+      "comment": "Central - ND (Morton rural)",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:America/North_Dakota/Beulah",
+      "zone_id": "America/North_Dakota/Beulah",
+      "country_codes": [
+        "US"
+      ],
+      "coordinates_raw": "+471551-1014640",
+      "latitude": 47.264167,
+      "longitude": -101.777778,
+      "comment": "Central - ND (Mercer)",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:America/Denver",
+      "zone_id": "America/Denver",
+      "country_codes": [
+        "US"
+      ],
+      "coordinates_raw": "+394421-1045903",
+      "latitude": 39.739167,
+      "longitude": -104.984167,
+      "comment": "Mountain (most areas)",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:America/Boise",
+      "zone_id": "America/Boise",
+      "country_codes": [
+        "US"
+      ],
+      "coordinates_raw": "+433649-1161209",
+      "latitude": 43.613611,
+      "longitude": -116.2025,
+      "comment": "Mountain - ID (south), OR (east)",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:America/Phoenix",
+      "zone_id": "America/Phoenix",
+      "country_codes": [
+        "US",
+        "CA"
+      ],
+      "coordinates_raw": "+332654-1120424",
+      "latitude": 33.448333,
+      "longitude": -112.073333,
+      "comment": "MST - AZ (most areas), Creston BC",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:America/Los_Angeles",
+      "zone_id": "America/Los_Angeles",
+      "country_codes": [
+        "US"
+      ],
+      "coordinates_raw": "+340308-1181434",
+      "latitude": 34.052222,
+      "longitude": -118.242778,
+      "comment": "Pacific",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:America/Anchorage",
+      "zone_id": "America/Anchorage",
+      "country_codes": [
+        "US"
+      ],
+      "coordinates_raw": "+611305-1495401",
+      "latitude": 61.218056,
+      "longitude": -149.900278,
+      "comment": "Alaska (most areas)",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:America/Juneau",
+      "zone_id": "America/Juneau",
+      "country_codes": [
+        "US"
+      ],
+      "coordinates_raw": "+581807-1342511",
+      "latitude": 58.301944,
+      "longitude": -134.419722,
+      "comment": "Alaska - Juneau area",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:America/Sitka",
+      "zone_id": "America/Sitka",
+      "country_codes": [
+        "US"
+      ],
+      "coordinates_raw": "+571035-1351807",
+      "latitude": 57.176389,
+      "longitude": -135.301944,
+      "comment": "Alaska - Sitka area",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:America/Metlakatla",
+      "zone_id": "America/Metlakatla",
+      "country_codes": [
+        "US"
+      ],
+      "coordinates_raw": "+550737-1313435",
+      "latitude": 55.126944,
+      "longitude": -131.576389,
+      "comment": "Alaska - Annette Island",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:America/Yakutat",
+      "zone_id": "America/Yakutat",
+      "country_codes": [
+        "US"
+      ],
+      "coordinates_raw": "+593249-1394338",
+      "latitude": 59.546944,
+      "longitude": -139.727222,
+      "comment": "Alaska - Yakutat",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:America/Nome",
+      "zone_id": "America/Nome",
+      "country_codes": [
+        "US"
+      ],
+      "coordinates_raw": "+643004-1652423",
+      "latitude": 64.501111,
+      "longitude": -165.406389,
+      "comment": "Alaska (west)",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:America/Adak",
+      "zone_id": "America/Adak",
+      "country_codes": [
+        "US"
+      ],
+      "coordinates_raw": "+515248-1763929",
+      "latitude": 51.88,
+      "longitude": -176.658056,
+      "comment": "Alaska - western Aleutians",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Pacific/Honolulu",
+      "zone_id": "Pacific/Honolulu",
+      "country_codes": [
+        "US"
+      ],
+      "coordinates_raw": "+211825-1575130",
+      "latitude": 21.306944,
+      "longitude": -157.858333,
+      "comment": "Hawaii",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:America/Montevideo",
+      "zone_id": "America/Montevideo",
+      "country_codes": [
+        "UY"
+      ],
+      "coordinates_raw": "-345433-0561245",
+      "latitude": -34.909167,
+      "longitude": -56.2125,
+      "comment": "",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Asia/Samarkand",
+      "zone_id": "Asia/Samarkand",
+      "country_codes": [
+        "UZ"
+      ],
+      "coordinates_raw": "+3940+06648",
+      "latitude": 39.666667,
+      "longitude": 66.8,
+      "comment": "Uzbekistan (west)",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Asia/Tashkent",
+      "zone_id": "Asia/Tashkent",
+      "country_codes": [
+        "UZ"
+      ],
+      "coordinates_raw": "+4120+06918",
+      "latitude": 41.333333,
+      "longitude": 69.3,
+      "comment": "Uzbekistan (east)",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:America/Caracas",
+      "zone_id": "America/Caracas",
+      "country_codes": [
+        "VE"
+      ],
+      "coordinates_raw": "+1030-06656",
+      "latitude": 10.5,
+      "longitude": -66.933333,
+      "comment": "",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Asia/Ho_Chi_Minh",
+      "zone_id": "Asia/Ho_Chi_Minh",
+      "country_codes": [
+        "VN"
+      ],
+      "coordinates_raw": "+1045+10640",
+      "latitude": 10.75,
+      "longitude": 106.666667,
+      "comment": "south Vietnam",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Pacific/Efate",
+      "zone_id": "Pacific/Efate",
+      "country_codes": [
+        "VU"
+      ],
+      "coordinates_raw": "-1740+16825",
+      "latitude": -17.666667,
+      "longitude": 168.416667,
+      "comment": "",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Pacific/Apia",
+      "zone_id": "Pacific/Apia",
+      "country_codes": [
+        "WS"
+      ],
+      "coordinates_raw": "-1350-17144",
+      "latitude": -13.833333,
+      "longitude": -171.733333,
+      "comment": "",
+      "source_kind": "IANA_ZONE1970"
+    },
+    {
+      "location_id": "IANA:Africa/Johannesburg",
+      "zone_id": "Africa/Johannesburg",
+      "country_codes": [
+        "ZA",
+        "LS",
+        "SZ"
+      ],
+      "coordinates_raw": "-2615+02800",
+      "latitude": -26.25,
+      "longitude": 28.0,
+      "comment": "",
+      "source_kind": "IANA_ZONE1970"
+    }
+  ],
+  "product_registered_locations": [
+    {
+      "location_id": "CN-MAINLAND",
+      "zone_id": "Asia/Shanghai",
+      "mapping_class": "FROZEN_PRODUCT_LOCATION_POLICY",
+      "source_kind": "PRODUCT_REGISTERED_LOCATION"
+    },
+    {
+      "location_id": "US-NY",
+      "zone_id": "America/New_York",
+      "mapping_class": "FROZEN_TEST_AND_PRODUCT_MAPPING",
+      "source_kind": "PRODUCT_REGISTERED_LOCATION"
+    },
+    {
+      "location_id": "US-LA",
+      "zone_id": "America/Los_Angeles",
+      "mapping_class": "FROZEN_TEST_AND_PRODUCT_MAPPING",
+      "source_kind": "PRODUCT_REGISTERED_LOCATION"
+    },
+    {
+      "location_id": "US-HNL",
+      "zone_id": "Pacific/Honolulu",
+      "mapping_class": "FROZEN_TEST_AND_PRODUCT_MAPPING",
+      "source_kind": "PRODUCT_REGISTERED_LOCATION"
+    }
+  ]
+}

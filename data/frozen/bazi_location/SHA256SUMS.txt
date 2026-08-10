@@ -1,0 +1,2 @@
+cca1ff89d7971a3554656374a7d933011d2ac8c55653ba4ded3edd38d7f1fc8d  BAZI_LOCATION_MANIFEST_V0.1.0.json
+1635c8cf0c64bf30169027feea073cf6b7d5fa3bfec9828961752cbcc620cb94  iana_location_registry_2026c_v0.1.0.json

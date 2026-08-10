@@ -1,0 +1,45 @@
+{
+  "registry_id": "BAZI_IANA_LOCATION_REGISTRY_2026C_V0_1_0",
+  "version": "0.1.0",
+  "status": "FROZEN_RUNTIME_DATA",
+  "iana_release": "2026c",
+  "python_tzdata_version": "2026.3",
+  "wheel_sha256": "dc096730c87af6cab1b171c9d532be840741ff5d459015e7f6947bd7d7e54931",
+  "registry_file": "iana_location_registry_2026c_v0.1.0.json",
+  "registry_sha256": "1635c8cf0c64bf30169027feea073cf6b7d5fa3bfec9828961752cbcc620cb94",
+  "source_snapshots": {
+    "iso3166.tab": "837c80785080c8433fd9d4ea87e78f161ac7a40389301c5153d4f90198baeb2a",
+    "zone1970.tab": "77b5e45415fa684fcc42de3421a6b0f15cc9b2c137f258083850346e8f76eea8"
+  },
+  "counts": {
+    "countries": 249,
+    "iana_zone1970_entries": 312,
+    "product_registered_locations": 4,
+    "total_entries": 316
+  },
+  "runtime_timezone_dataset": {
+    "dataset_id": "BAZI_IANA_TZDB_2026C_V0_1_0",
+    "sha256": "a15f271214fb2b595856d93c365ed6beb6dfbfbb429d6b3c2fa0fc9b58d7c6c2",
+    "zone_count": 598
+  },
+  "reproducibility": {
+    "run_a_registry_sha256": "1635c8cf0c64bf30169027feea073cf6b7d5fa3bfec9828961752cbcc620cb94",
+    "run_b_registry_sha256": "1635c8cf0c64bf30169027feea073cf6b7d5fa3bfec9828961752cbcc620cb94",
+    "byte_identical": true
+  },
+  "policies": {
+    "free_text_location": "DISPLAY_ONLY",
+    "coordinates": "SOURCE_METADATA_ONLY",
+    "true_solar_time": "OUT_OF_SCOPE",
+    "network_access": false
+  },
+  "source_provenance": {
+    "package": "tzdata==2026.3",
+    "iana_release": "2026c",
+    "wheel_sha256": "dc096730c87af6cab1b171c9d532be840741ff5d459015e7f6947bd7d7e54931",
+    "files": [
+      "zone1970.tab",
+      "iso3166.tab"
+    ]
+  }
+}
