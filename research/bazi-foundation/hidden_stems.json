@@ -1,0 +1,445 @@
+{
+  "schema_version": "0.3",
+  "status": "RESEARCH_CANDIDATE_NOT_FOR_RUNTIME",
+  "membership_rules": [
+    {
+      "rule_id": "HIDDEN-01-ZI",
+      "topic": "hidden_stem_membership",
+      "statement": "子藏癸。",
+      "branch_id": "ZI",
+      "branch": "子",
+      "main_hidden_stem": "GUI",
+      "other_hidden_stems": [],
+      "ordered_hidden_stems": null,
+      "source_ids": [
+        "SRC-L1-YUANHAI-ZIPING",
+        "SRC-L2-QIANLI-MINGGAO-DETAIL"
+      ],
+      "evidence_level": "L1",
+      "consensus_status": "STATIC_CONSENSUS",
+      "conflicts": [],
+      "product_recommendation": "PROPOSE_FREEZE",
+      "tradition_scope": "ZIPING_BAZI",
+      "hidden_stem_set": [
+        "GUI"
+      ],
+      "business_order_semantics": "NONE",
+      "serialization_order": "CANONICAL_STEM_ID_ORDER",
+      "freeze_projection": false
+    },
+    {
+      "rule_id": "HIDDEN-02-CHOU",
+      "topic": "hidden_stem_membership",
+      "statement": "丑藏己、癸、辛。",
+      "branch_id": "CHOU",
+      "branch": "丑",
+      "main_hidden_stem": "JI",
+      "other_hidden_stems": [
+        "GUI",
+        "XIN"
+      ],
+      "ordered_hidden_stems": null,
+      "source_ids": [
+        "SRC-L1-YUANHAI-ZIPING",
+        "SRC-L2-QIANLI-MINGGAO-DETAIL"
+      ],
+      "evidence_level": "L1",
+      "consensus_status": "STATIC_CONSENSUS",
+      "conflicts": [
+        "CONFLICT-HIDDEN-ORDER"
+      ],
+      "product_recommendation": "PROPOSE_FREEZE",
+      "tradition_scope": "ZIPING_BAZI",
+      "hidden_stem_set": [
+        "JI",
+        "XIN",
+        "GUI"
+      ],
+      "business_order_semantics": "NONE",
+      "serialization_order": "CANONICAL_STEM_ID_ORDER",
+      "freeze_projection": false
+    },
+    {
+      "rule_id": "HIDDEN-03-YIN",
+      "topic": "hidden_stem_membership",
+      "statement": "寅藏甲、丙、戊。",
+      "branch_id": "YIN",
+      "branch": "寅",
+      "main_hidden_stem": "JIA",
+      "other_hidden_stems": [
+        "BING",
+        "WU"
+      ],
+      "ordered_hidden_stems": null,
+      "source_ids": [
+        "SRC-L1-YUANHAI-ZIPING",
+        "SRC-L2-QIANLI-MINGGAO-DETAIL"
+      ],
+      "evidence_level": "L1",
+      "consensus_status": "STATIC_CONSENSUS",
+      "conflicts": [],
+      "product_recommendation": "PROPOSE_FREEZE",
+      "tradition_scope": "ZIPING_BAZI",
+      "hidden_stem_set": [
+        "JIA",
+        "BING",
+        "WU"
+      ],
+      "business_order_semantics": "NONE",
+      "serialization_order": "CANONICAL_STEM_ID_ORDER",
+      "freeze_projection": false
+    },
+    {
+      "rule_id": "HIDDEN-04-MAO",
+      "topic": "hidden_stem_membership",
+      "statement": "卯藏乙。",
+      "branch_id": "MAO",
+      "branch": "卯",
+      "main_hidden_stem": "YI",
+      "other_hidden_stems": [],
+      "ordered_hidden_stems": null,
+      "source_ids": [
+        "SRC-L1-YUANHAI-ZIPING",
+        "SRC-L2-QIANLI-MINGGAO-DETAIL"
+      ],
+      "evidence_level": "L1",
+      "consensus_status": "STATIC_CONSENSUS",
+      "conflicts": [],
+      "product_recommendation": "PROPOSE_FREEZE",
+      "tradition_scope": "ZIPING_BAZI",
+      "hidden_stem_set": [
+        "YI"
+      ],
+      "business_order_semantics": "NONE",
+      "serialization_order": "CANONICAL_STEM_ID_ORDER",
+      "freeze_projection": false
+    },
+    {
+      "rule_id": "HIDDEN-05-CHEN",
+      "topic": "hidden_stem_membership",
+      "statement": "辰藏戊、乙、癸。",
+      "branch_id": "CHEN",
+      "branch": "辰",
+      "main_hidden_stem": "WU",
+      "other_hidden_stems": [
+        "YI",
+        "GUI"
+      ],
+      "ordered_hidden_stems": null,
+      "source_ids": [
+        "SRC-L1-YUANHAI-ZIPING",
+        "SRC-L2-QIANLI-MINGGAO-DETAIL"
+      ],
+      "evidence_level": "L1",
+      "consensus_status": "STATIC_CONSENSUS",
+      "conflicts": [
+        "CONFLICT-HIDDEN-ORDER"
+      ],
+      "product_recommendation": "PROPOSE_FREEZE",
+      "tradition_scope": "ZIPING_BAZI",
+      "hidden_stem_set": [
+        "YI",
+        "WU",
+        "GUI"
+      ],
+      "business_order_semantics": "NONE",
+      "serialization_order": "CANONICAL_STEM_ID_ORDER",
+      "freeze_projection": false
+    },
+    {
+      "rule_id": "HIDDEN-06-SI",
+      "topic": "hidden_stem_membership",
+      "statement": "巳藏丙、戊、庚。",
+      "branch_id": "SI",
+      "branch": "巳",
+      "main_hidden_stem": "BING",
+      "other_hidden_stems": [
+        "WU",
+        "GENG"
+      ],
+      "ordered_hidden_stems": null,
+      "source_ids": [
+        "SRC-L1-YUANHAI-ZIPING",
+        "SRC-L2-QIANLI-MINGGAO-DETAIL"
+      ],
+      "evidence_level": "L1",
+      "consensus_status": "STATIC_CONSENSUS",
+      "conflicts": [
+        "CONFLICT-HIDDEN-ORDER"
+      ],
+      "product_recommendation": "PROPOSE_FREEZE",
+      "tradition_scope": "ZIPING_BAZI",
+      "hidden_stem_set": [
+        "BING",
+        "WU",
+        "GENG"
+      ],
+      "business_order_semantics": "NONE",
+      "serialization_order": "CANONICAL_STEM_ID_ORDER",
+      "freeze_projection": false
+    },
+    {
+      "rule_id": "HIDDEN-07-WU",
+      "topic": "hidden_stem_membership",
+      "statement": "午藏丁、己。",
+      "branch_id": "WU",
+      "branch": "午",
+      "main_hidden_stem": "DING",
+      "other_hidden_stems": [
+        "JI"
+      ],
+      "ordered_hidden_stems": null,
+      "source_ids": [
+        "SRC-L1-YUANHAI-ZIPING",
+        "SRC-L2-QIANLI-MINGGAO-DETAIL"
+      ],
+      "evidence_level": "L1",
+      "consensus_status": "STATIC_CONSENSUS",
+      "conflicts": [
+        "CONFLICT-HIDDEN-WU-TEXT"
+      ],
+      "product_recommendation": "PROPOSE_FREEZE",
+      "tradition_scope": "ZIPING_BAZI",
+      "membership_set_canonical": [
+        "DING",
+        "JI"
+      ],
+      "canonical_statement": "午藏丁、己（成员集合）",
+      "evidence": {
+        "mainline": {
+          "source_id": "SRC-L1-YUANHAI-ZIPING",
+          "content": "渊海子平·论天干地支暗藏总诀及通行子平体系：午藏丁、己"
+        },
+        "variant_observed": {
+          "source_id": "SRC-L2-MINGLI-TANYUAN",
+          "content": "命理探源公开转录页出现“午宫丙火并己土”（丙/丁异文）",
+          "marker": "LIKELY_TRANSCRIPTION_OR_EDITION_VARIANT",
+          "handling": "保留证据、不删除；不作已确认流派差异；不改变午支成员集合收口 午={丁,己}"
+        },
+        "same_book_later_evidence": {
+          "source_id": "SRC-L2-MINGLI-TANYUAN",
+          "content": "同书（命理探源）后续理论章节及命例中的午支用法遵循丁己体系（与渊海子平一致），支持收口 午={丁,己}"
+        }
+      },
+      "hidden_stem_set": [
+        "DING",
+        "JI"
+      ],
+      "business_order_semantics": "NONE",
+      "serialization_order": "CANONICAL_STEM_ID_ORDER",
+      "freeze_projection": false
+    },
+    {
+      "rule_id": "HIDDEN-08-WEI",
+      "topic": "hidden_stem_membership",
+      "statement": "未藏己、丁、乙。",
+      "branch_id": "WEI",
+      "branch": "未",
+      "main_hidden_stem": "JI",
+      "other_hidden_stems": [
+        "DING",
+        "YI"
+      ],
+      "ordered_hidden_stems": null,
+      "source_ids": [
+        "SRC-L1-YUANHAI-ZIPING",
+        "SRC-L2-QIANLI-MINGGAO-DETAIL"
+      ],
+      "evidence_level": "L1",
+      "consensus_status": "STATIC_CONSENSUS",
+      "conflicts": [
+        "CONFLICT-HIDDEN-ORDER"
+      ],
+      "product_recommendation": "PROPOSE_FREEZE",
+      "tradition_scope": "ZIPING_BAZI",
+      "hidden_stem_set": [
+        "YI",
+        "DING",
+        "JI"
+      ],
+      "business_order_semantics": "NONE",
+      "serialization_order": "CANONICAL_STEM_ID_ORDER",
+      "freeze_projection": false
+    },
+    {
+      "rule_id": "HIDDEN-09-SHEN",
+      "topic": "hidden_stem_membership",
+      "statement": "申藏庚、壬、戊。",
+      "branch_id": "SHEN",
+      "branch": "申",
+      "main_hidden_stem": "GENG",
+      "other_hidden_stems": [
+        "REN",
+        "WU"
+      ],
+      "ordered_hidden_stems": null,
+      "source_ids": [
+        "SRC-L1-YUANHAI-ZIPING",
+        "SRC-L2-QIANLI-MINGGAO-DETAIL"
+      ],
+      "evidence_level": "L1",
+      "consensus_status": "STATIC_CONSENSUS",
+      "conflicts": [],
+      "product_recommendation": "PROPOSE_FREEZE",
+      "tradition_scope": "ZIPING_BAZI",
+      "hidden_stem_set": [
+        "WU",
+        "GENG",
+        "REN"
+      ],
+      "business_order_semantics": "NONE",
+      "serialization_order": "CANONICAL_STEM_ID_ORDER",
+      "freeze_projection": false
+    },
+    {
+      "rule_id": "HIDDEN-10-YOU",
+      "topic": "hidden_stem_membership",
+      "statement": "酉藏辛。",
+      "branch_id": "YOU",
+      "branch": "酉",
+      "main_hidden_stem": "XIN",
+      "other_hidden_stems": [],
+      "ordered_hidden_stems": null,
+      "source_ids": [
+        "SRC-L1-YUANHAI-ZIPING",
+        "SRC-L2-QIANLI-MINGGAO-DETAIL"
+      ],
+      "evidence_level": "L1",
+      "consensus_status": "STATIC_CONSENSUS",
+      "conflicts": [],
+      "product_recommendation": "PROPOSE_FREEZE",
+      "tradition_scope": "ZIPING_BAZI",
+      "hidden_stem_set": [
+        "XIN"
+      ],
+      "business_order_semantics": "NONE",
+      "serialization_order": "CANONICAL_STEM_ID_ORDER",
+      "freeze_projection": false
+    },
+    {
+      "rule_id": "HIDDEN-11-XU",
+      "topic": "hidden_stem_membership",
+      "statement": "戌藏戊、辛、丁。",
+      "branch_id": "XU",
+      "branch": "戌",
+      "main_hidden_stem": "WU",
+      "other_hidden_stems": [
+        "XIN",
+        "DING"
+      ],
+      "ordered_hidden_stems": null,
+      "source_ids": [
+        "SRC-L1-YUANHAI-ZIPING",
+        "SRC-L2-QIANLI-MINGGAO-DETAIL"
+      ],
+      "evidence_level": "L1",
+      "consensus_status": "STATIC_CONSENSUS",
+      "conflicts": [
+        "CONFLICT-HIDDEN-ORDER"
+      ],
+      "product_recommendation": "PROPOSE_FREEZE",
+      "tradition_scope": "ZIPING_BAZI",
+      "hidden_stem_set": [
+        "DING",
+        "WU",
+        "XIN"
+      ],
+      "business_order_semantics": "NONE",
+      "serialization_order": "CANONICAL_STEM_ID_ORDER",
+      "freeze_projection": false
+    },
+    {
+      "rule_id": "HIDDEN-12-HAI",
+      "topic": "hidden_stem_membership",
+      "statement": "亥藏壬、甲。",
+      "branch_id": "HAI",
+      "branch": "亥",
+      "main_hidden_stem": "REN",
+      "other_hidden_stems": [
+        "JIA"
+      ],
+      "ordered_hidden_stems": null,
+      "source_ids": [
+        "SRC-L1-YUANHAI-ZIPING",
+        "SRC-L2-QIANLI-MINGGAO-DETAIL"
+      ],
+      "evidence_level": "L1",
+      "consensus_status": "STATIC_CONSENSUS",
+      "conflicts": [],
+      "product_recommendation": "PROPOSE_FREEZE",
+      "tradition_scope": "ZIPING_BAZI",
+      "hidden_stem_set": [
+        "JIA",
+        "REN"
+      ],
+      "business_order_semantics": "NONE",
+      "serialization_order": "CANONICAL_STEM_ID_ORDER",
+      "freeze_projection": false
+    }
+  ],
+  "policy_rules": [
+    {
+      "rule_id": "HIDDEN-POLICY-ORDER",
+      "topic": "hidden_stem_order",
+      "statement": "藏干成员可确定，但古籍歌诀列举顺序不得直接解释为统一的主次顺序。",
+      "source_ids": [
+        "SRC-L1-YUANHAI-ZIPING",
+        "SRC-L2-MINGLI-TANYUAN",
+        "SRC-L2-QIANLI-MINGGAO-DETAIL"
+      ],
+      "evidence_level": "L2",
+      "consensus_status": "TRADITION_POLICY",
+      "conflicts": [
+        "CONFLICT-HIDDEN-ORDER"
+      ],
+      "product_recommendation": "TRADITION_POLICY_REQUIRED",
+      "tradition_scope": "ZIPING_BAZI"
+    },
+    {
+      "rule_id": "HIDDEN-POLICY-QI-LABELS",
+      "topic": "hidden_stem_qi_labels",
+      "statement": "本气/中气/余气的名称存在，但二藏、三藏地支的完整分类和排序需选定明确体系后才可机器化。",
+      "source_ids": [
+        "SRC-L2-QIANLI-MINGGAO-DETAIL",
+        "SRC-L2-MINGLI-TANYUAN"
+      ],
+      "evidence_level": "L2",
+      "consensus_status": "TRADITION_POLICY",
+      "conflicts": [
+        "CONFLICT-QI-TAXONOMY"
+      ],
+      "product_recommendation": "TRADITION_POLICY_REQUIRED",
+      "tradition_scope": "ZIPING_BAZI"
+    },
+    {
+      "rule_id": "HIDDEN-POLICY-WEIGHTS",
+      "topic": "hidden_stem_numeric_weights",
+      "statement": "不得在当前版本为藏干分配统一百分比、分数或天数权重。",
+      "source_ids": [
+        "SRC-L2-MINGLI-TANYUAN",
+        "SRC-L2-QIANLI-MINGGAO-DETAIL"
+      ],
+      "evidence_level": "L2",
+      "consensus_status": "INTERPRETIVE",
+      "conflicts": [
+        "CONFLICT-HIDDEN-WEIGHTS"
+      ],
+      "product_recommendation": "OUT_OF_SCOPE",
+      "tradition_scope": "ZIPING_BAZI"
+    }
+  ],
+  "machine_boundary": "运行时只可使用藏干成员集合（hidden_stems_order_semantics=NONE_V0_2，数组顺序无语义）；藏干顺序、本气/中气/余气标签、数值权重继续阻断。tradition_scope=ZIPING_BAZI。",
+  "tradition_scope": "ZIPING_BAZI",
+  "hidden_stems_order_semantics": "NONE_V0_2",
+  "hidden_stem_set_policy": {
+    "freeze_field": "hidden_stem_set",
+    "business_order_semantics": "NONE",
+    "serialization_order": "CANONICAL_STEM_ID_ORDER",
+    "serialization_note": "数组仅作 JSON 序列化容器；按天干 ID 规范顺序排列以保证字节确定性，不表示主次/本中余气/权重",
+    "legacy_fields_excluded_from_freeze": [
+      "main_hidden_stem",
+      "other_hidden_stems",
+      "ordered_hidden_stems"
+    ]
+  }
+}

@@ -1,0 +1,391 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "BAZI_FOUNDATION_FREEZE_CANDIDATE_V0_2_0_SCHEMA",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "dataset_id",
+    "version",
+    "status",
+    "tradition_scope",
+    "heavenly_stems",
+    "earthly_branches",
+    "hidden_stem_sets",
+    "five_element_relations",
+    "ten_god_formula",
+    "ten_god_canonical_names",
+    "excluded_from_freeze",
+    "matrix_fixture_note"
+  ],
+  "properties": {
+    "dataset_id": {
+      "const": "BAZI_FOUNDATION_FREEZE_CANDIDATE_V0_2_0"
+    },
+    "version": {
+      "const": "0.2.0"
+    },
+    "status": {
+      "const": "FREEZE_CANDIDATE_NOT_RUNTIME"
+    },
+    "tradition_scope": {
+      "const": "ZIPING_BAZI"
+    },
+    "heavenly_stems": {
+      "type": "array",
+      "minItems": 10,
+      "maxItems": 10,
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "stem_id",
+          "chinese",
+          "yin_yang",
+          "element"
+        ],
+        "properties": {
+          "stem_id": {
+            "enum": [
+              "JIA",
+              "YI",
+              "BING",
+              "DING",
+              "WU",
+              "JI",
+              "GENG",
+              "XIN",
+              "REN",
+              "GUI"
+            ]
+          },
+          "chinese": {
+            "enum": [
+              "甲",
+              "乙",
+              "丙",
+              "丁",
+              "戊",
+              "己",
+              "庚",
+              "辛",
+              "壬",
+              "癸"
+            ]
+          },
+          "yin_yang": {
+            "enum": [
+              "YANG",
+              "YIN"
+            ]
+          },
+          "element": {
+            "enum": [
+              "WOOD",
+              "FIRE",
+              "EARTH",
+              "METAL",
+              "WATER"
+            ]
+          }
+        }
+      }
+    },
+    "earthly_branches": {
+      "type": "array",
+      "minItems": 12,
+      "maxItems": 12,
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "branch_id",
+          "chinese",
+          "yin_yang",
+          "element"
+        ],
+        "properties": {
+          "branch_id": {
+            "enum": [
+              "ZI",
+              "CHOU",
+              "YIN",
+              "MAO",
+              "CHEN",
+              "SI",
+              "WU",
+              "WEI",
+              "SHEN",
+              "YOU",
+              "XU",
+              "HAI"
+            ]
+          },
+          "chinese": {
+            "enum": [
+              "子",
+              "丑",
+              "寅",
+              "卯",
+              "辰",
+              "巳",
+              "午",
+              "未",
+              "申",
+              "酉",
+              "戌",
+              "亥"
+            ]
+          },
+          "yin_yang": {
+            "enum": [
+              "YANG",
+              "YIN"
+            ]
+          },
+          "element": {
+            "enum": [
+              "WOOD",
+              "FIRE",
+              "EARTH",
+              "METAL",
+              "WATER"
+            ]
+          }
+        }
+      }
+    },
+    "hidden_stem_sets": {
+      "type": "array",
+      "minItems": 12,
+      "maxItems": 12,
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "branch_id",
+          "hidden_stem_set",
+          "order_semantics"
+        ],
+        "properties": {
+          "branch_id": {
+            "enum": [
+              "ZI",
+              "CHOU",
+              "YIN",
+              "MAO",
+              "CHEN",
+              "SI",
+              "WU",
+              "WEI",
+              "SHEN",
+              "YOU",
+              "XU",
+              "HAI"
+            ]
+          },
+          "hidden_stem_set": {
+            "type": "array",
+            "minItems": 1,
+            "maxItems": 3,
+            "uniqueItems": true,
+            "items": {
+              "enum": [
+                "JIA",
+                "YI",
+                "BING",
+                "DING",
+                "WU",
+                "JI",
+                "GENG",
+                "XIN",
+                "REN",
+                "GUI"
+              ]
+            }
+          },
+          "order_semantics": {
+            "const": "NONE"
+          }
+        }
+      }
+    },
+    "five_element_relations": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "generates",
+        "controls"
+      ],
+      "properties": {
+        "generates": {
+          "type": "array",
+          "minItems": 5,
+          "maxItems": 5,
+          "uniqueItems": true,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "from",
+              "to"
+            ],
+            "properties": {
+              "from": {
+                "enum": [
+                  "WOOD",
+                  "FIRE",
+                  "EARTH",
+                  "METAL",
+                  "WATER"
+                ]
+              },
+              "to": {
+                "enum": [
+                  "WOOD",
+                  "FIRE",
+                  "EARTH",
+                  "METAL",
+                  "WATER"
+                ]
+              }
+            }
+          }
+        },
+        "controls": {
+          "type": "array",
+          "minItems": 5,
+          "maxItems": 5,
+          "uniqueItems": true,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "from",
+              "to"
+            ],
+            "properties": {
+              "from": {
+                "enum": [
+                  "WOOD",
+                  "FIRE",
+                  "EARTH",
+                  "METAL",
+                  "WATER"
+                ]
+              },
+              "to": {
+                "enum": [
+                  "WOOD",
+                  "FIRE",
+                  "EARTH",
+                  "METAL",
+                  "WATER"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "ten_god_formula": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "SAME_ELEMENT",
+        "DAY_GENERATES_TARGET",
+        "DAY_CONTROLS_TARGET",
+        "TARGET_CONTROLS_DAY",
+        "TARGET_GENERATES_DAY"
+      ],
+      "properties": {
+        "SAME_ELEMENT": {
+          "$ref": "#/definitions/polarity_pair"
+        },
+        "DAY_GENERATES_TARGET": {
+          "$ref": "#/definitions/polarity_pair"
+        },
+        "DAY_CONTROLS_TARGET": {
+          "$ref": "#/definitions/polarity_pair"
+        },
+        "TARGET_CONTROLS_DAY": {
+          "$ref": "#/definitions/polarity_pair"
+        },
+        "TARGET_GENERATES_DAY": {
+          "$ref": "#/definitions/polarity_pair"
+        }
+      }
+    },
+    "ten_god_canonical_names": {
+      "type": "array",
+      "minItems": 10,
+      "maxItems": 10,
+      "uniqueItems": true,
+      "items": {
+        "enum": [
+          "比肩",
+          "劫财",
+          "食神",
+          "伤官",
+          "偏财",
+          "正财",
+          "七杀",
+          "正官",
+          "偏印",
+          "正印"
+        ]
+      }
+    },
+    "excluded_from_freeze": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "matrix_fixture_note": {
+      "type": "string"
+    }
+  },
+  "definitions": {
+    "polarity_pair": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "SAME_POLARITY",
+        "DIFFERENT_POLARITY"
+      ],
+      "properties": {
+        "SAME_POLARITY": {
+          "enum": [
+            "比肩",
+            "劫财",
+            "食神",
+            "伤官",
+            "偏财",
+            "正财",
+            "七杀",
+            "正官",
+            "偏印",
+            "正印"
+          ]
+        },
+        "DIFFERENT_POLARITY": {
+          "enum": [
+            "比肩",
+            "劫财",
+            "食神",
+            "伤官",
+            "偏财",
+            "正财",
+            "七杀",
+            "正官",
+            "偏印",
+            "正印"
+          ]
+        }
+      }
+    }
+  }
+}

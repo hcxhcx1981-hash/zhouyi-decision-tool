@@ -1,0 +1,56 @@
+{
+  "dataset_id": "BAZI_FOUNDATION_MANIFEST_V0_2_0",
+  "version": "0.2.0",
+  "status": "FROZEN",
+  "tradition_scope": "ZIPING_BAZI",
+  "frozen_rules_path": "data/frozen/bazi_foundation/bazi_foundation_rules_v0.2.0.json",
+  "frozen_rules_sha256": "de157cf196f766cb919cded0d016087714328e248ad407d9d092b418eeb8e299",
+  "source_candidate": "research/bazi-foundation/bazi_foundation_freeze_candidate_v0.2.0.json",
+  "source_candidate_sha256": "8b180184d34e613173342a71b420942305816831d383607474e4e27d50a27add",
+  "research_protocol": "BAZI_FOUNDATION_RESEARCH_V0.2",
+  "evidence_snapshot_id": "BAZI_FOUNDATION_EVIDENCE_SNAPSHOT_V0_2_0",
+  "evidence_snapshot_sha256": "6216ee0fb77d459a67e062ceae9c0a056856e37b1784fac17214b081a7abf895",
+  "source_ids": [
+    "SRC-L1-WUXING-DAYI",
+    "SRC-L1-WUXING-JINGJI",
+    "SRC-L1-YUANHAI-ZIPING",
+    "SRC-L1-BAIHUTONG",
+    "SRC-L2-MINGLI-TANYUAN",
+    "SRC-L2-QIANLI-MINGGAO-FOUNDATION",
+    "SRC-L2-QIANLI-MINGGAO-DETAIL",
+    "SRC-L2-HAKKA-STUDY"
+  ],
+  "source_count": 8,
+  "approved_static_rule_count": 54,
+  "stems_count": 10,
+  "branches_count": 12,
+  "hidden_stem_sets_count": 12,
+  "generates_edges": 5,
+  "controls_edges": 5,
+  "ten_god_relation_classes": 5,
+  "ten_god_canonical_count": 10,
+  "frozen_decision_scope": "STATIC_FOUNDATION_RELATIONS_ONLY",
+  "frozen_scope": [
+    "HEAVENLY_STEM_YIN_YANG_AND_ELEMENT",
+    "EARTHLY_BRANCH_YIN_YANG_AND_ELEMENT",
+    "EARTHLY_BRANCH_HIDDEN_STEM_MEMBERSHIP_SET_WITHOUT_ORDER",
+    "FIVE_ELEMENT_GENERATES_AND_CONTROLS_DIRECTED_RELATIONS",
+    "DAY_STEM_TO_TARGET_STEM_TEN_GOD_FORMULA"
+  ],
+  "excluded_scope": [
+    "HIDDEN_STEM_ORDER_OR_RANK",
+    "MAIN_MIDDLE_RESIDUAL_QI",
+    "HIDDEN_STEM_WEIGHT_OR_MONTHLY_DAY_ALLOCATION",
+    "TEN_GOD_ALIAS_AS_RUNTIME_TRUTH",
+    "TEN_GOD_100_CELL_MATRIX_AS_RUNTIME_TRUTH",
+    "STRENGTH_FAVORABLE_ELEMENTS_PATTERN_CLIMATE_SPIRITS_LUCK_OR_INTERPRETATION"
+  ],
+  "known_limitations": [
+    "藏干顺序未冻结，所有hidden_stem_set的order_semantics均为NONE。",
+    "本气/中气/余气未冻结。",
+    "藏干权重属于OUT_OF_SCOPE。",
+    "不含旺衰、喜用神或格局。",
+    "tradition_scope仅为ZIPING_BAZI。"
+  ],
+  "runtime_integration_status": "NOT_INTEGRATED"
+}

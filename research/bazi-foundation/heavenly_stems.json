@@ -1,0 +1,187 @@
+{
+  "schema_version": "0.2",
+  "status": "RESEARCH_CANDIDATE_NOT_FOR_RUNTIME",
+  "rules": [
+    {
+      "rule_id": "STEM-01-JIA",
+      "topic": "heavenly_stem_yinyang_element",
+      "statement": "甲为阳木。",
+      "stem_id": "JIA",
+      "chinese": "甲",
+      "yin_yang": "YANG",
+      "element": "WOOD",
+      "source_ids": [
+        "SRC-L1-WUXING-DAYI",
+        "SRC-L1-WUXING-JINGJI"
+      ],
+      "evidence_level": "L1",
+      "consensus_status": "STATIC_CONSENSUS",
+      "conflicts": [],
+      "product_recommendation": "PROPOSE_FREEZE",
+      "tradition_scope": "ZIPING_BAZI"
+    },
+    {
+      "rule_id": "STEM-02-YI",
+      "topic": "heavenly_stem_yinyang_element",
+      "statement": "乙为阴木。",
+      "stem_id": "YI",
+      "chinese": "乙",
+      "yin_yang": "YIN",
+      "element": "WOOD",
+      "source_ids": [
+        "SRC-L1-WUXING-DAYI",
+        "SRC-L1-WUXING-JINGJI"
+      ],
+      "evidence_level": "L1",
+      "consensus_status": "STATIC_CONSENSUS",
+      "conflicts": [],
+      "product_recommendation": "PROPOSE_FREEZE",
+      "tradition_scope": "ZIPING_BAZI"
+    },
+    {
+      "rule_id": "STEM-03-BING",
+      "topic": "heavenly_stem_yinyang_element",
+      "statement": "丙为阳火。",
+      "stem_id": "BING",
+      "chinese": "丙",
+      "yin_yang": "YANG",
+      "element": "FIRE",
+      "source_ids": [
+        "SRC-L1-WUXING-DAYI",
+        "SRC-L1-WUXING-JINGJI"
+      ],
+      "evidence_level": "L1",
+      "consensus_status": "STATIC_CONSENSUS",
+      "conflicts": [],
+      "product_recommendation": "PROPOSE_FREEZE",
+      "tradition_scope": "ZIPING_BAZI"
+    },
+    {
+      "rule_id": "STEM-04-DING",
+      "topic": "heavenly_stem_yinyang_element",
+      "statement": "丁为阴火。",
+      "stem_id": "DING",
+      "chinese": "丁",
+      "yin_yang": "YIN",
+      "element": "FIRE",
+      "source_ids": [
+        "SRC-L1-WUXING-DAYI",
+        "SRC-L1-WUXING-JINGJI"
+      ],
+      "evidence_level": "L1",
+      "consensus_status": "STATIC_CONSENSUS",
+      "conflicts": [],
+      "product_recommendation": "PROPOSE_FREEZE",
+      "tradition_scope": "ZIPING_BAZI"
+    },
+    {
+      "rule_id": "STEM-05-WU",
+      "topic": "heavenly_stem_yinyang_element",
+      "statement": "戊为阳土。",
+      "stem_id": "WU",
+      "chinese": "戊",
+      "yin_yang": "YANG",
+      "element": "EARTH",
+      "source_ids": [
+        "SRC-L1-WUXING-DAYI",
+        "SRC-L1-WUXING-JINGJI"
+      ],
+      "evidence_level": "L1",
+      "consensus_status": "STATIC_CONSENSUS",
+      "conflicts": [],
+      "product_recommendation": "PROPOSE_FREEZE",
+      "tradition_scope": "ZIPING_BAZI"
+    },
+    {
+      "rule_id": "STEM-06-JI",
+      "topic": "heavenly_stem_yinyang_element",
+      "statement": "己为阴土。",
+      "stem_id": "JI",
+      "chinese": "己",
+      "yin_yang": "YIN",
+      "element": "EARTH",
+      "source_ids": [
+        "SRC-L1-WUXING-DAYI",
+        "SRC-L1-WUXING-JINGJI"
+      ],
+      "evidence_level": "L1",
+      "consensus_status": "STATIC_CONSENSUS",
+      "conflicts": [],
+      "product_recommendation": "PROPOSE_FREEZE",
+      "tradition_scope": "ZIPING_BAZI"
+    },
+    {
+      "rule_id": "STEM-07-GENG",
+      "topic": "heavenly_stem_yinyang_element",
+      "statement": "庚为阳金。",
+      "stem_id": "GENG",
+      "chinese": "庚",
+      "yin_yang": "YANG",
+      "element": "METAL",
+      "source_ids": [
+        "SRC-L1-WUXING-DAYI",
+        "SRC-L1-WUXING-JINGJI"
+      ],
+      "evidence_level": "L1",
+      "consensus_status": "STATIC_CONSENSUS",
+      "conflicts": [],
+      "product_recommendation": "PROPOSE_FREEZE",
+      "tradition_scope": "ZIPING_BAZI"
+    },
+    {
+      "rule_id": "STEM-08-XIN",
+      "topic": "heavenly_stem_yinyang_element",
+      "statement": "辛为阴金。",
+      "stem_id": "XIN",
+      "chinese": "辛",
+      "yin_yang": "YIN",
+      "element": "METAL",
+      "source_ids": [
+        "SRC-L1-WUXING-DAYI",
+        "SRC-L1-WUXING-JINGJI"
+      ],
+      "evidence_level": "L1",
+      "consensus_status": "STATIC_CONSENSUS",
+      "conflicts": [],
+      "product_recommendation": "PROPOSE_FREEZE",
+      "tradition_scope": "ZIPING_BAZI"
+    },
+    {
+      "rule_id": "STEM-09-REN",
+      "topic": "heavenly_stem_yinyang_element",
+      "statement": "壬为阳水。",
+      "stem_id": "REN",
+      "chinese": "壬",
+      "yin_yang": "YANG",
+      "element": "WATER",
+      "source_ids": [
+        "SRC-L1-WUXING-DAYI",
+        "SRC-L1-WUXING-JINGJI"
+      ],
+      "evidence_level": "L1",
+      "consensus_status": "STATIC_CONSENSUS",
+      "conflicts": [],
+      "product_recommendation": "PROPOSE_FREEZE",
+      "tradition_scope": "ZIPING_BAZI"
+    },
+    {
+      "rule_id": "STEM-10-GUI",
+      "topic": "heavenly_stem_yinyang_element",
+      "statement": "癸为阴水。",
+      "stem_id": "GUI",
+      "chinese": "癸",
+      "yin_yang": "YIN",
+      "element": "WATER",
+      "source_ids": [
+        "SRC-L1-WUXING-DAYI",
+        "SRC-L1-WUXING-JINGJI"
+      ],
+      "evidence_level": "L1",
+      "consensus_status": "STATIC_CONSENSUS",
+      "conflicts": [],
+      "product_recommendation": "PROPOSE_FREEZE",
+      "tradition_scope": "ZIPING_BAZI"
+    }
+  ],
+  "tradition_scope": "ZIPING_BAZI"
+}

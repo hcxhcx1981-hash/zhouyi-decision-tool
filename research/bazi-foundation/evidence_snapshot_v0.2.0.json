@@ -1,0 +1,147 @@
+{
+  "snapshot_id": "BAZI_FOUNDATION_EVIDENCE_SNAPSHOT_V0_2_0",
+  "version": "0.2.0",
+  "status": "RESEARCH_EVIDENCE_SNAPSHOT",
+  "tradition_scope": "ZIPING_BAZI",
+  "retrieved_date": "2026-08-11",
+  "policy": "只保存支持冻结候选所需的最小证据定位与短摘录，不整本复制；本轮不新增来源，仍使用现有 8 个来源",
+  "sources": [
+    {
+      "source_id": "SRC-L1-WUXING-DAYI",
+      "title": "五行大义",
+      "author_or_attribution": "萧吉",
+      "url": "https://ctext.org/wiki.pl?chapter=73926&if=gb&remap=gb",
+      "retrieved_date": "2026-08-11",
+      "supported_topic": "天干阴阳、地支阴阳、干支五行归属",
+      "supported_rule_ids_or_refs": "heavenly_stems.json / earthly_branches.json 全部 22 条",
+      "exact_section_or_location": "https://ctext.org/wiki.pl?chapter=73926&if=gb&remap=gb",
+      "short_evidence_excerpt": "萧吉《五行大义》明列十天干阴阳（甲丙戊庚壬阳、乙丁己辛癸阴）与干支五行归属。",
+      "evidence_level": "L1",
+      "limitations": "采用公开古籍转录文本；关键字形仍需在正式冻结前按可靠版本复核。",
+      "retrieval_status": "RETRIEVED_HTTP_200"
+    },
+    {
+      "source_id": "SRC-L1-WUXING-JINGJI",
+      "title": "五行精纪",
+      "author_or_attribution": "廖中",
+      "url": "https://ctext.org/wiki.pl?chapter=727777&if=gb&remap=gb",
+      "retrieved_date": "2026-08-11",
+      "supported_topic": "十干阴阳、十二支阴阳（交叉印证）",
+      "supported_rule_ids_or_refs": "heavenly_stems.json / earthly_branches.json 阴阳字段",
+      "exact_section_or_location": "https://ctext.org/wiki.pl?chapter=727777&if=gb&remap=gb",
+      "short_evidence_excerpt": "《五行精纪》对十干十二支阴阳的表述与《五行大义》一致，作交叉印证。",
+      "evidence_level": "L1",
+      "limitations": "用于与五行大义交叉核对，不单独承担全部规则证据。",
+      "retrieval_status": "RETRIEVED_HTTP_200"
+    },
+    {
+      "source_id": "SRC-L1-YUANHAI-ZIPING",
+      "title": "渊海子平·论天干地支暗藏总诀",
+      "author_or_attribution": "传统子平文献",
+      "url": "https://ctext.org/wiki.pl?chapter=296619&if=en&remap=gb",
+      "retrieved_date": "2026-08-11",
+      "supported_topic": "十二支藏干成员、五行生克、十神实例映射",
+      "supported_rule_ids_or_refs": "hidden_stems.json membership / five_element_relations.json / ten_god_rules.json",
+      "exact_section_or_location": "https://ctext.org/wiki.pl?chapter=296619&if=en&remap=gb",
+      "short_evidence_excerpt": "《渊海子平·论天干地支暗藏总诀》歌诀列出十二支藏干成员；午支为丁、己。",
+      "evidence_level": "L1",
+      "limitations": "歌诀列举顺序不能自动等同于本气、中气、余气或数值权重。",
+      "retrieval_status": "RETRIEVED_HTTP_200"
+    },
+    {
+      "source_id": "SRC-L1-BAIHUTONG",
+      "title": "白虎通德论·五行",
+      "author_or_attribution": "班固撰述传统",
+      "url": "https://ctext.org/text.pl?if=gb&node=52956&show=parallel",
+      "retrieved_date": "2026-08-11",
+      "supported_topic": "五行相生次序",
+      "supported_rule_ids_or_refs": "five_element_relations.json generates 5 条",
+      "exact_section_or_location": "https://ctext.org/text.pl?if=gb&node=52956&show=parallel",
+      "short_evidence_excerpt": "《白虎通德论·五行》述五行相生次序（木→火→土→金→水→木）。",
+      "evidence_level": "L1",
+      "limitations": "用于基础关系图，不用于任何吉凶或旺衰解释。",
+      "retrieval_status": "RETRIEVED_HTTP_200"
+    },
+    {
+      "source_id": "SRC-L2-MINGLI-TANYUAN",
+      "title": "命理探源·卷二起例",
+      "author_or_attribution": "袁树珊",
+      "url": "https://ctext.org/wiki.pl?chapter=419625&if=en&remap=gb",
+      "retrieved_date": "2026-08-11",
+      "supported_topic": "五行生克、地支藏干、十神统一关系",
+      "supported_rule_ids_or_refs": "hidden_stems.json / five_element_relations.json controls / ten_god_rules.json",
+      "exact_section_or_location": "https://ctext.org/wiki.pl?chapter=419625&if=en&remap=gb",
+      "short_evidence_excerpt": "《命理探源》卷二起例述五行生克、地支藏干与十神统一关系；其后续理论及命例的午支用法遵循丁己体系。",
+      "evidence_level": "L2",
+      "limitations": "公开转录中的午支藏干出现疑似丙/丁异文或录入误差，不能据此建立替代规则。",
+      "retrieval_status": "RETRIEVED_HTTP_200"
+    },
+    {
+      "source_id": "SRC-L2-QIANLI-MINGGAO-FOUNDATION",
+      "title": "千里命稿·五行及十神关系",
+      "author_or_attribution": "韦千里",
+      "url": "https://ctext.org/wiki.pl?chapter=447084&if=en&remap=gb",
+      "retrieved_date": "2026-08-11",
+      "supported_topic": "五种生克关系按阴阳拆分为十神、比肩劫财判定",
+      "supported_rule_ids_or_refs": "ten_god_rules.json SAME_ELEMENT/生克类",
+      "exact_section_or_location": "https://ctext.org/wiki.pl?chapter=447084&if=en&remap=gb",
+      "short_evidence_excerpt": "《千里命稿》按五行方向与阴阳同异将生克关系拆分为十神（比肩/劫财等）。",
+      "evidence_level": "L2",
+      "limitations": "只采集关系定义，不采集论命解释。",
+      "retrieval_status": "RETRIEVED_HTTP_200"
+    },
+    {
+      "source_id": "SRC-L2-QIANLI-MINGGAO-DETAIL",
+      "title": "千里命稿·十神与支藏说明",
+      "author_or_attribution": "韦千里",
+      "url": "https://ctext.org/wiki.pl?chapter=933376&if=en&remap=gb",
+      "retrieved_date": "2026-08-11",
+      "supported_topic": "正官偏印等关系定义、藏干成员交叉核对、本气术语存在",
+      "supported_rule_ids_or_refs": "ten_god_rules.json / hidden_stems.json / hidden_stems policy",
+      "exact_section_or_location": "https://ctext.org/wiki.pl?chapter=933376&if=en&remap=gb",
+      "short_evidence_excerpt": "《千里命稿》给出正官偏印等关系定义并交叉核对藏干成员；出现\"本气\"术语。",
+      "evidence_level": "L2",
+      "limitations": "本气强弱描述不构成统一比例；本研究不采纳旺衰判断。",
+      "retrieval_status": "RETRIEVED_HTTP_200"
+    },
+    {
+      "source_id": "SRC-L2-HAKKA-STUDY",
+      "title": "客家命理相关学术研究资料",
+      "author_or_attribution": "客家委员会公开研究资料",
+      "url": "https://sign.hakka.gov.tw/File/Get?filename=%5CAttach%5C1990%5C1%5C322010382571.pdf",
+      "retrieved_date": "2026-08-11",
+      "supported_topic": "五类生克关系按阴阳分为十神的现代研究表述",
+      "supported_rule_ids_or_refs": "ten_god_rules.json 十神类",
+      "exact_section_or_location": "https://sign.hakka.gov.tw/File/Get?filename=%5CAttach%5C1990%5C1%5C322010382571.pdf",
+      "short_evidence_excerpt": "客家命理学术研究资料以现代研究表述五类生克关系按阴阳分为十神。",
+      "evidence_level": "L2",
+      "limitations": "仅作现代研究交叉核对；不覆盖藏干排序和比例。",
+      "retrieval_status": "SNAPSHOT_RETRIEVAL_UNAVAILABLE",
+      "retrieval_note": "本轮 URL 访问 SSL 握手超时；按规则不更换新来源，保留既有证据信息，单独报告"
+    }
+  ],
+  "special_evidence_wu_branch": [
+    {
+      "evidence_id": "WU-EVID-01",
+      "role": "mainline",
+      "source_id": "SRC-L1-YUANHAI-ZIPING",
+      "content": "《渊海子平·论天干地支暗藏总诀》及通行子平体系：午藏丁、己",
+      "marker": "CANONICAL"
+    },
+    {
+      "evidence_id": "WU-EVID-02",
+      "role": "variant_observed",
+      "source_id": "SRC-L2-MINGLI-TANYUAN",
+      "content": "《命理探源》公开转录页出现\"午宫丙火并己土\"（丙/丁异文）",
+      "marker": "LIKELY_TRANSCRIPTION_OR_EDITION_VARIANT",
+      "handling": "保留证据、不删除；不作已确认流派差异；不产生第二套午支规则"
+    },
+    {
+      "evidence_id": "WU-EVID-03",
+      "role": "same_book_later_evidence",
+      "source_id": "SRC-L2-MINGLI-TANYUAN",
+      "content": "《命理探源》后续理论章节及命例中的午支用法遵循丁己体系（与渊海子平一致）",
+      "marker": "CANONICAL_SUPPORT"
+    }
+  ]
+}

@@ -1,0 +1,334 @@
+{
+  "dataset_id": "BAZI_FOUNDATION_FREEZE_CANDIDATE_V0_2_0",
+  "version": "0.2.0",
+  "status": "FREEZE_CANDIDATE_NOT_RUNTIME",
+  "tradition_scope": "ZIPING_BAZI",
+  "heavenly_stems": [
+    {
+      "stem_id": "JIA",
+      "chinese": "甲",
+      "yin_yang": "YANG",
+      "element": "WOOD"
+    },
+    {
+      "stem_id": "YI",
+      "chinese": "乙",
+      "yin_yang": "YIN",
+      "element": "WOOD"
+    },
+    {
+      "stem_id": "BING",
+      "chinese": "丙",
+      "yin_yang": "YANG",
+      "element": "FIRE"
+    },
+    {
+      "stem_id": "DING",
+      "chinese": "丁",
+      "yin_yang": "YIN",
+      "element": "FIRE"
+    },
+    {
+      "stem_id": "WU",
+      "chinese": "戊",
+      "yin_yang": "YANG",
+      "element": "EARTH"
+    },
+    {
+      "stem_id": "JI",
+      "chinese": "己",
+      "yin_yang": "YIN",
+      "element": "EARTH"
+    },
+    {
+      "stem_id": "GENG",
+      "chinese": "庚",
+      "yin_yang": "YANG",
+      "element": "METAL"
+    },
+    {
+      "stem_id": "XIN",
+      "chinese": "辛",
+      "yin_yang": "YIN",
+      "element": "METAL"
+    },
+    {
+      "stem_id": "REN",
+      "chinese": "壬",
+      "yin_yang": "YANG",
+      "element": "WATER"
+    },
+    {
+      "stem_id": "GUI",
+      "chinese": "癸",
+      "yin_yang": "YIN",
+      "element": "WATER"
+    }
+  ],
+  "earthly_branches": [
+    {
+      "branch_id": "ZI",
+      "chinese": "子",
+      "yin_yang": "YANG",
+      "element": "WATER"
+    },
+    {
+      "branch_id": "CHOU",
+      "chinese": "丑",
+      "yin_yang": "YIN",
+      "element": "EARTH"
+    },
+    {
+      "branch_id": "YIN",
+      "chinese": "寅",
+      "yin_yang": "YANG",
+      "element": "WOOD"
+    },
+    {
+      "branch_id": "MAO",
+      "chinese": "卯",
+      "yin_yang": "YIN",
+      "element": "WOOD"
+    },
+    {
+      "branch_id": "CHEN",
+      "chinese": "辰",
+      "yin_yang": "YANG",
+      "element": "EARTH"
+    },
+    {
+      "branch_id": "SI",
+      "chinese": "巳",
+      "yin_yang": "YIN",
+      "element": "FIRE"
+    },
+    {
+      "branch_id": "WU",
+      "chinese": "午",
+      "yin_yang": "YANG",
+      "element": "FIRE"
+    },
+    {
+      "branch_id": "WEI",
+      "chinese": "未",
+      "yin_yang": "YIN",
+      "element": "EARTH"
+    },
+    {
+      "branch_id": "SHEN",
+      "chinese": "申",
+      "yin_yang": "YANG",
+      "element": "METAL"
+    },
+    {
+      "branch_id": "YOU",
+      "chinese": "酉",
+      "yin_yang": "YIN",
+      "element": "METAL"
+    },
+    {
+      "branch_id": "XU",
+      "chinese": "戌",
+      "yin_yang": "YANG",
+      "element": "EARTH"
+    },
+    {
+      "branch_id": "HAI",
+      "chinese": "亥",
+      "yin_yang": "YIN",
+      "element": "WATER"
+    }
+  ],
+  "hidden_stem_sets": [
+    {
+      "branch_id": "ZI",
+      "hidden_stem_set": [
+        "GUI"
+      ],
+      "order_semantics": "NONE"
+    },
+    {
+      "branch_id": "CHOU",
+      "hidden_stem_set": [
+        "JI",
+        "XIN",
+        "GUI"
+      ],
+      "order_semantics": "NONE"
+    },
+    {
+      "branch_id": "YIN",
+      "hidden_stem_set": [
+        "JIA",
+        "BING",
+        "WU"
+      ],
+      "order_semantics": "NONE"
+    },
+    {
+      "branch_id": "MAO",
+      "hidden_stem_set": [
+        "YI"
+      ],
+      "order_semantics": "NONE"
+    },
+    {
+      "branch_id": "CHEN",
+      "hidden_stem_set": [
+        "YI",
+        "WU",
+        "GUI"
+      ],
+      "order_semantics": "NONE"
+    },
+    {
+      "branch_id": "SI",
+      "hidden_stem_set": [
+        "BING",
+        "WU",
+        "GENG"
+      ],
+      "order_semantics": "NONE"
+    },
+    {
+      "branch_id": "WU",
+      "hidden_stem_set": [
+        "DING",
+        "JI"
+      ],
+      "order_semantics": "NONE"
+    },
+    {
+      "branch_id": "WEI",
+      "hidden_stem_set": [
+        "YI",
+        "DING",
+        "JI"
+      ],
+      "order_semantics": "NONE"
+    },
+    {
+      "branch_id": "SHEN",
+      "hidden_stem_set": [
+        "WU",
+        "GENG",
+        "REN"
+      ],
+      "order_semantics": "NONE"
+    },
+    {
+      "branch_id": "YOU",
+      "hidden_stem_set": [
+        "XIN"
+      ],
+      "order_semantics": "NONE"
+    },
+    {
+      "branch_id": "XU",
+      "hidden_stem_set": [
+        "DING",
+        "WU",
+        "XIN"
+      ],
+      "order_semantics": "NONE"
+    },
+    {
+      "branch_id": "HAI",
+      "hidden_stem_set": [
+        "JIA",
+        "REN"
+      ],
+      "order_semantics": "NONE"
+    }
+  ],
+  "five_element_relations": {
+    "generates": [
+      {
+        "from": "WOOD",
+        "to": "FIRE"
+      },
+      {
+        "from": "FIRE",
+        "to": "EARTH"
+      },
+      {
+        "from": "EARTH",
+        "to": "METAL"
+      },
+      {
+        "from": "METAL",
+        "to": "WATER"
+      },
+      {
+        "from": "WATER",
+        "to": "WOOD"
+      }
+    ],
+    "controls": [
+      {
+        "from": "WOOD",
+        "to": "EARTH"
+      },
+      {
+        "from": "EARTH",
+        "to": "WATER"
+      },
+      {
+        "from": "WATER",
+        "to": "FIRE"
+      },
+      {
+        "from": "FIRE",
+        "to": "METAL"
+      },
+      {
+        "from": "METAL",
+        "to": "WOOD"
+      }
+    ]
+  },
+  "ten_god_formula": {
+    "SAME_ELEMENT": {
+      "SAME_POLARITY": "比肩",
+      "DIFFERENT_POLARITY": "劫财"
+    },
+    "DAY_GENERATES_TARGET": {
+      "SAME_POLARITY": "食神",
+      "DIFFERENT_POLARITY": "伤官"
+    },
+    "DAY_CONTROLS_TARGET": {
+      "SAME_POLARITY": "偏财",
+      "DIFFERENT_POLARITY": "正财"
+    },
+    "TARGET_CONTROLS_DAY": {
+      "SAME_POLARITY": "七杀",
+      "DIFFERENT_POLARITY": "正官"
+    },
+    "TARGET_GENERATES_DAY": {
+      "SAME_POLARITY": "偏印",
+      "DIFFERENT_POLARITY": "正印"
+    }
+  },
+  "ten_god_canonical_names": [
+    "比肩",
+    "劫财",
+    "食神",
+    "伤官",
+    "偏财",
+    "正财",
+    "七杀",
+    "正官",
+    "偏印",
+    "正印"
+  ],
+  "excluded_from_freeze": [
+    "main_hidden_stem / other_hidden_stems / ordered_hidden_stems（历史研究字段）",
+    "本气/中气/余气（TRADITION_POLICY_REQUIRED）",
+    "藏干顺序（TRADITION_POLICY_REQUIRED）",
+    "藏干权重/月令用事天数（OUT_OF_SCOPE）",
+    "aliases 作为 runtime 输出（仅证据字段）",
+    "100 格硬编码矩阵（ten_god_matrix.json 仅作 validation fixture）",
+    "旺衰 / 喜用神 / 格局 / 大运 / 吉凶"
+  ],
+  "matrix_fixture_note": "ten_god_matrix.json 仅作 validation fixture，不进入冻结运行时真相"
+}

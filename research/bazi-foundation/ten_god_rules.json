@@ -1,0 +1,257 @@
+{
+  "schema_version": "0.2",
+  "status": "RESEARCH_CANDIDATE_NOT_FOR_RUNTIME",
+  "input_contract": {
+    "day_stem": "十天干之一，作为关系参照",
+    "target_stem": "十天干之一，被分类对象"
+  },
+  "algorithm": [
+    "读取day_stem与target_stem的五行和阴阳。",
+    "以day_stem为参照，判定SAME_ELEMENT、DAY_GENERATES_TARGET、DAY_CONTROLS_TARGET、TARGET_CONTROLS_DAY或TARGET_GENERATES_DAY。",
+    "判定两干阴阳为SAME_POLARITY或DIFFERENT_POLARITY。",
+    "以关系类型和阴阳同异查十个规则之一，得到唯一ten_god。"
+  ],
+  "rules": [
+    {
+      "rule_id": "TEN-GOD-01-BIJIAN",
+      "topic": "ten_god_derivation",
+      "statement": "同五行且阴阳同性为比肩。",
+      "element_relation": "SAME_ELEMENT",
+      "polarity_relation": "SAME_POLARITY",
+      "ten_god": "比肩",
+      "source_ids": [
+        "SRC-L1-YUANHAI-ZIPING",
+        "SRC-L2-QIANLI-MINGGAO-FOUNDATION"
+      ],
+      "evidence_level": "L1",
+      "consensus_status": "STATIC_CONSENSUS",
+      "conflicts": [],
+      "product_recommendation": "PROPOSE_FREEZE",
+      "tradition_scope": "ZIPING_BAZI"
+    },
+    {
+      "rule_id": "TEN-GOD-02-JIECAI",
+      "topic": "ten_god_derivation",
+      "statement": "同五行且阴阳异性为劫财。",
+      "element_relation": "SAME_ELEMENT",
+      "polarity_relation": "DIFFERENT_POLARITY",
+      "ten_god": "劫财",
+      "source_ids": [
+        "SRC-L1-YUANHAI-ZIPING",
+        "SRC-L2-QIANLI-MINGGAO-FOUNDATION"
+      ],
+      "evidence_level": "L1",
+      "consensus_status": "STATIC_CONSENSUS",
+      "conflicts": [
+        "CONFLICT-TEN-GOD-ALIASES"
+      ],
+      "product_recommendation": "PROPOSE_FREEZE",
+      "tradition_scope": "ZIPING_BAZI"
+    },
+    {
+      "rule_id": "TEN-GOD-03-SHISHEN",
+      "topic": "ten_god_derivation",
+      "statement": "日干所生且阴阳同性为食神。",
+      "element_relation": "DAY_GENERATES_TARGET",
+      "polarity_relation": "SAME_POLARITY",
+      "ten_god": "食神",
+      "source_ids": [
+        "SRC-L1-YUANHAI-ZIPING",
+        "SRC-L2-QIANLI-MINGGAO-FOUNDATION",
+        "SRC-L2-HAKKA-STUDY"
+      ],
+      "evidence_level": "L1",
+      "consensus_status": "STATIC_CONSENSUS",
+      "conflicts": [],
+      "product_recommendation": "PROPOSE_FREEZE",
+      "tradition_scope": "ZIPING_BAZI"
+    },
+    {
+      "rule_id": "TEN-GOD-04-SHANGGUAN",
+      "topic": "ten_god_derivation",
+      "statement": "日干所生且阴阳异性为伤官。",
+      "element_relation": "DAY_GENERATES_TARGET",
+      "polarity_relation": "DIFFERENT_POLARITY",
+      "ten_god": "伤官",
+      "source_ids": [
+        "SRC-L1-YUANHAI-ZIPING",
+        "SRC-L2-QIANLI-MINGGAO-FOUNDATION",
+        "SRC-L2-HAKKA-STUDY"
+      ],
+      "evidence_level": "L1",
+      "consensus_status": "STATIC_CONSENSUS",
+      "conflicts": [],
+      "product_recommendation": "PROPOSE_FREEZE",
+      "tradition_scope": "ZIPING_BAZI"
+    },
+    {
+      "rule_id": "TEN-GOD-05-PIANCAI",
+      "topic": "ten_god_derivation",
+      "statement": "日干所克且阴阳同性为偏财。",
+      "element_relation": "DAY_CONTROLS_TARGET",
+      "polarity_relation": "SAME_POLARITY",
+      "ten_god": "偏财",
+      "source_ids": [
+        "SRC-L1-YUANHAI-ZIPING",
+        "SRC-L2-QIANLI-MINGGAO-FOUNDATION",
+        "SRC-L2-HAKKA-STUDY"
+      ],
+      "evidence_level": "L1",
+      "consensus_status": "STATIC_CONSENSUS",
+      "conflicts": [],
+      "product_recommendation": "PROPOSE_FREEZE",
+      "tradition_scope": "ZIPING_BAZI"
+    },
+    {
+      "rule_id": "TEN-GOD-06-ZHENGCAI",
+      "topic": "ten_god_derivation",
+      "statement": "日干所克且阴阳异性为正财。",
+      "element_relation": "DAY_CONTROLS_TARGET",
+      "polarity_relation": "DIFFERENT_POLARITY",
+      "ten_god": "正财",
+      "source_ids": [
+        "SRC-L1-YUANHAI-ZIPING",
+        "SRC-L2-QIANLI-MINGGAO-FOUNDATION",
+        "SRC-L2-HAKKA-STUDY"
+      ],
+      "evidence_level": "L1",
+      "consensus_status": "STATIC_CONSENSUS",
+      "conflicts": [],
+      "product_recommendation": "PROPOSE_FREEZE",
+      "tradition_scope": "ZIPING_BAZI"
+    },
+    {
+      "rule_id": "TEN-GOD-07-QISHA",
+      "topic": "ten_god_derivation",
+      "statement": "克日干且阴阳同性为七杀。",
+      "element_relation": "TARGET_CONTROLS_DAY",
+      "polarity_relation": "SAME_POLARITY",
+      "ten_god": "七杀",
+      "source_ids": [
+        "SRC-L1-YUANHAI-ZIPING",
+        "SRC-L2-QIANLI-MINGGAO-DETAIL",
+        "SRC-L2-HAKKA-STUDY"
+      ],
+      "evidence_level": "L1",
+      "consensus_status": "STATIC_CONSENSUS",
+      "conflicts": [
+        "CONFLICT-TEN-GOD-ALIASES"
+      ],
+      "product_recommendation": "PROPOSE_FREEZE",
+      "tradition_scope": "ZIPING_BAZI"
+    },
+    {
+      "rule_id": "TEN-GOD-08-ZHENGGUAN",
+      "topic": "ten_god_derivation",
+      "statement": "克日干且阴阳异性为正官。",
+      "element_relation": "TARGET_CONTROLS_DAY",
+      "polarity_relation": "DIFFERENT_POLARITY",
+      "ten_god": "正官",
+      "source_ids": [
+        "SRC-L1-YUANHAI-ZIPING",
+        "SRC-L2-QIANLI-MINGGAO-DETAIL",
+        "SRC-L2-HAKKA-STUDY"
+      ],
+      "evidence_level": "L1",
+      "consensus_status": "STATIC_CONSENSUS",
+      "conflicts": [],
+      "product_recommendation": "PROPOSE_FREEZE",
+      "tradition_scope": "ZIPING_BAZI"
+    },
+    {
+      "rule_id": "TEN-GOD-09-PIANYIN",
+      "topic": "ten_god_derivation",
+      "statement": "生日干且阴阳同性为偏印。",
+      "element_relation": "TARGET_GENERATES_DAY",
+      "polarity_relation": "SAME_POLARITY",
+      "ten_god": "偏印",
+      "source_ids": [
+        "SRC-L1-YUANHAI-ZIPING",
+        "SRC-L2-QIANLI-MINGGAO-DETAIL",
+        "SRC-L2-HAKKA-STUDY"
+      ],
+      "evidence_level": "L1",
+      "consensus_status": "STATIC_CONSENSUS",
+      "conflicts": [
+        "CONFLICT-TEN-GOD-ALIASES"
+      ],
+      "product_recommendation": "PROPOSE_FREEZE",
+      "tradition_scope": "ZIPING_BAZI"
+    },
+    {
+      "rule_id": "TEN-GOD-10-ZHENGYIN",
+      "topic": "ten_god_derivation",
+      "statement": "生日干且阴阳异性为正印。",
+      "element_relation": "TARGET_GENERATES_DAY",
+      "polarity_relation": "DIFFERENT_POLARITY",
+      "ten_god": "正印",
+      "source_ids": [
+        "SRC-L1-YUANHAI-ZIPING",
+        "SRC-L2-QIANLI-MINGGAO-DETAIL",
+        "SRC-L2-HAKKA-STUDY"
+      ],
+      "evidence_level": "L1",
+      "consensus_status": "STATIC_CONSENSUS",
+      "conflicts": [],
+      "product_recommendation": "PROPOSE_FREEZE",
+      "tradition_scope": "ZIPING_BAZI"
+    }
+  ],
+  "invariants": [
+    "任意合法 day_stem 和 target_stem 恰好命中 formula 中 5 类关系 × 2 极性之一，得到唯一十神。",
+    "每个 day_stem 遍历十个 target_stem 时，十神各出现一次。",
+    "输出不依赖月份、时辰、性别、旺衰、大运或解释。",
+    "地支不得直接映射单一十神；必须先展开藏干成员集合，再逐干使用本协议。",
+    "10×10 矩阵由 formula 生成，不作为运行时硬编码真值表。"
+  ],
+  "terminology_policy": "候选输出名固定为 canonical_names 所列 10 个；历史别称仅记录于 aliases_evidence_only，不改变算法与输出。",
+  "tradition_scope": "ZIPING_BAZI",
+  "canonical_names": [
+    "比肩",
+    "劫财",
+    "食神",
+    "伤官",
+    "偏财",
+    "正财",
+    "七杀",
+    "正官",
+    "偏印",
+    "正印"
+  ],
+  "aliases_evidence_only": {
+    "七杀": [
+      "偏官",
+      "七煞"
+    ],
+    "偏印": [
+      "枭神",
+      "倒食"
+    ],
+    "劫财": [
+      "败财"
+    ]
+  },
+  "runtime_output_policy": "runtime 只能输出 canonical_name；aliases 仅作证据字段，不参与输出。",
+  "formula": {
+    "SAME_ELEMENT": {
+      "SAME_POLARITY": "比肩",
+      "DIFFERENT_POLARITY": "劫财"
+    },
+    "DAY_GENERATES_TARGET": {
+      "SAME_POLARITY": "食神",
+      "DIFFERENT_POLARITY": "伤官"
+    },
+    "DAY_CONTROLS_TARGET": {
+      "SAME_POLARITY": "偏财",
+      "DIFFERENT_POLARITY": "正财"
+    },
+    "TARGET_CONTROLS_DAY": {
+      "SAME_POLARITY": "七杀",
+      "DIFFERENT_POLARITY": "正官"
+    },
+    "TARGET_GENERATES_DAY": {
+      "SAME_POLARITY": "偏印",
+      "DIFFERENT_POLARITY": "正印"
+    }
+  }
+}

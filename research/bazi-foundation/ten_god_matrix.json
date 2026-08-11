@@ -1,0 +1,200 @@
+{
+  "schema_version": "0.2",
+  "status": "RESEARCH_CANDIDATE_NOT_FOR_RUNTIME",
+  "tradition_scope": "ZIPING_BAZI",
+  "derivation": "由 ten_god_rules.json formula（5 类关系 × 2 极性）程序生成；非人工填写真值表。",
+  "generation_note": "Phase 2.4A.1 由公式重新生成；任何手改都会在 validate_bazi_foundation_v02.py 中与公式比对失败。",
+  "target_stem_order": [
+    "JIA",
+    "YI",
+    "BING",
+    "DING",
+    "WU",
+    "JI",
+    "GENG",
+    "XIN",
+    "REN",
+    "GUI"
+  ],
+  "target_chinese_order": [
+    "甲",
+    "乙",
+    "丙",
+    "丁",
+    "戊",
+    "己",
+    "庚",
+    "辛",
+    "壬",
+    "癸"
+  ],
+  "rows": [
+    {
+      "day_stem": "JIA",
+      "day_chinese": "甲",
+      "ten_gods": [
+        "比肩",
+        "劫财",
+        "食神",
+        "伤官",
+        "偏财",
+        "正财",
+        "七杀",
+        "正官",
+        "偏印",
+        "正印"
+      ]
+    },
+    {
+      "day_stem": "YI",
+      "day_chinese": "乙",
+      "ten_gods": [
+        "劫财",
+        "比肩",
+        "伤官",
+        "食神",
+        "正财",
+        "偏财",
+        "正官",
+        "七杀",
+        "正印",
+        "偏印"
+      ]
+    },
+    {
+      "day_stem": "BING",
+      "day_chinese": "丙",
+      "ten_gods": [
+        "偏印",
+        "正印",
+        "比肩",
+        "劫财",
+        "食神",
+        "伤官",
+        "偏财",
+        "正财",
+        "七杀",
+        "正官"
+      ]
+    },
+    {
+      "day_stem": "DING",
+      "day_chinese": "丁",
+      "ten_gods": [
+        "正印",
+        "偏印",
+        "劫财",
+        "比肩",
+        "伤官",
+        "食神",
+        "正财",
+        "偏财",
+        "正官",
+        "七杀"
+      ]
+    },
+    {
+      "day_stem": "WU",
+      "day_chinese": "戊",
+      "ten_gods": [
+        "七杀",
+        "正官",
+        "偏印",
+        "正印",
+        "比肩",
+        "劫财",
+        "食神",
+        "伤官",
+        "偏财",
+        "正财"
+      ]
+    },
+    {
+      "day_stem": "JI",
+      "day_chinese": "己",
+      "ten_gods": [
+        "正官",
+        "七杀",
+        "正印",
+        "偏印",
+        "劫财",
+        "比肩",
+        "伤官",
+        "食神",
+        "正财",
+        "偏财"
+      ]
+    },
+    {
+      "day_stem": "GENG",
+      "day_chinese": "庚",
+      "ten_gods": [
+        "偏财",
+        "正财",
+        "七杀",
+        "正官",
+        "偏印",
+        "正印",
+        "比肩",
+        "劫财",
+        "食神",
+        "伤官"
+      ]
+    },
+    {
+      "day_stem": "XIN",
+      "day_chinese": "辛",
+      "ten_gods": [
+        "正财",
+        "偏财",
+        "正官",
+        "七杀",
+        "正印",
+        "偏印",
+        "劫财",
+        "比肩",
+        "伤官",
+        "食神"
+      ]
+    },
+    {
+      "day_stem": "REN",
+      "day_chinese": "壬",
+      "ten_gods": [
+        "食神",
+        "伤官",
+        "偏财",
+        "正财",
+        "七杀",
+        "正官",
+        "偏印",
+        "正印",
+        "比肩",
+        "劫财"
+      ]
+    },
+    {
+      "day_stem": "GUI",
+      "day_chinese": "癸",
+      "ten_gods": [
+        "伤官",
+        "食神",
+        "正财",
+        "偏财",
+        "正官",
+        "七杀",
+        "正印",
+        "偏印",
+        "劫财",
+        "比肩"
+      ]
+    }
+  ],
+  "expected_validation": {
+    "cell_count": 100,
+    "null_count": 0,
+    "ten_god_count_per_row": 10,
+    "each_ten_god_occurrences_per_row": 1,
+    "row_ok": true
+  }
+}

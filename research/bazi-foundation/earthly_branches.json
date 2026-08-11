@@ -1,0 +1,297 @@
+{
+  "schema_version": "0.3",
+  "status": "RESEARCH_CANDIDATE_NOT_FOR_RUNTIME",
+  "rules": [
+    {
+      "rule_id": "BRANCH-01-ZI",
+      "topic": "earthly_branch_yinyang_element",
+      "statement": "子为阳水。",
+      "branch_id": "ZI",
+      "chinese": "子",
+      "yin_yang": "YANG",
+      "element": "WATER",
+      "hidden_stem_ids": [
+        "GUI"
+      ],
+      "source_ids": [
+        "SRC-L1-WUXING-DAYI",
+        "SRC-L1-WUXING-JINGJI",
+        "SRC-L1-YUANHAI-ZIPING"
+      ],
+      "evidence_level": "L1",
+      "consensus_status": "STATIC_CONSENSUS",
+      "conflicts": [],
+      "product_recommendation": "PROPOSE_FREEZE",
+      "tradition_scope": "ZIPING_BAZI"
+    },
+    {
+      "rule_id": "BRANCH-02-CHOU",
+      "topic": "earthly_branch_yinyang_element",
+      "statement": "丑为阴土。",
+      "branch_id": "CHOU",
+      "chinese": "丑",
+      "yin_yang": "YIN",
+      "element": "EARTH",
+      "hidden_stem_ids": [
+        "JI",
+        "GUI",
+        "XIN"
+      ],
+      "source_ids": [
+        "SRC-L1-WUXING-DAYI",
+        "SRC-L1-WUXING-JINGJI",
+        "SRC-L1-YUANHAI-ZIPING"
+      ],
+      "evidence_level": "L1",
+      "consensus_status": "STATIC_CONSENSUS",
+      "conflicts": [],
+      "product_recommendation": "PROPOSE_FREEZE",
+      "tradition_scope": "ZIPING_BAZI"
+    },
+    {
+      "rule_id": "BRANCH-03-YIN",
+      "topic": "earthly_branch_yinyang_element",
+      "statement": "寅为阳木。",
+      "branch_id": "YIN",
+      "chinese": "寅",
+      "yin_yang": "YANG",
+      "element": "WOOD",
+      "hidden_stem_ids": [
+        "JIA",
+        "BING",
+        "WU"
+      ],
+      "source_ids": [
+        "SRC-L1-WUXING-DAYI",
+        "SRC-L1-WUXING-JINGJI",
+        "SRC-L1-YUANHAI-ZIPING"
+      ],
+      "evidence_level": "L1",
+      "consensus_status": "STATIC_CONSENSUS",
+      "conflicts": [],
+      "product_recommendation": "PROPOSE_FREEZE",
+      "tradition_scope": "ZIPING_BAZI"
+    },
+    {
+      "rule_id": "BRANCH-04-MAO",
+      "topic": "earthly_branch_yinyang_element",
+      "statement": "卯为阴木。",
+      "branch_id": "MAO",
+      "chinese": "卯",
+      "yin_yang": "YIN",
+      "element": "WOOD",
+      "hidden_stem_ids": [
+        "YI"
+      ],
+      "source_ids": [
+        "SRC-L1-WUXING-DAYI",
+        "SRC-L1-WUXING-JINGJI",
+        "SRC-L1-YUANHAI-ZIPING"
+      ],
+      "evidence_level": "L1",
+      "consensus_status": "STATIC_CONSENSUS",
+      "conflicts": [],
+      "product_recommendation": "PROPOSE_FREEZE",
+      "tradition_scope": "ZIPING_BAZI"
+    },
+    {
+      "rule_id": "BRANCH-05-CHEN",
+      "topic": "earthly_branch_yinyang_element",
+      "statement": "辰为阳土。",
+      "branch_id": "CHEN",
+      "chinese": "辰",
+      "yin_yang": "YANG",
+      "element": "EARTH",
+      "hidden_stem_ids": [
+        "WU",
+        "YI",
+        "GUI"
+      ],
+      "source_ids": [
+        "SRC-L1-WUXING-DAYI",
+        "SRC-L1-WUXING-JINGJI",
+        "SRC-L1-YUANHAI-ZIPING"
+      ],
+      "evidence_level": "L1",
+      "consensus_status": "STATIC_CONSENSUS",
+      "conflicts": [],
+      "product_recommendation": "PROPOSE_FREEZE",
+      "tradition_scope": "ZIPING_BAZI"
+    },
+    {
+      "rule_id": "BRANCH-06-SI",
+      "topic": "earthly_branch_yinyang_element",
+      "statement": "巳为阴火。",
+      "branch_id": "SI",
+      "chinese": "巳",
+      "yin_yang": "YIN",
+      "element": "FIRE",
+      "hidden_stem_ids": [
+        "BING",
+        "WU",
+        "GENG"
+      ],
+      "source_ids": [
+        "SRC-L1-WUXING-DAYI",
+        "SRC-L1-WUXING-JINGJI",
+        "SRC-L1-YUANHAI-ZIPING"
+      ],
+      "evidence_level": "L1",
+      "consensus_status": "STATIC_CONSENSUS",
+      "conflicts": [],
+      "product_recommendation": "PROPOSE_FREEZE",
+      "tradition_scope": "ZIPING_BAZI"
+    },
+    {
+      "rule_id": "BRANCH-07-WU",
+      "topic": "earthly_branch_yinyang_element",
+      "statement": "午为阳火。",
+      "branch_id": "WU",
+      "chinese": "午",
+      "yin_yang": "YANG",
+      "element": "FIRE",
+      "hidden_stem_ids": [
+        "DING",
+        "JI"
+      ],
+      "source_ids": [
+        "SRC-L1-WUXING-DAYI",
+        "SRC-L1-WUXING-JINGJI",
+        "SRC-L1-YUANHAI-ZIPING"
+      ],
+      "evidence_level": "L1",
+      "consensus_status": "STATIC_CONSENSUS",
+      "conflicts": [
+        "CONFLICT-HIDDEN-WU-TEXT"
+      ],
+      "product_recommendation": "PROPOSE_FREEZE",
+      "tradition_scope": "ZIPING_BAZI"
+    },
+    {
+      "rule_id": "BRANCH-08-WEI",
+      "topic": "earthly_branch_yinyang_element",
+      "statement": "未为阴土。",
+      "branch_id": "WEI",
+      "chinese": "未",
+      "yin_yang": "YIN",
+      "element": "EARTH",
+      "hidden_stem_ids": [
+        "JI",
+        "DING",
+        "YI"
+      ],
+      "source_ids": [
+        "SRC-L1-WUXING-DAYI",
+        "SRC-L1-WUXING-JINGJI",
+        "SRC-L1-YUANHAI-ZIPING"
+      ],
+      "evidence_level": "L1",
+      "consensus_status": "STATIC_CONSENSUS",
+      "conflicts": [],
+      "product_recommendation": "PROPOSE_FREEZE",
+      "tradition_scope": "ZIPING_BAZI"
+    },
+    {
+      "rule_id": "BRANCH-09-SHEN",
+      "topic": "earthly_branch_yinyang_element",
+      "statement": "申为阳金。",
+      "branch_id": "SHEN",
+      "chinese": "申",
+      "yin_yang": "YANG",
+      "element": "METAL",
+      "hidden_stem_ids": [
+        "GENG",
+        "REN",
+        "WU"
+      ],
+      "source_ids": [
+        "SRC-L1-WUXING-DAYI",
+        "SRC-L1-WUXING-JINGJI",
+        "SRC-L1-YUANHAI-ZIPING"
+      ],
+      "evidence_level": "L1",
+      "consensus_status": "STATIC_CONSENSUS",
+      "conflicts": [],
+      "product_recommendation": "PROPOSE_FREEZE",
+      "tradition_scope": "ZIPING_BAZI"
+    },
+    {
+      "rule_id": "BRANCH-10-YOU",
+      "topic": "earthly_branch_yinyang_element",
+      "statement": "酉为阴金。",
+      "branch_id": "YOU",
+      "chinese": "酉",
+      "yin_yang": "YIN",
+      "element": "METAL",
+      "hidden_stem_ids": [
+        "XIN"
+      ],
+      "source_ids": [
+        "SRC-L1-WUXING-DAYI",
+        "SRC-L1-WUXING-JINGJI",
+        "SRC-L1-YUANHAI-ZIPING"
+      ],
+      "evidence_level": "L1",
+      "consensus_status": "STATIC_CONSENSUS",
+      "conflicts": [],
+      "product_recommendation": "PROPOSE_FREEZE",
+      "tradition_scope": "ZIPING_BAZI"
+    },
+    {
+      "rule_id": "BRANCH-11-XU",
+      "topic": "earthly_branch_yinyang_element",
+      "statement": "戌为阳土。",
+      "branch_id": "XU",
+      "chinese": "戌",
+      "yin_yang": "YANG",
+      "element": "EARTH",
+      "hidden_stem_ids": [
+        "WU",
+        "XIN",
+        "DING"
+      ],
+      "source_ids": [
+        "SRC-L1-WUXING-DAYI",
+        "SRC-L1-WUXING-JINGJI",
+        "SRC-L1-YUANHAI-ZIPING"
+      ],
+      "evidence_level": "L1",
+      "consensus_status": "STATIC_CONSENSUS",
+      "conflicts": [],
+      "product_recommendation": "PROPOSE_FREEZE",
+      "tradition_scope": "ZIPING_BAZI"
+    },
+    {
+      "rule_id": "BRANCH-12-HAI",
+      "topic": "earthly_branch_yinyang_element",
+      "statement": "亥为阴水。",
+      "branch_id": "HAI",
+      "chinese": "亥",
+      "yin_yang": "YIN",
+      "element": "WATER",
+      "hidden_stem_ids": [
+        "REN",
+        "JIA"
+      ],
+      "source_ids": [
+        "SRC-L1-WUXING-DAYI",
+        "SRC-L1-WUXING-JINGJI",
+        "SRC-L1-YUANHAI-ZIPING"
+      ],
+      "evidence_level": "L1",
+      "consensus_status": "STATIC_CONSENSUS",
+      "conflicts": [],
+      "product_recommendation": "PROPOSE_FREEZE",
+      "tradition_scope": "ZIPING_BAZI"
+    }
+  ],
+  "scope_note": "hidden_stem_ids仅表示成员集合；数组顺序不构成本气、中气、余气或权重协议。",
+  "tradition_scope": "ZIPING_BAZI",
+  "hidden_stems_order_semantics": "NONE_V0_2",
+  "hidden_stem_ids_policy": {
+    "derived_reference_only": true,
+    "freeze_projection": false,
+    "authoritative_source": "hidden_stems.json#membership_rules[].hidden_stem_set",
+    "note": "hidden_stem_ids 为研究参考副本，不作为未来冻结权威字段"
+  }
+}

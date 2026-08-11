@@ -1,0 +1,180 @@
+{
+  "schema_version": "0.2",
+  "status": "RESEARCH_CANDIDATE_NOT_FOR_RUNTIME",
+  "elements": [
+    "WOOD",
+    "FIRE",
+    "EARTH",
+    "METAL",
+    "WATER"
+  ],
+  "rules": [
+    {
+      "rule_id": "GENERATES-01",
+      "topic": "five_element_generation",
+      "statement": "木生火。",
+      "from": "WOOD",
+      "to": "FIRE",
+      "source_ids": [
+        "SRC-L1-BAIHUTONG",
+        "SRC-L1-YUANHAI-ZIPING",
+        "SRC-L2-MINGLI-TANYUAN"
+      ],
+      "evidence_level": "L1",
+      "consensus_status": "STATIC_CONSENSUS",
+      "conflicts": [],
+      "product_recommendation": "PROPOSE_FREEZE",
+      "tradition_scope": "ZIPING_BAZI"
+    },
+    {
+      "rule_id": "GENERATES-02",
+      "topic": "five_element_generation",
+      "statement": "火生土。",
+      "from": "FIRE",
+      "to": "EARTH",
+      "source_ids": [
+        "SRC-L1-BAIHUTONG",
+        "SRC-L1-YUANHAI-ZIPING",
+        "SRC-L2-MINGLI-TANYUAN"
+      ],
+      "evidence_level": "L1",
+      "consensus_status": "STATIC_CONSENSUS",
+      "conflicts": [],
+      "product_recommendation": "PROPOSE_FREEZE",
+      "tradition_scope": "ZIPING_BAZI"
+    },
+    {
+      "rule_id": "GENERATES-03",
+      "topic": "five_element_generation",
+      "statement": "土生金。",
+      "from": "EARTH",
+      "to": "METAL",
+      "source_ids": [
+        "SRC-L1-BAIHUTONG",
+        "SRC-L1-YUANHAI-ZIPING",
+        "SRC-L2-MINGLI-TANYUAN"
+      ],
+      "evidence_level": "L1",
+      "consensus_status": "STATIC_CONSENSUS",
+      "conflicts": [],
+      "product_recommendation": "PROPOSE_FREEZE",
+      "tradition_scope": "ZIPING_BAZI"
+    },
+    {
+      "rule_id": "GENERATES-04",
+      "topic": "five_element_generation",
+      "statement": "金生水。",
+      "from": "METAL",
+      "to": "WATER",
+      "source_ids": [
+        "SRC-L1-BAIHUTONG",
+        "SRC-L1-YUANHAI-ZIPING",
+        "SRC-L2-MINGLI-TANYUAN"
+      ],
+      "evidence_level": "L1",
+      "consensus_status": "STATIC_CONSENSUS",
+      "conflicts": [],
+      "product_recommendation": "PROPOSE_FREEZE",
+      "tradition_scope": "ZIPING_BAZI"
+    },
+    {
+      "rule_id": "GENERATES-05",
+      "topic": "five_element_generation",
+      "statement": "水生木。",
+      "from": "WATER",
+      "to": "WOOD",
+      "source_ids": [
+        "SRC-L1-BAIHUTONG",
+        "SRC-L1-YUANHAI-ZIPING",
+        "SRC-L2-MINGLI-TANYUAN"
+      ],
+      "evidence_level": "L1",
+      "consensus_status": "STATIC_CONSENSUS",
+      "conflicts": [],
+      "product_recommendation": "PROPOSE_FREEZE",
+      "tradition_scope": "ZIPING_BAZI"
+    },
+    {
+      "rule_id": "CONTROLS-01",
+      "topic": "five_element_control",
+      "statement": "木克土。",
+      "from": "WOOD",
+      "to": "EARTH",
+      "source_ids": [
+        "SRC-L1-YUANHAI-ZIPING",
+        "SRC-L2-MINGLI-TANYUAN"
+      ],
+      "evidence_level": "L1",
+      "consensus_status": "STATIC_CONSENSUS",
+      "conflicts": [],
+      "product_recommendation": "PROPOSE_FREEZE",
+      "tradition_scope": "ZIPING_BAZI"
+    },
+    {
+      "rule_id": "CONTROLS-02",
+      "topic": "five_element_control",
+      "statement": "土克水。",
+      "from": "EARTH",
+      "to": "WATER",
+      "source_ids": [
+        "SRC-L1-YUANHAI-ZIPING",
+        "SRC-L2-MINGLI-TANYUAN"
+      ],
+      "evidence_level": "L1",
+      "consensus_status": "STATIC_CONSENSUS",
+      "conflicts": [],
+      "product_recommendation": "PROPOSE_FREEZE",
+      "tradition_scope": "ZIPING_BAZI"
+    },
+    {
+      "rule_id": "CONTROLS-03",
+      "topic": "five_element_control",
+      "statement": "水克火。",
+      "from": "WATER",
+      "to": "FIRE",
+      "source_ids": [
+        "SRC-L1-YUANHAI-ZIPING",
+        "SRC-L2-MINGLI-TANYUAN"
+      ],
+      "evidence_level": "L1",
+      "consensus_status": "STATIC_CONSENSUS",
+      "conflicts": [],
+      "product_recommendation": "PROPOSE_FREEZE",
+      "tradition_scope": "ZIPING_BAZI"
+    },
+    {
+      "rule_id": "CONTROLS-04",
+      "topic": "five_element_control",
+      "statement": "火克金。",
+      "from": "FIRE",
+      "to": "METAL",
+      "source_ids": [
+        "SRC-L1-YUANHAI-ZIPING",
+        "SRC-L2-MINGLI-TANYUAN"
+      ],
+      "evidence_level": "L1",
+      "consensus_status": "STATIC_CONSENSUS",
+      "conflicts": [],
+      "product_recommendation": "PROPOSE_FREEZE",
+      "tradition_scope": "ZIPING_BAZI"
+    },
+    {
+      "rule_id": "CONTROLS-05",
+      "topic": "five_element_control",
+      "statement": "金克木。",
+      "from": "METAL",
+      "to": "WOOD",
+      "source_ids": [
+        "SRC-L1-YUANHAI-ZIPING",
+        "SRC-L2-MINGLI-TANYUAN"
+      ],
+      "evidence_level": "L1",
+      "consensus_status": "STATIC_CONSENSUS",
+      "conflicts": [],
+      "product_recommendation": "PROPOSE_FREEZE",
+      "tradition_scope": "ZIPING_BAZI"
+    }
+  ],
+  "semantic_boundary": "关系图不携带吉凶、强弱、旺衰或价值判断。",
+  "tradition_scope": "ZIPING_BAZI"
+}

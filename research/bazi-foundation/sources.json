@@ -1,0 +1,123 @@
+{
+  "schema_version": "0.2",
+  "status": "RESEARCH_CANDIDATE_NOT_FOR_RUNTIME",
+  "research_scope": "干支阴阳五行、地支藏干、五行生克与日干对天干十神关系",
+  "sources": [
+    {
+      "source_id": "SRC-L1-WUXING-DAYI",
+      "evidence_level": "L1",
+      "title": "五行大义",
+      "author_or_attribution": "萧吉",
+      "url": "https://ctext.org/wiki.pl?chapter=73926&if=gb&remap=gb",
+      "supports": [
+        "天干阴阳",
+        "地支阴阳",
+        "干支五行归属"
+      ],
+      "limitations": "采用公开古籍转录文本；关键字形仍需在正式冻结前按可靠版本复核。"
+    },
+    {
+      "source_id": "SRC-L1-WUXING-JINGJI",
+      "evidence_level": "L1",
+      "title": "五行精纪",
+      "author_or_attribution": "廖中",
+      "url": "https://ctext.org/wiki.pl?chapter=727777&if=gb&remap=gb",
+      "supports": [
+        "十干阴阳",
+        "十二支阴阳"
+      ],
+      "limitations": "用于与五行大义交叉核对，不单独承担全部规则证据。"
+    },
+    {
+      "source_id": "SRC-L1-YUANHAI-ZIPING",
+      "evidence_level": "L1",
+      "title": "渊海子平·论天干地支暗藏总诀",
+      "author_or_attribution": "传统子平文献",
+      "url": "https://ctext.org/wiki.pl?chapter=296619&if=en&remap=gb",
+      "supports": [
+        "十二支藏干成员",
+        "五行生克",
+        "十神实例映射"
+      ],
+      "limitations": "歌诀列举顺序不能自动等同于本气、中气、余气或数值权重。"
+    },
+    {
+      "source_id": "SRC-L1-BAIHUTONG",
+      "evidence_level": "L1",
+      "title": "白虎通德论·五行",
+      "author_or_attribution": "班固撰述传统",
+      "url": "https://ctext.org/text.pl?if=gb&node=52956&show=parallel",
+      "supports": [
+        "五行相生次序"
+      ],
+      "limitations": "用于基础关系图，不用于任何吉凶或旺衰解释。"
+    },
+    {
+      "source_id": "SRC-L2-MINGLI-TANYUAN",
+      "evidence_level": "L2",
+      "title": "命理探源·卷二起例",
+      "author_or_attribution": "袁树珊",
+      "url": "https://ctext.org/wiki.pl?chapter=419625&if=en&remap=gb",
+      "supports": [
+        "五行生克",
+        "地支藏干",
+        "十神统一关系"
+      ],
+      "limitations": "公开转录中的午支藏干出现疑似丙/丁异文或录入误差，不能据此建立替代规则。"
+    },
+    {
+      "source_id": "SRC-L2-QIANLI-MINGGAO-FOUNDATION",
+      "evidence_level": "L2",
+      "title": "千里命稿·五行及十神关系",
+      "author_or_attribution": "韦千里",
+      "url": "https://ctext.org/wiki.pl?chapter=447084&if=en&remap=gb",
+      "supports": [
+        "五种生克关系按阴阳拆分为十神",
+        "比肩劫财判定"
+      ],
+      "limitations": "只采集关系定义，不采集论命解释。"
+    },
+    {
+      "source_id": "SRC-L2-QIANLI-MINGGAO-DETAIL",
+      "evidence_level": "L2",
+      "title": "千里命稿·十神与支藏说明",
+      "author_or_attribution": "韦千里",
+      "url": "https://ctext.org/wiki.pl?chapter=933376&if=en&remap=gb",
+      "supports": [
+        "正官偏印等关系定义",
+        "藏干成员交叉核对",
+        "本气术语存在"
+      ],
+      "limitations": "本气强弱描述不构成统一比例；本研究不采纳旺衰判断。"
+    },
+    {
+      "source_id": "SRC-L2-HAKKA-STUDY",
+      "evidence_level": "L2",
+      "title": "客家命理相关学术研究资料",
+      "author_or_attribution": "客家委员会公开研究资料",
+      "url": "https://sign.hakka.gov.tw/File/Get?filename=%5CAttach%5C1990%5C1%5C322010382571.pdf",
+      "supports": [
+        "五类生克关系按阴阳分为十神的现代研究表述"
+      ],
+      "limitations": "仅作现代研究交叉核对；不覆盖藏干排序和比例。"
+    }
+  ],
+  "source_policy": {
+    "accepted_levels": [
+      "L1",
+      "L2"
+    ],
+    "excluded_as_rule_evidence": [
+      "自媒体",
+      "AI生成内容",
+      "短视频",
+      "自动算命结果页",
+      "无出处论坛",
+      "问答站",
+      "搜索摘要",
+      "内容农场"
+    ],
+    "freeze_requirement": "正式冻结前应保存所引用版本的可复核书目信息或页面快照校验记录；本候选包不宣称已冻结。"
+  },
+  "tradition_scope": "ZIPING_BAZI"
+}

@@ -1,0 +1,123 @@
+{
+  "schema_version": "0.2",
+  "status": "RESEARCH_CANDIDATE_NOT_FOR_RUNTIME",
+  "conflicts": [
+    {
+      "conflict_id": "CONFLICT-HIDDEN-ORDER",
+      "rule_id": "CONFLICT-RULE-01",
+      "topic": "hidden_stem_order",
+      "statement": "古籍歌诀的列举顺序与现代常见主次排列并不总相同，顺序一旦进入机器输出会产生差异。",
+      "examples": [
+        "丑在渊海歌诀列为癸辛己，而常见主气优先表达为己癸辛。",
+        "辰、巳、未、戌也可见列举顺序与主气优先顺序不一致。"
+      ],
+      "source_ids": [
+        "SRC-L1-YUANHAI-ZIPING",
+        "SRC-L2-MINGLI-TANYUAN",
+        "SRC-L2-QIANLI-MINGGAO-DETAIL"
+      ],
+      "evidence_level": "L2",
+      "consensus_status": "TRADITION_POLICY",
+      "conflicts": [
+        "VERSE_ORDER_NOT_EQUAL_TO_RANK_ORDER"
+      ],
+      "product_recommendation": "TRADITION_POLICY_REQUIRED",
+      "tradition_scope": "ZIPING_BAZI"
+    },
+    {
+      "conflict_id": "CONFLICT-QI-TAXONOMY",
+      "rule_id": "CONFLICT-RULE-02",
+      "topic": "hidden_stem_qi_taxonomy",
+      "statement": "本气/中气/余气术语存在，但对二藏、三藏地支的完整标签、排序和使用语境未形成可直接移植的单一数据协议。",
+      "source_ids": [
+        "SRC-L2-MINGLI-TANYUAN",
+        "SRC-L2-QIANLI-MINGGAO-DETAIL"
+      ],
+      "evidence_level": "L2",
+      "consensus_status": "TRADITION_POLICY",
+      "conflicts": [
+        "LABEL_SCOPE_AND_ORDER_DIFFER"
+      ],
+      "product_recommendation": "TRADITION_POLICY_REQUIRED",
+      "tradition_scope": "ZIPING_BAZI"
+    },
+    {
+      "conflict_id": "CONFLICT-HIDDEN-WEIGHTS",
+      "rule_id": "CONFLICT-RULE-03",
+      "topic": "hidden_stem_numeric_weights",
+      "statement": "网络常见百分比、分值和月令用事天数并非同一概念，也没有本研究可证明的统一比例。",
+      "source_ids": [
+        "SRC-L2-MINGLI-TANYUAN",
+        "SRC-L2-QIANLI-MINGGAO-DETAIL"
+      ],
+      "evidence_level": "L2",
+      "consensus_status": "INTERPRETIVE",
+      "conflicts": [
+        "60_30_10_VS_70_20_10_VS_DAY_COUNT_MODELS"
+      ],
+      "product_recommendation": "OUT_OF_SCOPE",
+      "tradition_scope": "ZIPING_BAZI"
+    },
+    {
+      "conflict_id": "CONFLICT-HIDDEN-WU-TEXT",
+      "rule_id": "CONFLICT-RULE-04",
+      "topic": "hidden_stem_textual_variant",
+      "statement": "命理探源公开转录页出现“午宫丙火并己土”，与渊海子平及通行体系的午藏丁己不同；按 Phase 2.4A.1 收口登记为疑似转录/版本异文，保留证据、不删除，不得称为已确认流派差异。",
+      "source_ids": [
+        "SRC-L1-YUANHAI-ZIPING",
+        "SRC-L2-MINGLI-TANYUAN",
+        "SRC-L2-QIANLI-MINGGAO-DETAIL"
+      ],
+      "evidence_level": "L2",
+      "consensus_status": "TEXTUAL_VARIANT_RECORD",
+      "conflicts": [
+        "BING_VS_DING_TRANSCRIPTION"
+      ],
+      "product_recommendation": "RECORDED_AS_VARIANT_NOT_A_RULE",
+      "classification": "LIKELY_TRANSCRIPTION_OR_EDITION_VARIANT",
+      "classification_note": "同书（命理探源）后续理论章节及命例遵循丁己体系；午支成员集合收口 午={丁,己}（PROPOSE_FREEZE）不受此变体影响。",
+      "tradition_scope": "ZIPING_BAZI"
+    },
+    {
+      "conflict_id": "CONFLICT-TEN-GOD-ALIASES",
+      "rule_id": "CONFLICT-RULE-05",
+      "topic": "ten_god_terminology",
+      "statement": "偏官/七杀、偏印/倒食/枭神、劫财/败财等历史别称不改变关系计算，但产品需要固定规范显示名。",
+      "source_ids": [
+        "SRC-L1-YUANHAI-ZIPING",
+        "SRC-L2-QIANLI-MINGGAO-FOUNDATION",
+        "SRC-L2-QIANLI-MINGGAO-DETAIL"
+      ],
+      "evidence_level": "L1",
+      "consensus_status": "TRADITION_POLICY",
+      "conflicts": [
+        "DISPLAY_ALIAS_DIFFERENCE_ONLY"
+      ],
+      "product_recommendation": "TRADITION_POLICY_REQUIRED",
+      "tradition_scope": "ZIPING_BAZI"
+    },
+    {
+      "conflict_id": "CONFLICT-MONTHLY-DAY-ALLOCATIONS",
+      "rule_id": "CONFLICT-RULE-06",
+      "topic": "monthly_command_day_allocations",
+      "statement": "月令用事天数与藏干成员是不同层级；其差异会引入旺衰和司令判断，不能并入本轮静态基础规则。",
+      "source_ids": [
+        "SRC-L2-MINGLI-TANYUAN",
+        "SRC-L2-QIANLI-MINGGAO-DETAIL"
+      ],
+      "evidence_level": "L2",
+      "consensus_status": "INTERPRETIVE",
+      "conflicts": [
+        "CALENDAR_DAY_ALLOCATION_SYSTEMS_DIFFER"
+      ],
+      "product_recommendation": "OUT_OF_SCOPE",
+      "tradition_scope": "ZIPING_BAZI"
+    }
+  ],
+  "resolved_non_conflicts": [
+    "古籍和现代教材对十神常用正偏简称的表述不同，但按五行方向与阴阳同异展开后，十个输出一致。",
+    "其他术数中同名六亲或十神术语的用法不属于子平八字规则证据，不能作为反例混入本协议。",
+    "午支丙/丁转录异文登记为 SOURCE_TEXT_VARIANT/LIKELY_TRANSCRIPTION_OR_EDITION_VARIANT，不构成流派差异。"
+  ],
+  "tradition_scope": "ZIPING_BAZI"
+}
