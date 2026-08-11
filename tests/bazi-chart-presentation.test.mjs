@@ -49,7 +49,7 @@ test("未知时辰摘要与当前已确定能力不虚构时柱", () => {
 
 test("能力边界明确列出当前能力与未提供能力", () => {
   assert.deepEqual(getConfirmedCapabilities(true), ["年柱", "月柱", "日柱", "时柱", "正式 IANA 时区换算", "节气边界校验"]);
-  assert.deepEqual(UNSUPPORTED_BAZI_CAPABILITIES, ["五行分析", "十神", "喜用神", "大运", "流年", "运势解读"]);
+  assert.deepEqual(UNSUPPORTED_BAZI_CAPABILITIES, ["五行旺衰", "喜用神", "大运", "流年", "运势解读"]);
 });
 
 test("复制文本覆盖四柱与出生摘要", () => {

@@ -17,8 +17,7 @@ export interface ClipboardWriter {
 }
 
 export const UNSUPPORTED_BAZI_CAPABILITIES = [
-  "五行分析",
-  "十神",
+  "五行旺衰",
   "喜用神",
   "大运",
   "流年",
@@ -62,7 +61,7 @@ export function buildBaziClipboardText(pillars: BaziPillarTexts, input: BaziChar
     `地点：${formatLocationDisplay(input)}`,
     `时区：${input.ianaTimezone ?? "未解析"}`,
     "",
-    "当前仅为基础四柱排盘，不含五行、十神、大运或运势解读。",
+    "复制内容仅含基础四柱；不含旺衰、喜用神、大运或运势解读。",
   ].join("\n");
 }
 

@@ -1,0 +1,20 @@
+{
+  "dataset_id": "BAZI_FOUNDATION_BROWSER_MANIFEST_V0_2_0",
+  "version": "0.2.0",
+  "status": "DERIVED_BROWSER_RUNTIME_MANIFEST",
+  "tradition_scope": "ZIPING_BAZI",
+  "source_dataset_id": "BAZI_FOUNDATION_RULES_V0_2_0",
+  "source_frozen_sha256": "de157cf196f766cb919cded0d016087714328e248ad407d9d092b418eeb8e299",
+  "asset": {
+    "path": "/bazi-foundation-runtime/v0.2.0/bazi-foundation-browser-v0.2.0.json",
+    "sha256": "fce756e3d0fb3c3e1da9ac1ee05417c2f96f40df6bdb41babf2a8bfcf073646c",
+    "byte_size": 5992
+  },
+  "generation_policy": {
+    "frozen_asset_is_single_source_of_truth": true,
+    "deterministic_json": true,
+    "hidden_stem_order_semantics": "NONE",
+    "ten_god_formula_not_matrix": true,
+    "network_sources": false
+  }
+}

@@ -4,6 +4,7 @@ import { useState } from "react";
 import type { BaziBrowserPipelineResult } from "@/lib/bazi/bazi-browser-pipeline";
 import type { BaziPageDraft } from "@/lib/bazi/bazi-page-contract";
 import { BOUNDARY_SENSITIVE_MESSAGE } from "@/lib/bazi/bazi-result-messages";
+import { BaziFoundationResult } from "./bazi-foundation-result";
 import {
   BAZI_BROWSER_RUNTIME_VERSION,
   buildBaziClipboardText,
@@ -29,6 +30,15 @@ export function BaziPillarResult({ pipeline, submittedDraft }: { pipeline: BaziB
   const pillarObjects = [yearPillar, monthPillar, dayPillar, hourPillar];
   const pillars: BaziPillarTexts = [yearPillar.text, monthPillar.text, dayPillar.text, hourPillar?.text ?? null];
   const audit = coreResult.audit;
+  const foundationIdentity = JSON.stringify([
+    submittedDraft.localDate,
+    submittedDraft.localTime,
+    submittedDraft.timeKnown,
+    submittedDraft.selectionMode,
+    submittedDraft.registeredLocationId,
+    submittedDraft.manualIanaTimezone,
+    ...pillars,
+  ]);
   const displayInput: BaziChartDisplayInput = {
     localDate: submittedDraft.localDate,
     localTime: submittedDraft.localTime,
@@ -71,6 +81,7 @@ export function BaziPillarResult({ pipeline, submittedDraft }: { pipeline: BaziB
       {coreResult.warnings.includes("BOUNDARY_SENSITIVE") ? (
         <p className="bazi-boundary-warning" role="status">{BOUNDARY_SENSITIVE_MESSAGE}</p>
       ) : null}
+      <BaziFoundationResult coreResult={coreResult} resultIdentity={foundationIdentity} />
       <section className="bazi-summary-section" aria-labelledby="bazi-summary-title">
         <h3 id="bazi-summary-title">排盘资料</h3>
         <dl className="bazi-summary-list">

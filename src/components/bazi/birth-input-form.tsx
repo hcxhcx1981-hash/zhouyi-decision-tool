@@ -196,7 +196,7 @@ export function BirthInputForm({ clock = () => new Date().toISOString() }: { clo
       {errors.length > 0 ? <div className="form-error" role="alert">{errors.map((error) => <p key={error}>{error}</p>)}</div> : null}
       {loadError ? <div className="form-error" role="alert"><p>排盘数据加载失败，请重新尝试。</p></div> : null}
       <button className="calculate-button" type="submit" disabled={busy}>{busy ? "正在排盘…" : pipeline ? "重新排盘" : "生成基础命盘"}</button>
-      <p className="form-boundary">仅生成基础四柱；不提供五行、十神、喜用神、大运或运势解读。</p>
+      <p className="form-boundary">基础命理结构仅展示静态规则；不提供旺衰、喜用神、大运或运势解读。</p>
       {pipeline?.result.coreResult.status === "READY" && submittedDraft ? <BaziPillarResult pipeline={pipeline} submittedDraft={submittedDraft} /> : null}
       {pipeline?.result.coreResult.status === "BLOCKED" ? <BaziBlockedResult pipeline={pipeline} busy={busy} onFoldChoice={(choice) => void chooseFold(choice)} /> : null}
     </form>
