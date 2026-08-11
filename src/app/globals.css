@@ -1018,6 +1018,77 @@ button {
   font-size: 1.15rem;
 }
 
+.bazi-day-master-overview {
+  display: grid;
+  gap: 7px;
+  padding: 18px 14px;
+  border-top: 1px solid var(--line);
+  background: #15101d;
+}
+
+.bazi-day-master-overview > span {
+  color: #bca7e9;
+  font-size: 0.72rem;
+  font-weight: 800;
+}
+
+.bazi-day-master-overview h2,
+.bazi-day-master-overview p {
+  margin: 0;
+}
+
+.bazi-day-master-overview h2 {
+  color: #eee8f7;
+  font-size: 0.92rem;
+}
+
+.bazi-day-master-overview > strong {
+  color: #f8f2ff;
+  font-size: 2rem;
+  line-height: 1.2;
+}
+
+.bazi-day-master-overview > small {
+  color: #d9ccef;
+  font-size: 0.82rem;
+}
+
+.bazi-day-master-overview p {
+  color: #d3c9db;
+  font-size: 0.84rem;
+  line-height: 1.75;
+}
+
+[data-foundation-status="LOADING"] > .bazi-foundation-message,
+[data-foundation-status="ERROR"] > .bazi-foundation-message {
+  margin: 14px;
+}
+
+.bazi-standard-chart {
+  border-top: 1px solid var(--line);
+}
+
+.bazi-standard-chart-heading {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 6px 12px;
+  padding: 14px;
+  background: #0c0a10;
+}
+
+.bazi-standard-chart-heading h3 {
+  margin: 0;
+  color: #eee8f7;
+  font-size: 0.94rem;
+}
+
+.bazi-standard-chart-heading span {
+  color: var(--muted);
+  font-size: 0.72rem;
+}
+
 .bazi-overview {
   display: grid;
   gap: 7px;
@@ -1204,6 +1275,7 @@ button {
 }
 
 .bazi-foundation-section {
+  scroll-margin-top: 12px;
   padding: 17px 14px;
   border-top: 1px solid var(--line);
   background: #0c0a10;
@@ -1324,6 +1396,77 @@ button {
   padding: 5px 12px 9px;
 }
 
+.bazi-foundation-standard h4,
+.bazi-foundation-plain h4 {
+  margin: 0;
+  color: #cdbdf1;
+  font-size: 0.76rem;
+}
+
+.bazi-foundation-standard {
+  padding-top: 10px;
+}
+
+.bazi-foundation-standard > h4 {
+  padding: 0 12px;
+}
+
+.bazi-foundation-plain {
+  display: grid;
+  gap: 7px;
+  margin: 0 12px 11px;
+  padding: 11px;
+  border: 1px solid rgba(121, 214, 173, 0.2);
+  border-radius: 10px;
+  background: rgba(48, 121, 87, 0.07);
+}
+
+.bazi-foundation-plain p {
+  margin: 0;
+  color: #ddd5e5;
+  font-size: 0.78rem;
+  line-height: 1.7;
+}
+
+.bazi-foundation-plain .bazi-judgment-boundary {
+  color: var(--muted);
+  font-size: 0.72rem;
+}
+
+.bazi-ten-god-terms {
+  padding: 0 12px 11px;
+}
+
+.bazi-ten-god-term {
+  border-top: 1px solid #29232f;
+}
+
+.bazi-ten-god-term summary,
+.bazi-foundation-technical summary,
+.bazi-copy-details summary {
+  min-height: 44px;
+  cursor: pointer;
+  color: #cdbdf1;
+  font-size: 0.76rem;
+  font-weight: 800;
+  line-height: 44px;
+}
+
+.bazi-ten-god-term p {
+  display: grid;
+  grid-template-columns: 64px minmax(0, 1fr);
+  gap: 8px;
+  margin: 0 0 9px;
+  color: #d5ccdD;
+  font-size: 0.74rem;
+  line-height: 1.65;
+}
+
+.bazi-ten-god-term p strong {
+  color: var(--muted);
+  font-size: 0.7rem;
+}
+
 .bazi-foundation-pillar dl > div {
   display: grid;
   grid-template-columns: 48px minmax(0, 1fr);
@@ -1372,6 +1515,77 @@ button {
 
 .bazi-foundation-order-note {
   margin-top: 10px;
+}
+
+.bazi-explanation-cta-area {
+  display: grid;
+  gap: 8px;
+  padding: 16px 14px;
+  border-top: 1px solid var(--line);
+  background: #100d15;
+}
+
+.bazi-explanation-cta {
+  display: grid;
+  min-height: 48px;
+  place-items: center;
+  border: 1px solid rgba(197, 175, 255, 0.48);
+  border-radius: 12px;
+  color: #faf6ff;
+  background: rgba(123, 77, 224, 0.24);
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.bazi-explanation-cta-area p,
+.bazi-foundation-capabilities > p,
+.bazi-foundation-technical p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.74rem;
+  line-height: 1.65;
+}
+
+.bazi-foundation-capabilities {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid #2c2535;
+}
+
+.bazi-foundation-capabilities > h3 {
+  margin: 0 0 10px;
+  color: #eee8f7;
+  font-size: 0.92rem;
+}
+
+.bazi-foundation-capabilities .bazi-capability-boundary {
+  padding: 0;
+  border: 0;
+}
+
+.bazi-foundation-capabilities h4 {
+  margin: 0;
+  color: #eee8f7;
+  font-size: 0.82rem;
+}
+
+.bazi-foundation-capabilities > p {
+  margin-top: 10px;
+}
+
+.bazi-foundation-technical,
+.bazi-copy-details {
+  margin-top: 12px;
+  border-top: 1px solid #2c2535;
+}
+
+.bazi-foundation-technical p {
+  padding-bottom: 10px;
+}
+
+.bazi-copy-details .bazi-copy-button {
+  margin-top: 2px;
+  background: rgba(123, 77, 224, 0.1);
 }
 
 .bazi-audit-details {

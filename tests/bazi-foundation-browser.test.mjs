@@ -197,6 +197,7 @@ test("Foundation页面链不持久化用户资料，失败提示不清空四柱"
     "src/lib/browser/bazi-foundation-data.ts",
     "src/components/bazi/bazi-foundation-result.tsx",
     "src/components/bazi/bazi-foundation-presentation.ts",
+    "src/components/bazi/ten-god-display-copy.ts",
     "src/components/bazi/bazi-pillar-result.tsx",
     "src/components/bazi/birth-input-form.tsx",
   ];
@@ -204,8 +205,11 @@ test("Foundation页面链不持久化用户资料，失败提示不清空四柱"
   for (const forbidden of [/localStorage/, /sessionStorage/, /indexedDB/, /document\.cookie/]) {
     assert.doesNotMatch(source, forbidden);
   }
-  assert.match(source, /基础命理信息暂时无法加载，四柱排盘结果不受影响。/);
+  assert.match(source, /基础命理说明暂时无法加载，四柱排盘结果不受影响。/);
   assert.match(source, /data-foundation-identity/);
-  assert.match(source, /静态规则展示/);
-  assert.match(source, /顺序语义：NONE/);
+  assert.match(source, /标准命理 \+ 白话解释/);
+  assert.match(source, /藏干仅按成员展示，不区分主次。/);
+  assert.match(source, /orderSemantics=NONE/);
+  assert.match(source, /查看命盘说明/);
+  assert.match(source, /复制命盘资料/);
 });

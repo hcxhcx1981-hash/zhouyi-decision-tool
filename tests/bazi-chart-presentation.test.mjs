@@ -23,6 +23,16 @@ const knownInput = {
   ianaTimezone: "Asia/Shanghai",
 };
 
+const knownFoundation = {
+  dayMaster: { chinese: "戊", yinYangLabel: "阳", elementLabel: "土" },
+  stemTenGods: [
+    { pillarLabel: "年干", stemChinese: "甲", tenGod: "七杀" },
+    { pillarLabel: "月干", stemChinese: "丙", tenGod: "偏印" },
+    { pillarLabel: "日干", stemChinese: "戊", tenGod: "比肩" },
+    { pillarLabel: "时干", stemChinese: "庚", tenGod: "食神" },
+  ],
+};
+
 test("四柱字符串拼接，未知时柱使用双短线", () => {
   assert.equal(formatBaziOverview(["甲辰", "丙寅", "戊戌", "庚申"]), "甲辰　丙寅　戊戌　庚申");
   assert.equal(formatBaziOverview(["甲辰", "丙寅", "戊戌", null]), "甲辰　丙寅　戊戌　--");
@@ -34,8 +44,8 @@ test("出生资料摘要只展示输入与已解析 IANA，性别不参与四柱
   assert.equal(formatLocationDisplay(knownInput), "中国大陆 · 北京");
   assert.equal(formatGenderDisplay(knownInput.gender), "男");
   assert.equal(formatGenderDisplay("FEMALE"), "女");
-  const malePillars = buildBaziClipboardText(pillars, knownInput).split("\n").slice(0, 5);
-  const femalePillars = buildBaziClipboardText(pillars, { ...knownInput, gender: "FEMALE" }).split("\n").slice(0, 5);
+  const malePillars = buildBaziClipboardText(pillars, knownInput, knownFoundation).match(/四柱：[\s\S]*?日主：/)?.[0];
+  const femalePillars = buildBaziClipboardText(pillars, { ...knownInput, gender: "FEMALE" }, knownFoundation).match(/四柱：[\s\S]*?日主：/)?.[0];
   assert.deepEqual(femalePillars, malePillars);
   assert.equal(knownInput.ianaTimezone, "Asia/Shanghai");
 });
@@ -53,16 +63,26 @@ test("能力边界明确列出当前能力与未提供能力", () => {
 });
 
 test("复制文本覆盖四柱与出生摘要", () => {
-  const text = buildBaziClipboardText(["甲辰", "丙寅", "戊戌", "庚申"], knownInput);
-  assert.match(text, /^基础四柱\n年柱：甲辰\n月柱：丙寅\n日柱：戊戌\n时柱：庚申/);
+  const text = buildBaziClipboardText(["甲辰", "丙寅", "戊戌", "庚申"], knownInput, knownFoundation);
+  assert.match(text, /^八字基础命盘/);
   assert.match(text, /出生：2024-03-18 08:30/);
+  assert.match(text, /性别：男/);
   assert.match(text, /地点：中国大陆 · 北京/);
   assert.match(text, /时区：Asia\/Shanghai/);
+  assert.match(text, /四柱：\n年柱：甲辰\n月柱：丙寅\n日柱：戊戌\n时柱：庚申/);
+  assert.match(text, /日主：\n戊 · 阳 · 土/);
+  assert.match(text, /年干甲：七杀[\s\S]*日干戊：比肩/);
+  assert.doesNotMatch(text, /身强|身弱|偏旺|偏弱|一定/);
 });
 
 test("未知时柱复制为未知", () => {
-  const text = buildBaziClipboardText(["甲辰", "丙寅", "戊戌", null], { ...knownInput, localTime: null, timeKnown: false });
+  const text = buildBaziClipboardText(
+    ["甲辰", "丙寅", "戊戌", null],
+    { ...knownInput, localTime: null, timeKnown: false },
+    { ...knownFoundation, stemTenGods: [...knownFoundation.stemTenGods.slice(0, 3), null] },
+  );
   assert.match(text, /时柱：未知/);
+  assert.match(text, /时干：未知/);
   assert.match(text, /出生：2024-03-18（时辰未知）/);
 });
 
