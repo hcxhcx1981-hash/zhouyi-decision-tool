@@ -1,0 +1,28 @@
+{
+  "schema_version": "0.1",
+  "status": "RESEARCH_CANDIDATE_NOT_FOR_RUNTIME",
+  "tradition_scope": "ZIPING_BAZI",
+  "canonical_term": "日主",
+  "aliases": {
+    "日干": "等价术语，指日柱天干本身",
+    "日元": "等价术语，现代教材常用",
+    "日主": "传统子平文献常用（渊海子平·论日为主）"
+  },
+  "usage_relation_note": "日主/日元/日干三者在传统与现代资料中同指日柱天干，作为本人与十神关系计算的中心参照；三者为语义等价术语（SEMANTIC_EQUIVALENT）。",
+  "plain_language_definition": "日主（日干）是日柱的天干，在子平八字分析中作为本人和十神关系计算的中心参照。",
+  "classical_basis": {
+    "source_ids": ["SRC-L1-YUANHAI-ZIPING", "SRC-L1-ZIPING-ZHENQUAN"],
+    "excerpts": [
+      "取日干为主，以年为根，以月为苗，以日为花，以时为果（渊海子平·论日为主）",
+      "以日为主，年为本，月为提纲，时为辅佐（渊海子平·论日为主）"
+    ]
+  },
+  "interpretation_gate": "SAFE_SEMANTIC_GLOSS",
+  "prohibited_extensions": [
+    "不得延伸为“乙木人性格怎样”等五行性格论",
+    "不得由日主五行直接推断个人性格、命运"
+  ],
+  "evidence_level": "L1",
+  "consensus_status": "STATIC_CONSENSUS",
+  "status": "PROPOSE_SAFE_GLOSS"
+}

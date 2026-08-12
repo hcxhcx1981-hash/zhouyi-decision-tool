@@ -1,0 +1,48 @@
+{
+  "schema_version": "0.1",
+  "status": "RESEARCH_CANDIDATE_NOT_FOR_RUNTIME",
+  "tradition_scope": "ZIPING_BAZI",
+  "classical_anchor": {
+    "source_ids": ["SRC-L1-YUANHAI-ZIPING"],
+    "excerpts": [
+      "以年为根，以月为苗，以日为花，以时为果（论日为主）",
+      "以日为主，年为本，月为提纲，时为辅佐（论日为主）",
+      "假令月令有用神，得父母力。年有用神，得祖宗力；时有用神，得子孙力（论月令）"
+    ]
+  },
+  "pillar_roles": [
+    {
+      "pillar": "年柱",
+      "common_teaching": "祖上/长辈/早年（现代教学共识）",
+      "classical_support": "年为根、为本；年有用神得祖宗力（渊海子平）",
+      "classification": "TRADITION_POLICY_REQUIRED",
+      "note": "古典有“年柱与祖上”的直接依据，但现代教材将其扩展到“早年/原生家庭”存在口径差异；六亲宫位分配（年柱祖上）为传统观察维度。"
+    },
+    {
+      "pillar": "月柱",
+      "common_teaching": "父母/社会环境/事业宫（现代教学共识）",
+      "classical_support": "月为提纲；月令有用神得父母力（渊海子平）",
+      "classification": "TRADITION_POLICY_REQUIRED",
+      "note": "月柱含月令（提纲），在旺衰与格局中的核心地位有强依据；但“父母/社会环境”为传统六亲宫位与月令功能的合并表达，需政策确认。"
+    },
+    {
+      "pillar": "日柱",
+      "common_teaching": "本人/夫妻宫（现代教学共识）",
+      "classical_support": "日为花；日干为己身（渊海子平·眉批：日干为己、支为妻妾）",
+      "classification": "TRADITION_POLICY_REQUIRED",
+      "note": "日干为分析中心有最强依据；日支为夫妻宫属六亲宫位类象，现代教材广泛采用但存在流派表述差异。"
+    },
+    {
+      "pillar": "时柱",
+      "common_teaching": "子女/晚年（现代教学共识）",
+      "classical_support": "时为果、为辅佐；时有用神得子孙力（渊海子平）",
+      "classification": "TRADITION_POLICY_REQUIRED",
+      "note": "时柱与子女/晚年的关联有古典线索但表述依赖语境，作为“传统观察维度”而非确定性断言。"
+    }
+  ],
+  "conclusion": {
+    "freezable_as_static_semantic": false,
+    "classification": "TRADITION_POLICY_REQUIRED",
+    "reason": "柱位基础角色（年祖上/月父母/日自身/时子女）在古典与现代教材中存在大体一致的口径，但属于六亲宫位类象，直接断言个人结果（如“时柱差=子女不孝”）无可靠依据；只能作为传统观察维度展示，具体解释需政策冻结。"
+  }
+}

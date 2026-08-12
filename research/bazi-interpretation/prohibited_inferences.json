@@ -1,0 +1,68 @@
+{
+  "schema_version": "0.1",
+  "status": "RESEARCH_CANDIDATE_NOT_FOR_RUNTIME",
+  "tradition_scope": "ZIPING_BAZI",
+  "policy": "本阶段所有下列表述一律 PROHIBITED_DIRECT_INFERENCE；除非未来存在明确、经过审核的复杂规则（需多条件组合并经终审）。",
+  "prohibited_phrases": [
+    "你天生……",
+    "注定……",
+    "一生……",
+    "必定……",
+    "命中注定……",
+    "婚姻不顺……",
+    "必有横财……",
+    "晚年富贵……",
+    "事业一定成功……",
+    "容易离婚……",
+    "克父克母……",
+    "子女不孝……"
+  ],
+  "structural_counterexamples": [
+    {
+      "claim": "七杀多 = 脾气暴躁",
+      "why_blocked": "七杀的传统主题包含约束、压力、竞争、规则、责任等，与“脾气”无直接对应；表现方向（压力 vs 执行力）需旺衰与全局。",
+      "blocked_as": "PROHIBITED_DIRECT_INFERENCE"
+    },
+    {
+      "claim": "正财多 = 一定有钱",
+      "why_blocked": "正财多但身弱不任财是传统经典反例（财多身弱）；财富需旺衰与组合。",
+      "blocked_as": "PROHIBITED_DIRECT_INFERENCE"
+    },
+    {
+      "claim": "伤官 = 婚姻不好",
+      "why_blocked": "伤官见官是组合概念，其解释依赖全局；伤官本身不直接指向婚姻。",
+      "blocked_as": "PROHIBITED_DIRECT_INFERENCE"
+    },
+    {
+      "claim": "偏印 = 性格孤僻",
+      "why_blocked": "偏印（倒食）传统概念为组合性（倒食夺食，用食神忌见之），且为 REQUIRES_MORE_EVIDENCE 降级术语；任何性格结论无直接依据。",
+      "blocked_as": "PROHIBITED_DIRECT_INFERENCE"
+    },
+    {
+      "claim": "正官 = 一定当官",
+      "why_blocked": "正官主题为规则、责任、纪律、名誉，与职业结果无必然对应。",
+      "blocked_as": "PROHIBITED_DIRECT_INFERENCE"
+    },
+    {
+      "claim": "食神 = 一定有口福",
+      "why_blocked": "食神主题为才华、表达、享受，与具体生活细节无直接对应。",
+      "blocked_as": "PROHIBITED_DIRECT_INFERENCE"
+    },
+    {
+      "claim": "劫财 = 一定破财",
+      "why_blocked": "劫财的夺财效应需身强身弱与财星组合；个体结果不可直接断言。",
+      "blocked_as": "PROHIBITED_DIRECT_INFERENCE"
+    },
+    {
+      "claim": "比肩 = 一定朋友多",
+      "why_blocked": "比肩主题为同辈关系、自我、竞争，数量不直接等于社交结果。",
+      "blocked_as": "PROHIBITED_DIRECT_INFERENCE"
+    }
+  ],
+  "pseudoscience_block": {
+    "policy": "不得把命理描述成科学事实、心理学事实、医学事实或因果证明。",
+    "allowed_phrasing": "“传统子平命理中通常这样观察……”",
+    "prohibited_phrasing": "“科学证明你……”“医学上你……”"
+  },
+  "phrasing_requirement": "用户展示一律采用“传统子平命理中通常这样观察”的表述框架，禁止确定性人生断言。"
+}

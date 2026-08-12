@@ -1,0 +1,197 @@
+{
+  "schema_version": "0.1",
+  "status": "RESEARCH_CANDIDATE_NOT_FOR_RUNTIME",
+  "research_scope": "子平八字命理解释层研究：十神传统语义、数量解释边界、透干/藏干差异、柱位语义、日主定义、旺衰依赖研究",
+  "tradition_scope": "ZIPING_BAZI",
+  "excluded_traditions": [
+    "紫微斗数",
+    "奇门遁甲",
+    "六爻",
+    "梅花易数",
+    "西方占星",
+    "塔罗",
+    "生肖性格学",
+    "民间生肖配对"
+  ],
+  "excluded_note": "其他术数出现类似说法时，不作为子平八字证据。",
+  "sources": [
+    {
+      "source_id": "SRC-L1-YUANHAI-ZIPING",
+      "evidence_level": "L1",
+      "title": "渊海子平",
+      "author_or_attribution": "传统子平文献（宋代以降成书，明代刊行）",
+      "urls": [
+        "https://zh.wikisource.org/wiki/淵海子平",
+        "https://ctext.org/wiki.pl?chapter=296619&if=en&remap=gb"
+      ],
+      "key_sections": [
+        "论日为主",
+        "论月令",
+        "论太岁吉凶",
+        "六亲总论"
+      ],
+      "supports": [
+        "日主/日干为分析中心（以日为主，年为本，月为提纲，时为辅佐）",
+        "年月日时根苗花果之喻",
+        "月令提纲地位",
+        "十神六亲类象（六亲总论）",
+        "官杀财印食伤比劫五类十神体系"
+      ],
+      "limitations": "公开转录本；六亲类象（如七杀为子、正财为妻）属传统观察维度，不直接等于现代个人解释。"
+    },
+    {
+      "source_id": "SRC-L1-DITIANSUI",
+      "evidence_level": "L1",
+      "title": "滴天髓（含任铁樵注）",
+      "author_or_attribution": "相传京图撰、刘伯温注、任铁樵增注（清代）",
+      "urls": [
+        "https://zh.wikisource.org/wiki/滴天髓"
+      ],
+      "key_sections": [
+        "天干论",
+        "衰旺论",
+        "通根章"
+      ],
+      "supports": [
+        "能知衰旺之真机，其于三命之奥，思过半矣",
+        "天干得一比肩在地支，如树之有根，风摇而不倒（通根类象）",
+        "旺衰判断输入（得令/得地/得生/得助）",
+        "得时者虽只一干，可当半壁（任铁樵注）"
+      ],
+      "limitations": "旺衰为解释前置层；本候选不实现旺衰算法。"
+    },
+    {
+      "source_id": "SRC-L1-ZIPING-ZHENQUAN",
+      "evidence_level": "L1",
+      "title": "子平真诠",
+      "author_or_attribution": "沈孝瞻（清代）",
+      "urls": [
+        "https://zh.wikisource.org/wiki/子平真诠"
+      ],
+      "key_sections": [
+        "论十神",
+        "论用神",
+        "论生克"
+      ],
+      "supports": [
+        "十神体系以日干为主、配月令定格局",
+        "财官印食为顺用之善神，煞伤劫刃为逆用之不善神（十神性质的传统分类）",
+        "十神有情无情、有力无力之论（组合判断）"
+      ],
+      "limitations": "十神吉凶性质依赖格局组合，不构成单个十神直接断语。"
+    },
+    {
+      "source_id": "SRC-L1-SANMING-TONGHUI",
+      "evidence_level": "L1",
+      "title": "三命通会",
+      "author_or_attribution": "万民英（明代）",
+      "urls": [
+        "https://zh.wikisource.org/wiki/三命通會"
+      ],
+      "key_sections": [
+        "论十神",
+        "论支藏",
+        "论旺相休囚死"
+      ],
+      "supports": [
+        "十神六亲与人事类象的传统整理",
+        "旺相休囚死框架（五行月令状态）"
+      ],
+      "limitations": "类象众多且语境依赖强，仅取结构性定义，不采具体断语。"
+    },
+    {
+      "source_id": "SRC-L2-QIANLI-MINGGAO",
+      "evidence_level": "L2",
+      "title": "千里命稿",
+      "author_or_attribution": "韦千里（现代子平教材，有明确版本）",
+      "urls": [
+        "https://ctext.org/wiki.pl?chapter=447084&if=en&remap=gb",
+        "https://ctext.org/wiki.pl?chapter=933376&if=en&remap=gb"
+      ],
+      "key_sections": [
+        "五行及十神关系",
+        "十神与支藏说明"
+      ],
+      "supports": [
+        "五种生克关系按阴阳拆分为十神（确定性公式，与 foundation 一致）",
+        "十神基础解释与现代白话整理",
+        "本气术语存在"
+      ],
+      "limitations": "只取关系定义与基础解释，不采集论命断语。"
+    },
+    {
+      "source_id": "SRC-L2-MINGLI-TANYUAN",
+      "evidence_level": "L2",
+      "title": "命理探源",
+      "author_or_attribution": "袁树珊（现代子平著作，有明确版本）",
+      "urls": [
+        "https://ctext.org/wiki.pl?chapter=419625&if=en&remap=gb"
+      ],
+      "key_sections": [
+        "卷二起例",
+        "论十神与六亲"
+      ],
+      "supports": [
+        "十神统一关系（与公式一致）",
+        "月令与旺衰的传统说明"
+      ],
+      "limitations": "公开转录中有个别异文（见 bazi-foundation 午支记录）；不采断语。"
+    },
+    {
+      "source_id": "SRC-L3-MODERN-EDUCATIONAL",
+      "evidence_level": "L3",
+      "title": "现代子平入门教材与教学资料（交叉核对用）",
+      "author_or_attribution": "有明确作者与出版信息的现代命理教材（通用教学口径）",
+      "urls": [],
+      "key_sections": [
+        "十神基础",
+        "旺衰判断",
+        "柱位六亲"
+      ],
+      "supports": [
+        "十神传统主题的白话整理（用于 cross-check，不单独作为证据）",
+        "柱位基础角色（年祖上/月父母社会/日自身/时子女晚年的现代教学共识）"
+      ],
+      "limitations": "现代整理存在口径差异，仅交叉核对；具体断语不作证据。"
+    },
+    {
+      "source_id": "SRC-REF-COMMON-MISUSE",
+      "evidence_level": "L3",
+      "title": "常见误用与网络断语反例集（仅作反例，不作为规则证据）",
+      "author_or_attribution": "算命网站自动文案、自媒体、短视频、论坛等（按任务第 19 节禁止作为正式依据）",
+      "urls": [],
+      "key_sections": [
+        "七杀多=脾气暴躁",
+        "正财多=一定有钱",
+        "伤官=婚姻不好",
+        "偏印=性格孤僻",
+        "正官=一定当官",
+        "食神=一定有口福",
+        "劫财=一定破财",
+        "比肩=一定朋友多"
+      ],
+      "supports": [
+        "作为 PROHIBITED_DIRECT_INFERENCE 的常见误用反例来源"
+      ],
+      "limitations": "禁止作为正式规则依据；仅登记常见误用。"
+    }
+  ],
+  "source_policy": {
+    "accepted_levels": ["L1", "L2", "L3"],
+    "as_rule_evidence": ["L1", "L2"],
+    "cross_check_only": ["L3"],
+    "as_misuse_counterexamples_only": ["SRC-REF-COMMON-MISUSE"],
+    "excluded_as_rule_evidence": [
+      "算命网站自动文案",
+      "自媒体",
+      "短视频",
+      "百度知道",
+      "论坛",
+      "搜索摘要",
+      "AI生成文章",
+      "小红书/抖音命理博主",
+      "内容农场"
+    ],
+    "note": "禁止类来源可作常见误用反例，不得作规则证据。"
+  }
+}

@@ -1,0 +1,400 @@
+{
+  "schema_version": "0.1",
+  "status": "RESEARCH_CANDIDATE_NOT_FOR_RUNTIME",
+  "tradition_scope": "ZIPING_BAZI",
+  "evidence_policy": {
+    "short_excerpt_only": "只保存支持该语义所需的最短原文，不整章复制",
+    "paraphrase_classes": [
+      "DIRECT_TEXT_MEANING",
+      "CONSERVATIVE_MODERN_PARAPHRASE",
+      "MODERN_SEMANTIC_EXTENSION"
+    ],
+    "freeze_rule": "仅 DIRECT_TEXT_MEANING 或有充分交叉证据的 CONSERVATIVE_MODERN_PARAPHRASE 可 PROPOSE_SAFE_GLOSS_FREEZE；MODERN_SEMANTIC_EXTENSION 必须降级为 CONTEXT_REQUIRED 或 REQUIRES_MORE_EVIDENCE",
+    "quality_first": "证据不足就删词或降级，不为保留文案硬找证据"
+  },
+  "safe_gloss_items": [
+    {
+      "semantic_id": "SAFE-GLOSS-DAY-MASTER",
+      "canonical_term": "日主",
+      "proposed_safe_gloss": "传统子平常以日主（日干）为中心，作为本人与十神关系计算的参照。",
+      "source_evidence": [
+        {
+          "source_id": "SRC-L1-YUANHAI-ZIPING",
+          "title": "渊海子平",
+          "section": "论日为主",
+          "url": "https://zh.wikisource.org/wiki/淵海子平",
+          "retrieved_date": "2026-08-12",
+          "short_excerpt": "取日干为主，以年为根，以月为苗，以日为花，以时为果",
+          "supports_exactly": "日干为主（分析中心）",
+          "limitations": "根苗花果为整体喻象，不逐柱展开个人解释"
+        }
+      ],
+      "evidence_strength": "STRONG",
+      "paraphrase_class": "DIRECT_TEXT_MEANING",
+      "freeze_recommendation": "PROPOSE_SAFE_GLOSS_FREEZE"
+    },
+    {
+      "semantic_id": "SAFE-GLOSS-BIJIAN",
+      "canonical_term": "比肩",
+      "proposed_safe_gloss": "传统子平常从同辈、兄弟朋友关系等主题观察比肩。",
+      "source_evidence": [
+        {
+          "source_id": "SRC-L1-YUANHAI-ZIPING",
+          "title": "渊海子平",
+          "section": "六亲总篇",
+          "url": "https://zh.wikisource.org/wiki/淵海子平",
+          "retrieved_date": "2026-08-12",
+          "short_excerpt": "比肩为兄弟姐妹也",
+          "supports_exactly": "比肩与同辈（兄弟姐妹）主题关联",
+          "limitations": "六亲类象为传统观察维度；不得扩展为社交结果断言"
+        }
+      ],
+      "evidence_strength": "STRONG",
+      "paraphrase_class": "CONSERVATIVE_MODERN_PARAPHRASE",
+      "freeze_recommendation": "REQUIRES_MORE_EVIDENCE",
+      "removed_modern_words": [
+        "自我意识",
+        "独立",
+        "合作"
+      ],
+      "removal_reason": "上述词为现代扩展，渊海子平原文无直接支持（MODERN_SEMANTIC_EXTENSION）",
+      "cross_source_count": 1,
+      "degradation_reason": "比肩 主题目前仅《渊海子平》单一已登记来源直接支持（['自我意识', '独立', '合作'] 为现代扩展已剔除），未找到第二个独立已登记可靠来源，按规则降级 REQUIRES_MORE_EVIDENCE，不硬凑",
+      "cross_note": "单来源，未达 2 独立 source 门槛"
+    },
+    {
+      "semantic_id": "SAFE-GLOSS-JIECAI",
+      "canonical_term": "劫财",
+      "proposed_safe_gloss": "传统子平常从同辈关系与分夺（争夺分耗）等主题观察劫财。",
+      "source_evidence": [
+        {
+          "source_id": "SRC-L1-YUANHAI-ZIPING",
+          "title": "渊海子平",
+          "section": "论劫财",
+          "url": "https://zh.wikisource.org/wiki/淵海子平",
+          "retrieved_date": "2026-08-12",
+          "short_excerpt": "五阴见五阳为劫财，主破耗、防小人",
+          "supports_exactly": "劫财与争夺分耗（分夺）主题关联（保守转译）",
+          "limitations": "原文为传统观察，不译成个人破财断言"
+        },
+        {
+          "source_id": "SRC-L1-ZIPING-ZHENQUAN",
+          "title": "子平真诠",
+          "section": "论建禄月劫",
+          "url": "https://www.sushituan.cn/71254",
+          "retrieved_date": "2026-08-12",
+          "short_excerpt": "建禄者，月建逢禄堂也，禄即是劫；禄劫用财……转劫生财",
+          "supports_exactly": "劫财（劫）与分夺（劫财相克需化）主题关联（与渊海子平“主破耗”交叉）",
+          "limitations": "原文为格局语境，本证据仅用于主题关联交叉核验"
+        }
+      ],
+      "evidence_strength": "MODERATE",
+      "paraphrase_class": "CONSERVATIVE_MODERN_PARAPHRASE",
+      "freeze_recommendation": "PROPOSE_SAFE_GLOSS_FREEZE",
+      "removed_modern_words": [
+        "资源共享",
+        "行动力"
+      ],
+      "removal_reason": "上述词为现代扩展，原文无直接支持",
+      "cross_source_count": 2,
+      "cross_note": "渊海子平（L1）+ 子平真诠（L1）双来源交叉支持"
+    },
+    {
+      "semantic_id": "SAFE-GLOSS-SHISHEN",
+      "canonical_term": "食神",
+      "proposed_safe_gloss": "传统子平常从衣食丰足、福气享受等主题观察食神。",
+      "source_evidence": [
+        {
+          "source_id": "SRC-L1-YUANHAI-ZIPING",
+          "title": "渊海子平",
+          "section": "论食神",
+          "url": "https://zh.wikisource.org/wiki/淵海子平",
+          "retrieved_date": "2026-08-12",
+          "short_excerpt": "主人财厚食丰、腹量宽洪、优游自足",
+          "supports_exactly": "食神与衣食丰足、福气享受主题关联",
+          "limitations": "原文为传统类象；不得扩展为“一定长寿/有口福”断言"
+        },
+        {
+          "source_id": "SRC-L1-ZIPING-ZHENQUAN",
+          "title": "子平真诠",
+          "section": "论食神",
+          "url": "https://www.sushituan.cn/71254",
+          "retrieved_date": "2026-08-12",
+          "short_excerpt": "食神本属泄气，以其能生正财，所以喜之。故食神生财，美格也",
+          "supports_exactly": "食神与食禄生财（福禄）主题关联（与渊海子平“财厚食丰”交叉）",
+          "limitations": "原文为格局语境，本证据仅用于主题关联交叉核验"
+        }
+      ],
+      "evidence_strength": "STRONG",
+      "paraphrase_class": "CONSERVATIVE_MODERN_PARAPHRASE",
+      "freeze_recommendation": "PROPOSE_SAFE_GLOSS_FREEZE",
+      "removed_modern_words": [
+        "才华",
+        "表达"
+      ],
+      "removal_reason": "渊海子平论食神原文主衣食福禄，未直接支持“才华/表达”",
+      "cross_source_count": 2,
+      "cross_note": "渊海子平（L1）+ 子平真诠（L1）双来源交叉支持"
+    },
+    {
+      "semantic_id": "SAFE-GLOSS-SHANGGUAN",
+      "canonical_term": "伤官",
+      "proposed_safe_gloss": "传统子平常从才艺与傲气等主题观察伤官。",
+      "source_evidence": [
+        {
+          "source_id": "SRC-L1-YUANHAI-ZIPING",
+          "title": "渊海子平",
+          "section": "论伤官",
+          "url": "https://zh.wikisource.org/wiki/淵海子平",
+          "retrieved_date": "2026-08-12",
+          "short_excerpt": "伤官主人多才艺、傲物气高",
+          "supports_exactly": "伤官与才艺、傲气主题关联",
+          "limitations": "原文为传统类象；伤官见官等组合解释属 CONTEXT_REQUIRED"
+        },
+        {
+          "source_id": "SRC-L1-ZIPING-ZHENQUAN",
+          "title": "子平真诠",
+          "section": "论伤官",
+          "url": "https://www.sushituan.cn/71254",
+          "retrieved_date": "2026-08-12",
+          "short_excerpt": "伤官虽非吉神，实为秀气，故文人学士，多于伤官格内得之",
+          "supports_exactly": "伤官与才艺秀气主题关联（与渊海子平“多才艺、傲物气高”交叉）",
+          "limitations": "原文为格局语境，本证据仅用于主题关联交叉核验"
+        }
+      ],
+      "evidence_strength": "STRONG",
+      "paraphrase_class": "CONSERVATIVE_MODERN_PARAPHRASE",
+      "freeze_recommendation": "PROPOSE_SAFE_GLOSS_FREEZE",
+      "removed_modern_words": [
+        "创造力",
+        "个性表达",
+        "叛逆"
+      ],
+      "removal_reason": "原文“多才艺、傲物气高”保守转译已足够；创造力/个性/叛逆为现代扩展",
+      "cross_source_count": 2,
+      "cross_note": "渊海子平（L1）+ 子平真诠（L1）双来源交叉支持"
+    },
+    {
+      "semantic_id": "SAFE-GLOSS-ZHENGCAI",
+      "canonical_term": "正财",
+      "proposed_safe_gloss": "传统子平常从养命之财（正当财源）等主题观察正财。",
+      "source_evidence": [
+        {
+          "source_id": "SRC-L1-YUANHAI-ZIPING",
+          "title": "渊海子平",
+          "section": "论正财",
+          "url": "https://zh.wikisource.org/wiki/淵海子平",
+          "retrieved_date": "2026-08-12",
+          "short_excerpt": "正财者，吾妻之财也；财要得时，不要财多",
+          "supports_exactly": "正财为养命之财（正当财源）主题",
+          "limitations": "原文同时强调身旺任财（组合条件），财多不任财为反例"
+        },
+        {
+          "source_id": "SRC-L1-ZIPING-ZHENQUAN",
+          "title": "子平真诠",
+          "section": "论财",
+          "url": "https://www.sushituan.cn/71254",
+          "retrieved_date": "2026-08-12",
+          "short_excerpt": "财为我克，使用之物也，以能生官，所以为美。为财帛，为妻妾，为才能，为驿马，皆财类也",
+          "supports_exactly": "正财（财类）与财帛、养命主题关联（与渊海子平“吾妻之财”交叉）",
+          "limitations": "原文为格局语境，本证据仅用于主题关联交叉核验"
+        }
+      ],
+      "evidence_strength": "MODERATE",
+      "paraphrase_class": "CONSERVATIVE_MODERN_PARAPHRASE",
+      "freeze_recommendation": "PROPOSE_SAFE_GLOSS_FREEZE",
+      "removed_modern_words": [
+        "稳定财富",
+        "勤劳务实"
+      ],
+      "removal_reason": "原文主“养命之财/妻之财”，未直接支持“稳定财富/勤劳务实”",
+      "cross_source_count": 2,
+      "cross_note": "渊海子平（L1）+ 子平真诠（L1）双来源交叉支持"
+    },
+    {
+      "semantic_id": "SAFE-GLOSS-PIANCAI",
+      "canonical_term": "偏财",
+      "proposed_safe_gloss": "传统子平常从众人之财（非固定之财）等主题观察偏财。",
+      "source_evidence": [
+        {
+          "source_id": "SRC-L1-YUANHAI-ZIPING",
+          "title": "渊海子平",
+          "section": "论偏财",
+          "url": "https://zh.wikisource.org/wiki/淵海子平",
+          "retrieved_date": "2026-08-12",
+          "short_excerpt": "偏财者，乃众人之财也",
+          "supports_exactly": "偏财与众人之财主题（原文直译）",
+          "limitations": "原文同时言兄弟姊妹有夺则福不全（组合语境）"
+        }
+      ],
+      "evidence_strength": "STRONG",
+      "paraphrase_class": "CONSERVATIVE_MODERN_PARAPHRASE",
+      "freeze_recommendation": "REQUIRES_MORE_EVIDENCE",
+      "removed_modern_words": [
+        "投资机遇",
+        "社交人脉"
+      ],
+      "removal_reason": "原文“众人之财”直译即可；投资/机遇/人脉为现代扩展",
+      "cross_source_count": 1,
+      "degradation_reason": "偏财 主题目前仅《渊海子平》单一已登记来源直接支持（['投资机遇', '社交人脉'] 为现代扩展已剔除），未找到第二个独立已登记可靠来源，按规则降级 REQUIRES_MORE_EVIDENCE，不硬凑",
+      "cross_note": "单来源，未达 2 独立 source 门槛"
+    },
+    {
+      "semantic_id": "SAFE-GLOSS-QISHA",
+      "canonical_term": "七杀",
+      "proposed_safe_gloss": "传统子平常从克身攻身、需制伏等主题观察七杀。",
+      "source_evidence": [
+        {
+          "source_id": "SRC-L1-YUANHAI-ZIPING",
+          "title": "渊海子平",
+          "section": "论偏官（七杀）",
+          "url": "https://zh.wikisource.org/wiki/淵海子平",
+          "retrieved_date": "2026-08-12",
+          "short_excerpt": "偏官七杀即小人……要制伏；身旺有气为偏官，身弱无制为七杀",
+          "supports_exactly": "七杀为克身攻身之星、需制伏（制化）的传统主题",
+          "limitations": "制伏/身旺身弱为组合条件（CONTEXT_REQUIRED）；不得直接断言压力或性格"
+        },
+        {
+          "source_id": "SRC-L1-ZIPING-ZHENQUAN",
+          "title": "子平真诠",
+          "section": "论偏官",
+          "url": "https://www.sushituan.cn/71254",
+          "retrieved_date": "2026-08-12",
+          "short_excerpt": "煞以攻身，似非美物，然大贵之格，多存七煞。盖控制得宜，煞为我用",
+          "supports_exactly": "七杀（煞）与攻身、需制伏主题关联（与渊海子平“要制伏”交叉）",
+          "limitations": "原文为格局语境，本证据仅用于主题关联交叉核验"
+        }
+      ],
+      "evidence_strength": "STRONG",
+      "paraphrase_class": "CONSERVATIVE_MODERN_PARAPHRASE",
+      "freeze_recommendation": "PROPOSE_SAFE_GLOSS_FREEZE",
+      "removed_modern_words": [
+        "规则",
+        "责任",
+        "权威"
+      ],
+      "removal_reason": "原文主“克身攻身、需制伏”；规则/责任/权威为现代扩展词",
+      "cross_source_count": 2,
+      "cross_note": "渊海子平（L1）+ 子平真诠（L1）双来源交叉支持"
+    },
+    {
+      "semantic_id": "SAFE-GLOSS-ZHENGGUAN",
+      "canonical_term": "正官",
+      "proposed_safe_gloss": "传统子平常从贵气（名誉地位）等主题观察正官。",
+      "source_evidence": [
+        {
+          "source_id": "SRC-L1-YUANHAI-ZIPING",
+          "title": "渊海子平",
+          "section": "论正官",
+          "url": "https://zh.wikisource.org/wiki/淵海子平",
+          "retrieved_date": "2026-08-12",
+          "short_excerpt": "正官乃贵气之物，大忌刑冲破害",
+          "supports_exactly": "正官与贵气（名誉地位）主题关联",
+          "limitations": "贵气为传统类象；不得扩展为“一定当官”"
+        },
+        {
+          "source_id": "SRC-L1-ZIPING-ZHENQUAN",
+          "title": "子平真诠",
+          "section": "论正官",
+          "url": "https://www.sushituan.cn/71254",
+          "retrieved_date": "2026-08-12",
+          "short_excerpt": "正官者分所当尊，如在国有君，在家有亲",
+          "supports_exactly": "正官与贵气、尊位主题关联（与渊海子平“贵气之物”交叉）",
+          "limitations": "原文为格局语境，本证据仅用于主题关联交叉核验"
+        }
+      ],
+      "evidence_strength": "STRONG",
+      "paraphrase_class": "CONSERVATIVE_MODERN_PARAPHRASE",
+      "freeze_recommendation": "PROPOSE_SAFE_GLOSS_FREEZE",
+      "removed_modern_words": [
+        "规则",
+        "纪律",
+        "上级"
+      ],
+      "removal_reason": "原文主“贵气之物”；规则/纪律/上级为现代扩展词",
+      "cross_source_count": 2,
+      "cross_note": "渊海子平（L1）+ 子平真诠（L1）双来源交叉支持"
+    },
+    {
+      "semantic_id": "SAFE-GLOSS-PIANYIN",
+      "canonical_term": "偏印",
+      "proposed_safe_gloss": null,
+      "source_evidence": [
+        {
+          "source_id": "SRC-L1-YUANHAI-ZIPING",
+          "title": "渊海子平",
+          "section": "论倒食",
+          "url": "https://zh.wikisource.org/wiki/淵海子平",
+          "retrieved_date": "2026-08-12",
+          "short_excerpt": "倒食者，冲财神之谓也；一名吞啗煞；用食神亦忌见之",
+          "supports_exactly": "偏印（倒食）传统概念为倒食夺食（组合性、偏负面）",
+          "limitations": "倒食夺食为组合概念（用食神忌见之），非独立主题"
+        }
+      ],
+      "evidence_strength": "WEAK",
+      "paraphrase_class": "MODERN_SEMANTIC_EXTENSION",
+      "freeze_recommendation": "REQUIRES_MORE_EVIDENCE",
+      "degradation_reason": "“特殊学识/灵感/深度思考”为现代扩展，原文无直接支持；倒食为组合性概念，不构成独立 SAFE_GLOSS 主题；降级 REQUIRES_MORE_EVIDENCE，暂不冻结"
+    },
+    {
+      "semantic_id": "SAFE-GLOSS-ZHENGYIN",
+      "canonical_term": "正印",
+      "proposed_safe_gloss": "传统子平常从生身庇护（如母）、智虑等主题观察正印。",
+      "source_evidence": [
+        {
+          "source_id": "SRC-L1-YUANHAI-ZIPING",
+          "title": "渊海子平",
+          "section": "论印绶",
+          "url": "https://zh.wikisource.org/wiki/淵海子平",
+          "retrieved_date": "2026-08-12",
+          "short_excerpt": "生我者，即印绶也；印绶之人智虑、一生少病",
+          "supports_exactly": "正印为生身之星（如母庇护）、智虑主题",
+          "limitations": "印绶喜官星生印、忌财旺破印为组合条件（CONTEXT_REQUIRED）"
+        },
+        {
+          "source_id": "SRC-L1-ZIPING-ZHENQUAN",
+          "title": "子平真诠",
+          "section": "论印绶",
+          "url": "https://www.sushituan.cn/71254",
+          "retrieved_date": "2026-08-12",
+          "short_excerpt": "印绶喜其生身，正偏同为美格",
+          "supports_exactly": "正印（印绶）与生身主题关联（与渊海子平“生我者即印绶”交叉）",
+          "limitations": "原文为格局语境，本证据仅用于主题关联交叉核验"
+        }
+      ],
+      "evidence_strength": "STRONG",
+      "paraphrase_class": "CONSERVATIVE_MODERN_PARAPHRASE",
+      "freeze_recommendation": "PROPOSE_SAFE_GLOSS_FREEZE",
+      "removed_modern_words": [
+        "贵人"
+      ],
+      "removal_reason": "原文主“生我印绶、智虑”；“贵人”为现代扩展词",
+      "cross_source_count": 2,
+      "cross_note": "渊海子平（L1）+ 子平真诠（L1）双来源交叉支持"
+    }
+  ],
+  "summary": {
+    "total_items": 11,
+    "freeze_proposed": 8,
+    "degraded": 3,
+    "direct_text_meaning": 1,
+    "conservative_modern_paraphrase": 7,
+    "modern_semantic_extension": 0,
+    "cross_source_2_plus": 7,
+    "freeze_items": [
+      "SAFE-GLOSS-DAY-MASTER",
+      "SAFE-GLOSS-JIECAI",
+      "SAFE-GLOSS-SHISHEN",
+      "SAFE-GLOSS-SHANGGUAN",
+      "SAFE-GLOSS-ZHENGCAI",
+      "SAFE-GLOSS-QISHA",
+      "SAFE-GLOSS-ZHENGGUAN",
+      "SAFE-GLOSS-ZHENGYIN"
+    ],
+    "degraded_items": [
+      "SAFE-GLOSS-BIJIAN",
+      "SAFE-GLOSS-PIANCAI",
+      "SAFE-GLOSS-PIANYIN"
+    ]
+  }
+}

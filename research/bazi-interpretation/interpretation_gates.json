@@ -1,0 +1,311 @@
+{
+  "schema_version": "0.1",
+  "status": "RESEARCH_CANDIDATE_NOT_FOR_RUNTIME",
+  "tradition_scope": "ZIPING_BAZI",
+  "gates": {
+    "FACT_ONLY": {
+      "name": "FACT_ONLY",
+      "description": "仅陈述可确定性事实（如干支、十神关系、藏干成员），不含任何解释。",
+      "example": "月干辛为乙木日主之七杀。"
+    },
+    "SAFE_SEMANTIC_GLOSS": {
+      "name": "SAFE_SEMANTIC_GLOSS",
+      "description": "传统子平中与该十神/结构相关的主题关联（允许对普通用户展示，属主题而非个人结论）。",
+      "example": "传统子平常从约束、规则、压力、竞争等主题观察七杀。"
+    },
+    "CONTEXT_REQUIRED": {
+      "name": "CONTEXT_REQUIRED",
+      "description": "有传统依据，但必须结合日主旺衰、月令、通根、生扶克泄、格局、制化、位置、全局组合等条件后才能解释；不得直接生成个人结论。",
+      "example": "七杀可以表现为压力，也可能表现为执行力、权责等不同方向，需结合全局判断。"
+    },
+    "TRADITION_POLICY_REQUIRED": {
+      "name": "TRADITION_POLICY_REQUIRED",
+      "description": "需要选定流派政策后才能机器化（如柱位六亲、透干强弱、本中余气）。",
+      "example": "柱位与六亲的对应关系需政策冻结后才能展示。"
+    },
+    "PROHIBITED_DIRECT_INFERENCE": {
+      "name": "PROHIBITED_DIRECT_INFERENCE",
+      "description": "禁止仅凭单一结构直接推断的人生断语；必须建立反例与阻断说明。",
+      "example": "七杀多 = 脾气暴躁（禁止）。"
+    },
+    "OUT_OF_SCOPE": {
+      "name": "OUT_OF_SCOPE",
+      "description": "超出本轮范围（旺衰算法、喜用神、大运流年、人生预测等），禁止输出。",
+      "example": "身强 60 分、身弱 40 分（禁止自造模型）。"
+    }
+  },
+  "interpretation_gate_flow": "FACT_ONLY → SAFE_SEMANTIC_GLOSS →（需上下文时）CONTEXT_REQUIRED；任何带个人化判断的输出必须满足对应 gate；无 gate 支撑的断语一律 PROHIBITED_DIRECT_INFERENCE。",
+  "test_cases": [
+    {
+      "case_id": "CASE-I01",
+      "description": "单个七杀存在",
+      "allowed": [
+        "说明七杀关系（FACT_ONLY）",
+        "传统子平常从克身攻身、需制伏等主题观察七杀。"
+      ],
+      "allowed_gate": "SAFE_SEMANTIC_GLOSS",
+      "prohibited": [
+        "直接判断性格（如“你脾气大”）",
+        "直接判断事业吉凶",
+        "直接判断“压力巨大”"
+      ]
+    },
+    {
+      "case_id": "CASE-I02",
+      "description": "两个七杀存在",
+      "allowed": [
+        "“命盘中有两个可见七杀关系”（FACT_ONLY）"
+      ],
+      "allowed_gate": "FACT_ONLY",
+      "prohibited": [
+        "“七杀很重”",
+        "“压力巨大”",
+        "“事业心极强”",
+        "“脾气暴躁”"
+      ]
+    },
+    {
+      "case_id": "CASE-I03",
+      "description": "正财存在",
+      "allowed": [
+        "说明正财关系（FACT_ONLY）",
+        "传统子平常从养命之财（正当财源）等主题观察正财。"
+      ],
+      "allowed_gate": "SAFE_SEMANTIC_GLOSS",
+      "prohibited": [
+        "“命里有钱”",
+        "“财运一定好”"
+      ]
+    },
+    {
+      "case_id": "CASE-I04",
+      "description": "伤官存在",
+      "allowed": [
+        "说明伤官关系（FACT_ONLY）",
+        "传统子平常从才艺与傲气等主题观察伤官。"
+      ],
+      "allowed_gate": "SAFE_SEMANTIC_GLOSS",
+      "prohibited": [
+        "“婚姻不好”",
+        "“克夫/克妻”"
+      ]
+    },
+    {
+      "case_id": "CASE-I05",
+      "description": "正官存在",
+      "allowed": [
+        "说明正官关系（FACT_ONLY）",
+        "传统子平常从贵气（名誉地位）等主题观察正官。"
+      ],
+      "allowed_gate": "SAFE_SEMANTIC_GLOSS",
+      "prohibited": [
+        "“必定当官”",
+        "“事业一定成功”"
+      ]
+    },
+    {
+      "case_id": "CASE-I06",
+      "description": "食神存在",
+      "allowed": [
+        "说明食神关系（FACT_ONLY）",
+        "传统子平常从衣食丰足、福气享受等主题观察食神。"
+      ],
+      "allowed_gate": "SAFE_SEMANTIC_GLOSS",
+      "prohibited": [
+        "“一定有口福”",
+        "“一生安逸”"
+      ]
+    },
+    {
+      "case_id": "CASE-I07",
+      "description": "偏印存在",
+      "allowed": [
+        "“该结构关系被分类为偏印”（FACT_ONLY）"
+      ],
+      "allowed_gate": "FACT_ONLY",
+      "prohibited": [
+        "“性格孤僻”",
+        "“克子女”",
+        "“特殊学识/灵感/深度思考”等 SAFE_GLOSS 文案（偏印降级 REQUIRES_MORE_EVIDENCE）"
+      ]
+    },
+    {
+      "case_id": "CASE-I08",
+      "description": "劫财存在",
+      "allowed": [
+        "说明劫财关系（FACT_ONLY）",
+        "传统子平常从同辈关系与分夺（争夺分耗）等主题观察劫财。"
+      ],
+      "allowed_gate": "SAFE_SEMANTIC_GLOSS",
+      "prohibited": [
+        "“一定破财”",
+        "“一定败家”"
+      ]
+    },
+    {
+      "case_id": "CASE-I09",
+      "description": "比肩存在",
+      "allowed": [
+        "“该结构关系被分类为比肩”（FACT_ONLY）"
+      ],
+      "allowed_gate": "FACT_ONLY",
+      "prohibited": [
+        "“一定朋友多”",
+        "“性格固执”",
+        "“自我意识/独立/合作”等 SAFE_GLOSS 文案（比肩降级 REQUIRES_MORE_EVIDENCE）"
+      ]
+    },
+    {
+      "case_id": "CASE-I10",
+      "description": "偏财存在",
+      "allowed": [
+        "“该结构关系被分类为偏财”（FACT_ONLY）"
+      ],
+      "allowed_gate": "FACT_ONLY",
+      "prohibited": [
+        "“意外之财”",
+        "“一定发财”",
+        "“投资机遇/社交人脉”等 SAFE_GLOSS 文案（偏财降级 REQUIRES_MORE_EVIDENCE）"
+      ]
+    },
+    {
+      "case_id": "CASE-I11",
+      "description": "天干出现某十神（透出）",
+      "allowed": [
+        "“月干辛为日主之七杀，属于天干透出”（FACT_ONLY）",
+        "传统子平中天干为显、地支为藏（类象），透出通常被赋予更直接的解释地位（主题层，不解释强弱）。"
+      ],
+      "allowed_gate": "SAFE_SEMANTIC_GLOSS",
+      "prohibited": [
+        "“透出所以力量更强/更弱”的强弱结论",
+        "由透出直接推断吉凶"
+      ]
+    },
+    {
+      "case_id": "CASE-I12",
+      "description": "仅藏干出现某十神",
+      "allowed": [
+        "“该十神仅存在于地支藏干中”（FACT_ONLY）"
+      ],
+      "allowed_gate": "FACT_ONLY",
+      "prohibited": [
+        "“藏干力量小所以不重要”",
+        "“藏干=隐性性格”等强弱/人格结论"
+      ]
+    },
+    {
+      "case_id": "CASE-I13",
+      "description": "时辰未知",
+      "allowed": [
+        "明确说明时柱缺失，仅基于年月日解释",
+        "仅展示日主与已知干支的十神关系"
+      ],
+      "allowed_gate": "FACT_ONLY",
+      "prohibited": [
+        "任何依赖时柱的解释",
+        "“时柱代表子女/晚年所以……”等断语"
+      ]
+    },
+    {
+      "case_id": "CASE-I14",
+      "description": "同十神多次出现（3 次七杀）",
+      "allowed": [
+        "“命盘中有三个可见七杀关系”（FACT_ONLY，纯计数）"
+      ],
+      "allowed_gate": "FACT_ONLY",
+      "prohibited": [
+        "“七杀很重”",
+        "“压力巨大”",
+        "“性格刚烈”"
+      ]
+    },
+    {
+      "case_id": "CASE-I15",
+      "description": "多十神组合（七杀+正印）",
+      "allowed": [
+        "“传统子平中有杀印相生的组合观察，其解释依赖全局”（CONTEXT_REQUIRED）"
+      ],
+      "allowed_gate": "CONTEXT_REQUIRED",
+      "prohibited": [
+        "“杀印相生所以一定好”",
+        "任何吉凶结论"
+      ]
+    },
+    {
+      "case_id": "CASE-I16",
+      "description": "正官+伤官组合",
+      "allowed": [
+        "“传统子平中有伤官见官这一组合概念，其解释依赖全局”（CONTEXT_REQUIRED）"
+      ],
+      "allowed_gate": "CONTEXT_REQUIRED",
+      "prohibited": [
+        "“伤官见官必倒霉”",
+        "“婚姻必不顺”"
+      ]
+    },
+    {
+      "case_id": "CASE-I17",
+      "description": "财星+比劫组合",
+      "allowed": [
+        "“传统子平中有财与比劫的组合概念（如比劫分财），其解释依赖全局”（CONTEXT_REQUIRED）"
+      ],
+      "allowed_gate": "CONTEXT_REQUIRED",
+      "prohibited": [
+        "“比劫夺财必破财”",
+        "“朋友必拖累你”"
+      ]
+    },
+    {
+      "case_id": "CASE-I18",
+      "description": "日主定义",
+      "allowed": [
+        "“日主是日柱的天干，作为本人与十神关系计算的中心参照”（FACT_ONLY）",
+        "传统子平常以日主（日干）为中心，作为本人与十神关系计算的参照。"
+      ],
+      "allowed_gate": "SAFE_SEMANTIC_GLOSS",
+      "prohibited": [
+        "“日主五行=性格”",
+        "“乙木人怎样”等五行性格论"
+      ]
+    },
+    {
+      "case_id": "CASE-I19",
+      "description": "用户问“两个七杀对我有什么影响”",
+      "allowed": [
+        "“仅凭七杀的数量不能回答这个问题”（边界说明）",
+        "“传统上需要结合日主旺衰、月令、通根、制化等条件才能进一步讨论”（CONTEXT_REQUIRED）"
+      ],
+      "allowed_gate": "CONTEXT_REQUIRED",
+      "prohibited": [
+        "直接回答“影响”",
+        "给出吉凶、性格、事业结论"
+      ]
+    },
+    {
+      "case_id": "CASE-I20",
+      "description": "用户问“我一生财运如何”",
+      "allowed": [
+        "“财运判断需要完整的传统分析框架，当前工具无法据此给出结论”（阻断说明）"
+      ],
+      "allowed_gate": "FACT_ONLY",
+      "prohibited": [
+        "任何“财运好/坏”“晚年富贵”“必有横财”的断言"
+      ]
+    }
+  ],
+  "case_invariants": [
+    "全部 20 个测试案例的 allowed 与最新 SAFE_GLOSS（safe_gloss_evidence_v0.1.json）完全一致；removed 现代词不得出现。",
+    "每个 case 均有 allowed_gate ∈ {FACT_ONLY, SAFE_SEMANTIC_GLOSS, CONTEXT_REQUIRED}。",
+    "降级术语（比肩/偏财/偏印，REQUIRES_MORE_EVIDENCE）的 case 仅 FACT_ONLY，无 SAFE 文案。",
+    "SAFE_SEMANTIC_GLOSS 仅用于 freeze_recommendation=PROPOSE_SAFE_GLOSS_FREEZE 的术语。",
+    "全部 prohibited 均属于 PROHIBITED_DIRECT_INFERENCE 或 OUT_OF_SCOPE。"
+  ],
+  "gate_policy": {
+    "allowed_gate_enum": [
+      "FACT_ONLY",
+      "SAFE_SEMANTIC_GLOSS",
+      "CONTEXT_REQUIRED"
+    ],
+    "rule": "SAFE_SEMANTIC_GLOSS 仅用于 freeze_recommendation=PROPOSE_SAFE_GLOSS_FREEZE 的术语；REQUIRES_MORE_EVIDENCE 术语（比肩/偏财/偏印）只允许 FACT_ONLY；组合/上下文类 case 允许 CONTEXT_REQUIRED"
+  }
+}

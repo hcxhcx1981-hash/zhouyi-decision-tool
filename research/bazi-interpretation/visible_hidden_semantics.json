@@ -1,0 +1,40 @@
+{
+  "schema_version": "0.1",
+  "status": "RESEARCH_CANDIDATE_NOT_FOR_RUNTIME",
+  "tradition_scope": "ZIPING_BAZI",
+  "core_question": "天干透出的十神与地支藏干的十神，未来产品不能默认意义完全一样。",
+  "concepts": {
+    "tou_gan": {
+      "term": "透干",
+      "definition_candidate": "天干上显式出现的十神（如月干辛为乙木日主之七杀）。传统语境中“透”指天干直接可见，相对“藏”于地支而言。",
+      "reliable_definition": "PARTIAL",
+      "note": "“透干”的显式定义在古典文献中以“透出/透”出现，常与“藏”对举；现代教材整理为天干直接呈现。有传统依据但术语本身未统一编纂。",
+      "classification": "TRADITION_POLICY_REQUIRED"
+    },
+    "cang_gan": {
+      "term": "藏干",
+      "definition_candidate": "地支中所藏天干（来自 foundation 的 hidden_stem_set 成员集合）。",
+      "reliable_definition": "YES",
+      "note": "藏干成员集合已冻结（bazi-foundation），但藏干顺序/本中余气仍阻断。",
+      "classification": "SAFE_SEMANTIC_GLOSS（仅成员存在关系）"
+    }
+  },
+  "interpretation_boundary": {
+    "traditional_view": "天干为显、地支为藏；“天干如浮云，地支如深根”（滴天髓类象体系，见 sources SRC-L1-DITIANSUI）。天干透出的十神通常被认为具有更直接/显性的传统解释地位。",
+    "evidence_level": "L1",
+    "machineability": {
+      "can_detect": true,
+      "what": "可机器化检测某十神是否在天干出现（透出）或仅在藏干中出现（存在关系）。",
+      "cannot_infer": true,
+      "what_not": "不得解释强弱、根气深浅；不得输出“透干比藏干有力”的强弱结论。",
+      "version_note": "当前版本只适合显示“存在关系”（天干见/仅藏干见），不解释强弱。"
+    },
+    "same_meaning": false,
+    "reason": "天干透出与地支藏干在传统语境中层级不同（显/藏、浮云/深根），未来产品不得默认两者意义完全一样；但也不得据此自造“透干评分”。"
+  },
+  "conclusion": {
+    "classification": "TRADITION_POLICY_REQUIRED",
+    "displayable_now": "仅可显示“某十神在天干透出”或“仅在藏干中出现”的存在关系。",
+    "blocked": "解释强弱、根气、透干优劣需旺衰与藏干政策层支持，当前阻断。"
+  }
+}

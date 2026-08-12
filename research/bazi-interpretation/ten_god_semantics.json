@@ -1,0 +1,418 @@
+{
+  "schema_version": "0.1",
+  "status": "RESEARCH_CANDIDATE_NOT_FOR_RUNTIME",
+  "tradition_scope": "ZIPING_BAZI",
+  "semantic_levels": {
+    "LEVEL_A": "SAFE_SEMANTIC_GLOSS",
+    "LEVEL_B": "CONTEXT_REQUIRED",
+    "LEVEL_C": "PROHIBITED_DIRECT_INFERENCE"
+  },
+  "ten_gods": [
+    {
+      "ten_god": "比肩",
+      "structural_definition": "与日主同五行且阴阳同性（SAME_ELEMENT + SAME_POLARITY）。",
+      "traditional_topics": [
+        "同辈关系",
+        "兄弟朋友",
+        "自我意识",
+        "竞争",
+        "独立",
+        "合作"
+      ],
+      "safe_plain_language_topics": [],
+      "context_required_topics": [
+        "比肩能否助身（取决于日主旺衰）",
+        "比肩是否夺财（需身强身弱与财星组合）",
+        "比劫争财（需全局）"
+      ],
+      "prohibited_direct_inferences": [
+        "比肩多=一定朋友多",
+        "比肩多=性格固执",
+        "比肩多=一定破财",
+        "比肩=兄弟姐妹必如何"
+      ],
+      "allowed_template": null,
+      "boundary_template": "仅凭比肩的出现或数量，不能判断它对个人是助力还是负担。",
+      "source_ids": [
+        "SRC-L1-YUANHAI-ZIPING",
+        "SRC-L1-ZIPING-ZHENQUAN",
+        "SRC-L2-QIANLI-MINGGAO"
+      ],
+      "evidence_level": "L1",
+      "consensus_status": "STATIC_CONSENSUS",
+      "interpretation_gate": "REQUIRES_MORE_EVIDENCE",
+      "removed_modern_words": [
+        "自我意识",
+        "独立",
+        "合作"
+      ],
+      "degraded_note": "比肩 SAFE_GLOSS 目前仅渊海子平单来源支持，未达双独立来源门槛，Phase 2.5A.2 降级 REQUIRES_MORE_EVIDENCE"
+    },
+    {
+      "ten_god": "劫财",
+      "structural_definition": "与日主同五行且阴阳异性（SAME_ELEMENT + DIFFERENT_POLARITY）。",
+      "traditional_topics": [
+        "同辈关系",
+        "合作",
+        "分夺",
+        "争夺",
+        "行动力"
+      ],
+      "safe_plain_language_topics": [
+        "同辈关系",
+        "分夺（争夺分耗）主题"
+      ],
+      "context_required_topics": [
+        "劫财夺财（需身强身弱与财星组合）",
+        "比劫帮身（需旺衰）",
+        "劫财生伤官等组合"
+      ],
+      "prohibited_direct_inferences": [
+        "劫财=一定破财",
+        "劫财多=冲动",
+        "劫财=感情必波折",
+        "劫财多=一定败家"
+      ],
+      "allowed_template": "传统子平常从同辈关系与分夺（争夺分耗）等主题观察劫财。",
+      "boundary_template": "仅凭劫财出现不能判断财务或人际后果。",
+      "source_ids": [
+        "SRC-L1-YUANHAI-ZIPING",
+        "SRC-L1-ZIPING-ZHENQUAN",
+        "SRC-L2-QIANLI-MINGGAO"
+      ],
+      "evidence_level": "L1",
+      "consensus_status": "STATIC_CONSENSUS",
+      "interpretation_gate": "SAFE_SEMANTIC_GLOSS",
+      "removed_modern_words": [
+        "资源共享",
+        "行动力"
+      ]
+    },
+    {
+      "ten_god": "食神",
+      "structural_definition": "日主所生且阴阳同性（DAY_GENERATES_TARGET + SAME_POLARITY）。",
+      "traditional_topics": [
+        "才华展现",
+        "口才表达",
+        "享受",
+        "福气",
+        "子女类象（男命食神为子）"
+      ],
+      "safe_plain_language_topics": [
+        "衣食丰足",
+        "福气享受"
+      ],
+      "context_required_topics": [
+        "食神制杀（需七杀与全局）",
+        "食神生财（需财星）",
+        "食神是否泄身过重（需旺衰）"
+      ],
+      "prohibited_direct_inferences": [
+        "食神=一定有口福",
+        "食神=一定长寿",
+        "食神=子女必好",
+        "食神多=一生安逸"
+      ],
+      "allowed_template": "传统子平常从衣食丰足、福气享受等主题观察食神。",
+      "boundary_template": "仅凭食神出现不能判断才华高低或生活品质。",
+      "source_ids": [
+        "SRC-L1-YUANHAI-ZIPING",
+        "SRC-L1-ZIPING-ZHENQUAN",
+        "SRC-L2-QIANLI-MINGGAO"
+      ],
+      "evidence_level": "L1",
+      "consensus_status": "STATIC_CONSENSUS",
+      "interpretation_gate": "SAFE_SEMANTIC_GLOSS",
+      "removed_modern_words": [
+        "才华",
+        "表达"
+      ]
+    },
+    {
+      "ten_god": "伤官",
+      "structural_definition": "日主所生且阴阳异性（DAY_GENERATES_TARGET + DIFFERENT_POLARITY）。",
+      "traditional_topics": [
+        "才华表达",
+        "个性",
+        "创造力",
+        "叛逆",
+        "批判"
+      ],
+      "safe_plain_language_topics": [
+        "才艺",
+        "傲气"
+      ],
+      "context_required_topics": [
+        "伤官见官（需正官与全局）",
+        "伤官佩印（需印星）",
+        "伤官生财（需财星）",
+        "伤官泄身过重（需旺衰）"
+      ],
+      "prohibited_direct_inferences": [
+        "伤官=婚姻不好",
+        "伤官=克夫",
+        "伤官=一定叛逆",
+        "伤官多=事业不顺"
+      ],
+      "allowed_template": "传统子平常从才艺与傲气等主题观察伤官。",
+      "boundary_template": "仅凭伤官出现不能判断婚姻或人际关系后果。",
+      "source_ids": [
+        "SRC-L1-YUANHAI-ZIPING",
+        "SRC-L1-ZIPING-ZHENQUAN",
+        "SRC-L2-QIANLI-MINGGAO"
+      ],
+      "evidence_level": "L1",
+      "consensus_status": "STATIC_CONSENSUS",
+      "interpretation_gate": "SAFE_SEMANTIC_GLOSS",
+      "removed_modern_words": [
+        "创造力",
+        "个性表达",
+        "叛逆"
+      ]
+    },
+    {
+      "ten_god": "正财",
+      "structural_definition": "日主所克且阴阳异性（DAY_CONTROLS_TARGET + DIFFERENT_POLARITY）。",
+      "traditional_topics": [
+        "正当收入",
+        "稳定财富",
+        "正业",
+        "勤劳务实",
+        "妻星类象（男命）"
+      ],
+      "safe_plain_language_topics": [
+        "养命之财（正当财源）"
+      ],
+      "context_required_topics": [
+        "财多身弱/身强任财（需旺衰）",
+        "财生官杀（需组合）",
+        "正财与比劫关系"
+      ],
+      "prohibited_direct_inferences": [
+        "正财多=一定有钱",
+        "正财=妻必如何",
+        "正财多=一生富足",
+        "正财=财运必好"
+      ],
+      "allowed_template": "传统子平常从养命之财（正当财源）等主题观察正财。",
+      "boundary_template": "仅凭正财出现不能判断实际财富水平。",
+      "source_ids": [
+        "SRC-L1-YUANHAI-ZIPING",
+        "SRC-L1-ZIPING-ZHENQUAN",
+        "SRC-L2-MINGLI-TANYUAN"
+      ],
+      "evidence_level": "L1",
+      "consensus_status": "STATIC_CONSENSUS",
+      "interpretation_gate": "SAFE_SEMANTIC_GLOSS",
+      "removed_modern_words": [
+        "稳定财富",
+        "勤劳务实"
+      ]
+    },
+    {
+      "ten_god": "偏财",
+      "structural_definition": "日主所克且阴阳同性（DAY_CONTROLS_TARGET + SAME_POLARITY）。",
+      "traditional_topics": [
+        "众人之财",
+        "投资机遇",
+        "社交人脉",
+        "父星类象（男命）"
+      ],
+      "safe_plain_language_topics": [],
+      "context_required_topics": [
+        "偏财旺衰与组合（需全局）",
+        "偏财被夺（需比劫）",
+        "偏财生杀等"
+      ],
+      "prohibited_direct_inferences": [
+        "偏财=意外之财",
+        "偏财=一定发财",
+        "偏财多=豪爽",
+        "偏财=财运必好"
+      ],
+      "allowed_template": null,
+      "boundary_template": "仅凭偏财出现不能判断财富或机遇结果。",
+      "source_ids": [
+        "SRC-L1-YUANHAI-ZIPING",
+        "SRC-L1-ZIPING-ZHENQUAN",
+        "SRC-L2-MINGLI-TANYUAN"
+      ],
+      "evidence_level": "L1",
+      "consensus_status": "STATIC_CONSENSUS",
+      "interpretation_gate": "REQUIRES_MORE_EVIDENCE",
+      "removed_modern_words": [
+        "投资机遇",
+        "社交人脉"
+      ],
+      "degraded_note": "偏财 SAFE_GLOSS 目前仅渊海子平单来源支持，未达双独立来源门槛，Phase 2.5A.2 降级 REQUIRES_MORE_EVIDENCE"
+    },
+    {
+      "ten_god": "七杀",
+      "structural_definition": "克日主且阴阳同性（TARGET_CONTROLS_DAY + SAME_POLARITY）。",
+      "traditional_topics": [
+        "约束",
+        "压力",
+        "竞争",
+        "规则",
+        "责任",
+        "权威",
+        "魄力"
+      ],
+      "safe_plain_language_topics": [
+        "克身攻身",
+        "需制伏（制化）"
+      ],
+      "context_required_topics": [
+        "七杀表现为压力还是执行力（需旺衰与全局）",
+        "食神制杀（需食神）",
+        "杀印相生（需印星）",
+        "身弱杀重/身强杀浅"
+      ],
+      "prohibited_direct_inferences": [
+        "七杀多=脾气暴躁",
+        "七杀多=压力巨大",
+        "七杀=事业心极强",
+        "七杀多=多灾多难",
+        "七杀=一定大器或一定多难"
+      ],
+      "allowed_template": "传统子平常从克身攻身、需制伏等主题观察七杀。",
+      "boundary_template": "仅凭七杀出现不能判断它对个人是助力还是负担。",
+      "source_ids": [
+        "SRC-L1-YUANHAI-ZIPING",
+        "SRC-L1-ZIPING-ZHENQUAN",
+        "SRC-L2-QIANLI-MINGGAO"
+      ],
+      "evidence_level": "L1",
+      "consensus_status": "STATIC_CONSENSUS",
+      "interpretation_gate": "SAFE_SEMANTIC_GLOSS",
+      "removed_modern_words": [
+        "规则",
+        "责任",
+        "权威"
+      ]
+    },
+    {
+      "ten_god": "正官",
+      "structural_definition": "克日主且阴阳异性（TARGET_CONTROLS_DAY + DIFFERENT_POLARITY）。",
+      "traditional_topics": [
+        "规则",
+        "责任",
+        "纪律",
+        "名誉",
+        "上级",
+        "秩序"
+      ],
+      "safe_plain_language_topics": [
+        "贵气（名誉地位）"
+      ],
+      "context_required_topics": [
+        "官印相生（需印星）",
+        "伤官见官（需伤官）",
+        "官杀混杂（需全局）",
+        "身弱官旺/身强官浅"
+      ],
+      "prohibited_direct_inferences": [
+        "正官=一定当官",
+        "正官=事业必成功",
+        "正官多=一定有职位",
+        "正官=必守规矩"
+      ],
+      "allowed_template": "传统子平常从贵气（名誉地位）等主题观察正官。",
+      "boundary_template": "仅凭正官出现不能判断职业或地位结果。",
+      "source_ids": [
+        "SRC-L1-YUANHAI-ZIPING",
+        "SRC-L1-ZIPING-ZHENQUAN",
+        "SRC-L2-QIANLI-MINGGAO"
+      ],
+      "evidence_level": "L1",
+      "consensus_status": "STATIC_CONSENSUS",
+      "interpretation_gate": "SAFE_SEMANTIC_GLOSS",
+      "removed_modern_words": [
+        "规则",
+        "纪律",
+        "上级"
+      ]
+    },
+    {
+      "ten_god": "偏印",
+      "structural_definition": "生日主且阴阳同性（TARGET_GENERATES_DAY + SAME_POLARITY）。",
+      "traditional_topics": [
+        "偏门学识",
+        "灵感直觉",
+        "特殊思维",
+        "研习",
+        "继母类象"
+      ],
+      "safe_plain_language_topics": [],
+      "context_required_topics": [
+        "枭神夺食（需食神与全局）",
+        "偏印生身是否过重（需旺衰）",
+        "偏印与其他十神组合"
+      ],
+      "prohibited_direct_inferences": [
+        "偏印=性格孤僻",
+        "偏印=克子女",
+        "偏印多=一定多疑",
+        "偏印=学玄学必好"
+      ],
+      "allowed_template": null,
+      "boundary_template": "仅凭偏印出现不能判断性格或子女结果。",
+      "source_ids": [
+        "SRC-L1-YUANHAI-ZIPING",
+        "SRC-L1-ZIPING-ZHENQUAN",
+        "SRC-L2-QIANLI-MINGGAO"
+      ],
+      "evidence_level": "L1",
+      "consensus_status": "STATIC_CONSENSUS",
+      "interpretation_gate": "REQUIRES_MORE_EVIDENCE",
+      "degraded_note": "特殊学识/灵感/深度思考为现代扩展无原文支持；倒食为组合性概念；降级 REQUIRES_MORE_EVIDENCE，暂不冻结 SAFE_GLOSS"
+    },
+    {
+      "ten_god": "正印",
+      "structural_definition": "生日主且阴阳异性（TARGET_GENERATES_DAY + DIFFERENT_POLARITY）。",
+      "traditional_topics": [
+        "学识",
+        "庇护",
+        "长辈",
+        "贵人",
+        "母亲类象",
+        "保护"
+      ],
+      "safe_plain_language_topics": [
+        "生身庇护（如母）",
+        "智虑"
+      ],
+      "context_required_topics": [
+        "印星过旺导致依赖（需全局）",
+        "官印相生（需正官）",
+        "印受财坏（需财星）"
+      ],
+      "prohibited_direct_inferences": [
+        "正印=一定有贵人",
+        "正印=学业必好",
+        "正印多=一定善良",
+        "正印=母亲必如何"
+      ],
+      "allowed_template": "传统子平常从生身庇护（如母）、智虑等主题观察正印。",
+      "boundary_template": "仅凭正印出现不能判断学业或贵人结果。",
+      "source_ids": [
+        "SRC-L1-YUANHAI-ZIPING",
+        "SRC-L1-ZIPING-ZHENQUAN",
+        "SRC-L2-QIANLI-MINGGAO"
+      ],
+      "evidence_level": "L1",
+      "consensus_status": "STATIC_CONSENSUS",
+      "interpretation_gate": "SAFE_SEMANTIC_GLOSS",
+      "removed_modern_words": [
+        "贵人"
+      ]
+    }
+  ],
+  "invariants": [
+    "10 个十神全部存在且唯一。",
+    "SAFE_GLOSS 文案按 safe_gloss_evidence_v0.1.json 逐条证据核正（保守版）。",
+    "Phase 2.5A.2：仅双独立来源（渊海子平+子平真诠）交叉支持的 CONSERVATIVE 可冻结；比肩/偏财单来源降级 REQUIRES_MORE_EVIDENCE；偏印保持降级。",
+    "现可冻结十神：正财、正官、七杀、正印、伤官、食神、劫财（7 条）+ 日主（1 条 DIRECT）= 8 条。",
+    "LEVEL_C 反例（PROHIBITED_DIRECT_INFERENCE）不得出现在 safe_plain_language_topics。"
+  ]
+}

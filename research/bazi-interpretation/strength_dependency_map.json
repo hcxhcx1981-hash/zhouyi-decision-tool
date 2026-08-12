@@ -1,0 +1,75 @@
+{
+  "schema_version": "0.1",
+  "status": "RESEARCH_CANDIDATE_NOT_FOR_RUNTIME",
+  "tradition_scope": "ZIPING_BAZI",
+  "core_claim": "仅凭十神存在与数量不能回答“两个七杀对我有什么影响”；解释强度依赖后续层。",
+  "dependency_chain": [
+    "十神存在（FACT_ONLY / SAFE_SEMANTIC_GLOSS）",
+    "↓",
+    "月令（月支及节气，影响日主状态）",
+    "↓",
+    "日主状态（身强/身弱，需旺衰层）",
+    "↓",
+    "通根（地支藏干是否有根，需藏干政策层）",
+    "↓",
+    "生扶克泄（印比帮身 / 财官食伤消耗）",
+    "↓",
+    "制化关系（如食神制杀、伤官佩印、官印相生）",
+    "↓",
+    "才能进入更强解释（CONTEXT_REQUIRED 及以上）"
+  ],
+  "inputs_survey": {
+    "traditional_concepts": [
+      "月令/得令",
+      "通根/得地",
+      "天干帮扶（得助）",
+      "印星生扶（得生）",
+      "财官食伤消耗",
+      "生克制化"
+    ],
+    "definability": {
+      "得令": {
+        "classification": "TRADITION_POLICY_REQUIRED",
+        "note": "得令有传统定义（日主五行当旺之月），但“得令≠身旺”（旺而不强、虚浮无根之例），不能简单二元化。"
+      },
+      "得地/通根": {
+        "classification": "TRADITION_POLICY_REQUIRED",
+        "note": "根有本气/中气/余气之分，强弱分级涉及未冻结的藏干顺序与权重政策。"
+      },
+      "得生/得助": {
+        "classification": "INTERPRETIVE",
+        "note": "有无印星、比劫可检测，但力量权重（得地>得令? 得助最弱）属流派口径。"
+      },
+      "生克制化": {
+        "classification": "INTERPRETIVE",
+        "note": "组合概念（食神制杀等）有传统依据但解释方向依赖全局。"
+      }
+    },
+    "no_unified_algorithm": true,
+    "evidence": [
+      {
+        "source_ids": ["SRC-L1-DITIANSUI"],
+        "excerpt": "能知衰旺之真机，其于三命之奥，思过半矣（滴天髓）"
+      },
+      {
+        "source_ids": ["SRC-L1-DITIANSUI"],
+        "note": "任铁樵注：得时者虽只一干，可当半壁；得令≠身旺（旺而不强、虚浮无根为反例）"
+      },
+      {
+        "source_ids": ["SRC-L3-MODERN-EDUCATIONAL"],
+        "note": "现代存在“三得判断法”（得令/得地/得势）与“量化计分法”（百分制权重）两大流派口径，两者结果可不同（REAL_INTERPRETATION_CONFLICT）"
+      }
+    ],
+    "prohibited_models": [
+      "60 分身强 / 40 分身弱",
+      "五行百分比",
+      "自造评分公式"
+    ]
+  },
+  "conclusion": {
+    "count_only_is_not_interpretation": true,
+    "status": "COUNT_ONLY_IS_NOT_INTERPRETATION 成立",
+    "reason": "数量只是事实计数；解释意义需结合透干/藏干、得令、得地、旺衰、制化等条件；默认不得由两个七杀/三个财星/多个印星直接产生“七杀重/财多/印重”等带判断意味的结论。",
+    "next_minimum_dependency": ["月令", "旺衰（日主状态）", "通根（藏干政策）"]
+  }
+}
