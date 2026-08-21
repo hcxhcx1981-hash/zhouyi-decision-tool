@@ -27,6 +27,7 @@ import {
   FOUNDATION_NOT_YET_DETERMINABLE,
   getTenGodDisplayCopy,
 } from "./ten-god-display-copy";
+import { BaziSafeInterpretation } from "./bazi-safe-interpretation";
 
 type FoundationViewState =
   | { readonly status: "LOADING"; readonly resultIdentity: string }
@@ -47,9 +48,6 @@ function DayMasterOverview({ value }: { value: PillarsFoundationResult }) {
       <h2 id="bazi-day-master-title">你的日主</h2>
       <strong>{dayMaster.chinese}{element}</strong>
       <small>{dayMaster.chinese} · {formatYinYang(dayMaster.yinYang)} · {element}</small>
-      <p>
-        日主可以理解为这张八字命盘分析时代表“你自己”的核心参照。后面的十神关系，都以日干“{dayMaster.chinese}”作为基准计算。
-      </p>
     </section>
   );
 }
@@ -245,13 +243,16 @@ export function BaziFoundationResult({
       </div>
       {children}
       {visibleState.status === "READY" ? (
-        <FoundationExplanation
-          value={visibleState.value}
-          pillars={pillars}
-          displayInput={displayInput}
-          copyStatus={visibleCopyStatus}
-          onCopy={(text) => void copyChart(text)}
-        />
+        <>
+          <FoundationExplanation
+            value={visibleState.value}
+            pillars={pillars}
+            displayInput={displayInput}
+            copyStatus={visibleCopyStatus}
+            onCopy={(text) => void copyChart(text)}
+          />
+          <BaziSafeInterpretation foundation={visibleState.value} resultIdentity={resultIdentity} />
+        </>
       ) : null}
     </>
   );
