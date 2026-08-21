@@ -5,6 +5,7 @@ import type { BaziCoreResult } from "@/lib/bazi/runtime-types";
 import type { FoundationBrowserLoadResult } from "@/lib/browser/bazi-foundation-data";
 import { loadBaziFoundationBrowserData } from "@/lib/browser/bazi-foundation-data";
 import type {
+  BaziFoundationData,
   PillarFoundationResult,
   PillarsFoundationResult,
   TenGodCanonical,
@@ -27,11 +28,16 @@ import {
   FOUNDATION_NOT_YET_DETERMINABLE,
   getTenGodDisplayCopy,
 } from "./ten-god-display-copy";
-import { BaziSafeInterpretation } from "./bazi-safe-interpretation";
+import { BaziExplanationReport } from "./bazi-explanation-report";
 
 type FoundationViewState =
   | { readonly status: "LOADING"; readonly resultIdentity: string }
-  | { readonly status: "READY"; readonly resultIdentity: string; readonly value: PillarsFoundationResult }
+  | {
+      readonly status: "READY";
+      readonly resultIdentity: string;
+      readonly data: BaziFoundationData;
+      readonly value: PillarsFoundationResult;
+    }
   | { readonly status: "ERROR"; readonly resultIdentity: string };
 
 type CopyStatus = "IDLE" | "COPIED" | "FAILED";
@@ -218,10 +224,10 @@ export function BaziFoundationResult({
     const task = loadPromise.current.then((loaded) => {
       const derived = deriveReadyCoreFoundation(loaded.data, coreResult);
       if (!derived?.ok) throw new Error("FOUNDATION_DATA_INTEGRITY_ERROR");
-      return derived.value;
+      return { data: loaded.data, value: derived.value };
     });
     void settleLatestRequest(gate, requestId, task, {
-      onSuccess: (value) => setState({ status: "READY", resultIdentity, value }),
+      onSuccess: ({ data, value }) => setState({ status: "READY", resultIdentity, data, value }),
       onError: () => setState({ status: "ERROR", resultIdentity }),
       onFinally: () => {},
     });
@@ -251,7 +257,12 @@ export function BaziFoundationResult({
             copyStatus={visibleCopyStatus}
             onCopy={(text) => void copyChart(text)}
           />
-          <BaziSafeInterpretation foundation={visibleState.value} resultIdentity={resultIdentity} />
+          <BaziExplanationReport
+            coreResult={coreResult}
+            foundationData={visibleState.data}
+            foundation={visibleState.value}
+            resultIdentity={resultIdentity}
+          />
         </>
       ) : null}
     </>

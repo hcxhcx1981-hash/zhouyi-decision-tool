@@ -105,7 +105,7 @@ test("数量统计按关系计数并暴露Frozen数量政策", async () => {
   assert.equal(counts.正财, 2);
   assert.equal(counts.比肩, 3);
   assert.equal(view.countPolicy.policyId, "COUNT_ONLY_IS_NOT_INTERPRETATION");
-  const source = readFileSync(join(root, "src", "components", "bazi", "bazi-safe-interpretation.tsx"), "utf8");
+  const source = readFileSync(join(root, "src", "components", "bazi", "bazi-explanation-report.tsx"), "utf8");
   assert.match(source, /数量统计不等同于命理判断。/);
 });
 
@@ -135,10 +135,10 @@ test("Runtime失败被拒绝且页面保留Foundation并友好降级", async () 
     /INTERPRETATION_BROWSER_ASSET_HTTP_503/,
   );
   const parentSource = readFileSync(join(root, "src", "components", "bazi", "bazi-foundation-result.tsx"), "utf8");
-  const interpretationSource = readFileSync(join(root, "src", "components", "bazi", "bazi-safe-interpretation.tsx"), "utf8");
-  assert.ok(parentSource.indexOf("<FoundationExplanation") < parentSource.indexOf("<BaziSafeInterpretation"));
-  assert.match(interpretationSource, /基础命理说明暂时不可用/);
-  assert.match(interpretationSource, /基础四柱和命盘结构仍可查看/);
+  const interpretationSource = readFileSync(join(root, "src", "components", "bazi", "bazi-explanation-report.tsx"), "utf8");
+  assert.ok(parentSource.indexOf("<FoundationExplanation") < parentSource.indexOf("<BaziExplanationReport"));
+  assert.match(interpretationSource, /正式 SAFE 说明暂时不可用/);
+  assert.match(interpretationSource, /事实章节仍可查看/);
   assert.doesNotMatch(interpretationSource, /getTenGodDisplayCopy|TEN_GOD_DISPLAY_COPY/);
 });
 
@@ -156,10 +156,10 @@ test("Interpretation stale request沿用latest-only gate", async () => {
   old.resolve("stale");
   assert.equal(await settlement, false);
   assert.deepEqual(state, { identity: "B", value: null });
-  const source = readFileSync(join(root, "src", "components", "bazi", "bazi-safe-interpretation.tsx"), "utf8");
+  const source = readFileSync(join(root, "src", "components", "bazi", "bazi-explanation-report.tsx"), "utf8");
   assert.match(source, /createLatestRequestGate/);
   assert.match(source, /settleLatestRequest/);
-  assert.match(source, /data-interpretation-identity/);
+  assert.match(source, /data-explanation-identity/);
 });
 
 test("SAFE传统主题正文未硬编码进页面组件", async () => {
@@ -167,6 +167,8 @@ test("SAFE传统主题正文未硬编码进页面组件", async () => {
   const source = [
     "src/components/bazi/bazi-safe-interpretation.tsx",
     "src/components/bazi/bazi-safe-interpretation-presentation.ts",
+    "src/components/bazi/bazi-explanation-runtime-adapter.ts",
+    "src/components/bazi/bazi-explanation-report.tsx",
     "src/components/bazi/bazi-foundation-result.tsx",
   ].map((path) => readFileSync(join(root, path), "utf8")).join("\n");
   for (const gloss of runtime.safeGlosses) assert.equal(source.includes(gloss.plainLanguage), false, gloss.canonicalTerm);
