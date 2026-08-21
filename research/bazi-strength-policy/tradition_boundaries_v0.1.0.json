@@ -1,0 +1,79 @@
+{
+  "schema_version": "0.1.0",
+  "registry_id": "BAZI_STRENGTH_TRADITION_BOUNDARIES_V0_1_0",
+  "status": "RESEARCH_POLICY_PROTOCOL_NOT_FOR_RUNTIME",
+  "profile_families": [
+    {
+      "profile_id": "PROFILE-ZIPING-DAY-REFERENCE",
+      "label": "子平日干参照范围",
+      "evidence_level": "L1",
+      "source_ids": ["SRC-L1-YUANHAI-ZIPING", "SRC-L1-SANMING-TONGHUI"],
+      "permits": ["以日干作为十神与结构关系参照"],
+      "does_not_permit": ["跨传统统一化", "个人状态结论", "个人吉凶解释"],
+      "project_state": "SCOPED"
+    },
+    {
+      "profile_id": "PROFILE-MONTH-OUTLINE-FIRST",
+      "label": "月令提纲优先观察",
+      "evidence_level": "L1",
+      "source_ids": ["SRC-L1-YUANHAI-ZIPING", "SRC-L1-ZIPING-ZHENQUAN"],
+      "permits": ["把月令记录为首要观察位置"],
+      "does_not_permit": ["给月令分配数值比例", "仅凭月支生成二元标签", "直接生成个人结论"],
+      "project_state": "RESEARCH_ONLY"
+    },
+    {
+      "profile_id": "PROFILE-DITIANSUI-CONTEXTUAL",
+      "label": "滴天髓整体结构语境",
+      "evidence_level": "L1",
+      "source_ids": ["SRC-L1-DITIANSUI"],
+      "permits": ["记录通根与得时需要结合其他结构观察"],
+      "does_not_permit": ["把通根存在等同于最终状态", "把单一结构转为人生解释"],
+      "project_state": "RESEARCH_ONLY"
+    },
+    {
+      "profile_id": "PROFILE-SANMING-SEASONAL-FRAMEWORK",
+      "label": "三命通会五行时序框架",
+      "evidence_level": "L1",
+      "source_ids": ["SRC-L1-SANMING-TONGHUI"],
+      "permits": ["研究五行在季节中的传统状态框架"],
+      "does_not_permit": ["把传统状态直接等同吉凶", "把框架转为评分模型"],
+      "project_state": "RESEARCH_ONLY"
+    },
+    {
+      "profile_id": "PROFILE-MODERN-THREE-FACTOR",
+      "label": "现代三因素教学框架",
+      "evidence_level": "L3",
+      "source_ids": ["SRC-L3-MODERN-EDUCATIONAL"],
+      "permits": ["作为冲突对照与现代教学口径记录"],
+      "does_not_permit": ["作为正式规则证据", "覆盖 L1 传统边界", "直接进入 runtime"],
+      "project_state": "CROSS_CHECK_ONLY"
+    },
+    {
+      "profile_id": "PROFILE-MODERN-NUMERIC",
+      "label": "现代数值模型",
+      "evidence_level": "L3",
+      "source_ids": ["SRC-L3-MODERN-EDUCATIONAL"],
+      "permits": ["仅作为被排除模型登记"],
+      "does_not_permit": ["评分", "百分比", "权重", "阈值", "软件自动分类"],
+      "project_state": "EXCLUDED"
+    }
+  ],
+  "mixing_policy": {
+    "automatic_merge": false,
+    "required_before_merge": [
+      "明确单一 profile 版本",
+      "逐项解决 conflict register",
+      "登记来源层级",
+      "建立反例与边界案例",
+      "单独冻结后再工程化"
+    ]
+  },
+  "global_exclusions": [
+    "喜用神",
+    "格局",
+    "个人吉凶",
+    "事业财富婚姻",
+    "未来预测",
+    "任何真实个人命理解读"
+  ]
+}

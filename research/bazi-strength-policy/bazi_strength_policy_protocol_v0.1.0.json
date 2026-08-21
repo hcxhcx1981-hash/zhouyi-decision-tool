@@ -1,0 +1,123 @@
+{
+  "schema_version": "0.1.0",
+  "protocol_id": "BAZI_STRENGTH_POLICY_RESEARCH_PROTOCOL_V0_1_0",
+  "version": "0.1.0",
+  "status": "RESEARCH_POLICY_PROTOCOL_NOT_FOR_RUNTIME",
+  "executable": false,
+  "gate": "TRADITION_POLICY_REQUIRED",
+  "tradition_scope": "ZIPING_BAZI",
+  "purpose": "定义解释政策所需输入、冲突与传统边界；不对任何命盘执行状态判断。",
+  "upstream_fact_contract": {
+    "protocol_id": "BAZI_STRENGTH_FACT_RUNTIME_V0_1_0",
+    "required_gate": "FACT_ONLY",
+    "required_outputs": [
+      "month_order_fact",
+      "stem_root_presence",
+      "visible_stem_fact",
+      "hidden_stem_presence_fact",
+      "dependency_audit"
+    ]
+  },
+  "input_contract_path": "input_contract_v0.1.0.json",
+  "conflict_register_path": "conflict_register_v0.1.0.json",
+  "tradition_boundaries_path": "tradition_boundaries_v0.1.0.json",
+  "policy_dimensions": [
+    {
+      "dimension_id": "POLICY-DIM-01",
+      "name": "reference_center",
+      "question": "解释以哪个柱位为中心。",
+      "current_status": "SCOPED",
+      "current_boundary": "项目范围锁定 ZIPING_BAZI，以日干作为关系参照；该范围选择不构成状态结论。",
+      "conflict_ids": ["CONFLICT-POL-01"]
+    },
+    {
+      "dimension_id": "POLICY-DIM-02",
+      "name": "month_order_role",
+      "question": "月令作为首要观察位置时，如何与其他结构事实共同解释。",
+      "current_status": "OPEN",
+      "current_boundary": "只确认月令为首要观察位置，不定义占比、阈值或单变量结论。",
+      "conflict_ids": ["CONFLICT-POL-02", "CONFLICT-POL-03"]
+    },
+    {
+      "dimension_id": "POLICY-DIM-03",
+      "name": "seasonal_state_mapping",
+      "question": "旺相休囚死框架如何映射到五行与月份。",
+      "current_status": "OPEN",
+      "current_boundary": "框架名称可以研究，但不得绑定个人命盘或吉凶。",
+      "conflict_ids": ["CONFLICT-POL-04"]
+    },
+    {
+      "dimension_id": "POLICY-DIM-04",
+      "name": "earth_month_treatment",
+      "question": "辰戌丑未等土月采用何种传统口径。",
+      "current_status": "OPEN",
+      "current_boundary": "未选择口径前不得生成月令关系标签。",
+      "conflict_ids": ["CONFLICT-POL-05"]
+    },
+    {
+      "dimension_id": "POLICY-DIM-05",
+      "name": "root_semantics",
+      "question": "藏干成员存在事实之外，是否允许扩展为同五行或生扶关系。",
+      "current_status": "OPEN",
+      "current_boundary": "当前仅允许精确天干成员存在事实，不定义等级、远近或力量。",
+      "conflict_ids": ["CONFLICT-POL-06"]
+    },
+    {
+      "dimension_id": "POLICY-DIM-06",
+      "name": "hidden_stem_policy",
+      "question": "藏干集合是否采用本中余等排序语义。",
+      "current_status": "BLOCKED",
+      "current_boundary": "Foundation 顺序语义为 NONE；不得增加排名或数值。",
+      "conflict_ids": ["CONFLICT-POL-07"]
+    },
+    {
+      "dimension_id": "POLICY-DIM-07",
+      "name": "whole_chart_interactions",
+      "question": "合冲刑害与生克制化在何种前置规则下参与解释。",
+      "current_status": "OUT_OF_SCOPE",
+      "current_boundary": "本协议不定义组合、转化或综合判定算法。",
+      "conflict_ids": ["CONFLICT-POL-08"]
+    },
+    {
+      "dimension_id": "POLICY-DIM-08",
+      "name": "aggregation_method",
+      "question": "多个结构事实如何形成解释结果。",
+      "current_status": "BLOCKED",
+      "current_boundary": "不允许评分、百分比、权重、阈值或自动二元分类。",
+      "conflict_ids": ["CONFLICT-POL-09"]
+    }
+  ],
+  "policy_profile_requirements": [
+    "每个 profile 必须声明来源层级与传统范围。",
+    "每个 profile 必须逐项处理全部 OPEN/BLOCKED 维度，不得静默采用默认值。",
+    "不同 profile 的结论不得自动合并为所谓统一传统规则。",
+    "任何未来 runtime 启用前必须另行冻结版本、测试案例与解释闸门。"
+  ],
+  "result_contract": {
+    "permitted_statuses": [
+      "POLICY_NOT_SELECTED",
+      "POLICY_CONFLICT",
+      "INSUFFICIENT_POLICY",
+      "OUT_OF_SCOPE"
+    ],
+    "personal_chart_classification_available": false,
+    "score_available": false,
+    "weights_available": false,
+    "prohibited_outputs": [
+      "STRONG_WEAK_CLASSIFICATION",
+      "STRENGTH_SCORE",
+      "WEIGHTED_RESULT",
+      "FAVORABLE_ELEMENT",
+      "PATTERN_CLASSIFICATION",
+      "LUCK_JUDGMENT",
+      "LIFE_INTERPRETATION"
+    ]
+  },
+  "invariants": [
+    "FACT_ONLY 输入不得被改写为解释性事实。",
+    "单一月支、单一藏干、关系数量均不能直接生成状态结论。",
+    "传统体系之间的差异必须显式记录，不得隐式混用。",
+    "研究协议不得被 runtime 或页面直接读取。",
+    "本版本不提供可执行决策树、公式或默认政策。"
+  ]
+}

@@ -1,0 +1,131 @@
+{
+  "schema_version": "0.1.0",
+  "contract_id": "BAZI_STRENGTH_POLICY_INPUT_CONTRACT_V0_1_0",
+  "status": "RESEARCH_POLICY_PROTOCOL_NOT_FOR_RUNTIME",
+  "executable": false,
+  "fact_inputs": [
+    {
+      "field": "month_order_fact",
+      "required": true,
+      "source_protocol": "BAZI_STRENGTH_FACT_RUNTIME_V0_1_0",
+      "required_gate": "FACT_ONLY",
+      "accepted_members": [
+        "monthBranch",
+        "monthBranchId",
+        "monthOrderName",
+        "jieqiBoundaryUsed",
+        "description"
+      ],
+      "policy_boundary": "只能作为已确定月份位置，不携带个人状态结论。"
+    },
+    {
+      "field": "stem_root_presence",
+      "required": true,
+      "source_protocol": "BAZI_STRENGTH_FACT_RUNTIME_V0_1_0",
+      "required_gate": "FACT_ONLY",
+      "accepted_members": [
+        "stem",
+        "stemId",
+        "element",
+        "rootPresent",
+        "matchedBranches"
+      ],
+      "policy_boundary": "只接受精确藏干成员存在性，不接受等级、排名或数值。"
+    },
+    {
+      "field": "visible_stem_fact",
+      "required": true,
+      "source_protocol": "BAZI_STRENGTH_FACT_RUNTIME_V0_1_0",
+      "required_gate": "FACT_ONLY",
+      "accepted_members": [
+        "stem",
+        "stemId",
+        "element",
+        "positions",
+        "occurrenceCount"
+      ],
+      "policy_boundary": "出现位置与数量仅为结构事实。"
+    },
+    {
+      "field": "hidden_stem_presence_fact",
+      "required": true,
+      "source_protocol": "BAZI_STRENGTH_FACT_RUNTIME_V0_1_0",
+      "required_gate": "FACT_ONLY",
+      "accepted_members": [
+        "stem",
+        "stemId",
+        "element",
+        "matchedBranches",
+        "occurrenceCount"
+      ],
+      "policy_boundary": "藏干顺序语义必须保持 NONE，不得推导主次。"
+    },
+    {
+      "field": "dependency_audit",
+      "required": true,
+      "source_protocol": "BAZI_STRENGTH_FACT_RUNTIME_V0_1_0",
+      "required_gate": "FACT_ONLY",
+      "accepted_members": [
+        "completeness",
+        "knownPillars",
+        "foundation",
+        "monthBoundary",
+        "timezone",
+        "researchRuntimeRead",
+        "safeInterpretationRead"
+      ],
+      "policy_boundary": "依赖不完整、来源不一致或时柱未知时必须显式保留边界。"
+    }
+  ],
+  "policy_inputs_not_yet_frozen": [
+    {
+      "field": "selected_tradition_policy_id",
+      "availability": "MISSING",
+      "required_before_interpretation": true,
+      "reason": "尚未选择并冻结单一传统政策 profile。"
+    },
+    {
+      "field": "seasonal_state_policy",
+      "availability": "MISSING",
+      "required_before_interpretation": true,
+      "reason": "五行月令状态映射尚未冻结。"
+    },
+    {
+      "field": "earth_month_policy",
+      "availability": "MISSING",
+      "required_before_interpretation": true,
+      "reason": "土月传统口径存在冲突。"
+    },
+    {
+      "field": "root_interpretation_policy",
+      "availability": "MISSING",
+      "required_before_interpretation": true,
+      "reason": "仅有成员存在事实，解释语义未冻结。"
+    },
+    {
+      "field": "hidden_stem_rank_policy",
+      "availability": "BLOCKED",
+      "required_before_interpretation": true,
+      "reason": "Foundation 藏干顺序语义为 NONE。"
+    },
+    {
+      "field": "whole_chart_interaction_policy",
+      "availability": "OUT_OF_SCOPE",
+      "required_before_interpretation": true,
+      "reason": "合冲刑害与生克制化规则不属于本轮。"
+    }
+  ],
+  "data_minimization": {
+    "personal_identity_required": false,
+    "birth_input_required": false,
+    "raw_location_required": false,
+    "fact_projection_only": true
+  },
+  "rejection_rules": [
+    "拒绝非 FACT_ONLY gate 的上游字段。",
+    "拒绝缺少 dependency_audit 的输入。",
+    "拒绝将 unknown hour 自动补成任意时柱。",
+    "拒绝研究目录成为 runtime 数据源。",
+    "拒绝未声明传统 profile 的解释请求。"
+  ]
+}

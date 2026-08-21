@@ -1,0 +1,81 @@
+{
+  "schema_version": "0.1.0",
+  "register_id": "BAZI_STRENGTH_POLICY_CONFLICT_REGISTER_V0_1_0",
+  "status": "RESEARCH_POLICY_PROTOCOL_NOT_FOR_RUNTIME",
+  "conflicts": [
+    {
+      "conflict_id": "CONFLICT-POL-01",
+      "topic": "reference_center",
+      "positions": ["古法以年为参照", "子平以日干为参照"],
+      "source_ids": ["SRC-L1-SANMING-TONGHUI"],
+      "policy_state": "SCOPED",
+      "boundary": "项目限定 ZIPING_BAZI；不把该范围选择推广为跨传统统一规则。"
+    },
+    {
+      "conflict_id": "CONFLICT-POL-02",
+      "topic": "month_order_priority",
+      "positions": ["月令为提纲、首要观察位置", "月令不能脱离年日时结构单独决定结果"],
+      "source_ids": ["SRC-L1-YUANHAI-ZIPING", "SRC-L1-ZIPING-ZHENQUAN"],
+      "policy_state": "OPEN",
+      "boundary": "可记录首要观察位置，不定义绝对优先级或占比。"
+    },
+    {
+      "conflict_id": "CONFLICT-POL-03",
+      "topic": "month_order_relation_label",
+      "positions": ["以月令关系形成得令/失令标签", "避免将复杂关系二元化"],
+      "source_ids": ["SRC-L1-YUANHAI-ZIPING", "SRC-L1-DITIANSUI"],
+      "policy_state": "OPEN",
+      "boundary": "当前不得输出得令/失令标签。"
+    },
+    {
+      "conflict_id": "CONFLICT-POL-04",
+      "topic": "seasonal_five_state_mapping",
+      "positions": ["采用固定五行四季框架", "结合节气与具体传统口径细分"],
+      "source_ids": ["SRC-L1-SANMING-TONGHUI"],
+      "policy_state": "OPEN",
+      "boundary": "只登记框架存在，不绑定个人命盘。"
+    },
+    {
+      "conflict_id": "CONFLICT-POL-05",
+      "topic": "earth_month_treatment",
+      "positions": ["辰戌丑未作为土月处理", "按季节过渡或火生土口径处理"],
+      "source_ids": ["SRC-L1-SANMING-TONGHUI", "SRC-L3-MODERN-EDUCATIONAL"],
+      "policy_state": "OPEN",
+      "boundary": "不得默认选择任一土月政策。"
+    },
+    {
+      "conflict_id": "CONFLICT-POL-06",
+      "topic": "root_membership_scope",
+      "positions": ["只认同一天干藏干成员", "扩展到同五行", "扩展到生扶关系"],
+      "source_ids": ["SRC-L1-DITIANSUI"],
+      "policy_state": "OPEN",
+      "boundary": "现阶段只消费 STEM_ROOT_PRESENT 精确成员事实。"
+    },
+    {
+      "conflict_id": "CONFLICT-POL-07",
+      "topic": "hidden_stem_ranking",
+      "positions": ["采用本中余次序", "只视为无序成员集合"],
+      "source_ids": ["SRC-L2-QIANLI-MINGGAO", "SRC-L3-MODERN-EDUCATIONAL"],
+      "policy_state": "BLOCKED",
+      "boundary": "Foundation 顺序语义为 NONE；不允许排名或数值。"
+    },
+    {
+      "conflict_id": "CONFLICT-POL-08",
+      "topic": "combination_and_transformation",
+      "positions": ["合冲刑害改变结构解释", "必须满足特定前置条件才允许转化"],
+      "source_ids": ["SRC-L1-DITIANSUI", "SRC-L1-ZIPING-ZHENQUAN"],
+      "policy_state": "OUT_OF_SCOPE",
+      "boundary": "本协议不定义组合或转化规则。"
+    },
+    {
+      "conflict_id": "CONFLICT-POL-09",
+      "topic": "aggregation_method",
+      "positions": ["传统定性综合", "现代三因素教学", "现代数值模型"],
+      "source_ids": ["SRC-L1-SANMING-TONGHUI", "SRC-L3-MODERN-EDUCATIONAL"],
+      "policy_state": "BLOCKED",
+      "boundary": "不定义评分、权重、阈值或统一算法。"
+    }
+  ],
+  "resolution_rule": "只有在来源、传统 profile、输入语义、冲突处理和测试案例均明确后，单一冲突项才可进入后续冻结评审。",
+  "automatic_resolution_allowed": false
+}
