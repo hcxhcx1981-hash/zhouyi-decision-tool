@@ -1,0 +1,106 @@
+{
+  "schema_version": "0.1.0",
+  "protocol_id": "BAZI_EXPLANATION_ORCHESTRATION_PROTOCOL_V0_1_0",
+  "version": "0.1.0",
+  "status": "RESEARCH_PROTOCOL_NOT_FOR_RUNTIME",
+  "executable": false,
+  "orchestration_only": true,
+  "tradition_scope": "ZIPING_BAZI",
+  "purpose": "把既有确定性事实与已冻结 SAFE 文案编排为用户可读报告，不增加任何命理判断。",
+  "source_registry": [
+    {
+      "source_id": "BAZI_CHART_RUNTIME",
+      "contract": "BaziCoreResult",
+      "accepted_status": ["READY", "BLOCKED"],
+      "allowed_use": "四柱、完整性、阻断状态与既有审计字段"
+    },
+    {
+      "source_id": "FOUNDATION_FROZEN_RUNTIME",
+      "contract": "PillarsFoundationResult",
+      "accepted_status": ["READY", "UNAVAILABLE"],
+      "allowed_use": "天干地支属性、藏干成员集合与十神关系事实"
+    },
+    {
+      "source_id": "SAFE_INTERPRETATION_RUNTIME",
+      "contract": "InterpretationProtocol",
+      "accepted_status": ["READY", "UNAVAILABLE"],
+      "allowed_use": "SAFE_SEMANTIC_GLOSS、FACT_ONLY 许可、数量与显隐边界"
+    },
+    {
+      "source_id": "STRENGTH_FACT_RUNTIME",
+      "contract": "StrengthFactRuntimeResult",
+      "accepted_status": ["READY", "BLOCKED", "UNAVAILABLE"],
+      "allowed_use": "五项 FACT_ONLY 事实投影与依赖审计"
+    }
+  ],
+  "report_order": [
+    "A_BASIC_CHART_SUMMARY",
+    "B_DAY_MASTER_GLOSS",
+    "C_TEN_GOD_STRUCTURE_FACTS",
+    "D_TRADITIONAL_OBSERVATION_ENTRY",
+    "E_STRENGTH_FACT_ENTRY",
+    "F_CURRENT_LIMITATIONS"
+  ],
+  "report_statuses": ["READY", "PARTIAL", "BLOCKED"],
+  "section_statuses": ["READY", "PARTIAL", "UNAVAILABLE", "BLOCKED"],
+  "orchestration_rules": [
+    {
+      "rule_id": "ORCH-001",
+      "rule": "报告章节必须按 report_order 输出，不得用推断结果重排。"
+    },
+    {
+      "rule_id": "ORCH-002",
+      "rule": "每个内容块必须登记 source_id、source_gate 与 wording_origin。"
+    },
+    {
+      "rule_id": "ORCH-003",
+      "rule": "FACT_ONLY 值只做格式化，不得升级为 SAFE 或 CONTEXT_REQUIRED 解释。"
+    },
+    {
+      "rule_id": "ORCH-004",
+      "rule": "SAFE 文案必须逐条 runtime lookup，不得复制、改写或补写传统主题。"
+    },
+    {
+      "rule_id": "ORCH-005",
+      "rule": "任一来源失败只关闭依赖该来源的内容块；已就绪章节继续保留。"
+    },
+    {
+      "rule_id": "ORCH-006",
+      "rule": "未知时辰只允许省略时柱相关内容，不得自动补时柱。"
+    },
+    {
+      "rule_id": "ORCH-007",
+      "rule": "禁止跨章节合成新的个人状态、人生主题或未来走向。"
+    }
+  ],
+  "wording_origins": [
+    "FACT_VALUE_FORMAT",
+    "SAFE_RUNTIME_LOOKUP",
+    "BOUNDARY_POLICY_COPY"
+  ],
+  "report_envelope": {
+    "required_fields": [
+      "protocolId",
+      "protocolVersion",
+      "reportStatus",
+      "sections",
+      "sourceAudit"
+    ],
+    "source_audit_fields": [
+      "sourceId",
+      "contract",
+      "status",
+      "versionOrDataset"
+    ],
+    "personal_judgment_field_available": false,
+    "prediction_field_available": false
+  },
+  "non_goals": [
+    "不新增排盘算法",
+    "不新增十神解释",
+    "不实现旺衰判断",
+    "不实现评分或权重",
+    "不实现喜用神或格局",
+    "不产生任何人生解释或预测"
+  ]
+}

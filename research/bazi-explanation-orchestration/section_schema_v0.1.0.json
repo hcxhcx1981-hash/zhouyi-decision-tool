@@ -1,0 +1,121 @@
+{
+  "schema_version": "0.1.0",
+  "schema_id": "BAZI_EXPLANATION_SECTION_SCHEMA_V0_1_0",
+  "status": "RESEARCH_PROTOCOL_NOT_FOR_RUNTIME",
+  "executable": false,
+  "sections": [
+    {
+      "section_id": "A_BASIC_CHART_SUMMARY",
+      "ordinal": "A",
+      "title": "基础命盘摘要",
+      "sources": ["BAZI_CHART_RUNTIME"],
+      "required_source_status": "READY",
+      "allowed_modes": ["FACT_PROJECTION"],
+      "content_blocks": [
+        "chart_completeness",
+        "year_pillar",
+        "month_pillar",
+        "day_pillar",
+        "hour_pillar_or_unknown"
+      ],
+      "unknown_hour_rule": "显示时辰未知并省略时柱，不进行补全。",
+      "failure_rule": "Chart BLOCKED 时本节标记 BLOCKED，只显示已有阻断说明。"
+    },
+    {
+      "section_id": "B_DAY_MASTER_GLOSS",
+      "ordinal": "B",
+      "title": "日主说明",
+      "sources": ["FOUNDATION_FROZEN_RUNTIME", "SAFE_INTERPRETATION_RUNTIME"],
+      "required_source_status": "READY",
+      "allowed_modes": ["FACT_PROJECTION", "SAFE_RUNTIME_GLOSS"],
+      "content_blocks": [
+        "day_stem_identity",
+        "day_stem_yin_yang",
+        "day_stem_element",
+        "day_master_safe_gloss_runtime_lookup"
+      ],
+      "unknown_hour_rule": "不受未知时辰影响。",
+      "failure_rule": "Foundation 不可用时整节 UNAVAILABLE；SAFE Runtime 不可用时保留事实块并关闭 gloss 块。"
+    },
+    {
+      "section_id": "C_TEN_GOD_STRUCTURE_FACTS",
+      "ordinal": "C",
+      "title": "十神结构事实",
+      "sources": ["FOUNDATION_FROZEN_RUNTIME", "SAFE_INTERPRETATION_RUNTIME"],
+      "required_source_status": "READY_OR_PARTIAL",
+      "allowed_modes": ["FACT_PROJECTION", "BOUNDARY_ONLY"],
+      "content_blocks": [
+        "visible_stem_ten_god_relations",
+        "hidden_stem_member_ten_god_relations",
+        "fact_only_term_boundary",
+        "relation_counts_with_count_policy"
+      ],
+      "count_policy_required": "COUNT_ONLY_IS_NOT_INTERPRETATION",
+      "hidden_stem_order_required": "NONE",
+      "unknown_hour_rule": "不生成时柱天干或时支藏干关系。",
+      "failure_rule": "Foundation 不可用时整节 UNAVAILABLE；SAFE Runtime 不可用时不展示依赖其政策的数量或 FACT_ONLY 边界文案。"
+    },
+    {
+      "section_id": "D_TRADITIONAL_OBSERVATION_ENTRY",
+      "ordinal": "D",
+      "title": "传统观察入口",
+      "sources": ["SAFE_INTERPRETATION_RUNTIME"],
+      "required_source_status": "READY",
+      "allowed_modes": ["SAFE_RUNTIME_GLOSS", "BOUNDARY_ONLY"],
+      "content_blocks": [
+        "present_safe_terms",
+        "safe_gloss_runtime_lookup",
+        "fact_only_terms_without_safe_gloss",
+        "context_required_topics_boundary"
+      ],
+      "selection_rule": "只按命盘中已存在的标准术语选择 runtime 条目，不生成组合解释。",
+      "unknown_hour_rule": "术语选择不得使用不存在的时柱关系。",
+      "failure_rule": "SAFE Runtime 不可用时整节 UNAVAILABLE，不回退旧硬编码文案。"
+    },
+    {
+      "section_id": "E_STRENGTH_FACT_ENTRY",
+      "ordinal": "E",
+      "title": "旺衰事实入口",
+      "sources": ["STRENGTH_FACT_RUNTIME"],
+      "required_source_status": "READY",
+      "allowed_modes": ["FACT_PROJECTION", "BOUNDARY_ONLY"],
+      "content_blocks": [
+        "month_order_fact",
+        "stem_root_presence",
+        "visible_stem_fact",
+        "hidden_stem_presence_fact",
+        "dependency_audit",
+        "no_conclusion_boundary"
+      ],
+      "unknown_hour_rule": "沿用 dependency_audit 完整性，只展示三柱可确定事实。",
+      "failure_rule": "Strength Fact BLOCKED 或不可用时只展示边界提示，不展示任何替代结论。"
+    },
+    {
+      "section_id": "F_CURRENT_LIMITATIONS",
+      "ordinal": "F",
+      "title": "当前限制说明",
+      "sources": [
+        "BAZI_CHART_RUNTIME",
+        "FOUNDATION_FROZEN_RUNTIME",
+        "SAFE_INTERPRETATION_RUNTIME",
+        "STRENGTH_FACT_RUNTIME"
+      ],
+      "required_source_status": "ANY",
+      "allowed_modes": ["BOUNDARY_ONLY"],
+      "content_blocks": [
+        "unknown_or_blocked_dependencies",
+        "unsupported_interpretation_topics",
+        "no_personal_judgment_statement",
+        "source_versions"
+      ],
+      "unknown_hour_rule": "明确说明时柱未知导致的事实缺口，不扩大为其他判断。",
+      "failure_rule": "本节始终保留，集中披露所有不可用来源与能力边界。"
+    }
+  ],
+  "global_section_invariants": [
+    "section_id 与 ordinal 唯一。",
+    "章节不可读取未登记 source。",
+    "UNAVAILABLE 或 BLOCKED 章节不得带伪造内容块。",
+    "每个展示块必须可追溯到一个 wording_origin。"
+  ]
+}

@@ -1,0 +1,131 @@
+{
+  "schema_version": "0.1.0",
+  "ruleset_id": "BAZI_EXPLANATION_BOUNDARY_RULES_V0_1_0",
+  "status": "RESEARCH_PROTOCOL_NOT_FOR_RUNTIME",
+  "executable": false,
+  "prohibited_report_outputs": [
+    "STRONG_WEAK_CLASSIFICATION",
+    "STRENGTH_CONCLUSION",
+    "FAVORABLE_ELEMENT",
+    "PATTERN_CLASSIFICATION",
+    "WEALTH_JUDGMENT",
+    "MARRIAGE_JUDGMENT",
+    "CAREER_JUDGMENT",
+    "PERSONALITY_JUDGMENT",
+    "LUCK_FORECAST"
+  ],
+  "inference_boundaries": [
+    {
+      "rule_id": "BOUND-001",
+      "input": "month_order_fact",
+      "allowed": "展示月支、月令名称、节气边界与原始事实说明。",
+      "blocked": "由月份位置生成个人状态或五行状态结论。"
+    },
+    {
+      "rule_id": "BOUND-002",
+      "input": "stem_root_presence",
+      "allowed": "展示天干成员是否出现在已知地支藏干集合及匹配地支。",
+      "blocked": "把成员存在或不存在升级为强弱、等级、得地或从格结论。"
+    },
+    {
+      "rule_id": "BOUND-003",
+      "input": "visible_stem_fact",
+      "allowed": "展示天干出现位置与数量。",
+      "blocked": "以透出、数量或柱位推断重要性、力量或人生主题。"
+    },
+    {
+      "rule_id": "BOUND-004",
+      "input": "hidden_stem_presence_fact",
+      "allowed": "展示藏干成员集合与匹配地支。",
+      "blocked": "赋予本中余、权重、主次、远近或强度。"
+    },
+    {
+      "rule_id": "BOUND-005",
+      "input": "ten_god_relation_count",
+      "allowed": "按 COUNT_ONLY_IS_NOT_INTERPRETATION 显示关系数量。",
+      "blocked": "使用较重、更强、更多所以等连接形成解释。"
+    },
+    {
+      "rule_id": "BOUND-006",
+      "input": "safe_gloss",
+      "allowed": "原样展示 runtime 中单一术语的许可主题。",
+      "blocked": "把许可主题映射为用户性格、事业、财富、婚姻或运势。"
+    },
+    {
+      "rule_id": "BOUND-007",
+      "input": "multiple_sections",
+      "allowed": "按固定顺序并列展示。",
+      "blocked": "跨章节汇总、抵消、加权、打分或生成综合结论。"
+    }
+  ],
+  "degradation_rules": [
+    {
+      "condition": "BAZI_CHART_RUNTIME_BLOCKED",
+      "keep_sections": ["A_BASIC_CHART_SUMMARY", "F_CURRENT_LIMITATIONS"],
+      "close_sections": [
+        "B_DAY_MASTER_GLOSS",
+        "C_TEN_GOD_STRUCTURE_FACTS",
+        "D_TRADITIONAL_OBSERVATION_ENTRY",
+        "E_STRENGTH_FACT_ENTRY"
+      ],
+      "fallback": "A 节只显示既有阻断原因，F 节显示能力边界。"
+    },
+    {
+      "condition": "FOUNDATION_RUNTIME_UNAVAILABLE",
+      "keep_sections": ["A_BASIC_CHART_SUMMARY", "F_CURRENT_LIMITATIONS"],
+      "close_sections": [
+        "B_DAY_MASTER_GLOSS",
+        "C_TEN_GOD_STRUCTURE_FACTS",
+        "D_TRADITIONAL_OBSERVATION_ENTRY",
+        "E_STRENGTH_FACT_ENTRY"
+      ],
+      "fallback": "不创建替代属性或十神关系。"
+    },
+    {
+      "condition": "SAFE_INTERPRETATION_RUNTIME_UNAVAILABLE",
+      "keep_sections": [
+        "A_BASIC_CHART_SUMMARY",
+        "B_DAY_MASTER_GLOSS",
+        "C_TEN_GOD_STRUCTURE_FACTS",
+        "E_STRENGTH_FACT_ENTRY",
+        "F_CURRENT_LIMITATIONS"
+      ],
+      "close_sections": ["D_TRADITIONAL_OBSERVATION_ENTRY"],
+      "fallback": "保留不依赖 SAFE Runtime 的事实块，不回退硬编码解释。"
+    },
+    {
+      "condition": "STRENGTH_FACT_RUNTIME_BLOCKED_OR_UNAVAILABLE",
+      "keep_sections": [
+        "A_BASIC_CHART_SUMMARY",
+        "B_DAY_MASTER_GLOSS",
+        "C_TEN_GOD_STRUCTURE_FACTS",
+        "D_TRADITIONAL_OBSERVATION_ENTRY",
+        "F_CURRENT_LIMITATIONS"
+      ],
+      "close_sections": ["E_STRENGTH_FACT_ENTRY"],
+      "fallback": "只说明事实入口不可用，不生成替代结论。"
+    },
+    {
+      "condition": "UNKNOWN_HOUR",
+      "keep_sections": [
+        "A_BASIC_CHART_SUMMARY",
+        "B_DAY_MASTER_GLOSS",
+        "C_TEN_GOD_STRUCTURE_FACTS",
+        "D_TRADITIONAL_OBSERVATION_ENTRY",
+        "E_STRENGTH_FACT_ENTRY",
+        "F_CURRENT_LIMITATIONS"
+      ],
+      "close_blocks": ["hour_pillar", "hour_stem_relation", "hour_hidden_stems"],
+      "fallback": "显示时辰未知边界，不补时柱。"
+    }
+  ],
+  "audit_requirements": [
+    "每节记录 section_status。",
+    "每个内容块记录 source_id 与 source_gate。",
+    "每个 SAFE 文案记录 semanticId 或 canonicalTerm。",
+    "每个数量块记录 COUNT_ONLY_IS_NOT_INTERPRETATION。",
+    "每个 Strength Fact 块记录 protocolId 与 dependency_audit。",
+    "降级时记录 condition，不保留已关闭来源的旧内容。"
+  ],
+  "direct_use_in_runtime_allowed": false
+}

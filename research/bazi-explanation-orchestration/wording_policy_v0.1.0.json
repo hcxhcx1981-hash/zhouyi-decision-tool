@@ -1,0 +1,120 @@
+{
+  "schema_version": "0.1.0",
+  "policy_id": "BAZI_EXPLANATION_WORDING_POLICY_V0_1_0",
+  "status": "RESEARCH_PROTOCOL_NOT_FOR_RUNTIME",
+  "executable": false,
+  "wording_origins": {
+    "FACT_VALUE_FORMAT": {
+      "allowed": "只把已存在字段填入固定事实模板。",
+      "may_paraphrase_source": false,
+      "may_add_interpretation": false
+    },
+    "SAFE_RUNTIME_LOOKUP": {
+      "allowed": "逐条使用 InterpretationProtocol 中对应 SAFE 或 FACT_ONLY 字段。",
+      "may_paraphrase_source": false,
+      "may_add_interpretation": false,
+      "hardcoded_safe_gloss_allowed": false
+    },
+    "BOUNDARY_POLICY_COPY": {
+      "allowed": "使用本协议登记的能力边界与降级提示。",
+      "may_paraphrase_source": false,
+      "may_add_interpretation": false
+    }
+  },
+  "fact_templates": [
+    {
+      "template_id": "WORD-A-01",
+      "section_id": "A_BASIC_CHART_SUMMARY",
+      "template": "{pillar_label}：{stem}{branch}",
+      "required_origin": "FACT_VALUE_FORMAT"
+    },
+    {
+      "template_id": "WORD-B-01",
+      "section_id": "B_DAY_MASTER_GLOSS",
+      "template": "日主：{day_stem}（{yin_yang}，{element}）",
+      "required_origin": "FACT_VALUE_FORMAT"
+    },
+    {
+      "template_id": "WORD-C-01",
+      "section_id": "C_TEN_GOD_STRUCTURE_FACTS",
+      "template": "{pillar_label}：{stem} → {ten_god}",
+      "required_origin": "FACT_VALUE_FORMAT"
+    },
+    {
+      "template_id": "WORD-C-02",
+      "section_id": "C_TEN_GOD_STRUCTURE_FACTS",
+      "template": "{ten_god}关系出现{count}处。数量统计不等同于命理判断。",
+      "required_origin": "FACT_VALUE_FORMAT",
+      "required_runtime_policy": "COUNT_ONLY_IS_NOT_INTERPRETATION"
+    },
+    {
+      "template_id": "WORD-E-01",
+      "section_id": "E_STRENGTH_FACT_ENTRY",
+      "template": "月令载体：{month_branch}；节气边界：{jieqi_boundary_used}。",
+      "required_origin": "FACT_VALUE_FORMAT"
+    },
+    {
+      "template_id": "WORD-E-02",
+      "section_id": "E_STRENGTH_FACT_ENTRY",
+      "template": "{stem}在地支藏干成员集合中{presence_text}。",
+      "required_origin": "FACT_VALUE_FORMAT"
+    }
+  ],
+  "safe_lookup_rules": [
+    "日主说明只能 lookup canonicalTerm=日主 的 SAFE gloss。",
+    "十神传统主题只能 lookup 命盘已出现且 gate=SAFE_SEMANTIC_GLOSS 的条目。",
+    "FACT_ONLY 条目只读取 allowed 字段，不得创建 SAFE gloss。",
+    "不得把两个或多个 SAFE gloss 合成为新的个人化段落。"
+  ],
+  "boundary_copy": [
+    {
+      "copy_id": "BOUNDARY-COUNT",
+      "text": "数量统计不等同于命理判断。"
+    },
+    {
+      "copy_id": "BOUNDARY-STRENGTH-FACT",
+      "text": "本节只展示月令、天干与藏干成员等结构事实，不提供旺衰结论。"
+    },
+    {
+      "copy_id": "BOUNDARY-UNKNOWN-HOUR",
+      "text": "时辰未知，当前报告不包含时柱相关事实。"
+    },
+    {
+      "copy_id": "BOUNDARY-CURRENT-SCOPE",
+      "text": "当前工具不提供喜用神、格局或个人命运判断。"
+    }
+  ],
+  "restricted_language": {
+    "forbidden_as_generated_conclusion": [
+      "身强",
+      "身弱",
+      "旺衰结论",
+      "喜用神",
+      "格局",
+      "财富判断",
+      "婚姻判断",
+      "事业判断",
+      "性格判断",
+      "运势预测"
+    ],
+    "forbidden_modifiers": [
+      "较重",
+      "更强",
+      "更弱",
+      "旺盛",
+      "衰弱",
+      "有利",
+      "不利",
+      "吉",
+      "凶"
+    ],
+    "boundary_mentions_allowed": true,
+    "section_title_mentions_allowed": ["旺衰事实入口"]
+  },
+  "style_rules": [
+    "先事实，后来源内 SAFE 说明，最后边界。",
+    "短句、明确标签、不使用概率或暗示性措辞。",
+    "不使用第二人称把传统主题映射到用户。",
+    "不使用可能、容易、注定、一定等预测连接词。"
+  ]
+}
