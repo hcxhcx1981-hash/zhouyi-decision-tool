@@ -19,14 +19,17 @@ export interface ClipboardWriter {
 export interface BaziFoundationClipboardSummary {
   readonly dayMaster: {
     readonly chinese: string;
-    readonly yinYangLabel: string;
     readonly elementLabel: string;
   };
-  readonly stemTenGods: readonly ({
-    readonly pillarLabel: "年干" | "月干" | "日干" | "时干";
-    readonly stemChinese: string;
+  readonly relationships: readonly ({
+    readonly pillarLabel: "年柱" | "月柱" | "日柱" | "时柱";
     readonly tenGod: string;
+    readonly isDayMaster: boolean;
   } | null)[];
+  readonly traditionalObservations: readonly {
+    readonly canonicalTerm: string;
+    readonly plainLanguage: string;
+  }[];
 }
 
 export const UNSUPPORTED_BAZI_CAPABILITIES = [
@@ -68,29 +71,38 @@ export function buildBaziClipboardText(
   input: BaziChartDisplayInput,
   foundation: BaziFoundationClipboardSummary,
 ): string {
-  const labels = ["年柱", "月柱", "日柱", "时柱"] as const;
-  const pillarLines = pillars.map((pillar, index) => `${labels[index]}：${pillar ?? "未知"}`);
-  const tenGodLines = foundation.stemTenGods.map((entry) =>
-    entry ? `${entry.pillarLabel}${entry.stemChinese}：${entry.tenGod}` : "时干：未知",
+  const relationshipLines = foundation.relationships.map((entry) => {
+    if (!entry) return "- 时柱：时辰未知，不生成关系";
+    return entry.isDayMaster
+      ? `- ${entry.pillarLabel}：日主自身`
+      : `- ${entry.pillarLabel}：出现${entry.tenGod}关系`;
+  });
+  const observationLines = foundation.traditionalObservations.map(
+    (entry) => `- ${entry.canonicalTerm}：${entry.plainLanguage}`,
   );
   return [
-    "八字基础命盘",
+    "八字基础档案",
+    "",
     `出生：${formatBirthDisplay(input)}`,
-    `性别：${formatGenderDisplay(input.gender)}`,
     `地点：${formatLocationDisplay(input)}`,
-    `时区：${input.ianaTimezone ?? "未解析"}`,
     "",
     "四柱：",
-    ...pillarLines,
+    formatBaziOverview(pillars),
     "",
     "日主：",
-    `${foundation.dayMaster.chinese} · ${foundation.dayMaster.yinYangLabel} · ${foundation.dayMaster.elementLabel}`,
+    `${foundation.dayMaster.chinese}${foundation.dayMaster.elementLabel}`,
     "",
-    "十神：",
-    ...tenGodLines,
+    "命盘结构：",
+    ...relationshipLines,
     "",
-    "基础说明：",
-    "当前内容仅为基础命盘结构，不包含旺衰、喜用神、大运或运势判断。",
+    "传统观察方向：",
+    ...(observationLines.length > 0 ? observationLines : ["- 正式 SAFE 说明当前不可用"]),
+    "",
+    "当前版本：",
+    "基础结构分析",
+    "",
+    "不包含：",
+    "旺衰、喜用神、大运、流年等个人预测内容",
   ].join("\n");
 }
 

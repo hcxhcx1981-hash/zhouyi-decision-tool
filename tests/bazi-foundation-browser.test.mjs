@@ -210,6 +210,6 @@ test("Foundation页面链不持久化用户资料，失败提示不清空四柱"
   assert.match(source, /标准命理 \+ 白话解释/);
   assert.match(source, /藏干仅按成员展示，不区分主次。/);
   assert.match(source, /orderSemantics=NONE/);
-  assert.match(source, /查看命盘说明/);
-  assert.match(source, /复制命盘资料/);
+  assert.match(source, /查看完整命盘结构与技术资料/);
+  assert.match(source, /基础命理技术资料/);
 });

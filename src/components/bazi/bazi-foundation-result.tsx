@@ -12,10 +12,7 @@ import type {
 } from "@/lib/bazi/foundation-runtime-types";
 import { createLatestRequestGate, settleLatestRequest } from "@/lib/bazi/bazi-page-contract";
 import {
-  buildBaziClipboardText,
-  copyBaziChartText,
   type BaziChartDisplayInput,
-  type BaziFoundationClipboardSummary,
   type BaziPillarTexts,
 } from "./bazi-chart-presentation";
 import {
@@ -39,8 +36,6 @@ type FoundationViewState =
       readonly value: PillarsFoundationResult;
     }
   | { readonly status: "ERROR"; readonly resultIdentity: string };
-
-type CopyStatus = "IDLE" | "COPIED" | "FAILED";
 
 const PILLAR_LABELS = ["年柱", "月柱", "日柱", "时柱"] as const;
 const STEM_LABELS = ["年干", "月干", "日干", "时干"] as const;
@@ -125,46 +120,19 @@ function FoundationPillarCard({
   );
 }
 
-function toClipboardSummary(value: PillarsFoundationResult): BaziFoundationClipboardSummary {
-  const pillars = [value.year, value.month, value.day, value.hour] as const;
-  return {
-    dayMaster: {
-      chinese: value.day.stem.chinese,
-      yinYangLabel: formatYinYang(value.day.stem.yinYang),
-      elementLabel: formatFiveElement(value.day.stem.element),
-    },
-    stemTenGods: pillars.map((pillar, index) => pillar ? {
-      pillarLabel: STEM_LABELS[index],
-      stemChinese: pillar.stem.chinese,
-      tenGod: pillar.stem.tenGod,
-    } : null),
-  };
-}
-
 function FoundationExplanation({
   value,
-  pillars,
-  displayInput,
-  copyStatus,
-  onCopy,
 }: {
   value: PillarsFoundationResult;
-  pillars: BaziPillarTexts;
-  displayInput: BaziChartDisplayInput;
-  copyStatus: CopyStatus;
-  onCopy: (text: string) => void;
 }) {
   const foundationPillars = [value.year, value.month, value.day, value.hour] as const;
-  const clipboardText = buildBaziClipboardText(pillars, displayInput, toClipboardSummary(value));
   return (
-    <>
-      <div className="bazi-explanation-cta-area">
-        <a className="bazi-explanation-cta" href="#bazi-foundation-explanation">查看命盘说明</a>
-        <p>先看白话说明；标准术语和技术依据仍完整保留。</p>
-      </div>
-      <section className="bazi-foundation-section" id="bazi-foundation-explanation" aria-labelledby="bazi-foundation-title">
+    <section className="bazi-foundation-section" id="bazi-foundation-explanation" aria-labelledby="bazi-foundation-title">
+      <details className="bazi-foundation-details">
+        <summary>查看完整命盘结构与技术资料</summary>
+        <div className="bazi-foundation-details-body">
         <div className="bazi-foundation-heading">
-          <div><h3 id="bazi-foundation-title">基础命理结构</h3><span>标准命理 + 白话解释</span></div>
+          <div><h3 id="bazi-foundation-title">基础命理技术资料</h3><span>标准命理 + 白话解释</span></div>
           <p>当前仅说明阴阳五行、藏干成员与十神关系，不代表旺衰、喜忌或吉凶判断。</p>
         </div>
         <div className="bazi-foundation-pillars">
@@ -185,15 +153,9 @@ function FoundationExplanation({
           <summary>查看基础命理技术依据</summary>
           <p>藏干技术语义：orderSemantics=NONE。</p>
         </details>
-        <details className="bazi-copy-details">
-          <summary>更多 / 分享 / 技术资料</summary>
-          <button type="button" className="bazi-copy-button" onClick={() => onCopy(clipboardText)}>复制命盘资料</button>
-          <p className={`bazi-copy-status ${copyStatus.toLowerCase()}`} aria-live="polite">
-            {copyStatus === "COPIED" ? "已复制命盘资料。" : copyStatus === "FAILED" ? "复制失败，请手动选择命盘内容。" : "复制仅在点击后进行，不会保存出生资料。"}
-          </p>
-        </details>
-      </section>
-    </>
+        </div>
+      </details>
+    </section>
   );
 }
 
@@ -211,11 +173,9 @@ export function BaziFoundationResult({
   children: ReactNode;
 }) {
   const [state, setState] = useState<FoundationViewState>(() => ({ status: "LOADING", resultIdentity }));
-  const [copyState, setCopyState] = useState<{ readonly resultIdentity: string; readonly status: CopyStatus }>(() => ({ resultIdentity, status: "IDLE" }));
   const requests = useRef(createLatestRequestGate());
   const loadPromise = useRef<Promise<FoundationBrowserLoadResult> | null>(null);
   const visibleState: FoundationViewState = state.resultIdentity === resultIdentity ? state : { status: "LOADING", resultIdentity };
-  const visibleCopyStatus = copyState.resultIdentity === resultIdentity ? copyState.status : "IDLE";
 
   useEffect(() => {
     const gate = requests.current;
@@ -234,12 +194,6 @@ export function BaziFoundationResult({
     return () => gate.invalidate();
   }, [coreResult, resultIdentity]);
 
-  async function copyChart(text: string) {
-    const clipboard = typeof navigator === "undefined" ? null : navigator.clipboard ?? null;
-    const copied = await copyBaziChartText(text, clipboard);
-    setCopyState({ resultIdentity, status: copied ? "COPIED" : "FAILED" });
-  }
-
   return (
     <>
       <div data-foundation-status={visibleState.status} data-foundation-identity={resultIdentity}>
@@ -250,19 +204,15 @@ export function BaziFoundationResult({
       {children}
       {visibleState.status === "READY" ? (
         <>
-          <FoundationExplanation
-            value={visibleState.value}
-            pillars={pillars}
-            displayInput={displayInput}
-            copyStatus={visibleCopyStatus}
-            onCopy={(text) => void copyChart(text)}
-          />
           <BaziExplanationReport
             coreResult={coreResult}
             foundationData={visibleState.data}
             foundation={visibleState.value}
             resultIdentity={resultIdentity}
+            pillars={pillars}
+            displayInput={displayInput}
           />
+          <FoundationExplanation value={visibleState.value} />
         </>
       ) : null}
     </>

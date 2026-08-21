@@ -136,7 +136,7 @@ test("Runtime失败被拒绝且页面保留Foundation并友好降级", async () 
   );
   const parentSource = readFileSync(join(root, "src", "components", "bazi", "bazi-foundation-result.tsx"), "utf8");
   const interpretationSource = readFileSync(join(root, "src", "components", "bazi", "bazi-explanation-report.tsx"), "utf8");
-  assert.ok(parentSource.indexOf("<FoundationExplanation") < parentSource.indexOf("<BaziExplanationReport"));
+  assert.ok(parentSource.indexOf("<BaziExplanationReport") < parentSource.indexOf("<FoundationExplanation"));
   assert.match(interpretationSource, /正式 SAFE 说明暂时不可用/);
   assert.match(interpretationSource, /事实章节仍可查看/);
   assert.doesNotMatch(interpretationSource, /getTenGodDisplayCopy|TEN_GOD_DISPLAY_COPY/);
