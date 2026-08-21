@@ -14,6 +14,7 @@
     "build:bazi-interpretation-browser-runtime": "node scripts/build-bazi-interpretation-browser-runtime.mjs",
     "validate:bazi-browser-runtime": "node --experimental-strip-types scripts/validate-bazi-browser-runtime.mjs",
     "validate:bazi-interpretation-browser-runtime": "node --experimental-strip-types scripts/validate-bazi-interpretation-browser-runtime.mjs",
+    "validate:bazi-strength-fact-runtime": "node --experimental-strip-types scripts/validate-bazi-strength-fact-runtime.mjs",
     "typecheck": "tsc --noEmit",
     "test": "node --test --experimental-strip-types tests/*.test.mjs",
     "validate:rules": "python data/frozen/validate_zhouyi_rules_v01.py"
