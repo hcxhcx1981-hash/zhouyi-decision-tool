@@ -1,0 +1,26 @@
+{
+  "dataset_id": "BAZI_INTERPRETATION_BROWSER_MANIFEST_V0_1_0",
+  "version": "0.1.0",
+  "status": "DERIVED_BROWSER_RUNTIME_MANIFEST",
+  "tradition_scope": "ZIPING_BAZI",
+  "source_frozen_sha256": "084de621127eb4307f025d39a5ef9a7770c2b935a3d70dac872ac6e08ccbac34",
+  "asset": {
+    "path": "/bazi-interpretation-runtime/v0.1.0/bazi-interpretation-protocol-v0.1.0.json",
+    "sha256": "574c2d0b544361a2c2d279c98fb2cf63422e3b7cb4a12f977baa4af17008c99b",
+    "byte_size": 7324
+  },
+  "counts": {
+    "safe_glosses": 7,
+    "fact_only_terms": 4,
+    "interpretation_gates": 4,
+    "prohibited_direct_inferences": 20,
+    "visible_hidden_allowed_statements": 3
+  },
+  "generation_policy": {
+    "frozen_protocol_is_single_source_of_truth": true,
+    "deterministic_json": true,
+    "research_content_included": false,
+    "network_sources": false,
+    "user_data": false
+  }
+}

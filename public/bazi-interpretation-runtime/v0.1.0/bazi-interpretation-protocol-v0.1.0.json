@@ -1,0 +1,270 @@
+{
+  "dataset_id": "BAZI_INTERPRETATION_BROWSER_RUNTIME_V0_1_0",
+  "schema_version": "0.1.0",
+  "version": "0.1.0",
+  "status": "DERIVED_BROWSER_RUNTIME_ASSET",
+  "tradition_scope": "ZIPING_BAZI",
+  "source_frozen_sha256": "084de621127eb4307f025d39a5ef9a7770c2b935a3d70dac872ac6e08ccbac34",
+  "safe_glosses": [
+    {
+      "semantic_id": "SAFE-GLOSS-DAY-MASTER",
+      "canonical_term": "日主",
+      "standard_expression": "日主（日干）是子平八字分析的中心参照。",
+      "plain_language": "可以把日主理解为这张命盘进行十神关系分析时的核心参照点。",
+      "allowed_topics": [
+        "中心参照"
+      ],
+      "gate": "SAFE_SEMANTIC_GLOSS",
+      "source_ids": [
+        "SRC-L1-YUANHAI-ZIPING"
+      ]
+    },
+    {
+      "semantic_id": "SAFE-GLOSS-QISHA",
+      "canonical_term": "七杀",
+      "plain_language": "传统子平会从对日主形成克制、以及是否得到适当制化的角度观察七杀。",
+      "allowed_topics": [
+        "攻身",
+        "制伏（制化）关系"
+      ],
+      "gate": "SAFE_SEMANTIC_GLOSS",
+      "source_ids": [
+        "SRC-L1-YUANHAI-ZIPING",
+        "SRC-L1-ZIPING-ZHENQUAN"
+      ]
+    },
+    {
+      "semantic_id": "SAFE-GLOSS-SHANGGUAN",
+      "canonical_term": "伤官",
+      "plain_language": "传统子平会从才艺、秀气等主题观察伤官。",
+      "allowed_topics": [
+        "才艺",
+        "秀气"
+      ],
+      "gate": "SAFE_SEMANTIC_GLOSS",
+      "source_ids": [
+        "SRC-L1-YUANHAI-ZIPING",
+        "SRC-L1-ZIPING-ZHENQUAN"
+      ]
+    },
+    {
+      "semantic_id": "SAFE-GLOSS-ZHENGGUAN",
+      "canonical_term": "正官",
+      "plain_language": "传统子平会从贵气、尊位等主题观察正官。",
+      "allowed_topics": [
+        "贵气",
+        "尊位"
+      ],
+      "gate": "SAFE_SEMANTIC_GLOSS",
+      "source_ids": [
+        "SRC-L1-YUANHAI-ZIPING",
+        "SRC-L1-ZIPING-ZHENQUAN"
+      ]
+    },
+    {
+      "semantic_id": "SAFE-GLOSS-ZHENGYIN",
+      "canonical_term": "正印",
+      "plain_language": "传统子平把印绶视为生助日主的一类关系。",
+      "allowed_topics": [
+        "生身关系"
+      ],
+      "gate": "SAFE_SEMANTIC_GLOSS",
+      "source_ids": [
+        "SRC-L1-YUANHAI-ZIPING",
+        "SRC-L1-ZIPING-ZHENQUAN"
+      ]
+    },
+    {
+      "semantic_id": "SAFE-GLOSS-SHISHEN",
+      "canonical_term": "食神",
+      "plain_language": "传统子平常从食禄以及生财关系观察食神。",
+      "allowed_topics": [
+        "食禄",
+        "生财关系"
+      ],
+      "gate": "SAFE_SEMANTIC_GLOSS",
+      "source_ids": [
+        "SRC-L1-YUANHAI-ZIPING",
+        "SRC-L1-ZIPING-ZHENQUAN"
+      ]
+    },
+    {
+      "semantic_id": "SAFE-GLOSS-ZHENGCAI",
+      "canonical_term": "正财",
+      "plain_language": "传统子平把正财归入财帛关系进行观察。",
+      "allowed_topics": [
+        "财帛关系"
+      ],
+      "gate": "SAFE_SEMANTIC_GLOSS",
+      "source_ids": [
+        "SRC-L1-YUANHAI-ZIPING",
+        "SRC-L1-ZIPING-ZHENQUAN"
+      ]
+    }
+  ],
+  "fact_only_terms": [
+    {
+      "canonical_term": "比肩",
+      "gate": "FACT_ONLY",
+      "allowed": "仅显示 Foundation 已冻结的生克阴阳结构分类依据。",
+      "safe_gloss_available": false
+    },
+    {
+      "canonical_term": "劫财",
+      "gate": "FACT_ONLY",
+      "allowed": "仅显示 Foundation 已冻结的生克阴阳结构分类依据。",
+      "safe_gloss_available": false
+    },
+    {
+      "canonical_term": "偏财",
+      "gate": "FACT_ONLY",
+      "allowed": "仅显示 Foundation 已冻结的生克阴阳结构分类依据。",
+      "safe_gloss_available": false
+    },
+    {
+      "canonical_term": "偏印",
+      "gate": "FACT_ONLY",
+      "allowed": "仅显示 Foundation 已冻结的生克阴阳结构分类依据。",
+      "safe_gloss_available": false
+    }
+  ],
+  "interpretation_gates": {
+    "FACT_ONLY": "可以直接显示确定结构事实。",
+    "SAFE_SEMANTIC_GLOSS": "只能使用本协议正式冻结的 safe gloss。",
+    "CONTEXT_REQUIRED": "只允许提示需要更多传统规则后才能进一步判断，不得输出结论。",
+    "PROHIBITED_DIRECT_INFERENCE": "禁止生成。"
+  },
+  "count_policy": {
+    "policy_id": "COUNT_ONLY_IS_NOT_INTERPRETATION",
+    "gate": "FACT_ONLY",
+    "allowed_example": "命盘中有两个可见七杀关系。",
+    "prohibited_modifiers": [
+      "重",
+      "旺",
+      "压力大",
+      "杀气重",
+      "事业心强"
+    ],
+    "applies_to": "ALL_TEN_GODS"
+  },
+  "visible_hidden_policy": {
+    "gate": "FACT_ONLY",
+    "allowed_statements": [
+      "该十神出现在天干",
+      "该十神仅存在于地支藏干",
+      "该十神同时存在于天干与藏干"
+    ],
+    "prohibited_interpretations": [
+      "透干更重要",
+      "透干力量更强",
+      "透干意义更直接",
+      "藏干力量更弱",
+      "深根更有力"
+    ],
+    "deferred_gate": [
+      "TRADITION_POLICY_REQUIRED",
+      "CONTEXT_REQUIRED"
+    ],
+    "case_i11": {
+      "case_id": "CASE-I11",
+      "status": "FACT_ONLY"
+    }
+  },
+  "prohibited_direct_inferences": [
+    {
+      "text": "你天生",
+      "category": "DIRECT_LANGUAGE"
+    },
+    {
+      "text": "注定",
+      "category": "DIRECT_LANGUAGE"
+    },
+    {
+      "text": "一生",
+      "category": "DIRECT_LANGUAGE"
+    },
+    {
+      "text": "必定",
+      "category": "DIRECT_LANGUAGE"
+    },
+    {
+      "text": "命中注定",
+      "category": "DIRECT_LANGUAGE"
+    },
+    {
+      "text": "婚姻不顺",
+      "category": "DIRECT_LANGUAGE"
+    },
+    {
+      "text": "必有横财",
+      "category": "DIRECT_LANGUAGE"
+    },
+    {
+      "text": "晚年富贵",
+      "category": "DIRECT_LANGUAGE"
+    },
+    {
+      "text": "事业一定成功",
+      "category": "DIRECT_LANGUAGE"
+    },
+    {
+      "text": "容易离婚",
+      "category": "DIRECT_LANGUAGE"
+    },
+    {
+      "text": "克父克母",
+      "category": "DIRECT_LANGUAGE"
+    },
+    {
+      "text": "子女不孝",
+      "category": "DIRECT_LANGUAGE"
+    },
+    {
+      "text": "七杀多 = 脾气暴躁",
+      "category": "SINGLE_TEN_GOD_LIFE_INFERENCE"
+    },
+    {
+      "text": "正财多 = 一定有钱",
+      "category": "SINGLE_TEN_GOD_LIFE_INFERENCE"
+    },
+    {
+      "text": "伤官 = 婚姻不好",
+      "category": "SINGLE_TEN_GOD_LIFE_INFERENCE"
+    },
+    {
+      "text": "偏印 = 性格孤僻",
+      "category": "SINGLE_TEN_GOD_LIFE_INFERENCE"
+    },
+    {
+      "text": "正官 = 一定当官",
+      "category": "SINGLE_TEN_GOD_LIFE_INFERENCE"
+    },
+    {
+      "text": "食神 = 一定有口福",
+      "category": "SINGLE_TEN_GOD_LIFE_INFERENCE"
+    },
+    {
+      "text": "劫财 = 一定破财",
+      "category": "SINGLE_TEN_GOD_LIFE_INFERENCE"
+    },
+    {
+      "text": "比肩 = 一定朋友多",
+      "category": "SINGLE_TEN_GOD_LIFE_INFERENCE"
+    }
+  ],
+  "context_required_topics": [
+    "旺衰",
+    "月令",
+    "通根",
+    "生扶克泄",
+    "格局",
+    "制化",
+    "位置",
+    "全局组合"
+  ],
+  "known_limitations": [
+    "不是个人命理解读。",
+    "不提供旺衰、喜用神、格局、大运或流年判断。",
+    "不根据单一十神、数量、透干或藏干推断性格、事件、吉凶或人生结果。"
+  ]
+}

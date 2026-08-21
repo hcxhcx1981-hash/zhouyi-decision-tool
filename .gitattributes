@@ -1,2 +1,3 @@
 # Frozen source materials must retain their original bytes and Markdown spacing.
 data/frozen/** -text -whitespace
+public/bazi-interpretation-runtime/** -text -whitespace
