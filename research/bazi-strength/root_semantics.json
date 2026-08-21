@@ -1,0 +1,42 @@
+{
+  "schema_version": "0.1",
+  "status": "RESEARCH_CANDIDATE_NOT_FOR_RUNTIME",
+  "tradition_scope": "ZIPING_BAZI",
+  "root_concept": {
+    "term": "通根",
+    "definition_candidate": "天干在地支藏干集合中找到同类（同五行）或生扶元素，如树之有根。",
+    "evidence": {
+      "source_ids": ["SRC-L1-DITIANSUI"],
+      "excerpt": "天干得一比肩在地支，如树之有根，风摇而不倒",
+      "section": "通根章/天干论"
+    },
+    "evidence_level": "L1"
+  },
+  "machineability": {
+    "stem_root_present": {
+      "can_machine": true,
+      "definition": "FACT_ONLY：“某天干在地支藏干集合中存在对应五行/天干关系（STEM_ROOT_PRESENT）。”",
+      "basis": "藏干成员集合已在 bazi-foundation 冻结（hidden_stem_set），存在性可确定性判断。",
+      "gate": "FACT_ONLY"
+    },
+    "root_strength": {
+      "can_machine": false,
+      "reason": "根的强弱分级（本气根>中气根>余气根、月令根、根之远近）依赖藏干顺序与权重，而藏干顺序语义已冻结为 NONE_V0_2、本中余气为 TRADITION_POLICY_REQUIRED、权重为 OUT_OF_SCOPE。",
+      "gate": "BLOCKED",
+      "block_code": "ROOT_STRENGTH_DEPENDS_ON_HIDDEN_STEM_POLICY"
+    }
+  },
+  "blocked_inferences": [
+    "本气根=多少分",
+    "中气根=多少分",
+    "余气根=多少分",
+    "根多=身强",
+    "无根=身弱必从"
+  ],
+  "conclusion": {
+    "classification": "PARTIAL",
+    "freezable": "STEM_ROOT_PRESENT（存在性）",
+    "blocked": "通根强弱（任何量化或分级）",
+    "note": "通根存在 ≠ 传统‘得地’强弱结论；强弱解释需藏干政策解冻。"
+  }
+}

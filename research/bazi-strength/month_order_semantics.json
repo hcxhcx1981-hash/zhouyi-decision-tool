@@ -1,0 +1,81 @@
+{
+  "schema_version": "0.1",
+  "status": "RESEARCH_CANDIDATE_NOT_FOR_RUNTIME",
+  "tradition_scope": "ZIPING_BAZI",
+  "month_order_concepts": [
+    {
+      "topic": "月令定义",
+      "definition_candidate": "月令在子平体系中指出生月支及其所承之气，为‘提纲’，是格局与旺衰观察的第一参照。",
+      "evidence": {
+        "source_ids": ["SRC-L1-YUANHAI-ZIPING", "SRC-L1-ZIPING-ZHENQUAN"],
+        "excerpts": [
+          "月为提纲（渊海子平·论日为主）",
+          "月令者，提纲也。看命先看提纲，方看其余（渊海子平·论正官）",
+          "论用神，专以月令提纲为重（子平真诠）"
+        ]
+      },
+      "freezable": "PARTIAL",
+      "freeze_candidate": "FACT_ONLY：“月令对应出生月支在子平体系中的观察位置（提纲）。”",
+      "blocked": "不得由月支直接输出“某月出生一定旺某五行”。"
+    },
+    {
+      "topic": "月支与月令关系",
+      "definition_candidate": "月支（出生月的十二地支）是月令的载体；月令之‘气’随节气（节）换月而变。",
+      "evidence": {
+        "source_ids": ["SRC-L1-YUANHAI-ZIPING", "SRC-L1-SANMING-TONGHUI"],
+        "excerpts": [
+          "月为提纲，带官星印绶，则慷慨聪明（渊海子平·论月令）",
+          "四时之序，节满即谢（三命通会·论五行旺相休囚死）"
+        ]
+      },
+      "freezable": "PARTIAL",
+      "freeze_candidate": "FACT_ONLY：“月支为月令的载体；节气（节）换月决定月支归属。”",
+      "blocked": "月支 ≠ 月令之气；月令之气是否随节而变需节气数据集（已有 bazi 节气数据）支持，但旺衰解释阻断。"
+    },
+    {
+      "topic": "节气换月规则",
+      "definition_candidate": "子平月界以十二个节（立春/惊蛰/清明/立夏/芒种/小暑/立秋/白露/寒露/立冬/大雪/小寒）为换月点，非农历月初。",
+      "evidence": {
+        "source_ids": ["SRC-L1-SANMING-TONGHUI", "SRC-L1-YUANHAI-ZIPING"],
+        "excerpts": [
+          "遁月从年……正月起丙寅，二月丁卯（三命通会·论遁月时，五虎遁月例）",
+          "立春雨水后寒气渐变，至立夏则寒尽化暑（三命通会节气序）"
+        ]
+      },
+      "freezable": "YES",
+      "freeze_candidate": "FACT_ONLY：“月支按十二节换月确定（节气瞬间及之后进入新月支）。”",
+      "note": "月界规则已在 bazi 四柱排盘冻结；本研究仅确认其作为月令前提的语义，不重做。"
+    },
+    {
+      "topic": "月令作为提纲的来源",
+      "definition_candidate": "‘提纲’一说源于渊海子平（月为提纲）与子平真诠（专以月令提纲为重），指月令在命局分析中的首要观察地位。",
+      "evidence": {
+        "source_ids": ["SRC-L1-YUANHAI-ZIPING", "SRC-L1-ZIPING-ZHENQUAN"],
+        "excerpts": [
+          "以日为主，年为本，月为提纲，时为辅佐（渊海子平）",
+          "论用神，专以月令提纲为重（子平真诠）"
+        ]
+      },
+      "freezable": "YES",
+      "freeze_candidate": "FACT_ONLY：“传统子平以月令为提纲（首要观察位置）。”",
+      "blocked": "提纲地位 ≠ 月令单独决定旺衰。"
+    },
+    {
+      "topic": "月令是否等同月份",
+      "definition_candidate": "月令不等同于公历月份；月令以节气为界（月支），与农历/公历月份标签无关。",
+      "evidence": {
+        "source_ids": ["SRC-L1-SANMING-TONGHUI"],
+        "excerpts": ["四时之序，节满即谢（三命通会）"]
+      },
+      "freezable": "YES",
+      "freeze_candidate": "FACT_ONLY：“月令以节气（节）为界，不等同于公历或农历月份标签。”",
+      "blocked": "不得由公历月份推断月令五行状态。"
+    }
+  ],
+  "conclusion": {
+    "month_order_freezable": "PARTIAL",
+    "summary": "可冻结：月令=月支载体+提纲观察位置+节气换月规则（均为 FACT_ONLY 结构性事实）。",
+    "blocked": "不可冻结：月令五行状态（旺相休囚死）对日主的解释、得令/失令判定、任何‘某月旺某五行’断言。",
+    "classification": "TRADITION_POLICY_REQUIRED（旺衰解释层）"
+  }
+}

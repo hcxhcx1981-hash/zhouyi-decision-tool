@@ -1,0 +1,57 @@
+{
+  "schema_version": "0.1",
+  "status": "RESEARCH_CANDIDATE_NOT_FOR_RUNTIME",
+  "tradition_scope": "ZIPING_BAZI",
+  "core_claim": "旺衰解释依赖多层信息；不得由单变量（月支/数量）直接输出旺弱。",
+  "dependency_chain": [
+    "月支与节气换月（FACT_ONLY：月令=月支载体+提纲位置）",
+    "↓",
+    "月令五行状态（旺相休囚死框架，FACT_ONLY 无吉凶）",
+    "↓",
+    "日主与月令关系（得令/失令——TRADITION_POLICY_REQUIRED，不得简单二元化）",
+    "↓",
+    "通根存在性（STEM_ROOT_PRESENT，FACT_ONLY）",
+    "↓",
+    "通根强弱（本气/中气/余气——BLOCKED，依赖藏干权重政策）",
+    "↓",
+    "全局生扶克泄（印比帮身、财官食伤消耗——INTERPRETIVE）",
+    "↓",
+    "旺衰综合判定（TRADITION_POLICY_REQUIRED / OUT_OF_SCOPE 评分）",
+    "↓",
+    "更强解释（CONTEXT_REQUIRED 及以上）"
+  ],
+  "input_facts_available": {
+    "year_pillar": "年柱干支（可机器化）",
+    "month_pillar": "月柱干支（可机器化，含月支）",
+    "day_pillar": "日柱干支（可机器化，日干=日主）",
+    "hour_pillar": "时柱干支（可机器化，或未知）",
+    "hidden_stem_sets": "十二支藏干成员集合（bazi-foundation 已冻结）",
+    "solar_terms": "节气 UTC 时刻（bazi 节气数据集已冻结）"
+  },
+  "machineability_verdict": {
+    "can_machine_strength": false,
+    "reason": [
+      "无统一确定性旺衰算法（传统定性 vs 现代计分冲突）",
+      "得令/失令不能由月支单独判定（得令≠身旺）",
+      "通根强弱依赖未冻结的藏干顺序/权重政策",
+      "月令权重口径（半壁 vs 切不可泥之）存在流派张力"
+    ],
+    "blocker": "BLOCKER_STRENGTH_NOT_MACHINEABLE_YET"
+  },
+  "minimal_freeze_scope": {
+    "now": [
+      "月令=月支载体+提纲位置（FACT_ONLY）",
+      "节气换月规则（FACT_ONLY，已在四柱排盘冻结）",
+      "旺相休囚死框架（FACT_ONLY，无吉凶）",
+      "藏干成员集合（已冻结）",
+      "STEM_ROOT_PRESENT（通根存在性）"
+    ],
+    "blocked": [
+      "得令/失令输出",
+      "身强/身弱输出",
+      "旺衰评分",
+      "喜用神",
+      "任何个人化结论"
+    ]
+  }
+}

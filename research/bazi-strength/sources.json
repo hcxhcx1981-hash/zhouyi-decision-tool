@@ -1,0 +1,121 @@
+{
+  "schema_version": "0.1",
+  "status": "RESEARCH_CANDIDATE_NOT_FOR_RUNTIME",
+  "research_scope": "子平八字月令与旺衰研究：月令定义、得令、旺衰判断输入、通根、旺衰可机器化程度",
+  "tradition_scope": "ZIPING_BAZI",
+  "excluded_traditions": ["紫微斗数", "奇门遁甲", "六爻", "梅花易数", "西方占星", "塔罗", "生肖性格学", "民间生肖配对"],
+  "sources": [
+    {
+      "source_id": "SRC-L1-YUANHAI-ZIPING",
+      "evidence_level": "L1",
+      "title": "渊海子平",
+      "author_or_attribution": "传统子平文献（宋代以降成书，明代刊行）",
+      "urls": ["https://zh.wikisource.org/wiki/淵海子平", "https://ctext.org/wiki.pl?chapter=296619&if=en&remap=gb"],
+      "key_sections": ["论日为主", "论月令", "论正官", "六亲总篇"],
+      "supports": [
+        "以日为主，年为本，月为提纲，时为辅佐",
+        "月为提纲，带官星印绶则慷慨聪明、见识高人",
+        "月令者，提纲也。看命先看提纲，方看其余",
+        "生月即不值令，而年时如值禄旺，岂便为衰（旺衰不能只看月令）"
+      ],
+      "limitations": "公开转录本；月令为提纲之喻，不直接等于月令=身旺。"
+    },
+    {
+      "source_id": "SRC-L1-DITIANSUI",
+      "evidence_level": "L1",
+      "title": "滴天髓（含任铁樵注）",
+      "author_or_attribution": "相传京图撰、刘伯温注、任铁樵增注（清代）",
+      "urls": ["https://zh.wikisource.org/wiki/滴天髓"],
+      "key_sections": ["衰旺论", "通根章", "天干论"],
+      "supports": [
+        "能知衰旺之真机，其于三命之奥，思过半矣",
+        "天干得一比肩在地支，如树之有根，风摇而不倒（通根类象）",
+        "得时者虽只一干，可当半壁（任铁樵注：得令之力大，但不等于身旺）"
+      ],
+      "limitations": "旺衰为解释前置层；本研究不实现旺衰算法。"
+    },
+    {
+      "source_id": "SRC-L1-ZIPING-ZHENQUAN",
+      "evidence_level": "L1",
+      "title": "子平真诠",
+      "author_or_attribution": "沈孝瞻（清代）",
+      "urls": ["https://zh.wikisource.org/wiki/子平真詮", "https://www.sushituan.cn/71254"],
+      "key_sections": ["论用神", "论十神", "论财", "论印绶", "论正官", "论偏官", "论食神", "论伤官", "论建禄月劫"],
+      "supports": [
+        "论用神，专以月令提纲为重",
+        "财官印食，此用神之善而顺用之者也；煞伤劫刃，用神之不善而逆用之者也",
+        "正官者分所当尊，如在国有君，在家有亲",
+        "煞以攻身，似非美物，然大贵之格，多存七煞。盖控制得宜，煞为我用",
+        "印绶喜其生身，正偏同为美格",
+        "建禄者，月建逢禄堂也，禄即是劫"
+      ],
+      "limitations": "月令提纲地位明确，但用神/格局判定属组合语境，不构成单变量旺衰。"
+    },
+    {
+      "source_id": "SRC-L1-SANMING-TONGHUI",
+      "evidence_level": "L1",
+      "title": "三命通会",
+      "author_or_attribution": "万民英（明代）",
+      "urls": ["https://zh.wikisource.org/w/index.php?oldid=761691&title=三命通會_(四庫全書本)/卷02"],
+      "key_sections": ["论五行旺相休囚死并寄生十二宫", "论年月日时"],
+      "supports": [
+        "盛德乘时曰旺，如春木旺……（旺相休囚死的四季框架）",
+        "凡推造化，见生旺者未必便作吉论，见休囚死绝未必便作凶言。如生旺太过，宜乎制伏，死绝不及，宜乎生扶，妙在识其通变",
+        "古以胎生旺库为四贵，死绝病败为四忌，余为四平，亦大概言之",
+        "古法以年看，子平以日看（流派差异）",
+        "夫命以年为本为父，月为兄弟僚友，日为主为妻为己身，时为子孙（柱位）"
+      ],
+      "limitations": "旺相休囚死为五行月令状态框架；四贵四忌明确标注大概言之，非精确算法。"
+    },
+    {
+      "source_id": "SRC-L2-QIANLI-MINGGAO",
+      "evidence_level": "L2",
+      "title": "千里命稿",
+      "author_or_attribution": "韦千里（现代子平教材，有明确版本）",
+      "urls": ["https://ctext.org/wiki.pl?chapter=447084&if=en&remap=gb"],
+      "key_sections": ["五行及十神关系", "旺衰论"],
+      "supports": ["现代教材对旺衰判断的整理（得令/得地/得助框架的现代表述）"],
+      "limitations": "现代整理，仅 L2 辅助；具体权重表述不作证据。"
+    },
+    {
+      "source_id": "SRC-L2-MINGLI-TANYUAN",
+      "evidence_level": "L2",
+      "title": "命理探源",
+      "author_or_attribution": "袁树珊（现代子平著作，有明确版本）",
+      "urls": ["https://ctext.org/wiki.pl?chapter=419625&if=en&remap=gb"],
+      "key_sections": ["卷二起例", "论月令与旺衰"],
+      "supports": ["月令在旺衰中的传统说明的现代整理"],
+      "limitations": "公开转录有个别异文；不作独立证据。"
+    },
+    {
+      "source_id": "SRC-L3-MODERN-EDUCATIONAL",
+      "evidence_level": "L3",
+      "title": "现代旺衰教学资料（三得法 vs 量化计分法，交叉核对）",
+      "author_or_attribution": "现代子平教学通用口径（有明确作者的教材整理）",
+      "urls": [],
+      "key_sections": ["得令/得地/得势", "量化计分（月令40/得地30/得势30 等）"],
+      "supports": [
+        "三得判断法（得令/得地/得势）为现代教学常用框架",
+        "量化计分法（百分制权重）为后世模型，与传统三得法口径不同"
+      ],
+      "limitations": "仅交叉核对；百分制/评分属后世模型，禁止作为本项目规则。"
+    },
+    {
+      "source_id": "SRC-REF-COMMON-MISUSE",
+      "evidence_level": "L3",
+      "title": "常见误用反例集（仅作反例，不作证据）",
+      "author_or_attribution": "算命网站自动文案、自媒体、论坛等（按任务禁止作为正式依据）",
+      "urls": [],
+      "key_sections": ["得令=身旺", "失令=身弱", "某月生=旺某五行", "百分制身强身弱"],
+      "supports": ["作为 PROHIBITED_DIRECT_INFERENCE 反例来源"],
+      "limitations": "禁止作为正式规则依据。"
+    }
+  ],
+  "source_policy": {
+    "accepted_levels": ["L1", "L2", "L3"],
+    "as_rule_evidence": ["L1", "L2"],
+    "cross_check_only": ["L3"],
+    "as_misuse_counterexamples_only": ["SRC-REF-COMMON-MISUSE"],
+    "note": "L1 优先；至少 4 个 L1（渊海子平/滴天髓/子平真诠/三命通会）均已登记。"
+  }
+}

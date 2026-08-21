@@ -1,0 +1,101 @@
+{
+  "schema_version": "0.1",
+  "status": "RESEARCH_CANDIDATE_NOT_FOR_RUNTIME",
+  "tradition_scope": "ZIPING_BAZI",
+  "concepts": [
+    {
+      "concept": "得令",
+      "definition_candidates": {
+        "A": "月令五行支持日主（如木日主生于寅卯月）",
+        "B": "月令只是第一参考，不单独决定日主强弱",
+        "C": "需结合透干、通根、全局生扶克泄"
+      },
+      "conflict": true,
+      "conflict_note": "A 与 B/C 存在口径差异：传统文献承认月令权重高（任铁樵：得时者虽只一干，可当半壁），但同时明确‘得令≠身旺’（旺而不强、虚浮无根）与‘生月即不值令，而年时如值禄旺，岂便为衰’。",
+      "evidence": {
+        "source_ids": ["SRC-L1-YUANHAI-ZIPING", "SRC-L1-DITIANSUI", "SRC-L1-SANMING-TONGHUI"],
+        "excerpts": [
+          "生月即不值令，而年时如值禄旺，岂便为衰？（渊海子平系旺衰论）",
+          "得时者虽只一干，可当半壁（滴天髓任铁樵注）",
+          "见生旺者未必便作吉论，见休囚死绝未必便作凶言（三命通会）"
+        ]
+      },
+      "classification": "TRADITION_POLICY_REQUIRED",
+      "freezable": false,
+      "blocked": "不得直接输出“得令/失令”；不得由月支单独判断日主状态。"
+    },
+    {
+      "concept": "旺相休囚死",
+      "definition_candidates": {
+        "traditional": "五行在四季月令的状态框架（盛德乘时曰旺；旺则生我者休、我生者相、克我者囚、我克者死）"
+      },
+      "conflict": false,
+      "evidence": {
+        "source_ids": ["SRC-L1-SANMING-TONGHUI"],
+        "excerpts": [
+          "盛德乘时曰旺。如春木旺，旺则生火，火乃木之子……故火相……故水休……故金囚……所以春木克土则死",
+          "凡推造化，见生旺者未必便作吉论，见休囚死绝未必便作凶言"
+        ]
+      },
+      "classification": "TRADITION_POLICY_REQUIRED",
+      "freezable": "PARTIAL",
+      "freeze_candidate": "FACT_ONLY：“旺相休囚死为五行在四季月令的传统状态框架（三命通会），不携带吉凶。”",
+      "blocked": "不得由旺相休囚死直接推断吉凶或个人结果。"
+    },
+    {
+      "concept": "得地/通根",
+      "definition_candidates": {
+        "traditional": "日主天干在地支藏干中存在同类或生扶（如树有根，风摇而不倒）"
+      },
+      "conflict": false,
+      "evidence": {
+        "source_ids": ["SRC-L1-DITIANSUI"],
+        "excerpts": ["天干得一比肩在地支，如树之有根，风摇而不倒"]
+      },
+      "classification": "SAFE_SEMANTIC_GLOSS（存在性）",
+      "freezable": "PARTIAL",
+      "freeze_candidate": "FACT_ONLY：“某天干在地支藏干集合中存在对应关系（STEM_ROOT_PRESENT）。”",
+      "blocked": "本气/中气/余气强弱分级涉及未冻结藏干权重政策（见 root_semantics.json）。"
+    },
+    {
+      "concept": "得势/得助",
+      "definition_candidates": {
+        "traditional": "天干中有印星生扶（得生）或比劫同类（得助）",
+        "modern": "现代教学常将得令/得地/得势并列为三得"
+      },
+      "conflict": true,
+      "conflict_note": "得势/得助的力量权重在不同流派口径不同（有的认为得地>得令>得生>得助，有的量化计分），存在 REAL_INTERPRETATION_CONFLICT。",
+      "evidence": {
+        "source_ids": ["SRC-L3-MODERN-EDUCATIONAL", "SRC-L1-DITIANSUI"],
+        "excerpts": ["现代教材‘三得’框架；滴天髓旺衰论以得令/得地为核心"]
+      },
+      "classification": "TRADITION_POLICY_REQUIRED",
+      "freezable": false
+    },
+    {
+      "concept": "旺衰综合判定",
+      "definition_candidates": {
+        "traditional": "得令、得地、得生、得助综合权衡，无统一权重",
+        "modern_scoring": "量化计分（月令40分、得地30分、得势30分；60分以上身强等）——后世模型"
+      },
+      "conflict": true,
+      "conflict_note": "传统三得法（定性）与现代量化计分法结果可不同；三命通会明言‘亦大概言之’，无统一百分制。",
+      "evidence": {
+        "source_ids": ["SRC-L1-SANMING-TONGHUI", "SRC-L3-MODERN-EDUCATIONAL"],
+        "excerpts": [
+          "古以胎生旺库为四贵，死绝病败为四忌，余为四平，亦大概言之（三命通会）",
+          "现代量化计分法（百分制）为后世模型"
+        ]
+      },
+      "classification": "OUT_OF_SCOPE（评分算法）/ TRADITION_POLICY_REQUIRED（定性判断）",
+      "freezable": false,
+      "prohibited_models": ["60分身强/40分身弱", "五行百分比", "软件评分"]
+    }
+  ],
+  "conclusion": {
+    "unified_algorithm_exists": false,
+    "note": "得令/得地/得势/得助为传统输入框架，但无统一确定性算法；现代百分制为后世模型，禁止采用。",
+    "freeze_now": ["旺相休囚死框架（FACT_ONLY，无吉凶）", "通根存在性（STEM_ROOT_PRESENT）"],
+    "blocked": ["得令/失令判定", "旺衰综合判定", "任何评分"]
+  }
+}

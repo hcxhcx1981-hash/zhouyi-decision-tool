@@ -1,0 +1,61 @@
+{
+  "schema_version": "0.1",
+  "status": "RESEARCH_CANDIDATE_NOT_FOR_RUNTIME",
+  "tradition_scope": "ZIPING_BAZI",
+  "conflicts": [
+    {
+      "conflict_id": "CONFLICT-STR-01",
+      "topic": "古法以年 vs 子平以日",
+      "statement": "三命通会明言‘古法以年看，子平以日看’：古法以年柱为本，子平以日干为主。这一流派差异影响‘以谁为中心衡量旺衰’的口径。",
+      "classification": "REAL_INTERPRETATION_CONFLICT",
+      "source_ids": ["SRC-L1-SANMING-TONGHUI"],
+      "product_recommendation": "本项目已锁定 ZIPING_BAZI（以日干为主），但旺衰口径需继续政策化"
+    },
+    {
+      "conflict_id": "CONFLICT-STR-02",
+      "topic": "得令是否等于身旺",
+      "statement": "得令≠身旺（旺而不强、虚浮无根为公认反例）；失令≠身弱（生月即不值令而年时如值禄旺岂便为衰）。简单二元化会导致不同输出。",
+      "classification": "REAL_INTERPRETATION_CONFLICT",
+      "source_ids": ["SRC-L1-YUANHAI-ZIPING", "SRC-L1-DITIANSUI"],
+      "product_recommendation": "不得由月支直接输出得令/失令"
+    },
+    {
+      "conflict_id": "CONFLICT-STR-03",
+      "topic": "旺衰统一算法",
+      "statement": "传统三得判断法（定性）与现代量化计分法（月令40/得地30/得势30、60分以上身强）结果可以不同；三命通会明言四贵四忌‘亦大概言之’。",
+      "classification": "REAL_INTERPRETATION_CONFLICT",
+      "source_ids": ["SRC-L1-SANMING-TONGHUI", "SRC-L3-MODERN-EDUCATIONAL"],
+      "product_recommendation": "禁止百分制/评分；旺衰判定为 TRADITION_POLICY_REQUIRED"
+    },
+    {
+      "conflict_id": "CONFLICT-STR-04",
+      "topic": "月令权重口径",
+      "statement": "任铁樵‘得时者虽只一干，可当半壁’强调月令权重；但渊海子平同时言‘论命者切不可泥之，月令消详’。月令权重是否占绝对地位，不同表述存在张力。",
+      "classification": "REAL_INTERPRETATION_CONFLICT",
+      "source_ids": ["SRC-L1-DITIANSUI", "SRC-L1-YUANHAI-ZIPING"],
+      "product_recommendation": "月令为第一参照可冻结（FACT_ONLY），权重比例不冻结"
+    },
+    {
+      "conflict_id": "CONFLICT-STR-05",
+      "topic": "通根强弱分级",
+      "statement": "本气/中气/余气根分级（本气最强、余气最弱）是现代整理的通识，但依赖藏干顺序与权重；bazi-foundation 已冻结顺序无语义、本中余气 TRADITION_POLICY_REQUIRED、权重 OUT_OF_SCOPE。",
+      "classification": "TRADITION_POLICY_REQUIRED",
+      "source_ids": ["SRC-L2-QIANLI-MINGGAO", "SRC-L3-MODERN-EDUCATIONAL"],
+      "product_recommendation": "通根强弱解释阻断；仅 STEM_ROOT_PRESENT"
+    },
+    {
+      "conflict_id": "CONFLICT-STR-06",
+      "topic": "四季土月",
+      "statement": "土旺的月令归属（辰戌丑未月土旺 vs 巳午月火生土）在传统与教学中存在口径差异，影响‘土日主是否得令’的判断。",
+      "classification": "TRADITION_POLICY_REQUIRED",
+      "source_ids": ["SRC-L1-SANMING-TONGHUI", "SRC-L3-MODERN-EDUCATIONAL"],
+      "product_recommendation": "四季土月不得简单判定得令/失令"
+    }
+  ],
+  "resolved_non_conflicts": [
+    "月令为提纲（首要观察位置）：渊海子平、子平真诠一致，无冲突（可冻结 FACT_ONLY）。",
+    "节气换月规则：子平体系以十二节为月界，与四柱排盘已冻结规则一致，无冲突。",
+    "旺相休囚死为五行四季状态框架：三命通会原文明确，无冲突（但无吉凶含义）。"
+  ],
+  "status_note": "真正冲突集中在：以年/以日为中心、得令与身旺的关系、旺衰统一算法（三得 vs 计分）、月令权重、通根强弱、四季土月。"
+}
