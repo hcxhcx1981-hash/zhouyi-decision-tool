@@ -35,7 +35,7 @@ if errorlevel 1 (
   goto :fail
 )
 
-start "" "http://127.0.0.1:3036"
+start "" "http://127.0.0.1:3036/bazi/"
 exit /b 0
 
 :fail
