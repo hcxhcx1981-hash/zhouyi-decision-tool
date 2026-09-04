@@ -1,11 +1,17 @@
-import type { LiuyaoQuestionInput } from "@/lib/liuyao/types";
+import type { HeavenlyStem, LiuyaoQuestionInput } from "@/lib/liuyao/types";
+
+const DAY_STEMS: HeavenlyStem[] = ["甲", "乙", "丙", "丁", "戊", "己", "庚", "辛", "壬", "癸"];
 
 export function LiuyaoQuestionFields({
   value,
   onChange,
+  dayStem,
+  onDayStemChange,
 }: {
   value: LiuyaoQuestionInput;
   onChange: (value: LiuyaoQuestionInput) => void;
+  dayStem: HeavenlyStem | "";
+  onDayStemChange: (value: HeavenlyStem | "") => void;
 }) {
   return (
     <div className="question-grid">
@@ -35,6 +41,13 @@ export function LiuyaoQuestionFields({
           onChange={(event) => onChange({ ...value, timeRange: event.target.value })}
           placeholder="例如：未来三个月"
         />
+      </label>
+      <label className="field-stack">
+        <span>日干（六神定位）*</span>
+        <select value={dayStem} onChange={(event) => onDayStemChange(event.target.value as HeavenlyStem | "")}>
+          <option value="" disabled>请选择日干</option>
+          {DAY_STEMS.map((stem) => <option key={stem} value={stem}>{stem}日</option>)}
+        </select>
       </label>
       <p className="privacy-note">内容只在当前页面内用于本次核准，不上传、不联网，也不进入分享信息。</p>
     </div>

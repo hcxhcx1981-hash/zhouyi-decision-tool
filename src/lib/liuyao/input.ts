@@ -3,6 +3,7 @@ import type {
   LiuyaoCastInput,
   LiuyaoQuestionInput,
   PartialYaoValues,
+  HeavenlyStem,
   YaoValue,
 } from "./types";
 
@@ -11,6 +12,7 @@ export const YAO_POSITION_LABELS = ["初爻", "二爻", "三爻", "四爻", "五
 export type LiuyaoValidationCode =
   | "QUESTION_TITLE_REQUIRED"
   | "TIME_RANGE_REQUIRED"
+  | "DAY_STEM_REQUIRED"
   | "YAO_VALUES_INCOMPLETE";
 
 export function createEmptyYaoValues(): PartialYaoValues {
@@ -38,6 +40,7 @@ export function isCompleteYaoValues(
 export function validateLiuyaoCastDraft(
   question: LiuyaoQuestionInput,
   values: PartialYaoValues,
+  dayStem?: HeavenlyStem | "",
 ): LiuyaoValidationCode[] {
   const errors: LiuyaoValidationCode[] = [];
   if (!question.title.trim()) {
@@ -45,6 +48,9 @@ export function validateLiuyaoCastDraft(
   }
   if (!question.timeRange.trim()) {
     errors.push("TIME_RANGE_REQUIRED");
+  }
+  if (dayStem !== undefined && !dayStem) {
+    errors.push("DAY_STEM_REQUIRED");
   }
   if (!isCompleteYaoValues(values)) {
     errors.push("YAO_VALUES_INCOMPLETE");
@@ -55,8 +61,9 @@ export function validateLiuyaoCastDraft(
 export function toLiuyaoCastInput(
   question: LiuyaoQuestionInput,
   values: PartialYaoValues,
+  dayStem: HeavenlyStem | "",
 ): LiuyaoCastInput | null {
-  if (validateLiuyaoCastDraft(question, values).length > 0 || !isCompleteYaoValues(values)) {
+  if (!dayStem || validateLiuyaoCastDraft(question, values, dayStem).length > 0 || !isCompleteYaoValues(values)) {
     return null;
   }
 
@@ -67,6 +74,7 @@ export function toLiuyaoCastInput(
       timeRange: question.timeRange.trim(),
     },
     yaoValues: [...values],
+    dayStem,
   };
 }
 
@@ -81,7 +89,7 @@ export function createBlockedAdvancedReading(): LiuyaoAdvancedReading {
     progressJudgment: null,
     obstacleJudgment: null,
     outcomeJudgment: null,
-    blockingReason: "纳甲、世应、六亲、六神、用神、旺衰与进展结局规则尚未接入。",
+    blockingReason: "用神、旺衰、进展与结局规则尚未接入。",
   };
 }
 

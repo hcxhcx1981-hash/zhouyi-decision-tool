@@ -6,7 +6,7 @@ import type {
 } from "@/lib/divination";
 import type { HexagramContent } from "@/lib/hexagram-data";
 import { YAO_POSITION_LABELS } from "@/lib/liuyao/input";
-import type { LiuyaoAdvancedReading } from "@/lib/liuyao/types";
+import type { LiuyaoAdvancedReading, LiuyaoChart } from "@/lib/liuyao/types";
 
 const ROLE_LABELS: Record<SelectionRole, string> = {
   primary: "主辞",
@@ -88,10 +88,12 @@ function SourceSelection({
 
 export function LiuyaoResult({
   result,
+  chart,
   hexagrams,
   advancedReading,
 }: {
   result: DivinationResult;
+  chart: LiuyaoChart;
   hexagrams: HexagramContent[];
   advancedReading: LiuyaoAdvancedReading;
 }) {
@@ -116,6 +118,13 @@ export function LiuyaoResult({
         <article className="trace-card wide"><small>命中规则</small><p>{result.ruleInstruction}</p></article>
       </div>
 
+      <section className="advanced-boundary" data-rule-layer={chart.ruleLayer}>
+        <span className="module-status">Phase 1 基础排盘</span>
+        <h2>确定性六爻卦盘 JSON</h2>
+        <p>包含本卦、变卦、动爻、纳甲、世应、六亲和六神；仅作规则结构化，不生成吉凶判断。</p>
+        <pre>{JSON.stringify(chart, null, 2)}</pre>
+      </section>
+
       {result.blocked ? <div className="blocking-banner" role="status"><strong>三爻动：自动主次已阻断</strong><p>{result.blockingReason}</p></div> : null}
 
       <div className="section-heading"><span>证据</span><div><h2>原文与解释分层</h2><p>卦辞与《彖传》保持独立，不合并冒充“彖辞”。</p></div></div>
@@ -133,7 +142,7 @@ export function LiuyaoResult({
 
       <section className="advanced-boundary" data-advanced-status={advancedReading.status}>
         <span className="module-status warning">规则待冻结</span>
-        <h2>纳甲判断规则尚未接入</h2>
+        <h2>进阶判断规则尚未接入</h2>
         <p>{advancedReading.blockingReason}</p>
         <p>当前不会生成用神、旺衰、进展、阻碍或结局文本。</p>
       </section>
