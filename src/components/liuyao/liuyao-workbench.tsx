@@ -26,6 +26,7 @@ const ERROR_MESSAGES: Record<LiuyaoValidationCode, string> = {
   DAY_STEM_REQUIRED: "请选择日干；六神定位不会从时间范围文本中臆造。",
   MONTH_BRANCH_REQUIRED: "请选择月建；旺衰证据不会从时间范围文本中臆造。",
   DAY_BRANCH_REQUIRED: "请选择日辰；旺衰证据不会从时间范围文本中臆造。",
+  INVALID_DAY_PILLAR: "日干与日辰必须组成有效六十甲子日柱；旬空不会猜测。",
   YAO_VALUES_INCOMPLETE: "请从初爻到上爻完成六次逐爻录入。",
 };
 
@@ -130,6 +131,7 @@ export function LiuyaoWorkbench({
           <div><dt>三爻动</dt><dd>主次硬阻断</dd></div>
           <div><dt>基础排盘</dt><dd>纳甲 / 世应 / 六亲 / 六神</dd></div>
           <div><dt>日月证据</dt><dd>同支 / 冲合 / 三合 / 生克标签</dd></div>
+          <div><dt>旬空与变爻</dt><dd>有效日柱旬空 / 回头生克 / 进退神事实</dd></div>
           <div><dt>仍未实现</dt><dd>用神 / 进阶旺衰 / 吉凶与结局</dd></div>
         </dl>
         <div className="safety-note"><strong>决策安全</strong><p>当前仅开放卦象计算、基础排盘与周易原文取辞；用神、旺衰、进展和结局判断尚未完成。医疗、法律、投资与人身安全事项不得仅依据本工具行动。</p></div>

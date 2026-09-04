@@ -7,6 +7,7 @@ export type EarthlyBranch = "子" | "丑" | "寅" | "卯" | "辰" | "巳" | "午
 export type FiveElement = "木" | "火" | "土" | "金" | "水";
 export type ElementRelation = "生我" | "我生" | "克我" | "我克" | "同类";
 export type LiuyaoEvidenceTag = "得月" | "失月" | "得日" | "失日" | "月扶" | "月克" | "日扶" | "日克";
+export type LiuyaoChangeTag = "回头生" | "回头克" | "进神" | "退神";
 
 export interface LiuyaoQuestionInput {
   title: string;
@@ -38,6 +39,16 @@ export interface LiuyaoLineEvidence {
   day: LiuyaoTemporalRelation;
   tags: LiuyaoEvidenceTag[];
   threeHarmony: { branches: [EarthlyBranch, EarthlyBranch, EarthlyBranch]; element: Exclude<FiveElement, "土"> } | null;
+  xunKong: { dayPillar: string; xun: string; emptyBranches: [EarthlyBranch, EarthlyBranch]; isEmpty: boolean };
+}
+
+export interface LiuyaoChangeEvidence {
+  originalBranch: EarthlyBranch;
+  changedBranch: EarthlyBranch;
+  originalElement: FiveElement;
+  changedElement: FiveElement;
+  relationAfterChange: ElementRelation;
+  tags: LiuyaoChangeTag[];
 }
 
 export interface LiuyaoChartLine {
@@ -52,6 +63,7 @@ export interface LiuyaoChartLine {
   shi: boolean;
   ying: boolean;
   evidence: LiuyaoLineEvidence;
+  changeEvidence: LiuyaoChangeEvidence | null;
 }
 
 export interface LiuyaoHexagramIdentity {
@@ -62,7 +74,7 @@ export interface LiuyaoHexagramIdentity {
   palaceElement: FiveElement;
 }
 
-/** A deterministic, non-interpretive Phase 2A rule output. */
+/** A deterministic, non-interpretive Phase 2B rule output. */
 export interface LiuyaoChart {
   input: {
     yaoValues: [YaoValue, YaoValue, YaoValue, YaoValue, YaoValue, YaoValue];
@@ -75,8 +87,9 @@ export interface LiuyaoChart {
   movingPositions: number[];
   shiPosition: number;
   yingPosition: number;
+  xunKong: { dayPillar: string; xun: string; emptyBranches: [EarthlyBranch, EarthlyBranch] };
   lines: LiuyaoChartLine[];
-  ruleLayer: "LIUYAO_PHASE2A_DETERMINISTIC";
+  ruleLayer: "LIUYAO_PHASE2B_DETERMINISTIC";
 }
 
 export type PartialYaoValues = [

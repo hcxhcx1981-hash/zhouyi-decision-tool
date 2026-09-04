@@ -4,6 +4,7 @@ import type {
   ElementRelation,
   FiveElement,
   LiuyaoCastInput,
+  LiuyaoChangeTag,
   LiuyaoChart,
   LiuyaoHexagramIdentity,
   SixRelative,
@@ -42,6 +43,13 @@ const THREE_HARMONIES: readonly { branches: [EarthlyBranch, EarthlyBranch, Earth
   { branches: ["亥", "卯", "未"], element: "木" },
   { branches: ["寅", "午", "戌"], element: "火" },
   { branches: ["巳", "酉", "丑"], element: "金" },
+];
+const HEAVENLY_STEMS: readonly HeavenlyStem[] = ["甲", "乙", "丙", "丁", "戊", "己", "庚", "辛", "壬", "癸"];
+const EARTHLY_BRANCHES: readonly EarthlyBranch[] = ["子", "丑", "寅", "卯", "辰", "巳", "午", "未", "申", "酉", "戌", "亥"];
+const XUN_KONG: readonly [EarthlyBranch, EarthlyBranch][] = [["戌", "亥"], ["申", "酉"], ["午", "未"], ["辰", "巳"], ["寅", "卯"], ["子", "丑"]];
+const ADVANCING_BRANCHES: readonly [EarthlyBranch, EarthlyBranch][] = [
+  ["亥", "子"], ["寅", "卯"], ["巳", "午"], ["申", "酉"],
+  ["辰", "未"], ["未", "戌"], ["戌", "丑"], ["丑", "辰"],
 ];
 
 function flip(bits: string, positions: number[]): string {
@@ -90,6 +98,29 @@ export function getBranchElement(branch: EarthlyBranch): FiveElement {
   return BRANCH_ELEMENTS[branch];
 }
 
+/** Returns the 0-based position in the 60-day cycle, or null for an impossible stem-branch pair. */
+export function getSexagenaryDayIndex(dayStem: HeavenlyStem, dayBranch: EarthlyBranch): number | null {
+  const stemIndex = HEAVENLY_STEMS.indexOf(dayStem);
+  const branchIndex = EARTHLY_BRANCHES.indexOf(dayBranch);
+  for (let index = 0; index < 60; index += 1) {
+    if (index % 10 === stemIndex && index % 12 === branchIndex) return index;
+  }
+  return null;
+}
+
+/** Derives the ten-day xun and its two empty branches from an explicit, valid day pillar. */
+export function getXunKong(dayStem: HeavenlyStem, dayBranch: EarthlyBranch) {
+  const index = getSexagenaryDayIndex(dayStem, dayBranch);
+  if (index === null) return null;
+  const xunIndex = Math.floor(index / 10);
+  const xunStartBranch = EARTHLY_BRANCHES[xunIndex * 10 % 12];
+  return {
+    dayPillar: `${dayStem}${dayBranch}`,
+    xun: `甲${xunStartBranch}旬`,
+    emptyBranches: XUN_KONG[xunIndex],
+  };
+}
+
 /** Returns the relation from a line's five-element perspective to a reference branch. */
 export function getElementRelation(lineElement: FiveElement, referenceElement: FiveElement): ElementRelation {
   if (lineElement === referenceElement) return "同类";
@@ -97,6 +128,21 @@ export function getElementRelation(lineElement: FiveElement, referenceElement: F
   if (GENERATES[lineElement] === referenceElement) return "我生";
   if (CONTROLS[referenceElement] === lineElement) return "克我";
   return "我克";
+}
+
+export function getChangeTags(
+  originalBranch: EarthlyBranch,
+  changedBranch: EarthlyBranch,
+  originalElement: FiveElement,
+  changedElement: FiveElement,
+): LiuyaoChangeTag[] {
+  const relationAfterChange = getElementRelation(originalElement, changedElement);
+  return [
+    ...(relationAfterChange === "生我" ? ["回头生" as const] : []),
+    ...(relationAfterChange === "克我" ? ["回头克" as const] : []),
+    ...(ADVANCING_BRANCHES.some(([from, to]) => originalBranch === from && changedBranch === to) ? ["进神" as const] : []),
+    ...(ADVANCING_BRANCHES.some(([from, to]) => originalBranch === to && changedBranch === from) ? ["退神" as const] : []),
+  ];
 }
 
 export function areSixClash(first: EarthlyBranch, second: EarthlyBranch): boolean {
@@ -132,7 +178,7 @@ function temporalRelation(lineBranch: EarthlyBranch, referenceBranch: EarthlyBra
   };
 }
 
-/** Produces the Phase 2A chart with fixed rules only; it does not call AI or external services. */
+/** Produces the Phase 2B chart with fixed rules only; it does not call AI or external services. */
 export function buildLiuyaoChart(cast: LiuyaoCastInput): LiuyaoChart {
   const originalKey = cast.yaoValues.map((value) => value === 6 || value === 8 ? "0" : "1").join("");
   const changedKey = cast.yaoValues.map((value) => value === 6 ? "1" : value === 9 ? "0" : value === 8 ? "0" : "1").join("");
@@ -141,7 +187,10 @@ export function buildLiuyaoChart(cast: LiuyaoCastInput): LiuyaoChart {
   const shiPosition = SHI_POSITIONS[original.pattern];
   const yingPosition = ((shiPosition + 2) % 6) + 1;
   const naJia = naJiaFor(originalKey);
+  const changedNaJia = naJiaFor(changedKey);
   const spiritStart = SPIRIT_START[cast.dayStem];
+  const xunKong = getXunKong(cast.dayStem, cast.dayBranch);
+  if (!xunKong) throw new Error("日柱必须是有效的六十甲子组合。");
 
   return {
     input: {
@@ -155,11 +204,14 @@ export function buildLiuyaoChart(cast: LiuyaoCastInput): LiuyaoChart {
     movingPositions: cast.yaoValues.flatMap((value, index) => value === 6 || value === 9 ? [index + 1] : []),
     shiPosition,
     yingPosition,
+    xunKong,
     lines: cast.yaoValues.map((yaoValue, index) => {
       const position = index + 1;
       const polarity: YaoPolarity = yaoValue === 6 || yaoValue === 8 ? "阴" : "阳";
       const branch = branchFromNaJia(naJia[index]);
       const branchElement = getBranchElement(branch);
+      const changedBranch = branchFromNaJia(changedNaJia[index]);
+      const changedElement = getBranchElement(changedBranch);
       const month = temporalRelation(branch, cast.monthBranch);
       const day = temporalRelation(branch, cast.dayBranch);
       const tags = [
@@ -190,9 +242,20 @@ export function buildLiuyaoChart(cast: LiuyaoCastInput): LiuyaoChart {
           day,
           tags,
           threeHarmony: getThreeHarmony(branch, cast.monthBranch, cast.dayBranch),
+          xunKong: { ...xunKong, isEmpty: xunKong.emptyBranches.includes(branch) },
         },
+        changeEvidence: yaoValue === 6 || yaoValue === 9
+          ? {
+              originalBranch: branch,
+              changedBranch,
+              originalElement: branchElement,
+              changedElement,
+              relationAfterChange: getElementRelation(branchElement, changedElement),
+              tags: getChangeTags(branch, changedBranch, branchElement, changedElement),
+            }
+          : null,
       };
     }),
-    ruleLayer: "LIUYAO_PHASE2A_DETERMINISTIC",
+    ruleLayer: "LIUYAO_PHASE2B_DETERMINISTIC",
   };
 }

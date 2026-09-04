@@ -16,7 +16,10 @@ import {
   areSixHarmony,
   buildLiuyaoChart,
   getBranchElement,
+  getChangeTags,
   getElementRelation,
+  getSexagenaryDayIndex,
+  getXunKong,
 } from "../src/lib/liuyao/rules.ts";
 
 const runtimeRules = parseRuntimeDivinationRules(
@@ -56,6 +59,14 @@ test("日月旺衰证据所需月建和日辰缺失不可开始", () => {
     validateLiuyaoCastDraft(validQuestion, [7, 7, 7, 7, 7, 7], "甲", "子", "").includes("DAY_BRANCH_REQUIRED"),
     true,
   );
+});
+
+test("无效日干日辰组合阻断旬空计算", () => {
+  assert.equal(
+    validateLiuyaoCastDraft(validQuestion, [7, 7, 7, 7, 7, 7], "甲", "子", "丑").includes("INVALID_DAY_PILLAR"),
+    true,
+  );
+  assert.equal(toLiuyaoCastInput(validQuestion, [7, 7, 7, 7, 7, 7], "甲", "子", "丑"), null);
 });
 
 test("六爻不足不可核准", () => {
@@ -110,7 +121,7 @@ test("基础排盘对相同输入恒定，且输出结构完整", () => {
   const first = buildLiuyaoChart(cast);
   const second = buildLiuyaoChart(cast);
   assert.deepEqual(first, second);
-  assert.deepEqual(Object.keys(first).sort(), ["changedHexagram", "input", "lines", "movingPositions", "originalHexagram", "ruleLayer", "shiPosition", "yingPosition"].sort());
+  assert.deepEqual(Object.keys(first).sort(), ["changedHexagram", "input", "lines", "movingPositions", "originalHexagram", "ruleLayer", "shiPosition", "xunKong", "yingPosition"].sort());
   assert.equal(first.lines.length, 6);
   assert.equal(first.lines.every((line) => typeof line.naJia === "string" && typeof line.sixRelative === "string" && typeof line.sixSpirit === "string" && line.evidence !== undefined), true);
 });
@@ -150,6 +161,42 @@ test("同支、冲与不完整三合只生成对应结构标签", () => {
   assert.equal(first.day.clash, true);
   assert.deepEqual(first.tags, ["得月", "月扶", "失日"]);
   assert.equal(first.threeHarmony, null);
+});
+
+test("显式日柱按六十甲子推导旬与旬空", () => {
+  assert.equal(getSexagenaryDayIndex("甲", "子"), 0);
+  assert.equal(getSexagenaryDayIndex("甲", "戌"), 10);
+  assert.equal(getSexagenaryDayIndex("甲", "丑"), null);
+  assert.deepEqual(getXunKong("甲", "子"), { dayPillar: "甲子", xun: "甲子旬", emptyBranches: ["戌", "亥"] });
+  assert.deepEqual(getXunKong("甲", "戌"), { dayPillar: "甲戌", xun: "甲戌旬", emptyBranches: ["申", "酉"] });
+  assert.equal(getXunKong("甲", "丑"), null);
+});
+
+test("每爻旬空 evidence 标记本旬空支而不猜测", () => {
+  const chart = buildLiuyaoChart({ question: validQuestion, yaoValues: [7, 7, 7, 7, 7, 7], dayStem: "甲", monthBranch: "申", dayBranch: "子" });
+  assert.deepEqual(chart.xunKong, { dayPillar: "甲子", xun: "甲子旬", emptyBranches: ["戌", "亥"] });
+  assert.equal(chart.lines[0].evidence.xunKong.isEmpty, false);
+  assert.equal(chart.lines[5].evidence.xunKong.isEmpty, true);
+});
+
+test("动爻输出本变纳甲、变后生克与回头标签，静爻不输出变化", () => {
+  const chart = buildLiuyaoChart({ question: validQuestion, yaoValues: [9, 7, 7, 7, 7, 7], dayStem: "甲", monthBranch: "申", dayBranch: "子" });
+  assert.deepEqual(chart.lines[0].changeEvidence, {
+    originalBranch: "子",
+    changedBranch: "丑",
+    originalElement: "水",
+    changedElement: "土",
+    relationAfterChange: "克我",
+    tags: ["回头克"],
+  });
+  assert.equal(chart.lines[1].changeEvidence, null);
+});
+
+test("进退神及回头生克只作为结构标签输出", () => {
+  assert.deepEqual(getChangeTags("亥", "子", "水", "水"), ["进神"]);
+  assert.deepEqual(getChangeTags("子", "亥", "水", "水"), ["退神"]);
+  assert.deepEqual(getChangeTags("申", "丑", "金", "土"), ["回头生"]);
+  assert.deepEqual(getChangeTags("子", "丑", "水", "土"), ["回头克"]);
 });
 
 test("六爻模块乾卦结果保持", () => {

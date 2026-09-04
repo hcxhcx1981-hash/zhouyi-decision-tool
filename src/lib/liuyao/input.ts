@@ -9,6 +9,8 @@ import type {
 } from "./types";
 
 export const YAO_POSITION_LABELS = ["初爻", "二爻", "三爻", "四爻", "五爻", "上爻"] as const;
+const HEAVENLY_STEMS: HeavenlyStem[] = ["甲", "乙", "丙", "丁", "戊", "己", "庚", "辛", "壬", "癸"];
+const EARTHLY_BRANCHES: EarthlyBranch[] = ["子", "丑", "寅", "卯", "辰", "巳", "午", "未", "申", "酉", "戌", "亥"];
 
 export type LiuyaoValidationCode =
   | "QUESTION_TITLE_REQUIRED"
@@ -16,10 +18,15 @@ export type LiuyaoValidationCode =
   | "DAY_STEM_REQUIRED"
   | "MONTH_BRANCH_REQUIRED"
   | "DAY_BRANCH_REQUIRED"
+  | "INVALID_DAY_PILLAR"
   | "YAO_VALUES_INCOMPLETE";
 
 export function createEmptyYaoValues(): PartialYaoValues {
   return [null, null, null, null, null, null];
+}
+
+function isValidDayPillar(dayStem: HeavenlyStem, dayBranch: EarthlyBranch): boolean {
+  return HEAVENLY_STEMS.indexOf(dayStem) % 2 === EARTHLY_BRANCHES.indexOf(dayBranch) % 2;
 }
 
 export function countCompletedYao(values: PartialYaoValues): number {
@@ -62,6 +69,9 @@ export function validateLiuyaoCastDraft(
   }
   if (dayBranch !== undefined && !dayBranch) {
     errors.push("DAY_BRANCH_REQUIRED");
+  }
+  if (dayStem && dayBranch && !isValidDayPillar(dayStem, dayBranch)) {
+    errors.push("INVALID_DAY_PILLAR");
   }
   if (!isCompleteYaoValues(values)) {
     errors.push("YAO_VALUES_INCOMPLETE");

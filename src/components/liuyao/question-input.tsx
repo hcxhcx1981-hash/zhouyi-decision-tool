@@ -52,7 +52,7 @@ export function LiuyaoQuestionFields({
         />
       </label>
       <label className="field-stack">
-        <span>日干（六神定位）*</span>
+        <span>日干（日柱 / 六神定位）*</span>
         <select value={dayStem} onChange={(event) => onDayStemChange(event.target.value as HeavenlyStem | "")}>
           <option value="" disabled>请选择日干</option>
           {DAY_STEMS.map((stem) => <option key={stem} value={stem}>{stem}日</option>)}
@@ -66,13 +66,13 @@ export function LiuyaoQuestionFields({
         </select>
       </label>
       <label className="field-stack">
-        <span>日辰（旺衰证据）*</span>
+        <span>日辰（日柱 / 旺衰与旬空）*</span>
         <select value={dayBranch} onChange={(event) => onDayBranchChange(event.target.value as EarthlyBranch | "")}>
           <option value="" disabled>请选择日辰</option>
           {EARTHLY_BRANCHES.map((branch) => <option key={branch} value={branch}>{branch}</option>)}
         </select>
       </label>
-      <p className="privacy-note">内容只在当前页面内用于本次核准，不上传、不联网，也不进入分享信息。</p>
+      <p className="privacy-note">日干与日辰必须组成有效六十甲子日柱；内容只在当前页面内用于本次核准，不上传、不联网，也不进入分享信息。</p>
     </div>
   );
 }
