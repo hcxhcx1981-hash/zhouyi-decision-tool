@@ -95,6 +95,7 @@ export function toLiuyaoCastInput(
       title: question.title.trim(),
       detail: question.detail.trim(),
       timeRange: question.timeRange.trim(),
+      type: question.type,
     },
     yaoValues: [...values],
     dayStem,

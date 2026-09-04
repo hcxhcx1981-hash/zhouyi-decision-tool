@@ -1,7 +1,8 @@
-import type { EarthlyBranch, HeavenlyStem, LiuyaoQuestionInput } from "@/lib/liuyao/types";
+import type { EarthlyBranch, HeavenlyStem, LiuyaoQuestionInput, LiuyaoQuestionType } from "@/lib/liuyao/types";
 
 const DAY_STEMS: HeavenlyStem[] = ["甲", "乙", "丙", "丁", "戊", "己", "庚", "辛", "壬", "癸"];
 const EARTHLY_BRANCHES: EarthlyBranch[] = ["子", "丑", "寅", "卯", "辰", "巳", "午", "未", "申", "酉", "戌", "亥"];
+const QUESTION_TYPES: LiuyaoQuestionType[] = ["求财", "事业", "合作", "感情", "考试", "失物", "其他"];
 
 export function LiuyaoQuestionFields({
   value,
@@ -24,6 +25,12 @@ export function LiuyaoQuestionFields({
 }) {
   return (
     <div className="question-grid">
+      <label className="field-stack">
+        <span>问题类型 *</span>
+        <select value={value.type} onChange={(event) => onChange({ ...value, type: event.target.value as LiuyaoQuestionType })}>
+          {QUESTION_TYPES.map((type) => <option key={type} value={type}>{type}</option>)}
+        </select>
+      </label>
       <label className="field-stack">
         <span>问题标题 *</span>
         <input

@@ -8,11 +8,14 @@ export type FiveElement = "木" | "火" | "土" | "金" | "水";
 export type ElementRelation = "生我" | "我生" | "克我" | "我克" | "同类";
 export type LiuyaoEvidenceTag = "得月" | "失月" | "得日" | "失日" | "月扶" | "月克" | "日扶" | "日克";
 export type LiuyaoChangeTag = "回头生" | "回头克" | "进神" | "退神";
+export type LiuyaoQuestionType = "求财" | "事业" | "合作" | "感情" | "考试" | "失物" | "其他";
+export type LiuyaoUsefulGodCandidate = SixRelative | "世爻" | "应爻";
 
 export interface LiuyaoQuestionInput {
   title: string;
   detail: string;
   timeRange: string;
+  type: LiuyaoQuestionType;
 }
 
 export interface LiuyaoCastInput {
@@ -87,6 +90,11 @@ export interface LiuyaoChart {
   movingPositions: number[];
   shiPosition: number;
   yingPosition: number;
+  questionEvidence: { type: LiuyaoQuestionType; usefulGodCandidates: LiuyaoUsefulGodCandidate[] };
+  shiYingEvidence: {
+    shiPosition: number; yingPosition: number; shiElement: FiveElement; yingElement: FiveElement;
+    elementRelation: ElementRelation; clash: boolean; harmony: boolean;
+  };
   xunKong: { dayPillar: string; xun: string; emptyBranches: [EarthlyBranch, EarthlyBranch] };
   lines: LiuyaoChartLine[];
   ruleLayer: "LIUYAO_PHASE2B_DETERMINISTIC";

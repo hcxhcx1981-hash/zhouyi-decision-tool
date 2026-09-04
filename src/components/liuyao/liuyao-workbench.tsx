@@ -18,7 +18,7 @@ import { LiuyaoQuestionFields } from "./question-input";
 import { ProgressiveYaoInput } from "./progressive-yao-input";
 import { LiuyaoResult } from "./liuyao-result";
 
-const INITIAL_QUESTION: LiuyaoQuestionInput = { title: "", detail: "", timeRange: "" };
+const INITIAL_QUESTION: LiuyaoQuestionInput = { title: "", detail: "", timeRange: "", type: "其他" };
 
 const ERROR_MESSAGES: Record<LiuyaoValidationCode, string> = {
   QUESTION_TITLE_REQUIRED: "请填写问题标题，一次只问一件具体事情。",

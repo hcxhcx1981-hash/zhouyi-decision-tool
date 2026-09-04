@@ -6,6 +6,8 @@ import type {
   LiuyaoCastInput,
   LiuyaoChangeTag,
   LiuyaoChart,
+  LiuyaoQuestionType,
+  LiuyaoUsefulGodCandidate,
   LiuyaoHexagramIdentity,
   SixRelative,
   SixSpirit,
@@ -51,6 +53,10 @@ const ADVANCING_BRANCHES: readonly [EarthlyBranch, EarthlyBranch][] = [
   ["亥", "子"], ["寅", "卯"], ["巳", "午"], ["申", "酉"],
   ["辰", "未"], ["未", "戌"], ["戌", "丑"], ["丑", "辰"],
 ];
+const USEFUL_GOD_CANDIDATES: Record<LiuyaoQuestionType, LiuyaoUsefulGodCandidate[]> = {
+  求财: ["妻财"], 事业: ["官鬼"], 合作: ["应爻"], 感情: ["妻财", "官鬼"],
+  考试: ["父母", "官鬼"], 失物: ["妻财"], 其他: [],
+};
 
 function flip(bits: string, positions: number[]): string {
   return bits.split("").map((bit, index) => positions.includes(index + 1) ? (bit === "1" ? "0" : "1") : bit).join("");
@@ -145,6 +151,10 @@ export function getChangeTags(
   ];
 }
 
+export function getUsefulGodCandidates(type: LiuyaoQuestionType): LiuyaoUsefulGodCandidate[] {
+  return [...USEFUL_GOD_CANDIDATES[type]];
+}
+
 export function areSixClash(first: EarthlyBranch, second: EarthlyBranch): boolean {
   return SIX_CLASHES.some(([left, right]) =>
     (first === left && second === right) || (first === right && second === left),
@@ -192,6 +202,13 @@ export function buildLiuyaoChart(cast: LiuyaoCastInput): LiuyaoChart {
   const xunKong = getXunKong(cast.dayStem, cast.dayBranch);
   if (!xunKong) throw new Error("日柱必须是有效的六十甲子组合。");
 
+  const shiLine = naJia[shiPosition - 1];
+  const yingLine = naJia[yingPosition - 1];
+  const shiBranch = branchFromNaJia(shiLine);
+  const yingBranch = branchFromNaJia(yingLine);
+  const shiElement = getBranchElement(shiBranch);
+  const yingElement = getBranchElement(yingBranch);
+
   return {
     input: {
       yaoValues: [...cast.yaoValues] as LiuyaoChart["input"]["yaoValues"],
@@ -204,6 +221,12 @@ export function buildLiuyaoChart(cast: LiuyaoCastInput): LiuyaoChart {
     movingPositions: cast.yaoValues.flatMap((value, index) => value === 6 || value === 9 ? [index + 1] : []),
     shiPosition,
     yingPosition,
+    questionEvidence: { type: cast.question.type, usefulGodCandidates: getUsefulGodCandidates(cast.question.type) },
+    shiYingEvidence: {
+      shiPosition, yingPosition, shiElement, yingElement,
+      elementRelation: getElementRelation(shiElement, yingElement),
+      clash: areSixClash(shiBranch, yingBranch), harmony: areSixHarmony(shiBranch, yingBranch),
+    },
     xunKong,
     lines: cast.yaoValues.map((yaoValue, index) => {
       const position = index + 1;

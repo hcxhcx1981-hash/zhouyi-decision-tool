@@ -18,6 +18,7 @@ import {
   getBranchElement,
   getChangeTags,
   getElementRelation,
+  getUsefulGodCandidates,
   getSexagenaryDayIndex,
   getXunKong,
 } from "../src/lib/liuyao/rules.ts";
@@ -25,7 +26,7 @@ import {
 const runtimeRules = parseRuntimeDivinationRules(
   JSON.parse(fs.readFileSync("data/frozen/zhouyi_divination_rules_v0.1.json", "utf8")),
 );
-const validQuestion = { title: "fixture-question", detail: "", timeRange: "fixture-range" };
+const validQuestion = { title: "fixture-question", detail: "", timeRange: "fixture-range", type: "其他" };
 
 test("问题标题为空不可开始", () => {
   const errors = validateLiuyaoCastDraft(
@@ -121,7 +122,7 @@ test("基础排盘对相同输入恒定，且输出结构完整", () => {
   const first = buildLiuyaoChart(cast);
   const second = buildLiuyaoChart(cast);
   assert.deepEqual(first, second);
-  assert.deepEqual(Object.keys(first).sort(), ["changedHexagram", "input", "lines", "movingPositions", "originalHexagram", "ruleLayer", "shiPosition", "xunKong", "yingPosition"].sort());
+  assert.deepEqual(Object.keys(first).sort(), ["changedHexagram", "input", "lines", "movingPositions", "originalHexagram", "questionEvidence", "ruleLayer", "shiPosition", "shiYingEvidence", "xunKong", "yingPosition"].sort());
   assert.equal(first.lines.length, 6);
   assert.equal(first.lines.every((line) => typeof line.naJia === "string" && typeof line.sixRelative === "string" && typeof line.sixSpirit === "string" && line.evidence !== undefined), true);
 });
@@ -197,6 +198,18 @@ test("进退神及回头生克只作为结构标签输出", () => {
   assert.deepEqual(getChangeTags("子", "亥", "水", "水"), ["退神"]);
   assert.deepEqual(getChangeTags("申", "丑", "金", "土"), ["回头生"]);
   assert.deepEqual(getChangeTags("子", "丑", "水", "土"), ["回头克"]);
+});
+
+test("问题分类只映射用神候选，不生成判断", () => {
+  assert.deepEqual(getUsefulGodCandidates("求财"), ["妻财"]);
+  assert.deepEqual(getUsefulGodCandidates("感情"), ["妻财", "官鬼"]);
+  assert.deepEqual(getUsefulGodCandidates("其他"), []);
+});
+
+test("世应 evidence 输出位置、五行关系与冲合事实", () => {
+  const chart = buildLiuyaoChart({ question: { ...validQuestion, type: "合作" }, yaoValues: [7, 7, 7, 7, 7, 7], dayStem: "甲", monthBranch: "申", dayBranch: "子" });
+  assert.deepEqual(chart.questionEvidence, { type: "合作", usefulGodCandidates: ["应爻"] });
+  assert.deepEqual(chart.shiYingEvidence, { shiPosition: 6, yingPosition: 3, shiElement: "土", yingElement: "土", elementRelation: "同类", clash: true, harmony: false });
 });
 
 test("六爻模块乾卦结果保持", () => {
