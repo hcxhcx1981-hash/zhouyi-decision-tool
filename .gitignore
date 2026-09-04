@@ -34,10 +34,30 @@ yarn-error.log*
 .env*
 !.env.example
 
+# local credentials and machine-specific configuration
+*.local
+!.env.example
+
+# private user data and local records
+/data/private/
+/data/user-data/
+/data/records/
+
+# local caches, browser profiles, temporary files, and logs
+.cache/
+.turbo/
+.swc/
+.alpha-browser-profile/
+.browser-profile/
+/browser-profile/
+/profiles/
+/tmp/
+/temp/
+*.log
+
 # vercel
 .vercel
 
 # typescript
 *.tsbuildinfo
 next-env.d.ts
-.alpha-browser-profile/
