@@ -3,6 +3,7 @@ import type {
   LiuyaoCastInput,
   LiuyaoQuestionInput,
   PartialYaoValues,
+  EarthlyBranch,
   HeavenlyStem,
   YaoValue,
 } from "./types";
@@ -13,6 +14,8 @@ export type LiuyaoValidationCode =
   | "QUESTION_TITLE_REQUIRED"
   | "TIME_RANGE_REQUIRED"
   | "DAY_STEM_REQUIRED"
+  | "MONTH_BRANCH_REQUIRED"
+  | "DAY_BRANCH_REQUIRED"
   | "YAO_VALUES_INCOMPLETE";
 
 export function createEmptyYaoValues(): PartialYaoValues {
@@ -41,6 +44,8 @@ export function validateLiuyaoCastDraft(
   question: LiuyaoQuestionInput,
   values: PartialYaoValues,
   dayStem?: HeavenlyStem | "",
+  monthBranch?: EarthlyBranch | "",
+  dayBranch?: EarthlyBranch | "",
 ): LiuyaoValidationCode[] {
   const errors: LiuyaoValidationCode[] = [];
   if (!question.title.trim()) {
@@ -52,6 +57,12 @@ export function validateLiuyaoCastDraft(
   if (dayStem !== undefined && !dayStem) {
     errors.push("DAY_STEM_REQUIRED");
   }
+  if (monthBranch !== undefined && !monthBranch) {
+    errors.push("MONTH_BRANCH_REQUIRED");
+  }
+  if (dayBranch !== undefined && !dayBranch) {
+    errors.push("DAY_BRANCH_REQUIRED");
+  }
   if (!isCompleteYaoValues(values)) {
     errors.push("YAO_VALUES_INCOMPLETE");
   }
@@ -62,8 +73,10 @@ export function toLiuyaoCastInput(
   question: LiuyaoQuestionInput,
   values: PartialYaoValues,
   dayStem: HeavenlyStem | "",
+  monthBranch: EarthlyBranch | "",
+  dayBranch: EarthlyBranch | "",
 ): LiuyaoCastInput | null {
-  if (!dayStem || validateLiuyaoCastDraft(question, values, dayStem).length > 0 || !isCompleteYaoValues(values)) {
+  if (!dayStem || !monthBranch || !dayBranch || validateLiuyaoCastDraft(question, values, dayStem, monthBranch, dayBranch).length > 0 || !isCompleteYaoValues(values)) {
     return null;
   }
 
@@ -75,6 +88,8 @@ export function toLiuyaoCastInput(
     },
     yaoValues: [...values],
     dayStem,
+    monthBranch,
+    dayBranch,
   };
 }
 

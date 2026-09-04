@@ -3,6 +3,10 @@ export type HeavenlyStem = "甲" | "乙" | "丙" | "丁" | "戊" | "己" | "庚"
 export type YaoPolarity = "阴" | "阳";
 export type SixRelative = "兄弟" | "子孙" | "妻财" | "官鬼" | "父母";
 export type SixSpirit = "青龙" | "朱雀" | "勾陈" | "腾蛇" | "白虎" | "玄武";
+export type EarthlyBranch = "子" | "丑" | "寅" | "卯" | "辰" | "巳" | "午" | "未" | "申" | "酉" | "戌" | "亥";
+export type FiveElement = "木" | "火" | "土" | "金" | "水";
+export type ElementRelation = "生我" | "我生" | "克我" | "我克" | "同类";
+export type LiuyaoEvidenceTag = "得月" | "失月" | "得日" | "失日" | "月扶" | "月克" | "日扶" | "日克";
 
 export interface LiuyaoQuestionInput {
   title: string;
@@ -14,6 +18,26 @@ export interface LiuyaoCastInput {
   question: LiuyaoQuestionInput;
   yaoValues: [YaoValue, YaoValue, YaoValue, YaoValue, YaoValue, YaoValue];
   dayStem: HeavenlyStem;
+  monthBranch: EarthlyBranch;
+  dayBranch: EarthlyBranch;
+}
+
+export interface LiuyaoTemporalRelation {
+  branch: EarthlyBranch;
+  element: FiveElement;
+  relation: ElementRelation;
+  sameBranch: boolean;
+  clash: boolean;
+  harmony: boolean;
+}
+
+export interface LiuyaoLineEvidence {
+  branch: EarthlyBranch;
+  branchElement: FiveElement;
+  month: LiuyaoTemporalRelation;
+  day: LiuyaoTemporalRelation;
+  tags: LiuyaoEvidenceTag[];
+  threeHarmony: { branches: [EarthlyBranch, EarthlyBranch, EarthlyBranch]; element: Exclude<FiveElement, "土"> } | null;
 }
 
 export interface LiuyaoChartLine {
@@ -27,6 +51,7 @@ export interface LiuyaoChartLine {
   sixSpirit: SixSpirit;
   shi: boolean;
   ying: boolean;
+  evidence: LiuyaoLineEvidence;
 }
 
 export interface LiuyaoHexagramIdentity {
@@ -34,19 +59,24 @@ export interface LiuyaoHexagramIdentity {
   lowerTrigram: string;
   upperTrigram: string;
   palace: string;
-  palaceElement: "木" | "火" | "土" | "金" | "水";
+  palaceElement: FiveElement;
 }
 
-/** A deterministic, non-interpretive Phase 1 rule output. */
+/** A deterministic, non-interpretive Phase 2A rule output. */
 export interface LiuyaoChart {
-  input: { yaoValues: [YaoValue, YaoValue, YaoValue, YaoValue, YaoValue, YaoValue]; dayStem: HeavenlyStem };
+  input: {
+    yaoValues: [YaoValue, YaoValue, YaoValue, YaoValue, YaoValue, YaoValue];
+    dayStem: HeavenlyStem;
+    monthBranch: EarthlyBranch;
+    dayBranch: EarthlyBranch;
+  };
   originalHexagram: LiuyaoHexagramIdentity;
   changedHexagram: LiuyaoHexagramIdentity;
   movingPositions: number[];
   shiPosition: number;
   yingPosition: number;
   lines: LiuyaoChartLine[];
-  ruleLayer: "LIUYAO_PHASE1_DETERMINISTIC";
+  ruleLayer: "LIUYAO_PHASE2A_DETERMINISTIC";
 }
 
 export type PartialYaoValues = [

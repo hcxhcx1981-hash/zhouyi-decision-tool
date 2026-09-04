@@ -1,5 +1,8 @@
 import type {
   HeavenlyStem,
+  EarthlyBranch,
+  ElementRelation,
+  FiveElement,
   LiuyaoCastInput,
   LiuyaoChart,
   LiuyaoHexagramIdentity,
@@ -8,7 +11,7 @@ import type {
   YaoPolarity,
 } from "./types";
 
-type Element = "木" | "火" | "土" | "金" | "水";
+type Element = FiveElement;
 type Trigram = { name: string; element: Element; naJia: readonly [string, string, string, string, string, string] };
 
 // Fixed conventional Na Jia and eight-palace tables. They only label a cast; no fortune interpretation is produced.
@@ -28,6 +31,18 @@ const SIX_SPIRITS: readonly SixSpirit[] = ["青龙", "朱雀", "勾陈", "腾蛇
 const SPIRIT_START: Record<HeavenlyStem, number> = { 甲: 0, 乙: 0, 丙: 1, 丁: 1, 戊: 2, 己: 3, 庚: 4, 辛: 4, 壬: 5, 癸: 5 };
 const GENERATES: Record<Element, Element> = { 木: "火", 火: "土", 土: "金", 金: "水", 水: "木" };
 const CONTROLS: Record<Element, Element> = { 木: "土", 火: "金", 土: "水", 金: "木", 水: "火" };
+const BRANCH_ELEMENTS: Record<EarthlyBranch, Element> = {
+  子: "水", 丑: "土", 寅: "木", 卯: "木", 辰: "土", 巳: "火",
+  午: "火", 未: "土", 申: "金", 酉: "金", 戌: "土", 亥: "水",
+};
+const SIX_CLASHES: readonly [EarthlyBranch, EarthlyBranch][] = [["子", "午"], ["丑", "未"], ["寅", "申"], ["卯", "酉"], ["辰", "戌"], ["巳", "亥"]];
+const SIX_HARMONIES: readonly [EarthlyBranch, EarthlyBranch][] = [["子", "丑"], ["寅", "亥"], ["卯", "戌"], ["辰", "酉"], ["巳", "申"], ["午", "未"]];
+const THREE_HARMONIES: readonly { branches: [EarthlyBranch, EarthlyBranch, EarthlyBranch]; element: Exclude<Element, "土"> }[] = [
+  { branches: ["申", "子", "辰"], element: "水" },
+  { branches: ["亥", "卯", "未"], element: "木" },
+  { branches: ["寅", "午", "戌"], element: "火" },
+  { branches: ["巳", "酉", "丑"], element: "金" },
+];
 
 function flip(bits: string, positions: number[]): string {
   return bits.split("").map((bit, index) => positions.includes(index + 1) ? (bit === "1" ? "0" : "1") : bit).join("");
@@ -71,16 +86,53 @@ function naJiaFor(key: string): readonly string[] {
   return [...lower.naJia.slice(0, 3), ...upper.naJia.slice(3, 6)];
 }
 
-function branchElement(naJia: string): Element {
-  const branch = naJia.at(-1);
-  if (branch && "寅卯".includes(branch)) return "木";
-  if (branch && "巳午".includes(branch)) return "火";
-  if (branch && "申酉".includes(branch)) return "金";
-  if (branch && "亥子".includes(branch)) return "水";
-  return "土";
+export function getBranchElement(branch: EarthlyBranch): FiveElement {
+  return BRANCH_ELEMENTS[branch];
 }
 
-/** Produces the Phase 1 chart with fixed rules only; it does not call AI or external services. */
+/** Returns the relation from a line's five-element perspective to a reference branch. */
+export function getElementRelation(lineElement: FiveElement, referenceElement: FiveElement): ElementRelation {
+  if (lineElement === referenceElement) return "同类";
+  if (GENERATES[referenceElement] === lineElement) return "生我";
+  if (GENERATES[lineElement] === referenceElement) return "我生";
+  if (CONTROLS[referenceElement] === lineElement) return "克我";
+  return "我克";
+}
+
+export function areSixClash(first: EarthlyBranch, second: EarthlyBranch): boolean {
+  return SIX_CLASHES.some(([left, right]) =>
+    (first === left && second === right) || (first === right && second === left),
+  );
+}
+
+export function areSixHarmony(first: EarthlyBranch, second: EarthlyBranch): boolean {
+  return SIX_HARMONIES.some(([left, right]) =>
+    (first === left && second === right) || (first === right && second === left),
+  );
+}
+
+function getThreeHarmony(first: EarthlyBranch, second: EarthlyBranch, third: EarthlyBranch) {
+  if (new Set([first, second, third]).size !== 3) return null;
+  return THREE_HARMONIES.find((group) => group.branches.every((branch) => [first, second, third].includes(branch))) ?? null;
+}
+
+function branchFromNaJia(naJia: string): EarthlyBranch {
+  return naJia.at(-1) as EarthlyBranch;
+}
+
+function temporalRelation(lineBranch: EarthlyBranch, referenceBranch: EarthlyBranch) {
+  const lineElement = getBranchElement(lineBranch);
+  return {
+    branch: referenceBranch,
+    element: getBranchElement(referenceBranch),
+    relation: getElementRelation(lineElement, getBranchElement(referenceBranch)),
+    sameBranch: lineBranch === referenceBranch,
+    clash: areSixClash(lineBranch, referenceBranch),
+    harmony: areSixHarmony(lineBranch, referenceBranch),
+  };
+}
+
+/** Produces the Phase 2A chart with fixed rules only; it does not call AI or external services. */
 export function buildLiuyaoChart(cast: LiuyaoCastInput): LiuyaoChart {
   const originalKey = cast.yaoValues.map((value) => value === 6 || value === 8 ? "0" : "1").join("");
   const changedKey = cast.yaoValues.map((value) => value === 6 ? "1" : value === 9 ? "0" : value === 8 ? "0" : "1").join("");
@@ -92,7 +144,12 @@ export function buildLiuyaoChart(cast: LiuyaoCastInput): LiuyaoChart {
   const spiritStart = SPIRIT_START[cast.dayStem];
 
   return {
-    input: { yaoValues: [...cast.yaoValues] as LiuyaoChart["input"]["yaoValues"], dayStem: cast.dayStem },
+    input: {
+      yaoValues: [...cast.yaoValues] as LiuyaoChart["input"]["yaoValues"],
+      dayStem: cast.dayStem,
+      monthBranch: cast.monthBranch,
+      dayBranch: cast.dayBranch,
+    },
     originalHexagram: { ...original },
     changedHexagram: { ...changed },
     movingPositions: cast.yaoValues.flatMap((value, index) => value === 6 || value === 9 ? [index + 1] : []),
@@ -101,6 +158,20 @@ export function buildLiuyaoChart(cast: LiuyaoCastInput): LiuyaoChart {
     lines: cast.yaoValues.map((yaoValue, index) => {
       const position = index + 1;
       const polarity: YaoPolarity = yaoValue === 6 || yaoValue === 8 ? "阴" : "阳";
+      const branch = branchFromNaJia(naJia[index]);
+      const branchElement = getBranchElement(branch);
+      const month = temporalRelation(branch, cast.monthBranch);
+      const day = temporalRelation(branch, cast.dayBranch);
+      const tags = [
+        ...(month.sameBranch ? ["得月" as const] : []),
+        ...(month.clash ? ["失月" as const] : []),
+        ...(month.relation === "生我" || month.relation === "同类" ? ["月扶" as const] : []),
+        ...(month.relation === "克我" ? ["月克" as const] : []),
+        ...(day.sameBranch ? ["得日" as const] : []),
+        ...(day.clash ? ["失日" as const] : []),
+        ...(day.relation === "生我" || day.relation === "同类" ? ["日扶" as const] : []),
+        ...(day.relation === "克我" ? ["日克" as const] : []),
+      ];
       return {
         position,
         positionLabel: ["初爻", "二爻", "三爻", "四爻", "五爻", "上爻"][index],
@@ -108,12 +179,20 @@ export function buildLiuyaoChart(cast: LiuyaoCastInput): LiuyaoChart {
         polarity,
         moving: yaoValue === 6 || yaoValue === 9,
         naJia: naJia[index],
-        sixRelative: sixRelative(branchElement(naJia[index]), original.palaceElement),
+        sixRelative: sixRelative(branchElement, original.palaceElement),
         sixSpirit: SIX_SPIRITS[(spiritStart + index) % 6],
         shi: position === shiPosition,
         ying: position === yingPosition,
+        evidence: {
+          branch,
+          branchElement,
+          month,
+          day,
+          tags,
+          threeHarmony: getThreeHarmony(branch, cast.monthBranch, cast.dayBranch),
+        },
       };
     }),
-    ruleLayer: "LIUYAO_PHASE1_DETERMINISTIC",
+    ruleLayer: "LIUYAO_PHASE2A_DETERMINISTIC",
   };
 }

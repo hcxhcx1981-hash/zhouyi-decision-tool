@@ -11,7 +11,13 @@ import {
   validateLiuyaoCastDraft,
   YAO_POSITION_LABELS,
 } from "../src/lib/liuyao/input.ts";
-import { buildLiuyaoChart } from "../src/lib/liuyao/rules.ts";
+import {
+  areSixClash,
+  areSixHarmony,
+  buildLiuyaoChart,
+  getBranchElement,
+  getElementRelation,
+} from "../src/lib/liuyao/rules.ts";
 
 const runtimeRules = parseRuntimeDivinationRules(
   JSON.parse(fs.readFileSync("data/frozen/zhouyi_divination_rules_v0.1.json", "utf8")),
@@ -41,6 +47,17 @@ test("六神所需日干缺失不可开始", () => {
   );
 });
 
+test("日月旺衰证据所需月建和日辰缺失不可开始", () => {
+  assert.equal(
+    validateLiuyaoCastDraft(validQuestion, [7, 7, 7, 7, 7, 7], "甲", "", "子").includes("MONTH_BRANCH_REQUIRED"),
+    true,
+  );
+  assert.equal(
+    validateLiuyaoCastDraft(validQuestion, [7, 7, 7, 7, 7, 7], "甲", "子", "").includes("DAY_BRANCH_REQUIRED"),
+    true,
+  );
+});
+
 test("六爻不足不可核准", () => {
   assert.equal(
     validateLiuyaoCastDraft(validQuestion, createEmptyYaoValues()).includes(
@@ -60,13 +77,15 @@ test("选择当前爻后自动进入下一爻且不上溢", () => {
 });
 
 test("六爻完成后生成合法核准输入", () => {
-  const cast = toLiuyaoCastInput(validQuestion, [7, 7, 7, 7, 7, 7], "丙");
+  const cast = toLiuyaoCastInput(validQuestion, [7, 7, 7, 7, 7, 7], "丙", "寅", "午");
   assert.deepEqual(cast?.yaoValues, [7, 7, 7, 7, 7, 7]);
   assert.equal(cast?.dayStem, "丙");
+  assert.equal(cast?.monthBranch, "寅");
+  assert.equal(cast?.dayBranch, "午");
 });
 
 test("固定乾卦例生成完整基础卦盘", () => {
-  const chart = buildLiuyaoChart({ question: validQuestion, yaoValues: [7, 7, 7, 7, 7, 7], dayStem: "甲" });
+  const chart = buildLiuyaoChart({ question: validQuestion, yaoValues: [7, 7, 7, 7, 7, 7], dayStem: "甲", monthBranch: "子", dayBranch: "午" });
   assert.equal(chart.originalHexagram.key, "111111");
   assert.equal(chart.changedHexagram.key, "111111");
   assert.deepEqual(chart.movingPositions, []);
@@ -78,7 +97,7 @@ test("固定乾卦例生成完整基础卦盘", () => {
 });
 
 test("动爻、阴阳与变卦在固定卦例中保持一致", () => {
-  const chart = buildLiuyaoChart({ question: validQuestion, yaoValues: [6, 7, 8, 9, 7, 8], dayStem: "己" });
+  const chart = buildLiuyaoChart({ question: validQuestion, yaoValues: [6, 7, 8, 9, 7, 8], dayStem: "己", monthBranch: "卯", dayBranch: "酉" });
   assert.equal(chart.originalHexagram.key, "010110");
   assert.equal(chart.changedHexagram.key, "110010");
   assert.deepEqual(chart.movingPositions, [1, 4]);
@@ -87,13 +106,50 @@ test("动爻、阴阳与变卦在固定卦例中保持一致", () => {
 });
 
 test("基础排盘对相同输入恒定，且输出结构完整", () => {
-  const cast = { question: validQuestion, yaoValues: [9, 8, 7, 6, 7, 8], dayStem: "壬" };
+  const cast = { question: validQuestion, yaoValues: [9, 8, 7, 6, 7, 8], dayStem: "壬", monthBranch: "申", dayBranch: "辰" };
   const first = buildLiuyaoChart(cast);
   const second = buildLiuyaoChart(cast);
   assert.deepEqual(first, second);
   assert.deepEqual(Object.keys(first).sort(), ["changedHexagram", "input", "lines", "movingPositions", "originalHexagram", "ruleLayer", "shiPosition", "yingPosition"].sort());
   assert.equal(first.lines.length, 6);
-  assert.equal(first.lines.every((line) => typeof line.naJia === "string" && typeof line.sixRelative === "string" && typeof line.sixSpirit === "string"), true);
+  assert.equal(first.lines.every((line) => typeof line.naJia === "string" && typeof line.sixRelative === "string" && typeof line.sixSpirit === "string" && line.evidence !== undefined), true);
+});
+
+test("十二地支映射与五行生克关系固定", () => {
+  assert.equal(getBranchElement("子"), "水");
+  assert.equal(getBranchElement("未"), "土");
+  assert.equal(getElementRelation("水", "金"), "生我");
+  assert.equal(getElementRelation("水", "木"), "我生");
+  assert.equal(getElementRelation("水", "土"), "克我");
+  assert.equal(getElementRelation("水", "火"), "我克");
+  assert.equal(getElementRelation("水", "水"), "同类");
+});
+
+test("六合与六冲关系固定且不互相混淆", () => {
+  assert.equal(areSixHarmony("子", "丑"), true);
+  assert.equal(areSixHarmony("子", "午"), false);
+  assert.equal(areSixClash("子", "午"), true);
+  assert.equal(areSixClash("子", "丑"), false);
+});
+
+test("每爻日月关系、证据标签和完整三合均可验证", () => {
+  const chart = buildLiuyaoChart({ question: validQuestion, yaoValues: [7, 7, 7, 7, 7, 7], dayStem: "甲", monthBranch: "申", dayBranch: "辰" });
+  const first = chart.lines[0].evidence;
+  assert.equal(first.branch, "子");
+  assert.equal(first.branchElement, "水");
+  assert.deepEqual(first.month, { branch: "申", element: "金", relation: "生我", sameBranch: false, clash: false, harmony: false });
+  assert.deepEqual(first.day, { branch: "辰", element: "土", relation: "克我", sameBranch: false, clash: false, harmony: false });
+  assert.deepEqual(first.tags, ["月扶", "日克"]);
+  assert.deepEqual(first.threeHarmony, { branches: ["申", "子", "辰"], element: "水" });
+});
+
+test("同支、冲与不完整三合只生成对应结构标签", () => {
+  const chart = buildLiuyaoChart({ question: validQuestion, yaoValues: [7, 7, 7, 7, 7, 7], dayStem: "甲", monthBranch: "子", dayBranch: "午" });
+  const first = chart.lines[0].evidence;
+  assert.equal(first.month.sameBranch, true);
+  assert.equal(first.day.clash, true);
+  assert.deepEqual(first.tags, ["得月", "月扶", "失日"]);
+  assert.equal(first.threeHarmony, null);
 });
 
 test("六爻模块乾卦结果保持", () => {

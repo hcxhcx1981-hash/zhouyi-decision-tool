@@ -1,17 +1,26 @@
-import type { HeavenlyStem, LiuyaoQuestionInput } from "@/lib/liuyao/types";
+import type { EarthlyBranch, HeavenlyStem, LiuyaoQuestionInput } from "@/lib/liuyao/types";
 
 const DAY_STEMS: HeavenlyStem[] = ["甲", "乙", "丙", "丁", "戊", "己", "庚", "辛", "壬", "癸"];
+const EARTHLY_BRANCHES: EarthlyBranch[] = ["子", "丑", "寅", "卯", "辰", "巳", "午", "未", "申", "酉", "戌", "亥"];
 
 export function LiuyaoQuestionFields({
   value,
   onChange,
   dayStem,
   onDayStemChange,
+  monthBranch,
+  onMonthBranchChange,
+  dayBranch,
+  onDayBranchChange,
 }: {
   value: LiuyaoQuestionInput;
   onChange: (value: LiuyaoQuestionInput) => void;
   dayStem: HeavenlyStem | "";
   onDayStemChange: (value: HeavenlyStem | "") => void;
+  monthBranch: EarthlyBranch | "";
+  onMonthBranchChange: (value: EarthlyBranch | "") => void;
+  dayBranch: EarthlyBranch | "";
+  onDayBranchChange: (value: EarthlyBranch | "") => void;
 }) {
   return (
     <div className="question-grid">
@@ -47,6 +56,20 @@ export function LiuyaoQuestionFields({
         <select value={dayStem} onChange={(event) => onDayStemChange(event.target.value as HeavenlyStem | "")}>
           <option value="" disabled>请选择日干</option>
           {DAY_STEMS.map((stem) => <option key={stem} value={stem}>{stem}日</option>)}
+        </select>
+      </label>
+      <label className="field-stack">
+        <span>月建（旺衰证据）*</span>
+        <select value={monthBranch} onChange={(event) => onMonthBranchChange(event.target.value as EarthlyBranch | "")}>
+          <option value="" disabled>请选择月建</option>
+          {EARTHLY_BRANCHES.map((branch) => <option key={branch} value={branch}>{branch}</option>)}
+        </select>
+      </label>
+      <label className="field-stack">
+        <span>日辰（旺衰证据）*</span>
+        <select value={dayBranch} onChange={(event) => onDayBranchChange(event.target.value as EarthlyBranch | "")}>
+          <option value="" disabled>请选择日辰</option>
+          {EARTHLY_BRANCHES.map((branch) => <option key={branch} value={branch}>{branch}</option>)}
         </select>
       </label>
       <p className="privacy-note">内容只在当前页面内用于本次核准，不上传、不联网，也不进入分享信息。</p>
